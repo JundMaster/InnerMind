@@ -5,12 +5,17 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
     [Range(50, 250)][SerializeField] private float speed;
-    private Transform player;
     private float verticalRotation;
+
+    // Components
+    private Transform player;
+    private PlayerInput input;
 
     void Start()
     {
-        player = this.transform.parent.GetComponent<Transform>();
+        input = GetComponentInParent<PlayerInput>();
+
+        player = transform.parent.transform;
         verticalRotation = 0f;
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -18,16 +23,14 @@ public class PlayerLook : MonoBehaviour
 
     void Update()
     {
-        float horizontal    = Input.GetAxis("Mouse X") * speed * Time.deltaTime;
-        float vertical      = Input.GetAxis("Mouse Y") * speed * Time.deltaTime;
-
         // Clamps vertical axis
-        verticalRotation -= vertical;
+        verticalRotation -= input.VerticalMouse * speed * Time.deltaTime;
         verticalRotation = Mathf.Clamp(verticalRotation, -70f, 70f);
-        // Rotates (vertical) around X axis
+
+        // Rotates the camera (vertical) around X axis
         transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
 
-        // Rotates the player on Y axis
-        player.Rotate(Vector3.up * horizontal);
+        // Rotates the player on Y axis (horizontal)
+        player.Rotate(Vector3.up * input.HorizontalMouse * speed * Time.deltaTime);
     }
 }
