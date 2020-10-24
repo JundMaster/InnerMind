@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             // If there's floor and a wall in the middle, the player will stop
-            if (Physics.Raycast(checkObstacle, 1f, walkableLayer))
+            if (Physics.Raycast(checkObstacle, 0.6f, walkableLayer))
             {
                 rb.velocity = Vector3.zero;
             }
@@ -85,28 +85,32 @@ public class PlayerMovement : MonoBehaviour
             transform.forward);
 
         // If collides with a wall
-        if (Physics.Raycast(wallCheckRay, out RaycastHit hitInfo, 
-            1f, walkableLayer))
+        if (Physics.Raycast(wallCheckRay, out RaycastHit hit,
+            1f))
         {
-            // if the player is moving forward
-            if (input.ZAxis > 0)
+            // only if the collider is a walkable layer
+            if (hit.collider.gameObject.layer == 9)
             {
-                // And the coroutine isn't already running
-                if (!insideChangingFaceCR)
+                // if the player is moving forward
+                if (input.ZAxis > 0)
                 {
-                    StartCoroutine(CRChangeFace(hitInfo));
-                    insideChangingFaceCR = true;
+                    // And the coroutine isn't already running
+                    if (!insideChangingFaceCR)
+                    {
+                        StartCoroutine(CRChangeFace(hit));
+                        insideChangingFaceCR = true;
+                    }
                 }
             }
         }
     }
 
-    IEnumerator CRChangeFace(RaycastHit hitInfo)
+    IEnumerator CRChangeFace(RaycastHit hit)
     {
         // Stops time, rotates the player towards the point of impact
         Time.timeScale = 0f;
         rb.isKinematic = true;
-        transform.LookAt(transform.position - hitInfo.normal, transform.up);
+        transform.LookAt(transform.position - hit.normal, transform.up);
 
         // Changes position and rotation smoothly
         float elapsedTime = 0.0f;
@@ -116,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
         while (elapsedTime < 0.5f)
         {
             transform.position = Vector3.MoveTowards(transform.position, 
-                new Vector3(hitInfo.point.x, hitInfo.point.y, hitInfo.point.z), 
+                new Vector3(hit.point.x, hit.point.y, hit.point.z), 
                 elapsedTime / 0.5f);
 
             transform.rotation = Quaternion.Slerp(from, to, elapsedTime / 0.5f);

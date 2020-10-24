@@ -21,7 +21,8 @@ sealed public class WalkableRoom : MonoBehaviour
 
         // Sets the collider with the new measures
         roomCollider.center = roomBounds.center;
-        roomCollider.size   = roomBounds.size;
+        roomCollider.size = new Vector3(roomBounds.size.x - 0.60f,
+            roomBounds.size.y - 0.60f, roomBounds.size.z - 0.60f);
         roomCollider.isTrigger = true;
     }
 }
