@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-    [Range(50, 250)][SerializeField] private float speed;
+    [Range(50, 250)][SerializeField] private ushort speed;
     private float verticalRotation;
 
     // Components

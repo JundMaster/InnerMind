@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // Movement
-    [Range(1, 4)] [SerializeField] private float speed;
+    [Range(1, 20)] [SerializeField] private byte speed;
     private Vector3 movement;
     [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask walkableLayer;
 
     // Wall walk room
-    private bool inWallWalkRoom;
+    private TypeOfRoom currentRoomType;
     private bool insideChangingFaceCR;
 
     // Components
@@ -21,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         input = GetComponent<PlayerInput>();
+
+        currentRoomType = TypeOfRoom.NonWalkableWalls;
     }
 
     private void FixedUpdate()
@@ -31,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Only runs if the player is in a WallWalkRoom
-        if (inWallWalkRoom)
+        if (currentRoomType == TypeOfRoom.WalkableWalls)
         {
             ChangeFace();
         }
@@ -44,21 +47,34 @@ public class PlayerMovement : MonoBehaviour
             transform.forward * input.ZAxis).normalized;
 
         // Refresh groundCheck position (position where player is moving towards)
-        groundCheck.transform.position = transform.position + movement * 0.75f;
+        groundCheck.transform.position = transform.position + movement * 0.5f;
 
-        // Used to check if there is something in front of the player
+        // Collider to check if there is a Walls_Floor layer in front
         Collider[] groundCheckCollider = 
-            Physics.OverlapSphere(groundCheck.transform.position, 0.1f);
+            Physics.OverlapSphere(groundCheck.transform.position, 0.1f, 
+            walkableLayer);
 
-        // The player will only move if there is something in front)
+        // Ray to confirm if there isn't a wall/obstacle blocking the path
+        Ray checkObstacle = new Ray(Camera.main.transform.position, 
+            groundCheck.transform.position - transform.position);
+
+        // If there's no floor in front, the player will stop
         if (groundCheckCollider.Length == 0)
         {
             rb.velocity = Vector3.zero;
         }
         else
         {
-            // Moves player
-            rb.velocity = movement * speed;
+            // If there's floor and a wall in the middle, the player will stop
+            if (Physics.Raycast(checkObstacle, 1f, walkableLayer))
+            {
+                rb.velocity = Vector3.zero;
+            }
+            else
+            {
+                // Else the player will move
+                rb.velocity = movement * speed;
+            }
         }
     }
 
@@ -68,24 +84,21 @@ public class PlayerMovement : MonoBehaviour
         Ray wallCheckRay = new Ray(Camera.main.transform.position, 
             transform.forward);
 
-        // If collides with a wall and the player is moving forward
-        if (Physics.Raycast(wallCheckRay, out RaycastHit hitInfo, 0.5f))
+        // If collides with a wall
+        if (Physics.Raycast(wallCheckRay, out RaycastHit hitInfo, 
+            1f, walkableLayer))
         {
-            if (hitInfo.collider.gameObject.layer == 9)
+            // if the player is moving forward
+            if (input.ZAxis > 0)
             {
-                if (input.ZAxis > 0)
+                // And the coroutine isn't already running
+                if (!insideChangingFaceCR)
                 {
-                    if (!insideChangingFaceCR)
-                    {
-                        StartCoroutine(CRChangeFace(hitInfo));
-                        insideChangingFaceCR = true;
-                    }
+                    StartCoroutine(CRChangeFace(hitInfo));
+                    insideChangingFaceCR = true;
                 }
             }
         }
-        // Draws ray on editor
-        Debug.DrawRay(Camera.main.transform.position, transform.forward * 0.5f,
-            Color.red);
     }
 
     IEnumerator CRChangeFace(RaycastHit hitInfo)
@@ -124,14 +137,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("WallWalkRoom"))
         {
-            inWallWalkRoom = true;
+            currentRoomType = TypeOfRoom.WalkableWalls;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("WallWalkRoom"))
         {
-            inWallWalkRoom = false;
+            currentRoomType = TypeOfRoom.NonWalkableWalls;
         }
     }
 
@@ -145,7 +158,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Wall Colide Ray
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(Camera.main.transform.position, transform.forward * 0.5f);
+        Gizmos.DrawRay(Camera.main.transform.position, transform.forward * 1f);
 
         // GroundCheck Sphere
         Gizmos.color = Color.black;
