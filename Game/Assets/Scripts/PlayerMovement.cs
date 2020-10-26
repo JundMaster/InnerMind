@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.WSA.Input;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,16 +13,18 @@ public class PlayerMovement : MonoBehaviour
 
     // Wall walk room
     private TypeOfRoom currentRoomType;
-    private bool insideChangingFaceCR;
+    private bool cr_runningChangeFace;
 
     // Components
     private Rigidbody rb;
     private PlayerInput input;
+    private PlayerLook camera;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         input = GetComponent<PlayerInput>();
+        camera = GetComponentInChildren<PlayerLook>();
 
         currentRoomType = TypeOfRoom.NonWalkableWalls;
     }
@@ -85,8 +88,7 @@ public class PlayerMovement : MonoBehaviour
             transform.forward);
 
         // If collides with a wall
-        if (Physics.Raycast(wallCheckRay, out RaycastHit hit,
-            1f))
+        if (Physics.Raycast(wallCheckRay, out RaycastHit hit, 1f))
         {
             // only if the collider is a walkable layer
             if (hit.collider.gameObject.layer == 9)
@@ -95,10 +97,10 @@ public class PlayerMovement : MonoBehaviour
                 if (input.ZAxis > 0)
                 {
                     // And the coroutine isn't already running
-                    if (!insideChangingFaceCR)
+                    if (!cr_runningChangeFace)
                     {
                         StartCoroutine(CRChangeFace(hit));
-                        insideChangingFaceCR = true;
+                        cr_runningChangeFace = true;
                     }
                 }
             }
@@ -111,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
         Time.timeScale = 0f;
         rb.isKinematic = true;
         transform.LookAt(transform.position - hit.normal, transform.up);
+        camera.VerticalRotation = 0;
 
         // Changes position and rotation smoothly
         float elapsedTime = 0.0f;
@@ -120,8 +123,7 @@ public class PlayerMovement : MonoBehaviour
         while (elapsedTime < 0.5f)
         {
             transform.position = Vector3.MoveTowards(transform.position, 
-                new Vector3(hit.point.x, hit.point.y, hit.point.z), 
-                elapsedTime / 0.5f);
+                hit.point, elapsedTime / 20f);
 
             transform.rotation = Quaternion.Slerp(from, to, elapsedTime / 0.5f);
             elapsedTime += Time.unscaledDeltaTime;
@@ -131,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
                                 
         // Gives back all player control
         rb.isKinematic = false;
-        insideChangingFaceCR = false;
+        cr_runningChangeFace = false;
         Time.timeScale = 1f;
     }
 
@@ -151,7 +153,6 @@ public class PlayerMovement : MonoBehaviour
             currentRoomType = TypeOfRoom.NonWalkableWalls;
         }
     }
-
 
     private void OnDrawGizmos()
     {

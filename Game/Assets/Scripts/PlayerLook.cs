@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
     [Range(50, 250)][SerializeField] private ushort speed;
-    private float verticalRotation;
+    public float VerticalRotation { get; set; }
 
     // Components
     private Transform player;
@@ -16,7 +16,7 @@ public class PlayerLook : MonoBehaviour
         input = GetComponentInParent<PlayerInput>();
 
         player = transform.parent.transform;
-        verticalRotation = 0f;
+        VerticalRotation = 0f;
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -24,11 +24,11 @@ public class PlayerLook : MonoBehaviour
     void Update()
     {
         // Clamps vertical axis
-        verticalRotation -= input.VerticalMouse * speed * Time.deltaTime;
-        verticalRotation = Mathf.Clamp(verticalRotation, -70f, 70f);
+        VerticalRotation -= input.VerticalMouse * speed * Time.deltaTime;
+        VerticalRotation = Mathf.Clamp(VerticalRotation, -70f, 70f);
 
         // Rotates the camera (vertical) around X axis
-        transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+        transform.localRotation = Quaternion.Euler(VerticalRotation, 0f, 0f);
 
         // Rotates the player on Y axis (horizontal)
         player.Rotate(Vector3.up * input.HorizontalMouse * speed * Time.deltaTime);
