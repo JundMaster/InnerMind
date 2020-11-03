@@ -78,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = Vector3.zero;
             }
+
             else
             {
                 // Else the player will move
@@ -129,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
         while (elapsedTime < 0.5f)
         {
             transform.position = Vector3.MoveTowards(transform.position, 
-                hit.point, elapsedTime / 20f);
+                hit.point, elapsedTime / 15f);
 
             transform.rotation = Quaternion.Slerp(from, to, elapsedTime / 0.5f);
             elapsedTime += Time.unscaledDeltaTime;

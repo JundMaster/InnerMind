@@ -9,6 +9,7 @@ public class PlayerInput : MonoBehaviour
     public float XAxis { get; private set; }
     public float HorizontalMouse { get; private set; }
     public float VerticalMouse { get; private set; }
+    public bool LeftClick { get; private set; }
 
     private void Update()
     {
@@ -21,6 +22,9 @@ public class PlayerInput : MonoBehaviour
             // Gets mouse axis
             HorizontalMouse = Input.GetAxis("Mouse X");
             VerticalMouse = Input.GetAxis("Mouse Y");
+
+            // Gets left click
+            LeftClick = Input.GetButtonDown("Fire1");
         }
     }
 }
