@@ -11,7 +11,7 @@ public class PlayerLook : MonoBehaviour
     private Transform player;
     private PlayerInput input;
 
-    void Start()
+    private void Start()
     {
         input = GetComponentInParent<PlayerInput>();
 
@@ -21,7 +21,7 @@ public class PlayerLook : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void Update()
+    private void Update()
     {
         // Clamps vertical axis
         VerticalRotation -= input.VerticalMouse * speed * Time.deltaTime;

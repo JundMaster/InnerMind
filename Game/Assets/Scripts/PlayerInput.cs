@@ -10,7 +10,7 @@ public class PlayerInput : MonoBehaviour
     public float HorizontalMouse { get; private set; }
     public float VerticalMouse { get; private set; }
 
-    void Update()
+    private void Update()
     {
         if (CurrentControl == TypeOfControl.InGameplay)
         {

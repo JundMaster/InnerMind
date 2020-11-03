@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.WSA.Input;
@@ -16,15 +17,17 @@ public class PlayerMovement : MonoBehaviour
     private bool cr_runningChangeFace;
 
     // Components
-    private Rigidbody rb;
+    private Rigidbody   rb;
     private PlayerInput input;
-    private PlayerLook camera;
+    private PlayerLook  playerCamera;
+    private Camera      mainCamera;
 
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
         input = GetComponent<PlayerInput>();
-        camera = GetComponentInChildren<PlayerLook>();
+        playerCamera = GetComponentInChildren<PlayerLook>();
+        mainCamera = Camera.main;
 
         currentRoomType = TypeOfRoom.NonWalkableWalls;
     }
@@ -32,15 +35,17 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
-    }
 
-    void Update()
-    {
         // Only runs if the player is in a WallWalkRoom
         if (currentRoomType == TypeOfRoom.WalkableWalls)
         {
             ChangeFace();
         }
+    }
+
+    private void Update()
+    {
+        
     }
 
     private void Movement()
@@ -58,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
             walkableLayer);
 
         // Ray to confirm if there isn't a wall/obstacle blocking the path
-        Ray checkObstacle = new Ray(Camera.main.transform.position, 
+        Ray checkObstacle = new Ray(mainCamera.transform.position, 
             groundCheck.transform.position - transform.position);
 
         // If there's no floor in front, the player will stop
@@ -83,8 +88,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void ChangeFace()
     {
-        // Creates a ray from camera to transform.forward
-        Ray wallCheckRay = new Ray(Camera.main.transform.position, 
+        // Creates a ray from playerCamera to transform.forward
+        Ray wallCheckRay = new Ray(mainCamera.transform.position, 
             transform.forward);
 
         // If collides with a wall
@@ -107,13 +112,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    IEnumerator CRChangeFace(RaycastHit hit)
+
+    private IEnumerator CRChangeFace(RaycastHit hit)
     {
         // Stops time, rotates the player towards the point of impact
         Time.timeScale = 0f;
         rb.isKinematic = true;
         transform.LookAt(transform.position - hit.normal, transform.up);
-        camera.VerticalRotation = 0;
+        playerCamera.VerticalRotation = 0;
 
         // Changes position and rotation smoothly
         float elapsedTime = 0.0f;
@@ -130,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
         transform.rotation = to;
-                                
+
         // Gives back all player control
         rb.isKinematic = false;
         cr_runningChangeFace = false;

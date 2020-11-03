@@ -6,7 +6,7 @@ sealed public class WalkableRoom : MonoBehaviour
 {
     private BoxCollider roomCollider;
 
-    void Start()
+    private void Start()
     {
         roomCollider = GetComponent<BoxCollider>();
 
