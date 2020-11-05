@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &170700666 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4387051301456408634, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
-  m_PrefabInstance: {fileID: 4851752128071463854}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15634fce61c8ce94a88ae7e72c8a6722, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &849845132
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,16 +479,59 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3056546008109604629, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
+      propertyPath: obstacleLayer.m_Bits
+      value: 2560
+      objectReference: {fileID: 0}
     - target: {fileID: 3056546008109604630, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5012168965480956944, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
-      propertyPath: npc
-      value: 
-      objectReference: {fileID: 170700666}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
+--- !u!1 &1429415400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1429415402}
+  - component: {fileID: 1429415401}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1429415401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429415400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a0cdea30bd8564fac215ca1069b948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1429415402
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429415400}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -122.84631, y: -54.833416, z: 11.754603}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4851752128071463854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -507,18 +539,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4387051301456408634, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
-      propertyPath: waitForSeconds
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4387051301456408634, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
-      propertyPath: numberOfTexts
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4387051301456408634, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
-      propertyPath: secondsToWait
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4851752126941438409, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.43

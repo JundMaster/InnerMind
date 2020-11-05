@@ -8,28 +8,25 @@ public class PlayerMovement : MonoBehaviour
 {
     // Movement
     [Range(1, 20)] [SerializeField] private byte speed;
-    private Vector3 movement;
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask walkableLayer;
+    public Transform GroundCheck { get => groundCheck; }
+    [SerializeField] private LayerMask obstacleLayer;
 
-    // Wall walk room
-    private TypeOfRoom currentRoomType;
+    // Walkable walls room
     private bool cr_runningChangeFace;
 
     // Components
+    private GameManager manager;
     private Rigidbody   rb;
     private PlayerInput input;
-    private PlayerLook  playerCamera;
-    private Camera      mainCamera;
+    private PlayerRays  rays;
 
     private void Start()
     {
+        manager = FindObjectOfType<GameManager>();
         rb = GetComponent<Rigidbody>();
         input = GetComponent<PlayerInput>();
-        playerCamera = GetComponentInChildren<PlayerLook>();
-        mainCamera = Camera.main;
-
-        currentRoomType = TypeOfRoom.NonWalkableWalls;
+        rays = GetComponent<PlayerRays>();
     }
 
     private void FixedUpdate()
@@ -37,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
         Movement();
 
         // Only runs if the player is in a WallWalkRoom
-        if (currentRoomType == TypeOfRoom.WalkableWalls)
+        if (manager.CurrentTypeOfRoom == TypeOfRoom.WalkableWalls)
         {
             ChangeFace();
         }
@@ -50,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
+        Vector3 movement;
         // Movement variable
         movement = (transform.right * input.XAxis + 
             transform.forward * input.ZAxis).normalized;
@@ -59,12 +57,8 @@ public class PlayerMovement : MonoBehaviour
 
         // Collider to check if there is a Walls_Floor layer in front
         Collider[] groundCheckCollider = 
-            Physics.OverlapSphere(groundCheck.transform.position, 0.1f, 
-            walkableLayer);
-
-        // Ray to confirm if there isn't a wall/obstacle blocking the path
-        Ray checkObstacle = new Ray(mainCamera.transform.position, 
-            groundCheck.transform.position - transform.position);
+            Physics.OverlapSphere(groundCheck.transform.position, 0.1f,
+            obstacleLayer);
 
         // If there's no floor in front, the player will stop
         if (groundCheckCollider.Length == 0)
@@ -74,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             // If there's floor and a wall in the middle, the player will stop
-            if (Physics.Raycast(checkObstacle, 0.6f, walkableLayer))
+            if (Physics.Raycast(rays.CheckGround, 0.6f, obstacleLayer))
             {
                 rb.velocity = Vector3.zero;
             }
@@ -89,12 +83,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void ChangeFace()
     {
-        // Creates a ray from playerCamera to transform.forward
-        Ray wallCheckRay = new Ray(mainCamera.transform.position, 
-            transform.forward);
-
         // If collides with a wall
-        if (Physics.Raycast(wallCheckRay, out RaycastHit hit, 1f))
+        if (Physics.Raycast(rays.Forward, out RaycastHit hit, 1f))
         {
             // only if the collider is a walkable layer
             if (hit.collider.gameObject.layer == 9)
@@ -120,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         Time.timeScale = 0f;
         rb.isKinematic = true;
         transform.LookAt(transform.position - hit.normal, transform.up);
-        playerCamera.VerticalRotation = 0;
+        GetComponentInChildren<PlayerLook>().VerticalRotation = 0;
 
         // Changes position and rotation smoothly
         float elapsedTime = 0.0f;
@@ -150,14 +140,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("WallWalkRoom"))
         {
-            currentRoomType = TypeOfRoom.WalkableWalls;
+            manager.CurrentTypeOfRoom = TypeOfRoom.WalkableWalls;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("WallWalkRoom"))
         {
-            currentRoomType = TypeOfRoom.NonWalkableWalls;
+            manager.CurrentTypeOfRoom = TypeOfRoom.NonWalkableWalls;
         }
     }
 
