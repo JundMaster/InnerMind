@@ -5,11 +5,12 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     [Range(0, 10)] [SerializeField] private byte interactDistance; 
+    public byte InteractDistance { get => interactDistance; }
+
 
     // Components
     private PlayerInput input;
     private PlayerRays ray;
-
 
     private void Start()
     {

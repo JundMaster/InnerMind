@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,9 +12,30 @@ sealed public class NPCNeighbor : NPCInteractable
         waitForSecs = new WaitForSeconds(secondsToWait);
         speakCounter = 0;
     }
+
     public override IEnumerator InteractionAction()
     {
-        switch(speakCounter)
+
+        PlayerLook player = FindObjectOfType<PlayerLook>();
+
+        // Smoothly rotates towards the player
+        float elapsedTime = 0.0f;
+        Quaternion from = transform.rotation;
+        Quaternion to = transform.rotation;
+        to *= Quaternion.LookRotation(-player.transform.forward);
+        while (elapsedTime < 0.5f)
+        {
+            transform.rotation = Quaternion.Slerp(from, to, elapsedTime / 0.5f);
+            transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        transform.rotation = to;
+        transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);
+
+
+        switch (speakCounter)
         {
             case 0:
                 StartCoroutine(FirstTime());
@@ -26,6 +48,7 @@ sealed public class NPCNeighbor : NPCInteractable
                 break;
         }
      
+        // If speakcounter reaches max number of texts, resets to 1
         speakCounter++;
         if (speakCounter == numberOfTexts)
             speakCounter = 1;
