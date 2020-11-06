@@ -7,6 +7,7 @@ public class PlayerRays : MonoBehaviour
     // Rays
     public Ray CheckGround { get; private set; }
     public Ray Forward { get; private set; }
+    public Ray CameraForward { get; private set; }
 
     // Components
     private Camera mainCamera;
@@ -27,5 +28,8 @@ public class PlayerRays : MonoBehaviour
 
         // Creates a ray from playerCamera to transform.forward
         Forward = new Ray(mainCamera.transform.position, transform.forward);
+
+        // Creates a ray from playerCamera to the mouse position (crosshair)
+        CameraForward = mainCamera.ScreenPointToRay(Input.mousePosition);
     }
 }

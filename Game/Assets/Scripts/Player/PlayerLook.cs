@@ -17,20 +17,21 @@ public class PlayerLook : MonoBehaviour
 
         player = transform.parent.transform;
         VerticalRotation = 0f;
-
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
     {
-        // Clamps vertical axis
-        VerticalRotation -= input.VerticalMouse * speed * Time.deltaTime;
-        VerticalRotation = Mathf.Clamp(VerticalRotation, -70f, 70f);
+        if (input.CurrentControl == TypeOfControl.InGameplay)
+        {
+            // Clamps vertical axis
+            VerticalRotation -= input.VerticalMouse * speed * Time.deltaTime;
+            VerticalRotation = Mathf.Clamp(VerticalRotation, -70f, 70f);
 
-        // Rotates the camera (vertical) around X axis
-        transform.localRotation = Quaternion.Euler(VerticalRotation, 0f, 0f);
+            // Rotates the camera (vertical) around X axis
+            transform.localRotation = Quaternion.Euler(VerticalRotation, 0f, 0f);
 
-        // Rotates the player on Y axis (horizontal)
-        player.Rotate(Vector3.up * input.HorizontalMouse * speed * Time.deltaTime);
+            // Rotates the player on Y axis (horizontal)
+            player.Rotate(Vector3.up * input.HorizontalMouse * speed * Time.deltaTime);
+        }
     }
 }

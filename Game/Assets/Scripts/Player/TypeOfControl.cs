@@ -5,5 +5,7 @@ using UnityEngine;
 public enum TypeOfControl
 {
     InGameplay,
-    InInventory
+    InInventory,
+    InExamine,
+    InNPCInteraction,
 }

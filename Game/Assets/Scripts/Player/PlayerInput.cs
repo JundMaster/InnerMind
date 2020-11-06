@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public TypeOfControl CurrentControl { private get; set; }
+    public TypeOfControl CurrentControl { get; set; }
     public float ZAxis { get; private set; }
     public float XAxis { get; private set; }
     public float HorizontalMouse { get; private set; }
@@ -15,6 +15,8 @@ public class PlayerInput : MonoBehaviour
     {
         if (CurrentControl == TypeOfControl.InGameplay)
         {
+            Cursor.lockState = CursorLockMode.Locked;
+
             // Gets movement axis
             ZAxis = Input.GetAxisRaw("Vertical");
             XAxis = Input.GetAxisRaw("Horizontal");
@@ -22,6 +24,13 @@ public class PlayerInput : MonoBehaviour
             // Gets mouse axis
             HorizontalMouse = Input.GetAxis("Mouse X");
             VerticalMouse = Input.GetAxis("Mouse Y");
+
+            // Gets left click
+            LeftClick = Input.GetButtonDown("Fire1");
+        }
+        else if (CurrentControl == TypeOfControl.InNPCInteraction)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
 
             // Gets left click
             LeftClick = Input.GetButtonDown("Fire1");

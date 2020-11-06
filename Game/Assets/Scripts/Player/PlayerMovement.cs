@@ -58,24 +58,32 @@ public class PlayerMovement : MonoBehaviour
             Physics.OverlapSphere(groundCheck.transform.position, 0.1f,
             obstacleLayer);
 
-        // If there's no floor in front, the player will stop
-        if (groundCheckCollider.Length == 0)
+        // If in gameplay
+        if (input.CurrentControl == TypeOfControl.InGameplay)
         {
-            rb.velocity = Vector3.zero;
-        }
-        else
-        {
-            // If there's floor and a wall in the middle, the player will stop
-            if (Physics.Raycast(rays.CheckGround, 0.6f, obstacleLayer))
+            // If there's no floor in front, the player will stop
+            if (groundCheckCollider.Length == 0)
             {
                 rb.velocity = Vector3.zero;
             }
-
             else
             {
-                // Else the player will move
-                rb.velocity = movement * speed;
+                // If there's floor and a wall in the middle, the player will stop
+                if (Physics.Raycast(rays.CheckGround, 0.6f, obstacleLayer))
+                {
+                    rb.velocity = Vector3.zero;
+                }
+
+                else
+                {
+                    // Else the player will move
+                    rb.velocity = movement * speed;
+                }
             }
+        }
+        else // If not in gameplay
+        {
+            rb.velocity = Vector3.zero;
         }
     }
 
@@ -154,10 +162,6 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawRay(transform.position, transform.up * 7f);
         Gizmos.DrawRay(transform.position, transform.right * 7f);
-
-        // Wall Colide Ray
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(Camera.main.transform.position, transform.forward * 1f);
 
         // GroundCheck Sphere
         Gizmos.color = Color.black;

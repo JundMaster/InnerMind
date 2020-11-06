@@ -22,7 +22,7 @@ public class PlayerInteract : MonoBehaviour
     {
         if (input.LeftClick)
         {
-            if (Physics.Raycast(ray.Forward, out RaycastHit hit, 
+            if (Physics.Raycast(ray.CameraForward, out RaycastHit hit, 
                 interactDistance))
             {
                 if (hit.collider.gameObject.TryGetComponent

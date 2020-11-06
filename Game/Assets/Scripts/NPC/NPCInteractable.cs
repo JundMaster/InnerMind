@@ -10,17 +10,14 @@ public abstract class NPCInteractable : NPC, IInterectableController
     public abstract IEnumerator InteractionAction();
     //
 
-    // How many texts in npc
-    [SerializeField] protected int numberOfTexts;
-
-    // Wait for seconds instance
-    protected YieldInstruction waitForSecs;
-    [SerializeField] protected float secondsToWait;
-
 
     // Runs the npc coroutine
     public void RunCoroutine()
     {
+        PlayerInput input = FindObjectOfType<PlayerInput>();
+
+        input.CurrentControl = TypeOfControl.InNPCInteraction;
+
         if (ThisCoroutine == null)
         {
             ThisCoroutine = StartCoroutine(InteractionAction());
