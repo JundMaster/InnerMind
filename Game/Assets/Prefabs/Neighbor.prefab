@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfTexts: 3
   secondsToWait: 3
+  rotationSpeedModifier: 2
 --- !u!54 &4851752126941438411
 Rigidbody:
   m_ObjectHideFlags: 0

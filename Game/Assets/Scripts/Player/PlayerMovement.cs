@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask obstacleLayer;
 
     // Walkable walls room
-    private bool cr_runningChangeFace;
+    private Coroutine CR_ChangeWall;
 
     // Components
     private GameManager manager;
@@ -32,17 +32,15 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+    }
 
+    private void Update()
+    {
         // Only runs if the player is in a WallWalkRoom
         if (manager.CurrentTypeOfRoom == TypeOfRoom.WalkableWalls)
         {
             ChangeFace();
         }
-    }
-
-    private void Update()
-    {
-        
     }
 
     private void Movement()
@@ -93,10 +91,9 @@ public class PlayerMovement : MonoBehaviour
                 if (input.ZAxis > 0)
                 {
                     // And the coroutine isn't already running
-                    if (!cr_runningChangeFace)
+                    if (CR_ChangeWall == null)
                     {
-                        StartCoroutine(CRChangeFace(hit));
-                        cr_runningChangeFace = true;
+                        CR_ChangeWall = StartCoroutine(CRChangeFace(hit));
                     }
                 }
             }
@@ -130,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Gives back all player control
         rb.isKinematic = false;
-        cr_runningChangeFace = false;
+        CR_ChangeWall = default;
         Time.timeScale = 1f;
     }
 

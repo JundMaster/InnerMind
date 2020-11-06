@@ -5,6 +5,7 @@ using UnityEngine;
 
 sealed public class NPCNeighbor : NPCInteractable
 {
+    [SerializeField] private float rotationSpeedModifier;
     private int speakCounter;
 
     private void Start()
@@ -15,20 +16,16 @@ sealed public class NPCNeighbor : NPCInteractable
 
     public override IEnumerator InteractionAction()
     {
-
         Transform player = FindObjectOfType<PlayerMovement>().transform;
         // Smoothly rotates towards the player
         float elapsedTime = 0.0f;
-        float rotationSpeedModifier = 0;
         Quaternion from = transform.rotation;
         Quaternion to = Quaternion.LookRotation(player.transform.position -
                                                 transform.position);
 
         while (elapsedTime < 0.5f)
         {
-            transform.rotation = Quaternion.Slerp(from,
-                                                  to,
-                                                  elapsedTime
+            transform.rotation = Quaternion.Slerp(from, to, elapsedTime
                                                   * rotationSpeedModifier);
             transform.eulerAngles = new Vector3(0f,
                                                 transform.eulerAngles.y,
@@ -67,7 +64,7 @@ sealed public class NPCNeighbor : NPCInteractable
 
 
 
-        CR_RunningCoroutine = false;
+        ThisCoroutine = default;
         yield break;
     }
     private IEnumerator SecondTime()
@@ -77,7 +74,7 @@ sealed public class NPCNeighbor : NPCInteractable
 
 
 
-        CR_RunningCoroutine = false;
+        ThisCoroutine = default;
         yield break;
     }
     private IEnumerator ThirdTime()
@@ -87,7 +84,7 @@ sealed public class NPCNeighbor : NPCInteractable
 
 
 
-        CR_RunningCoroutine = false;
+        ThisCoroutine = default;
         yield break;
     }
 }
