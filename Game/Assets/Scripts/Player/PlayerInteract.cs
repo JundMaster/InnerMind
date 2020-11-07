@@ -26,9 +26,9 @@ public class PlayerInteract : MonoBehaviour
                 interactDistance))
             {
                 if (hit.collider.gameObject.TryGetComponent
-                    (out IInterectableController other))
+                    (out IInteractable other))
                 {
-                    other.RunCoroutine();
+                    other.InteractionAction();
                 }
             }
         }

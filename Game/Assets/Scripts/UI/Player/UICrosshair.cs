@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
@@ -35,7 +33,7 @@ public class UICrosshair : MonoBehaviour
                     interact.InteractDistance))
             {
                 if (hit.collider.gameObject.TryGetComponent
-                    (out IInterectableController other))
+                    (out IInteractable other))
                 {
                     if (actionTextGameObject.activeSelf == false)
                         actionTextGameObject.SetActive(true);

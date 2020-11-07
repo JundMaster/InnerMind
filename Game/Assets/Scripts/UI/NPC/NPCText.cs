@@ -1,8 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Diagnostics.Tracing;
 
 public class NPCText : MonoBehaviour
 {
@@ -20,9 +18,11 @@ public class NPCText : MonoBehaviour
         currentLine.GetComponentInChildren<TextMeshProUGUI>().text =
                 linesOfText[Counter];
 
-           
-        currentLine?.SetActive(true);
+        if (currentLine)
+            currentLine.SetActive(true);
         yield return new WaitForSeconds(3f);
-        currentLine?.SetActive(false);
+        if (currentLine)
+            currentLine.SetActive(false);
+        yield return null;
     }
 }

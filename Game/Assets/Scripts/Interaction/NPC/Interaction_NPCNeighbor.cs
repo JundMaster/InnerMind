@@ -1,49 +1,16 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+﻿using System.Collections;
 using UnityEngine;
 
-sealed public class NPCNeighbor : NPCInteractable
+public class Interaction_NPCNeighbor : NPC_InteractionBase
 {
-    [SerializeField] private float rotationSpeedModifier;
-
-    // How many texts in npc
-    [SerializeField] private int numberOfTexts;
-
-    // Wait for seconds instance
-    private YieldInstruction waitForSecs;
-    [SerializeField] private float secondsToWait;
-
     // NPC Head
     [SerializeField] private Transform head;
-
-    // Speak
-    private byte speakCounter;
-
-    // Components
-    private NPCText myText;
-
-    private void Start()
-    {
-        myText = GetComponent<NPCText>();
-
-        waitForSecs = new WaitForSeconds(secondsToWait);
-        speakCounter = 0;
-    }
-
-    private void Update()
-    {
-        myText.Counter = speakCounter;
-    }
-
-    public override IEnumerator InteractionAction()
+    protected override IEnumerator CoroutineInteraction()
     {
         PlayerMovement player = FindObjectOfType<PlayerMovement>();
         PlayerInput input = player.GetComponent<PlayerInput>();
         PlayerLook playerCamera = player.GetComponentInChildren<PlayerLook>();
     
-
         // Smoothly rotates npc towards the player and player towards npc
         float elapsedTime = 0.0f;
 
@@ -91,7 +58,6 @@ sealed public class NPCNeighbor : NPCInteractable
                             newPosition.z),
                 Time.deltaTime * rotationSpeedModifier * 2);
 
-
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -118,8 +84,6 @@ sealed public class NPCNeighbor : NPCInteractable
 
         yield break;
     }
-
-
     private IEnumerator FirstTime(PlayerInput input)
     {
         StartCoroutine(myText.NextLine());
