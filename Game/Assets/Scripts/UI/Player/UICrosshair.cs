@@ -29,7 +29,7 @@ public class UICrosshair : MonoBehaviour
     {
         if (input.CurrentControl == TypeOfControl.InGameplay)
         {
-            if (Physics.Raycast(ray.CameraForward, out RaycastHit hit,
+            if (Physics.Raycast(ray.RayToMouse, out RaycastHit hit,
                     interact.InteractDistance))
             {
                 if (hit.collider.gameObject.TryGetComponent

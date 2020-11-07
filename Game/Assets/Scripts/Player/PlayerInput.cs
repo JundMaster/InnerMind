@@ -14,29 +14,43 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        if (CurrentControl == TypeOfControl.InGameplay)
+        switch (CurrentControl)
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            case TypeOfControl.InGameplay:
+                Cursor.lockState = CursorLockMode.Locked;
 
-            // Gets movement axis
-            ZAxis = Input.GetAxisRaw("Vertical");
-            XAxis = Input.GetAxisRaw("Horizontal");
+                // Gets movement axis
+                ZAxis = Input.GetAxisRaw("Vertical");
+                XAxis = Input.GetAxisRaw("Horizontal");
 
-            // Gets mouse axis
-            HorizontalMouse = Input.GetAxis("Mouse X");
-            VerticalMouse = Input.GetAxis("Mouse Y");
+                // Gets mouse axis
+                HorizontalMouse = Input.GetAxis("Mouse X");
+                VerticalMouse = Input.GetAxis("Mouse Y");
 
-            // Gets left click
-            LeftClick = Input.GetButtonDown("Fire1");
-        }
-        else if (CurrentControl == TypeOfControl.InNPCInteraction)
-        {
-            // Gets left click
-            LeftClick = Input.GetButtonDown("Fire1");
-        }
-        else if (CurrentControl == TypeOfControl.InInventory)
-        {
-            Cursor.lockState = CursorLockMode.Confined;
+                // Gets left click
+                LeftClick = Input.GetButtonDown("Fire1");
+
+                // Gets right click
+                RightClick = Input.GetButtonDown("Fire2");
+
+                break;
+
+            case TypeOfControl.InNPCInteraction:
+                // Gets left click
+                LeftClick = Input.GetButtonDown("Fire1");
+
+                break;
+
+            case TypeOfControl.InInventory:
+                Cursor.lockState = CursorLockMode.Confined;
+
+                // Gets left click
+                LeftClick = Input.GetButtonDown("Fire1");
+
+                // Gets right click
+                RightClick = Input.GetButtonDown("Fire2");
+
+                break;
         }
     }
 }

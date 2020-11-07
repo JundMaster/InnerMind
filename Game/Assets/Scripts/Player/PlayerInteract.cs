@@ -20,15 +20,18 @@ public class PlayerInteract : MonoBehaviour
 
     private void Update()
     {
-        if (input.LeftClick)
+        if (input.CurrentControl == TypeOfControl.InGameplay)
         {
-            if (Physics.Raycast(ray.CameraForward, out RaycastHit hit, 
-                interactDistance))
+            if (input.LeftClick)
             {
-                if (hit.collider.gameObject.TryGetComponent
-                    (out IInteractable other))
+                if (Physics.Raycast(ray.RayToMouse, out RaycastHit hit,
+                    interactDistance))
                 {
-                    other.InteractionAction();
+                    if (hit.collider.gameObject.TryGetComponent
+                        (out IInteractable other))
+                    {
+                        other.InteractionAction();
+                    }
                 }
             }
         }

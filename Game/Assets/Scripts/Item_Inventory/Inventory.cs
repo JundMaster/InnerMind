@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,10 +8,19 @@ public class Inventory : MonoBehaviour
     public List<ScriptableItem> Bag { get; set; }
 
     // List of items UI ( what player sees on the bar )
-    [SerializeField] private Item_InventorySlot[] itemInInventoryUI;
+    [SerializeField] private Item_InventorySlot[] itemInInventorySlot;
+
+    // Evet to get clicks on Inventory Slots
+    public event Action<ScriptableItem> OnItemClickEvent;
 
     private void Awake()
     {
+        for (int i = 0; i < itemInInventorySlot.Length; i++)
+        {
+            itemInInventorySlot[i].OnLeftClickEvent += OnItemClickEvent;
+        }
+
+
         // Creates a list with 8 slots
         Bag = new List<ScriptableItem>(new ScriptableItem[8]);
     }
@@ -23,9 +32,9 @@ public class Inventory : MonoBehaviour
         Bag.Reverse();
 
         // Sets the UI items equal to bag items
-        for (int i = 0; i < itemInInventoryUI.Length; i++)
+        for (int i = 0; i < itemInInventorySlot.Length; i++)
         {
-            itemInInventoryUI[i].Info = Bag[i];
+            itemInInventorySlot[i].Info = Bag[i];
         }
     }
 

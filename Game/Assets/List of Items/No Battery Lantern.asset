@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38ea6aeb525e292469d59ce1a7fc540f, type: 3}
   m_Name: No Battery Lantern
   m_EditorClassIdentifier: 
-  name: 
-  id: 0
-  icon: {fileID: 0}
+  name: No Battery Lantern
+  id: 4
+  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
