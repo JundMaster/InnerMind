@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &418873437 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7085720167906604090, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
-  m_PrefabInstance: {fileID: 4851752128071463854}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &849845132
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,11 +449,6 @@ MonoBehaviour:
   numberOfTexts: 0
   secondsToWait: 0
   head: {fileID: 0}
---- !u!4 &946815019 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7323420251975048734, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
-  m_PrefabInstance: {fileID: 4851752128071463854}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1361963603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -629,44 +619,5 @@ PrefabInstance:
       value: Neighbor
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 4851752128071463858, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
     - {fileID: 4851752128071463857, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
---- !u!1 &4851752128071463855 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4851752126941438413, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
-  m_PrefabInstance: {fileID: 4851752128071463854}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4851752128071463856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4851752128071463855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 143def859757f8341be909ebc340dc80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLine: {fileID: 418873437}
-  linesOfText:
-  - hey
-  - hey2
-  - hey3
---- !u!114 &4851752128071463857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4851752128071463855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae20280d039e33448e54150ee3118f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeedModifier: 2
-  numberOfTexts: 3
-  secondsToWait: 3
-  head: {fileID: 946815019}

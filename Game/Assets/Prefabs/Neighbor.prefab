@@ -172,10 +172,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4851752126941438409}
+  - component: {fileID: 577164705024808503}
+  - component: {fileID: 4851752128071463856}
   - component: {fileID: 4851752126941438411}
   - component: {fileID: 4851752126941438410}
-  - component: {fileID: 4851752128071463858}
-  - component: {fileID: 4851752128071463857}
   m_Layer: 11
   m_Name: Neighbor
   m_TagString: Untagged
@@ -199,6 +199,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -210.641, z: 0}
+--- !u!114 &577164705024808503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4851752126941438413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae20280d039e33448e54150ee3118f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeedModifier: 2
+  numberOfTexts: 3
+  secondsToWait: 3
+  head: {fileID: 7323420251975048734}
+--- !u!114 &4851752128071463856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4851752126941438413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143def859757f8341be909ebc340dc80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLine: {fileID: 7085720167906604090}
+  linesOfText:
+  - hey
+  - hey2
+  - hey3
 --- !u!54 &4851752126941438411
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -228,39 +261,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 2, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4851752128071463858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4851752126941438413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 143def859757f8341be909ebc340dc80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLine: {fileID: 7085720167906604090}
-  linesOfText:
-  - HEY THERE
-  - okay... you've been here before
-  - AGAIN DUDE? Get a life!
---- !u!114 &4851752128071463857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4851752126941438413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15634fce61c8ce94a88ae7e72c8a6722, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeedModifier: 2
-  numberOfTexts: 3
-  secondsToWait: 3
-  head: {fileID: 7323420251975048734}
 --- !u!1 &4851752127126488495
 GameObject:
   m_ObjectHideFlags: 0

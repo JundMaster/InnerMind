@@ -10,6 +10,7 @@ public class Interaction_NPCNeighbor : NPC_InteractionBase
         PlayerMovement player = FindObjectOfType<PlayerMovement>();
         PlayerInput input = player.GetComponent<PlayerInput>();
         PlayerLook playerCamera = player.GetComponentInChildren<PlayerLook>();
+        input.CurrentControl = TypeOfControl.InNPCInteraction;  
     
         // Smoothly rotates npc towards the player and player towards npc
         float elapsedTime = 0.0f;
