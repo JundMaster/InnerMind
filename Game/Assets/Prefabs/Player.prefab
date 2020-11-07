@@ -1252,12 +1252,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3056546008109604626}
   - component: {fileID: 3119641766379246845}
+  - component: {fileID: 1945940135211454708}
   - component: {fileID: 3056546008109604629}
   - component: {fileID: 5012168965480956944}
   - component: {fileID: 8164986547570681983}
   - component: {fileID: 3056546008109604628}
   - component: {fileID: 958971134}
-  - component: {fileID: 923036206}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1293,6 +1293,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db72add20f8351443aec85a4ef6a9cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1945940135211454708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3056546008109604630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5a0f264198eea47a5987b9aecccb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &3056546008109604629
@@ -1367,22 +1379,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &923036206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3056546008109604630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae20280d039e33448e54150ee3118f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeedModifier: 0
-  numberOfTexts: 0
-  secondsToWait: 0
-  head: {fileID: 0}
 --- !u!1 &3766805903785539831
 GameObject:
   m_ObjectHideFlags: 0

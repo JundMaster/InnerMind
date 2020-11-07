@@ -10,6 +10,7 @@ public class PlayerInput : MonoBehaviour
     public float HorizontalMouse { get; private set; }
     public float VerticalMouse { get; private set; }
     public bool LeftClick { get; private set; }
+    public bool RightClick { get; private set; }
 
     private void Update()
     {
@@ -30,10 +31,12 @@ public class PlayerInput : MonoBehaviour
         }
         else if (CurrentControl == TypeOfControl.InNPCInteraction)
         {
-            Cursor.lockState = CursorLockMode.Confined;
-
             // Gets left click
             LeftClick = Input.GetButtonDown("Fire1");
+        }
+        else if (CurrentControl == TypeOfControl.InInventory)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
         }
     }
 }
