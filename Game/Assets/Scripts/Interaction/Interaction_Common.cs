@@ -5,6 +5,4 @@ using UnityEngine;
 public abstract class Interaction_Common : MonoBehaviour, IInteractable
 {
     public abstract void Execute();
-
-    public abstract void Execute<T>(T other);
 }

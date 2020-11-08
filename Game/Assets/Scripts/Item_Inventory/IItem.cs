@@ -9,4 +9,5 @@ public interface IItem
     Sprite Icon { get; }
     Texture2D CursorTexture { get; }
     GameObject Prefab { get; }
+    ScriptableItem CombinationItem { get; }
 }

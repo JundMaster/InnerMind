@@ -10,18 +10,14 @@ public class PlayerInventoryController : MonoBehaviour
     private PlayerInput input;
 
     // Controlling Items
-    public ScriptableItem ClickedItemInfo { get; set; }
+    public ScriptableItem LastClickedItemInfo { get; set; }
 
     private Vector2Int cursorPosition;
 
-    // Actions
-    private Interaction_Inventory_Combine combineItem;
 
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
-
-        combineItem = new Interaction_Inventory_Combine();
 
         cursorPosition = new Vector2Int (30, 30);
     }
@@ -38,24 +34,21 @@ public class PlayerInventoryController : MonoBehaviour
         ChangeControls();
     }
 
-
-
     // The item is the item that the player clicked
     private void SelectItem(ScriptableItem item)
     {
         // Selects the item and changes the cursor
-        if (ClickedItemInfo == null)
+        if (LastClickedItemInfo == null)
         {
-            ClickedItemInfo = item;
-            Cursor.SetCursor(ClickedItemInfo.CursorTexture, cursorPosition, CursorMode.Auto);
+            LastClickedItemInfo = item;
+            Cursor.SetCursor(LastClickedItemInfo.CursorTexture, 
+                            cursorPosition, CursorMode.Auto);
         }
-        else if (ClickedItemInfo != item)
+        // If the new selected item is different from the other item
+        else if (LastClickedItemInfo != item)
         {
-            combineItem.Execute(item);
-        }
-        else
-        {
-            ClickedItemInfo = null;
+            LastClickedItemInfo.CombineItem(item, inventory);
+            LastClickedItemInfo = null;
             Cursor.SetCursor(default, cursorPosition, CursorMode.Auto);
         }
     }
@@ -71,9 +64,9 @@ public class PlayerInventoryController : MonoBehaviour
                     break;
                 case TypeOfControl.InInventory:
 
-                    if (ClickedItemInfo != null)
+                    if (LastClickedItemInfo != null)
                     {
-                        ClickedItemInfo = null;
+                        LastClickedItemInfo = null;
                         Cursor.SetCursor(default, cursorPosition, CursorMode.Auto);
                     }
                     else

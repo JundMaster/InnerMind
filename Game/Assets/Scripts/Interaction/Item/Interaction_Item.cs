@@ -20,9 +20,4 @@ public class Interaction_Item : Item_InteractionBase
             Destroy(gameObject);
         }
     }
-
-    public override void Execute<T>(T other)
-    {
-        throw new System.NotImplementedException();
-    }
 }
