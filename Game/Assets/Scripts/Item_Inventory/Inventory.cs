@@ -7,23 +7,21 @@ public class Inventory : MonoBehaviour
     // List of items that player has ( what player actually has on inventory )
     public List<ScriptableItem> Bag { get; set; }
 
-    // List of items UI ( what player sees on the bar )
-    [SerializeField] private Item_InventorySlot[] itemInInventorySlot;
-
-    // Evet to get clicks on Inventory Slots
-    public event Action<ScriptableItem> OnItemClickEvent;
+    // List of items in player's inventory
+    public Item_InventorySlot[] InventorySlot { get; private set; }
 
     private void Awake()
     {
-        for (int i = 0; i < itemInInventorySlot.Length; i++)
-        {
-            itemInInventorySlot[i].OnLeftClickEvent += OnItemClickEvent;
-        }
-
-
         // Creates a list with 8 slots
         Bag = new List<ScriptableItem>(new ScriptableItem[8]);
+        InventorySlot = new Item_InventorySlot[8];
+
+        // GetComponentInChildren<Transform>() is the "Grid" child
+        // Fills every InventorySlot index with Item_InventorySlot in children
+        InventorySlot = GetComponentInChildren<Transform>().
+                        GetComponentsInChildren<Item_InventorySlot>();
     }
+
 
     private void Update()
     {
@@ -32,9 +30,9 @@ public class Inventory : MonoBehaviour
         Bag.Reverse();
 
         // Sets the UI items equal to bag items
-        for (int i = 0; i < itemInInventorySlot.Length; i++)
+        for (int i = 0; i < InventorySlot.Length; i++)
         {
-            itemInInventorySlot[i].Info = Bag[i];
+            InventorySlot[i].Info = Bag[i];
         }
     }
 

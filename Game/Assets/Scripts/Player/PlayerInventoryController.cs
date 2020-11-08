@@ -3,17 +3,21 @@
 
 public class PlayerInventoryController : MonoBehaviour
 {
-    [SerializeField] private Inventory inventory;
-
+    private Inventory inventory;
     // Components
     private PlayerInput input;
 
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
+        inventory = FindObjectOfType<Inventory>();
+    }
 
-        // Runs PickItem when an item is clicked
-        inventory.OnItemClickEvent += UseItem;
+    private void Start()
+    {
+        // Runs UseItem when an item is clicked
+        for (int i = 0; i < inventory.InventorySlot.Length; i++)
+            inventory.InventorySlot[i].OnLeftClickEvent += UseItem;
     }
 
     private void Update()

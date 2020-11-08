@@ -10,7 +10,6 @@ public class Item_InventorySlot : MonoBehaviour, IPointerClickHandler
 
     private Image image;
 
-
     // Event to get left click
     public event Action<ScriptableItem> OnLeftClickEvent;
 
@@ -27,6 +26,7 @@ public class Item_InventorySlot : MonoBehaviour, IPointerClickHandler
             }
         }
     }
+
 
     // Refreshes slot image on editor
     private void OnValidate()
