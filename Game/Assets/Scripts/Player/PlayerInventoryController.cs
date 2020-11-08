@@ -60,10 +60,10 @@ public class PlayerInventoryController : MonoBehaviour
     {
         if (input.RightClick)
         {
-            switch (input.CurrentControl)
+            switch (PlayerInput.CurrentControl)
             {
                 case TypeOfControl.InGameplay:
-                    input.CurrentControl = TypeOfControl.InInventory;
+                    PlayerInput.ChangeTypeOfControl(TypeOfControl.InInventory);
 
                     anim.SetTrigger("showInventory");
                     break;
@@ -76,7 +76,7 @@ public class PlayerInventoryController : MonoBehaviour
                     }
                     else
                     {
-                        input.CurrentControl = TypeOfControl.InGameplay;
+                        PlayerInput.ChangeTypeOfControl(TypeOfControl.InGameplay);
 
                         anim.SetTrigger("hideInventory");
                     }
@@ -84,6 +84,4 @@ public class PlayerInventoryController : MonoBehaviour
             }
         }
     }
-
-
 }

@@ -35,5 +35,4 @@ public class Inventory : MonoBehaviour
             InventorySlot[i].Info = Bag[i];
         }
     }
-
 }

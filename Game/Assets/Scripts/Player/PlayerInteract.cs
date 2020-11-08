@@ -20,7 +20,7 @@ public class PlayerInteract : MonoBehaviour
 
     private void Update()
     {
-        if (input.CurrentControl == TypeOfControl.InGameplay)
+        if (PlayerInput.CurrentControl == TypeOfControl.InGameplay)
         {
             if (input.LeftClick)
             {

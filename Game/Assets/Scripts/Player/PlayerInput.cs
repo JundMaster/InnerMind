@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public TypeOfControl CurrentControl { get; set; }
+    public static TypeOfControl CurrentControl { get; private set; }
     public float ZAxis { get; private set; }
     public float XAxis { get; private set; }
     public float HorizontalMouse { get; private set; }
     public float VerticalMouse { get; private set; }
     public bool LeftClick { get; private set; }
     public bool RightClick { get; private set; }
+
+    public static void ChangeTypeOfControl(TypeOfControl control) =>
+        CurrentControl = control;
+
 
     private void Update()
     {

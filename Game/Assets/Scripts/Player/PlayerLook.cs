@@ -21,7 +21,7 @@ public class PlayerLook : MonoBehaviour
 
     private void Update()
     {
-        if (input.CurrentControl == TypeOfControl.InGameplay)
+        if (PlayerInput.CurrentControl == TypeOfControl.InGameplay)
         {
             // Clamps vertical axis
             VerticalRotation -= input.VerticalMouse * speed * Time.deltaTime;

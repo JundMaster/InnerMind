@@ -8,9 +8,8 @@ public class Interaction_NPCNeighbor : NPC_InteractionBase
     protected override IEnumerator CoroutineInteraction()
     {
         PlayerMovement player = FindObjectOfType<PlayerMovement>();
-        PlayerInput input = player.GetComponent<PlayerInput>();
         PlayerLook playerCamera = player.GetComponentInChildren<PlayerLook>();
-        input.CurrentControl = TypeOfControl.InNPCInteraction;  
+        PlayerInput.ChangeTypeOfControl(TypeOfControl.InNPCInteraction);
     
         // Smoothly rotates npc towards the player and player towards npc
         float elapsedTime = 0.0f;
@@ -68,13 +67,13 @@ public class Interaction_NPCNeighbor : NPC_InteractionBase
         switch (speakCounter)
         {
             case 0:
-                StartCoroutine(FirstTime(input));
+                StartCoroutine(FirstTime());
                 break;
             case 1:
-                StartCoroutine(SecondTime(input));
+                StartCoroutine(SecondTime());
                 break;
             case 2:
-                StartCoroutine(ThirdTime(input));
+                StartCoroutine(ThirdTime());
                 break;
         }
         Debug.Log(speakCounter);
@@ -85,33 +84,33 @@ public class Interaction_NPCNeighbor : NPC_InteractionBase
 
         yield break;
     }
-    private IEnumerator FirstTime(PlayerInput input)
+    private IEnumerator FirstTime()
     {
         StartCoroutine(myText.NextLine());
         yield return waitForSecs;
 
 
-        input.CurrentControl = TypeOfControl.InGameplay;
+        PlayerInput.ChangeTypeOfControl(TypeOfControl.InGameplay);
         ThisCoroutine = default;
         yield break;
     }
-    private IEnumerator SecondTime(PlayerInput input)
+    private IEnumerator SecondTime()
     {
         StartCoroutine(myText.NextLine());
         yield return waitForSecs;
 
 
-        input.CurrentControl = TypeOfControl.InGameplay;
+        PlayerInput.ChangeTypeOfControl(TypeOfControl.InGameplay);
         ThisCoroutine = default;
         yield break;
     }
-    private IEnumerator ThirdTime(PlayerInput input)
+    private IEnumerator ThirdTime()
     {
         StartCoroutine(myText.NextLine());
         yield return waitForSecs;
 
 
-        input.CurrentControl = TypeOfControl.InGameplay;
+        PlayerInput.ChangeTypeOfControl(TypeOfControl.InGameplay);
         ThisCoroutine = default;
         yield break;
     }
