@@ -26,10 +26,9 @@ public abstract class NPC_InteractionBase : Interaction_CR
         speakCounter = 0;
     }
     
-    // Speak
     private void Update()
     {
-        // myText.Counter = speakCounter;
+        myText.Counter = speakCounter;
     }
     protected abstract override IEnumerator CoroutineInteraction();
 }

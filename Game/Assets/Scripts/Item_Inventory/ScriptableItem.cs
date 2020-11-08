@@ -9,11 +9,15 @@ public class ScriptableItem : ScriptableObject, IItem, IComparable<ScriptableIte
     [SerializeField] private new string name;
     [SerializeField] private ListOfItems id;
     [SerializeField] private Sprite icon;
- 
+    [SerializeField] private Texture2D cursorTexture;
+    [SerializeField] private GameObject prefab;
 
-    public string Name      { get => name; }
-    public ListOfItems ID   { get => id; }
-    public Sprite Icon      { get => icon; }
+    public string Name          { get => name; }
+    public ListOfItems ID       { get => id; }
+    public Sprite Icon          { get => icon; }
+    public Texture2D CursorTexture { get => cursorTexture; }
+    public GameObject Prefab    { get => prefab; }
+
 
     int IComparable<ScriptableItem>.CompareTo(ScriptableItem other)
     {

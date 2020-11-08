@@ -30,7 +30,7 @@ public class PlayerInteract : MonoBehaviour
                     if (hit.collider.gameObject.TryGetComponent
                         (out IInteractable other))
                     {
-                        other.InteractionAction();
+                        other.Execute();
                     }
                 }
             }

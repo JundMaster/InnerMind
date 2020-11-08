@@ -43,10 +43,6 @@ public class PlayerInput : MonoBehaviour
 
             case TypeOfControl.InInventory:
                 Cursor.lockState = CursorLockMode.Confined;
-
-                // Gets left click
-                LeftClick = Input.GetButtonDown("Fire1");
-
                 // Gets right click
                 RightClick = Input.GetButtonDown("Fire2");
 

@@ -25,4 +25,9 @@ public class NPCText : MonoBehaviour
             currentLine.SetActive(false);
         yield return null;
     }
+
+    private void Update()
+    {
+        Debug.Log(Counter);
+    }
 }

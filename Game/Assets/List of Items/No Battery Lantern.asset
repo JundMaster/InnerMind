@@ -15,3 +15,5 @@ MonoBehaviour:
   name: No Battery Lantern
   id: 4
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  cursorTexture: {fileID: 10912, guid: 0000000000000000f000000000000000, type: 0}
+  prefab: {fileID: 2779104901753695659, guid: b053de84e068d0d40a92ce9ae7e08e9e, type: 3}
