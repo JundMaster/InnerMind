@@ -76,7 +76,7 @@ public class Interaction_NPCNeighbor : NPC_InteractionBase
                 StartCoroutine(ThirdTime());
                 break;
         }
-        Debug.Log(speakCounter);
+
         // If speakcounter reaches max number of texts, resets to 1
         speakCounter++;
         if (speakCounter == numberOfTexts)

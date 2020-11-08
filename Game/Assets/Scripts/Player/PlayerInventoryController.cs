@@ -58,29 +58,37 @@ public class PlayerInventoryController : MonoBehaviour
 
     private void ChangeControls()
     {
-        if (input.RightClick)
+        if (PlayerInput.CurrentControl == TypeOfControl.InGameplay ||
+            PlayerInput.CurrentControl == TypeOfControl.InInventory)
         {
-            switch (PlayerInput.CurrentControl)
+            if (input.RightClick)
             {
-                case TypeOfControl.InGameplay:
-                    PlayerInput.ChangeTypeOfControl(TypeOfControl.InInventory);
+                switch (PlayerInput.CurrentControl)
+                {
+                    case TypeOfControl.InGameplay:
+                        PlayerInput.ChangeTypeOfControl(TypeOfControl.
+                                                        InInventory);
 
-                    anim.SetTrigger("showInventory");
-                    break;
-                case TypeOfControl.InInventory:
+                        anim.SetTrigger("showInventory");
+                        break;
 
-                    if (LastClickedItemInfo != null)
-                    {
-                        LastClickedItemInfo = null;
-                        Cursor.SetCursor(default, cursorPosition, CursorMode.Auto);
-                    }
-                    else
-                    {
-                        PlayerInput.ChangeTypeOfControl(TypeOfControl.InGameplay);
+                    case TypeOfControl.InInventory:
 
-                        anim.SetTrigger("hideInventory");
-                    }
-                    break;
+                        if (LastClickedItemInfo != null)
+                        {
+                            LastClickedItemInfo = null;
+                            Cursor.SetCursor(default, cursorPosition, 
+                                            CursorMode.Auto);
+                        }
+                        else
+                        {
+                            PlayerInput.ChangeTypeOfControl(TypeOfControl.
+                                                            InGameplay);
+
+                            anim.SetTrigger("hideInventory");
+                        }
+                        break;
+                }
             }
         }
     }
