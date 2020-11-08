@@ -8,16 +8,19 @@ public class PlayerInventoryController : MonoBehaviour
 
     // Components
     private PlayerInput input;
+    private Animator anim;
 
     // Controlling Items
     public ScriptableItem LastClickedItemInfo { get; set; }
 
+    // Mouse Cursor icons position
     private Vector2Int cursorPosition;
 
 
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
+        anim = inventory.GetComponent<Animator>();
 
         cursorPosition = new Vector2Int (30, 30);
     }
@@ -61,6 +64,8 @@ public class PlayerInventoryController : MonoBehaviour
             {
                 case TypeOfControl.InGameplay:
                     input.CurrentControl = TypeOfControl.InInventory;
+
+                    anim.SetTrigger("showInventory");
                     break;
                 case TypeOfControl.InInventory:
 
@@ -72,9 +77,13 @@ public class PlayerInventoryController : MonoBehaviour
                     else
                     {
                         input.CurrentControl = TypeOfControl.InGameplay;
+
+                        anim.SetTrigger("hideInventory");
                     }
                     break;
             }
         }
     }
+
+
 }
