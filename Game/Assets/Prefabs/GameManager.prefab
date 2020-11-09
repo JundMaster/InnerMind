@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 1686255071}
   - component: {fileID: 1686255070}
   - component: {fileID: 1686255069}
-  - component: {fileID: 1686255068}
+  - component: {fileID: 1813158919}
   m_Layer: 0
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -154,7 +154,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &1686255070
 MonoBehaviour:
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686255066}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1686255068
+--- !u!114 &1813158919
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -13,9 +13,16 @@ public class PlayerInput : MonoBehaviour
     public bool RightClick { get; private set; }
     public bool Pause { get; private set; }
 
+    // Mouse Cursor ICON position
+    public static Vector2Int CursorPosition { get; private set; }
+
     public static void ChangeTypeOfControl(TypeOfControl control) =>
         CurrentControl = control;
 
+    private void Start()
+    {
+        CursorPosition = new Vector2Int(30, 30);
+    }
 
     private void Update()
     {

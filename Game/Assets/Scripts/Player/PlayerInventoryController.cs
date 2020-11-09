@@ -11,18 +11,13 @@ public class PlayerInventoryController : MonoBehaviour
     private Animator anim;
 
     // Controlling Items
-    public ScriptableItem LastClickedItemInfo { get; set; }
-
-    // Mouse Cursor icons position
-    private Vector2Int cursorPosition;
+    private ScriptableItem LastClickedItemInfo;
 
 
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
         anim = inventory.GetComponent<Animator>();
-
-        cursorPosition = new Vector2Int (30, 30);
     }
 
     private void Start()
@@ -35,6 +30,8 @@ public class PlayerInventoryController : MonoBehaviour
     private void Update()
     {
         ChangeControls();
+
+        if (PauseMenu.Gamepaused) LastClickedItemInfo = null;
     }
 
     // The item is the item that the player clicked
@@ -45,16 +42,17 @@ public class PlayerInventoryController : MonoBehaviour
         {
             LastClickedItemInfo = item;
             Cursor.SetCursor(LastClickedItemInfo.CursorTexture, 
-                            cursorPosition, CursorMode.Auto);
+                            PlayerInput.CursorPosition, CursorMode.Auto);
         }
         // If the new selected item is different from the other item
         else if (LastClickedItemInfo != item)
         {
             LastClickedItemInfo.CombineItem(item, inventory);
             LastClickedItemInfo = null;
-            Cursor.SetCursor(default, cursorPosition, CursorMode.Auto);
+            Cursor.SetCursor(default, PlayerInput.CursorPosition, CursorMode.Auto);
         }
     }
+
 
     private void ChangeControls()
     {
@@ -77,7 +75,7 @@ public class PlayerInventoryController : MonoBehaviour
                         if (LastClickedItemInfo != null)
                         {
                             LastClickedItemInfo = null;
-                            Cursor.SetCursor(default, cursorPosition, 
+                            Cursor.SetCursor(default, PlayerInput.CursorPosition, 
                                             CursorMode.Auto);
                         }
                         else

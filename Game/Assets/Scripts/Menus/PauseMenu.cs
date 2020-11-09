@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     // Components
     private PlayerInput input;
     private Animator anim;
+    private GraphicRaycaster graphicRaycaster;
 
     // Variable to control last menu before pause
     TypeOfControl lastTypeOfControl;
@@ -17,6 +20,7 @@ public class PauseMenu : MonoBehaviour
     {
         input = FindObjectOfType<PlayerInput>();
         anim = GetComponentInChildren<Animator>();
+        graphicRaycaster = GetComponent<GraphicRaycaster>();
 
         Gamepaused = false;
     }
@@ -36,6 +40,10 @@ public class PauseMenu : MonoBehaviour
             {
                 Time.timeScale = 0f;
 
+                // Sets cursor icon to default
+                Cursor.SetCursor(default, PlayerInput.CursorPosition,
+                                            CursorMode.Auto);
+
                 // Keeps control before paused in a variable
                 lastTypeOfControl = PlayerInput.CurrentControl;
 
@@ -49,6 +57,8 @@ public class PauseMenu : MonoBehaviour
                 PlayerInput.ChangeTypeOfControl(lastTypeOfControl);
             }
 
+            // Turns on/off graphic raycast and Gamepaused variable
+            graphicRaycaster.enabled = !graphicRaycaster.enabled;
             Gamepaused = !Gamepaused;
         }
 
