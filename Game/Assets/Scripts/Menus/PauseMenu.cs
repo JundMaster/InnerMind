@@ -3,23 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
+    // Gamepaused property
     public static bool Gamepaused { get; private set; }
+
+    // Menus game objects
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject optionsMenu;
 
     // Components
     private PlayerInput input;
-    private Animator anim;
     private GraphicRaycaster graphicRaycaster;
 
     // Variable to control last menu before pause
     TypeOfControl lastTypeOfControl;
 
+
     private void Awake()
     {
         input = FindObjectOfType<PlayerInput>();
-        anim = GetComponentInChildren<Animator>();
         graphicRaycaster = GetComponent<GraphicRaycaster>();
 
         Gamepaused = false;
@@ -31,6 +36,8 @@ public class PauseMenu : MonoBehaviour
         PauseGame();
     }
 
+
+
     private void PauseGame()
     {
         if (input.Pause)
@@ -39,6 +46,8 @@ public class PauseMenu : MonoBehaviour
             if (Gamepaused == false)
             {
                 Time.timeScale = 0f;
+
+                pauseMenu.SetActive(true);
 
                 // Sets cursor icon to default
                 Cursor.SetCursor(default, PlayerInput.CursorPosition,
@@ -53,6 +62,10 @@ public class PauseMenu : MonoBehaviour
             {
                 Time.timeScale = 1f;
 
+                pauseMenu.SetActive(false);
+                optionsMenu.SetActive(false);
+
+
                 // Changes type of control back to the last state
                 PlayerInput.ChangeTypeOfControl(lastTypeOfControl);
             }
@@ -61,7 +74,26 @@ public class PauseMenu : MonoBehaviour
             graphicRaycaster.enabled = !graphicRaycaster.enabled;
             Gamepaused = !Gamepaused;
         }
+    }
 
-        anim.SetBool("paused", Gamepaused);
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+
+        pauseMenu.SetActive(false);
+        optionsMenu.SetActive(false);
+
+        // Changes type of control back to the last state
+        PlayerInput.ChangeTypeOfControl(lastTypeOfControl);
+
+        // Turns on/off graphic raycast and Gamepaused variable
+        graphicRaycaster.enabled = !graphicRaycaster.enabled;
+        Gamepaused = !Gamepaused;
+    }
+
+    public void GoToMainMenu()
+    {
+        Debug.Log("load scene to main menu");
     }
 }

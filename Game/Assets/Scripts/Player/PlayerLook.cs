@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-    [Range(50, 250)][SerializeField] private ushort speed;
+    
     public float VerticalRotation { get; set; }
 
     // Components
@@ -24,14 +24,16 @@ public class PlayerLook : MonoBehaviour
         if (PlayerInput.CurrentControl == TypeOfControl.InGameplay)
         {
             // Clamps vertical axis
-            VerticalRotation -= input.VerticalMouse * speed * Time.deltaTime;
+            VerticalRotation -= input.VerticalMouse * 
+                PlayerInput.MouseSpeed * Time.deltaTime;
             VerticalRotation = Mathf.Clamp(VerticalRotation, -70f, 70f);
 
             // Rotates the camera (vertical) around X axis
             transform.localRotation = Quaternion.Euler(VerticalRotation, 0f, 0f);
 
             // Rotates the player on Y axis (horizontal)
-            player.Rotate(Vector3.up * input.HorizontalMouse * speed * Time.deltaTime);
+            player.Rotate(Vector3.up * input.HorizontalMouse * 
+                PlayerInput.MouseSpeed * Time.deltaTime);
         }
     }
 }
