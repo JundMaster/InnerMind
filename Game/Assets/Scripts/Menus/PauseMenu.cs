@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
@@ -14,9 +15,12 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject optionsMenu;
 
+
     // Components
     private PlayerInput input;
     private GraphicRaycaster graphicRaycaster;
+
+    private SceneController sceneController;
 
     // Variable to control last menu before pause
     TypeOfControl lastTypeOfControl;
@@ -24,6 +28,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Awake()
     {
+        sceneController = new SceneController();
         input = FindObjectOfType<PlayerInput>();
         graphicRaycaster = GetComponent<GraphicRaycaster>();
 
@@ -35,8 +40,6 @@ public class PauseMenu : MonoBehaviour
     {
         PauseGame();
     }
-
-
 
     private void PauseGame()
     {
@@ -76,7 +79,6 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-
     public void ResumeGame()
     {
         Time.timeScale = 1f;
@@ -91,9 +93,8 @@ public class PauseMenu : MonoBehaviour
         graphicRaycaster.enabled = !graphicRaycaster.enabled;
         Gamepaused = !Gamepaused;
     }
-
-    public void GoToMainMenu()
+    public void MainMenu()
     {
-        Debug.Log("load scene to main menu");
+        sceneController.LoadGameScene(SceneList.MainMenuTest);
     }
 }
