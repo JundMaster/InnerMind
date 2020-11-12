@@ -92,6 +92,9 @@ GameObject:
   - component: {fileID: 8510717569982712506}
   - component: {fileID: 8537629241647632706}
   - component: {fileID: 8529491260539718978}
+  - component: {fileID: 1579619917}
+  - component: {fileID: 1579619913}
+  - component: {fileID: 1579619916}
   m_Layer: 0
   m_Name: doorWing
   m_TagString: Untagged
@@ -106,14 +109,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8506164308605010350}
-  m_LocalRotation: {x: -0, y: -0.00000031292439, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0, w: -1}
   m_LocalPosition: {x: 0.45840037, y: -1.036, z: 0.060097374}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8503808942514135062}
   m_Father: {fileID: 8511232537218836084}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 360, z: 0}
 --- !u!33 &8537629241647632706
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -141,7 +144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ed7456f7ea3eb8c44823541593c9eb3e, type: 2}
+  - {fileID: 2100000, guid: e2510ac76f21ae845a9d0433894abbff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -163,6 +166,50 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1579619917
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8506164308605010350}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.91890264, y: 1.9499999, z: 0.040926464}
+  m_Center: {x: -0.44891596, y: 0.97499996, z: -0.011339351}
+--- !u!95 &1579619913
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8506164308605010350}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: be785724ed133a04680183fba3ab8800, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1579619916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8506164308605010350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c66c8d6a2ab7984bbeb1dd6211eafd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8506878497940569868
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,8 +221,10 @@ GameObject:
   - component: {fileID: 8511232537218836084}
   - component: {fileID: 8536723046251803356}
   - component: {fileID: 8529465871161054090}
+  - component: {fileID: 553004384}
+  - component: {fileID: 553004385}
   m_Layer: 0
-  m_Name: DoorExample
+  m_Name: WhiteDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -245,3 +294,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &553004384
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8506878497940569868}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14, y: 2.0849233, z: 0.13779913}
+  m_Center: {x: 0.5, y: -0.0024617314, z: 0}
+--- !u!65 &553004385
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8506878497940569868}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14, y: 2.0849233, z: 0.13779913}
+  m_Center: {x: -0.5, y: -0.0024617314, z: 0}
