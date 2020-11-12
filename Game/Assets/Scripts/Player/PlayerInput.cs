@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -11,6 +9,7 @@ public class PlayerInput : MonoBehaviour
     public float VerticalMouse { get; private set; }
     public bool LeftClick { get; private set; }
     public bool RightClick { get; private set; }
+    public bool MiddleClick { get; private set; }
     public bool Pause { get; private set; }
     public static float MouseSpeed { get; set; }
 
@@ -48,6 +47,9 @@ public class PlayerInput : MonoBehaviour
                 // Gets right click
                 RightClick = Input.GetButtonDown("Fire2");
 
+                // Gets middle click
+                MiddleClick = Input.GetButtonDown("Fire3");
+
                 // Gets ESC key
                 Pause = Input.GetKeyDown(KeyCode.P);
 
@@ -68,6 +70,19 @@ public class PlayerInput : MonoBehaviour
                 RightClick = Input.GetButtonDown("Fire2");
 
                 // Gets ESC key
+                Pause = Input.GetKeyDown(KeyCode.P);
+
+                break;
+
+            case TypeOfControl.InExamine:
+                Cursor.lockState = CursorLockMode.Locked;
+                // Gets right click
+                RightClick = Input.GetButtonDown("Fire2");
+                // Gets left click
+                LeftClick = Input.GetButtonDown("Fire1");
+                // Gets middle click
+                MiddleClick = Input.GetButtonDown("Fire3");
+                // Gets the ESC key
                 Pause = Input.GetKeyDown(KeyCode.P);
 
                 break;
