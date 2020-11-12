@@ -40,9 +40,9 @@ public class PlayerInventoryController : MonoBehaviour
     // The item is the item that the player clicked
     private void ExamineItem(ScriptableItem item)
     {
-        ExamineMenu.InExameningMode = true;
+        PlayerInput.ChangeTypeOfControl(TypeOfControl.InExamine);
         examiner = FindObjectOfType<Examiner>();
-        examiner.SetExaminer(new ItemExaminer(5, item));
+        examiner.SetExaminer(new ItemExaminer(5, item, ExamineMenu.ExamineCamera));
     }
 
     // The item is the item that the player clicked
@@ -68,9 +68,10 @@ public class PlayerInventoryController : MonoBehaviour
     private void ChangeControls()
     {
         if (PlayerInput.CurrentControl == TypeOfControl.InGameplay ||
-            PlayerInput.CurrentControl == TypeOfControl.InInventory)
+            PlayerInput.CurrentControl == TypeOfControl.InInventory ||
+             PlayerInput.CurrentControl == TypeOfControl.InExamine)
         {
-            if (input.RightClick)
+            if (input.RightClick || input.MiddleClick)
             {
                 switch (PlayerInput.CurrentControl)
                 {
@@ -90,10 +91,20 @@ public class PlayerInventoryController : MonoBehaviour
                         else
                         {
                             anim.SetTrigger("hideInventory");
-                            if (examiner != null)
-                                examiner.DestroyExaminer();
                         }
                         break;
+
+                    case TypeOfControl.InExamine:
+                        if (LastClickedItemInfo == null)
+                        {
+                            if (examiner != null)
+                            {
+                                examiner.DestroyExaminer();
+                                PlayerInput.ChangeTypeOfControl(TypeOfControl.InInventory);
+                            }
+                        }
+                        break;
+
                 }
             }
         }

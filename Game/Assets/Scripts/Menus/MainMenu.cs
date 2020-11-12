@@ -1,29 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-
-   
     // Components
-    private GraphicRaycaster graphicRaycaster;
     private SceneController sceneController;
-    private PlayerInput input;
 
     // Start is called before the first frame update
     void Start()
     {
-
         PlayerInput.ChangeTypeOfControl(TypeOfControl.InPauseMenu);
         sceneController = new SceneController();
     }
     
     void Update()
     {
-
         Cursor.lockState = CursorLockMode.Confined;
     }
 
