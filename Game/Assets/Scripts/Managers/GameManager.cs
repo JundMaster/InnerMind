@@ -25,7 +25,5 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(3);
         if (Input.GetKeyDown(KeyCode.Alpha5))
             SceneManager.LoadScene(4);
-
-        Debug.Log(CurrentTypeOfRoom);
     }
 }
