@@ -12,6 +12,7 @@ public class Item_InventorySlot : MonoBehaviour, IPointerClickHandler
 
     // Event to get left click
     public event Action<ScriptableItem> OnLeftClickEvent;
+    public event Action<ScriptableItem> OnMiddleClickEvent;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -23,6 +24,15 @@ public class Item_InventorySlot : MonoBehaviour, IPointerClickHandler
             {
                 // Gets left click as a ScriptableItem
                 OnLeftClickEvent(Info);
+            }
+        }
+
+        if (eventData != null && eventData.button ==
+            PointerEventData.InputButton.Middle)
+        {
+            if(Info != null && OnMiddleClickEvent != null)
+            {
+                OnMiddleClickEvent(Info);
             }
         }
     }

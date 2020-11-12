@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-
 public class PlayerInventoryController : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
+    private Examiner examiner;
 
     // Components
     private PlayerInput input;
@@ -24,7 +24,10 @@ public class PlayerInventoryController : MonoBehaviour
     {
         // Runs UseItem when an item is clicked
         for (int i = 0; i < inventory.InventorySlot.Length; i++)
+        {
             inventory.InventorySlot[i].OnLeftClickEvent += SelectItem;
+            inventory.InventorySlot[i].OnMiddleClickEvent += ExamineItem;
+        }
     }
 
     private void Update()
@@ -35,13 +38,21 @@ public class PlayerInventoryController : MonoBehaviour
     }
 
     // The item is the item that the player clicked
+    private void ExamineItem(ScriptableItem item)
+    {
+        ExamineMenu.InExameningMode = true;
+        examiner = FindObjectOfType<Examiner>();
+        examiner.SetExaminer(new ItemExaminer(5, item));
+    }
+
+    // The item is the item that the player clicked
     private void SelectItem(ScriptableItem item)
     {
         // Selects the item and changes the cursor
         if (LastClickedItemInfo == null)
         {
             LastClickedItemInfo = item;
-            Cursor.SetCursor(LastClickedItemInfo.CursorTexture, 
+            Cursor.SetCursor(LastClickedItemInfo.CursorTexture,
                             PlayerInput.CursorPosition, CursorMode.Auto);
         }
         // If the new selected item is different from the other item
@@ -73,12 +84,14 @@ public class PlayerInventoryController : MonoBehaviour
                         if (LastClickedItemInfo != null)
                         {
                             LastClickedItemInfo = null;
-                            Cursor.SetCursor(default, PlayerInput.CursorPosition, 
+                            Cursor.SetCursor(default, PlayerInput.CursorPosition,
                                             CursorMode.Auto);
                         }
                         else
                         {
                             anim.SetTrigger("hideInventory");
+                            if (examiner != null)
+                                examiner.DestroyExaminer();
                         }
                         break;
                 }
