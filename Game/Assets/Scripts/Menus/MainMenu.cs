@@ -9,22 +9,29 @@ public class MainMenu : MonoBehaviour
 
    
     // Components
-    private PlayerInput input;
     private GraphicRaycaster graphicRaycaster;
     private SceneController sceneController;
-    [SerializeField] private GameObject optionsMenu;
+    private PlayerInput input;
 
     // Start is called before the first frame update
     void Start()
     {
+
+        PlayerInput.ChangeTypeOfControl(TypeOfControl.InPauseMenu);
         sceneController = new SceneController();
-        input = FindObjectOfType<PlayerInput>();
-        graphicRaycaster = GetComponent<GraphicRaycaster>();
+    }
+    
+    void Update()
+    {
+
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void StartGame()
     {
+        Time.timeScale = 1f;
         sceneController.LoadGameScene(SceneList.InteractionTest);
+        PlayerInput.ChangeTypeOfControl(TypeOfControl.InGameplay);
     }
 
     public void QuitGame()

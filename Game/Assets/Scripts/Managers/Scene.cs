@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 //Enum for all Scene used in the game
-public enum SceneList {
+public enum SceneList 
+    {
         MainMenuTest,
         InteractionTest 
     } 

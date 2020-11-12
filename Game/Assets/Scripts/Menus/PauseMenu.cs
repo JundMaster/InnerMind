@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 public class PauseMenu : MonoBehaviour
 {
     // Gamepaused property
-    public static bool Gamepaused { get; private set; }
+    public static bool Gamepaused { get; set; }
 
     // Menus game objects
     [SerializeField] private GameObject pauseMenu;
@@ -95,6 +95,8 @@ public class PauseMenu : MonoBehaviour
     }
     public void MainMenu()
     {
+        Gamepaused = false;
+        PlayerInput.ChangeTypeOfControl(TypeOfControl.InPauseMenu);
         sceneController.LoadGameScene(SceneList.MainMenuTest);
     }
 }
