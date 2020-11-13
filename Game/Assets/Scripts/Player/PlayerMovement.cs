@@ -32,15 +32,17 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
-    }
 
-    private void Update()
-    {
         // Only runs if the player is in a WallWalkRoom
         if (manager.CurrentTypeOfRoom == TypeOfRoom.WalkableWalls)
         {
             ChangeFace();
         }
+    }
+
+    private void Update()
+    {
+        
     }
 
     private void Movement()
@@ -125,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
         while (elapsedTime < 0.5f)
         {
             transform.position = Vector3.MoveTowards(transform.position, 
-                hit.point, elapsedTime / 15f);
+                hit.point, elapsedTime * 15f * Time.fixedUnscaledDeltaTime);
 
             transform.rotation = Quaternion.Slerp(from, to, elapsedTime / 0.5f);
             elapsedTime += Time.unscaledDeltaTime;
