@@ -18,6 +18,7 @@ public class PlayerInventoryController : MonoBehaviour
     {
         input = GetComponent<PlayerInput>();
         anim = inventory.GetComponent<Animator>();
+        examiner = FindObjectOfType<Examiner>();
     }
 
     private void Start()
@@ -40,9 +41,9 @@ public class PlayerInventoryController : MonoBehaviour
     // The item is the item that the player clicked
     private void ExamineItem(ScriptableItem item)
     {
-        PlayerInput.ChangeTypeOfControl(TypeOfControl.InExamine);
-        examiner = FindObjectOfType<Examiner>();
-        examiner.SetExaminer(new ItemExaminer(5, item, ExamineMenu.ExamineCamera));
+        Camera examineCamera = FindObjectOfType<ExamineMenu>().ExamineCamera;
+        PlayerInput.ChangeTypeOfControl(TypeOfControl.InExamine);        
+        examiner.SetExaminer(new ItemExaminer(5, item, examineCamera));
     }
 
     // The item is the item that the player clicked

@@ -79,11 +79,15 @@ public class PlayerInput : MonoBehaviour
                 // Gets right click
                 RightClick = Input.GetButtonDown("Fire2");
                 // Gets left click
-                LeftClick = Input.GetButtonDown("Fire1");
+                LeftClick = Input.GetButton("Fire1");
                 // Gets middle click
                 MiddleClick = Input.GetButtonDown("Fire3");
                 // Gets the ESC key
                 Pause = Input.GetKeyDown(KeyCode.P);
+                // Gets horizontal movement
+                HorizontalMouse = Input.GetAxis("Mouse X");
+                // Get vertical movement
+                VerticalMouse = Input.GetAxis("Mouse Y");
 
                 break;
 

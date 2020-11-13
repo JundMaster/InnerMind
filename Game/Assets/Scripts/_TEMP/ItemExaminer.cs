@@ -2,8 +2,8 @@
 
 public class ItemExaminer
 {
-    // Speed of rotation
-    private float speed;
+    // Speed of rotation 
+    private readonly float speed;
     private Light lightComponent;
     private GameObject light;
     // Item that is being examined
@@ -27,10 +27,11 @@ public class ItemExaminer
 
     public void Examine()
     {
-        if (Input.GetButton("Fire1"))
+        PlayerInput input = MonoBehaviour.FindObjectOfType<PlayerInput>();
+        if (input.LeftClick)
         {
-            verticalRotation = Input.GetAxis("Mouse Y") * speed;
-            horizontalRotation = Input.GetAxis("Mouse X") * speed;
+            verticalRotation = input.VerticalMouse * speed;
+            horizontalRotation = input.HorizontalMouse * speed;
             itemTransform.Rotate(itemTransform.parent.up,
                                  -horizontalRotation,
                                  Space.World);

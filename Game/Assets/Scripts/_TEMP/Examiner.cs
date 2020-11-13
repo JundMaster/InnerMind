@@ -2,7 +2,6 @@
 public class Examiner : MonoBehaviour
 {
     private ItemExaminer itemExaminer;
-    [SerializeField] private Camera renderingCamera;
     private void Update()
     {
         if (itemExaminer != null)
@@ -21,6 +20,5 @@ public class Examiner : MonoBehaviour
         if (itemExaminer != null)
             itemExaminer.StopExamine();
         itemExaminer = null;
-        Debug.Log("DESTROYED");
     }
 }
