@@ -8,5 +8,6 @@ public enum TypeOfControl
     InInventory,
     InExamine,
     InNPCInteraction,
+    InDoorWithCode,
     InPauseMenu
 }

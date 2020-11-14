@@ -11,6 +11,7 @@ public class PlayerInput : MonoBehaviour
     public bool RightClick { get; private set; }
     public bool MiddleClick { get; private set; }
     public bool Pause { get; private set; }
+    public bool Enter { get; private set; }
     public static float MouseSpeed { get; set; }
 
     // Mouse Cursor ICON position
@@ -83,6 +84,14 @@ public class PlayerInput : MonoBehaviour
                 HorizontalMouse = Input.GetAxis("Mouse X");
                 // Get vertical movement
                 VerticalMouse = Input.GetAxis("Mouse Y");
+
+                break;
+
+            case TypeOfControl.InDoorWithCode:
+                // Gets ESC key
+                Pause = Input.GetKeyDown(KeyCode.P);
+
+                Enter = Input.GetKeyUp(KeyCode.Return);
 
                 break;
 
