@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ICombinable<T> where T : ScriptableItem
 {
-    void CombineItem(T otherItem, Inventory inventory);
+    void CombineItem(T item1, T item2, Inventory inventory);
 }

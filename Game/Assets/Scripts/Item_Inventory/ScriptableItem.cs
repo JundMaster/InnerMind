@@ -5,7 +5,7 @@ using UnityEngine;
 
 [CreateAssetMenu]
 public class ScriptableItem : ScriptableObject, IItem, 
-    ICombinable<ScriptableItem>, IComparable<ScriptableItem>
+    IComparable<ScriptableItem>
 {
     [SerializeField] private new string name;
     [SerializeField] private ListOfItems id;
@@ -20,27 +20,6 @@ public class ScriptableItem : ScriptableObject, IItem,
     public Texture2D CursorTexture { get => cursorTexture; }
     public GameObject Prefab    { get => prefab; }
     public ScriptableItem CombinationItem { get => combinationItem; }
-
-
-    public void CombineItem(ScriptableItem otherItem, Inventory inventory)
-    {
-        ListOfItems combinationResults = 
-            ListOfItems.Lantern | ListOfItems.Walkman | ListOfItems.Audio_Tape;
-
-        if (this.CombinationItem != null && otherItem.CombinationItem != null)
-        {
-            if (combinationResults.HasFlag(this.id | otherItem.ID))
-            {
-                inventory.Bag.Remove(this);
-                inventory.Bag.Remove(otherItem);
-
-                inventory.Bag.Add(combinationItem);
-
-                inventory.Bag.Sort();
-                inventory.Bag.Reverse();
-            }
-        }
-    }
 
     int IComparable<ScriptableItem>.CompareTo(ScriptableItem other)
     {
