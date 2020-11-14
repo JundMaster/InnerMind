@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Interaction_NPCNeighbor : NPC_InteractionBase
+public class Interaction_NPCNeighbor : Interaction_NPCBase
 {
     // NPC Head
     [SerializeField] private Transform head;

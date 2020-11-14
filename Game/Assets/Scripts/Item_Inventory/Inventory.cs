@@ -25,10 +25,6 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        // Sorts and reverses the list to eliminate free spaces at the beggining
-        Bag.Sort();
-        Bag.Reverse();
-
         // Sets the UI items equal to bag items
         for (int i = 0; i < InventorySlot.Length; i++)
         {

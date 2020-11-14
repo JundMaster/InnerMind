@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interaction_Item : Item_InteractionBase
+public class Interaction_Item : Interaction_ItemBase
 {
     public override void Execute()
     {
@@ -17,6 +17,11 @@ public class Interaction_Item : Item_InteractionBase
         if (count < 8)
         {
             inventory.Bag.Add(info);
+
+            // Sorts/reverses the list to eliminate free spaces at the beggining
+            inventory.Bag.Sort();
+            inventory.Bag.Reverse();
+
             Destroy(gameObject);
         }
     }

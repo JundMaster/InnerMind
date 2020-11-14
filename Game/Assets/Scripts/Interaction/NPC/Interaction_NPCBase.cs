@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public abstract class NPC_InteractionBase : Interaction_CR
+public abstract class Interaction_NPCBase : Interaction_CR
 {
 
     [SerializeField] protected float rotationSpeedModifier;

@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class Item_InventorySlot : MonoBehaviour, IPointerClickHandler
 {
-    //[SerializeField] private ScriptableItem info;
+    // This variable will be equal to a item in the player's bag
     public ScriptableItem Info { get; set; }
 
     private Image image;
 
-    // Event to get left click
+    // Events on clicks
     public event Action<ScriptableItem> OnLeftClickEvent;
     public event Action<ScriptableItem> OnMiddleClickEvent;
 
@@ -55,7 +55,7 @@ public class Item_InventorySlot : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    // If the ScritableItem icon changes, the image changes
+    // If the ScritableItem icon changes, the image changes in game
     private void Update()
     {
         if (Info == null)

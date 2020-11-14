@@ -34,8 +34,10 @@ public class ScriptableItem : ScriptableObject, IItem,
                 inventory.Bag.Remove(this);
                 inventory.Bag.Remove(otherItem);
 
-                if (combinationItem != null)
-                    inventory.Bag.Add(combinationItem);
+                inventory.Bag.Add(combinationItem);
+
+                inventory.Bag.Sort();
+                inventory.Bag.Reverse();
             }
         }
     }
