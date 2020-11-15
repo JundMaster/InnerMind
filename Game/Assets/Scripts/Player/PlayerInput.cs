@@ -88,10 +88,11 @@ public class PlayerInput : MonoBehaviour
                 break;
 
             case TypeOfControl.InDoorWithCode:
+                Cursor.lockState = CursorLockMode.Confined;
                 // Gets ESC key
                 Pause = Input.GetKeyDown(KeyCode.P);
-
-                Enter = Input.GetKeyUp(KeyCode.Return);
+                // Gets left click
+                LeftClick = Input.GetButtonDown("Fire1");
 
                 break;
 

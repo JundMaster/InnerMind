@@ -6,36 +6,21 @@ using System;
 
 public class Interaction_DoorWithCode : Interaction_Common
 {
-    [SerializeField] private int code;
+    // Codes to open padlock
+    [SerializeField] private Vector3Int doorCode;
+    public Vector3Int DoorCode => doorCode;
+    public Vector3Int UserCode { get; set; }
+
+    // Padlock to spawn
+    [SerializeField] private GameObject padlock;
+    private GameObject newPadlock;
 
     // Component
     private PlayerInput input;
 
-    // Code Input
-
-
-
-    public override void Execute()
-    {
-        PlayerInput.ChangeTypeOfControl(TypeOfControl.InDoorWithCode);
-    }
-
-    public void GetInput(string userInput)
-    {
-        /*
-        if (input.Enter)
-        {
-            if (Int32.TryParse(userInput, out int userConvertedInput))
-            {
-                if (userConvertedInput == code)
-                {
-                    Animator doorAnimation = GetComponentInParent<Animator>();
-                    doorAnimation.SetTrigger("Open Door");
-                }
-            }
-        }*/
-        PlayerInput.ChangeTypeOfControl(TypeOfControl.InGameplay);
-    }
+    // Padlock control related variables
+    [SerializeField] private GameObject padlockCanvas;
+    [SerializeField] private Transform padlockPosition;
 
     private void Start()
     {
@@ -44,9 +29,44 @@ public class Interaction_DoorWithCode : Interaction_Common
 
     private void Update()
     {
-
+        if (PlayerInput.CurrentControl == TypeOfControl.InDoorWithCode)
+        {
+            if (input.RightClick)
+            {
+                Destroy(newPadlock);
+                padlockCanvas.SetActive(false);
+                PlayerInput.ChangeTypeOfControl(TypeOfControl.InGameplay);
+            }
+        }
     }
 
+    public override void Execute()
+    {
+        PlayerInput.ChangeTypeOfControl(TypeOfControl.InDoorWithCode);
+        padlockCanvas.SetActive(true);
 
-    public override string ToString() => "Open Door";
+        UserCode = new Vector3Int(0, 0, 0);
+        newPadlock = Instantiate(padlock);
+        newPadlock.transform.position = padlockPosition.position;
+        newPadlock.transform.rotation = padlockPosition.rotation;
+    }
+
+    public void OpenDoor()
+    {
+        Animator doorAnimation = GetComponentInParent<Animator>();
+        doorAnimation.SetTrigger("Open Door");
+
+        Destroy(newPadlock);
+        padlockCanvas.SetActive(false);
+        PlayerInput.ChangeTypeOfControl(TypeOfControl.InGameplay);
+    }
+
+    public void BackToGameplay()
+    {
+        Destroy(newPadlock);
+        padlockCanvas.SetActive(false);
+        PlayerInput.ChangeTypeOfControl(TypeOfControl.InGameplay);
+    }
+
+    public override string ToString() => "Open Locked Door";
 }
