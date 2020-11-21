@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     // Movement
     [Range(1, 20)] [SerializeField] private byte speed;
     [SerializeField] private Transform groundCheck;
+
     public Transform GroundCheck { get => groundCheck; }
     [SerializeField] private LayerMask obstacleLayer;
 
@@ -32,17 +33,15 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+    }
 
+    private void Update()
+    {
         // Only runs if the player is in a WallWalkRoom
         if (manager.CurrentTypeOfRoom == TypeOfRoom.WalkableWalls)
         {
             ChangeFace();
         }
-    }
-
-    private void Update()
-    {
-        
     }
 
     private void Movement()
@@ -65,22 +64,13 @@ public class PlayerMovement : MonoBehaviour
         {
             // If there's no floor in front, the player will stop
             if (groundCheckCollider.Length == 0)
-            {
+            {;
                 rb.velocity = Vector3.zero;
             }
             else
             {
-                // If there's floor and a wall in the middle, the player will stop
-                if (Physics.Raycast(rays.CheckGround, 0.6f, obstacleLayer))
-                {
-                    rb.velocity = Vector3.zero;
-                }
-
-                else
-                {
-                    // Else the player will move
-                    rb.velocity = movement * speed;
-                }
+                // Else the player will move
+                rb.velocity = movement * speed;
             }
         }
         else // If not in gameplay
@@ -114,8 +104,8 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator CRChangeFace(RaycastHit hit)
     {
         // Stops time, rotates the player towards the point of impact
-        Time.timeScale = 0f;
         rb.isKinematic = true;
+        // Rotates camera and resets its value
         transform.LookAt(transform.position - hit.normal, transform.up);
         GetComponentInChildren<PlayerLook>().VerticalRotation = 0;
 
@@ -126,19 +116,21 @@ public class PlayerMovement : MonoBehaviour
         to *= Quaternion.Euler(-90, 0f, 0f);
         while (elapsedTime < 0.5f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, 
-                hit.point, elapsedTime * 15f * Time.fixedUnscaledDeltaTime);
+            elapsedTime += Time.deltaTime;
 
-            transform.rotation = Quaternion.Slerp(from, to, elapsedTime / 0.5f);
-            elapsedTime += Time.unscaledDeltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, 
+                hit.point, elapsedTime / 2f);
+
+            transform.rotation = Quaternion.Slerp(from, to, elapsedTime * 2f);
+            
             yield return null;
         }
+        transform.position = hit.point;
         transform.rotation = to;
 
         // Gives back all player control
         rb.isKinematic = false;
         CR_ChangeWall = default;
-        Time.timeScale = 1f;
     }
 
 
