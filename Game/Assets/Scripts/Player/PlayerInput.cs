@@ -103,6 +103,14 @@ public class PlayerInput : MonoBehaviour
                 Pause = Input.GetKeyDown(KeyCode.P);
 
                 break;
+
+            case TypeOfControl.InCutscene:
+                Cursor.lockState = CursorLockMode.Locked;
+
+                // Gets ESC key
+                Pause = Input.GetKeyDown(KeyCode.P);
+
+                break;
         }
     }
 }
