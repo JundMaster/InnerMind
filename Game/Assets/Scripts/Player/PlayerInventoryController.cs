@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class PlayerInventoryController : MonoBehaviour
 {
-    [SerializeField] private Inventory inventory;
+    private Inventory inventory;
 
     // Actions In inventory
     private Examiner examiner;
@@ -19,6 +19,8 @@ public class PlayerInventoryController : MonoBehaviour
 
     private void Awake()
     {
+        inventory = FindObjectOfType<Inventory>();
+
         examiner = FindObjectOfType<Examiner>();
         itemCombine = new ItemCombine();
 

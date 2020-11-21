@@ -10,6 +10,7 @@ TagManager:
   - FirstWheel
   - SecondWheel
   - ThirdWheel
+  - Inventory
   layers:
   - Default
   - TransparentFX
