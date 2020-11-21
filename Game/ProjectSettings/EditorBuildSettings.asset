@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/ItemTest.unity
     guid: 7706707717e3c8e4e97034a6f4f534f7
   - enabled: 1
-    path: Assets/Scenes/ElevatorCutscene.unity
+    path: Assets/Scenes/Cutscenes/ElevatorCutscene.unity
     guid: 1e412d2b545fbd543b0256abd1d289e5
   m_configObjects: {}

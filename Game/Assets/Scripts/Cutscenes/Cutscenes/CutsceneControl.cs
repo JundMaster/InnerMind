@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-sealed public class ElevatorCutscene : MonoBehaviour
+sealed public class CutsceneControl : MonoBehaviour
 {
     private void Awake()
     {

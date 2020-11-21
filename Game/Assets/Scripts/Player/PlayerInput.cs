@@ -109,6 +109,10 @@ public class PlayerInput : MonoBehaviour
 
                 // Gets ESC key
                 Pause = Input.GetKeyDown(KeyCode.P);
+                // Gets horizontal movement
+                HorizontalMouse = Input.GetAxis("Mouse X");
+                // Get vertical movement
+                VerticalMouse = Input.GetAxis("Mouse Y");
 
                 break;
         }
