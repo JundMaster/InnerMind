@@ -37,27 +37,12 @@ public class Item_InventorySlot : MonoBehaviour, IPointerClickHandler
         }
     }
 
-
-    // Refreshes slot image on editor
-    private void OnValidate()
+    // If the ScritableItem icon changes, the image changes in game
+    private void Update()
     {
         if (image == null)
             image = GetComponent<Image>();
 
-        if (Info == null)
-        {
-            image.enabled = false;
-        }
-        else
-        {
-            image.sprite = Info.Icon;
-            image.enabled = true;
-        }
-    }
-
-    // If the ScritableItem icon changes, the image changes in game
-    private void Update()
-    {
         if (Info == null)
         {
             image.enabled = false;
