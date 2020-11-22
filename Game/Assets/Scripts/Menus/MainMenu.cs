@@ -1,14 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-
         Cursor.lockState = CursorLockMode.Confined;
     }
 
@@ -16,7 +13,6 @@ public class MainMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("InteractionTest");
-        
     }
 
     public void QuitGame()

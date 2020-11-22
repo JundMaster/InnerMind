@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
     // Gamepaused property
-    public static bool Gamepaused { get; set; }
+    public bool Gamepaused { get; private set; }
 
     // Menus game objects
     [SerializeField] private GameObject pauseMenu;
@@ -19,7 +18,7 @@ public class PauseMenu : MonoBehaviour
 
 
     // Variable to control last menu before pause
-    TypeOfControl lastTypeOfControl;
+    private TypeOfControl lastTypeOfControl;
 
 
     private void Awake()

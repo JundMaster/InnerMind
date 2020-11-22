@@ -13,6 +13,8 @@ public class PlayerInventoryController : MonoBehaviour
     private PlayerInput input;
     private Animator anim;
 
+    private PauseMenu pauseMenu;
+
     // Controlling Items
     private ScriptableItem LastClickedItemInfo;
 
@@ -26,6 +28,8 @@ public class PlayerInventoryController : MonoBehaviour
 
         input = GetComponent<PlayerInput>();
         anim = inventory.GetComponent<Animator>();
+
+        pauseMenu = FindObjectOfType<PauseMenu>();
     }
 
     private void Start()
@@ -42,7 +46,7 @@ public class PlayerInventoryController : MonoBehaviour
     {
         ChangeControl();
 
-        if (PauseMenu.Gamepaused) LastClickedItemInfo = null;
+        if (pauseMenu.Gamepaused) LastClickedItemInfo = null;
     }
 
     // The item is the item that the player clicked
