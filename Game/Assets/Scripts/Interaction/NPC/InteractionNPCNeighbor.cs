@@ -3,26 +3,71 @@ using UnityEngine;
 
 public class InteractionNPCNeighbor : InteractionNPCBase
 {
-    PlayerInput input;
+    // NPC Head & speed of the rotation
+    [SerializeField] private Transform head;
+    [SerializeField] private float rotationSpeedModifier;
+
+    [SerializeField] private ScriptableItem[] npcBag;
+
+    private PlayerInput input;
 
     private void Start()
     {
-        myText = GetComponent<NPCText>();
+        dialog = GetComponent<DialogText>();
         input = FindObjectOfType<PlayerInput>();
+
+        waitForSecs = new WaitForSeconds(secondsToWait);
+        speakCounter = 0;
+
+        dialog.WaitForSecs = waitForSecs;
+    }
+
+    private void Update()
+    {
+        dialog.Counter = speakCounter;
+    }
+
+    public override IEnumerator CoroutineInteraction()
+    {
+        input.ChangeTypeOfControl(TypeOfControl.InNPCInteraction);
+
+        // Smoothly rotates npc towards the player and player towards npc
+        StartCoroutine(RotationAnimation());
+
+        StartCoroutine(GetNextAction());
+       
+        yield break;
+    }
+
+    private IEnumerator GetNextAction()
+    {
+        StartCoroutine(dialog.GetNextLine());
+        yield return waitForSecs;
+
+
+        // will be needed to give items to player
+        //Inventory temp = FindObjectOfType<Inventory>();
+
+
+
+
+        // If speakcounter reaches max number of texts, resets to 1
+        speakCounter++;
+        if (speakCounter == dialog.LinesOfText.Length)
+            speakCounter = 1;
+        ThisCoroutine = default;
+        input.ChangeTypeOfControl(TypeOfControl.InGameplay);
+        yield break;
     }
 
 
-    // NPC Head
-    [SerializeField] private Transform head;
-    public override IEnumerator CoroutineInteraction()
+    private IEnumerator RotationAnimation()
     {
         PlayerMovement player;
         player = FindObjectOfType<PlayerMovement>();
         PlayerLook playerCamera;
         playerCamera = player.GetComponentInChildren<PlayerLook>();
-        input.ChangeTypeOfControl(TypeOfControl.InNPCInteraction);
-    
-        // Smoothly rotates npc towards the player and player towards npc
+
         float elapsedTime = 0.0f;
 
         Quaternion npcFrom = transform.rotation;
@@ -49,7 +94,7 @@ public class InteractionNPCNeighbor : InteractionNPCBase
                 transform.eulerAngles.y, 0f);
 
             // Rotates Player's Body
-            player.transform.rotation = Quaternion.Slerp(playerFrom, 
+            player.transform.rotation = Quaternion.Slerp(playerFrom,
                 playerTo, elapsedTime * rotationSpeedModifier);
 
             player.transform.eulerAngles = new Vector3(0f,
@@ -60,70 +105,21 @@ public class InteractionNPCNeighbor : InteractionNPCBase
                 pCameraTo, elapsedTime * rotationSpeedModifier * 5f);
 
             // Moves player to desired range
-            Vector3 newPosition = transform.position + 
+            Vector3 newPosition = transform.position +
                 (player.transform.position - transform.position).normalized * 3f;
 
-            player.transform.position = 
-                Vector3.MoveTowards(player.transform.position, 
-                new Vector3(newPosition.x, player.transform.position.y, 
+            player.transform.position =
+                Vector3.MoveTowards(player.transform.position,
+                new Vector3(newPosition.x, player.transform.position.y,
                             newPosition.z),
                 Time.deltaTime * rotationSpeedModifier * 2);
 
+            playerCamera.VerticalRotation = 0;
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        playerCamera.VerticalRotation = 0;
 
-
-        switch (speakCounter)
-        {
-            case 0:
-                StartCoroutine(FirstTime());
-                break;
-            case 1:
-                StartCoroutine(SecondTime());
-                break;
-            case 2:
-                StartCoroutine(ThirdTime());
-                break;
-        }
-
-        // If speakcounter reaches max number of texts, resets to 1
-        speakCounter++;
-        if (speakCounter == numberOfTexts)
-            speakCounter = 1;
-
-        yield break;
-    }
-    private IEnumerator FirstTime()
-    {
-        StartCoroutine(myText.NextLine());
-        yield return waitForSecs;
-
-
-        input.ChangeTypeOfControl(TypeOfControl.InGameplay);
-        ThisCoroutine = default;
-        yield break;
-    }
-    private IEnumerator SecondTime()
-    {
-        StartCoroutine(myText.NextLine());
-        yield return waitForSecs;
-
-
-        input.ChangeTypeOfControl(TypeOfControl.InGameplay);
-        ThisCoroutine = default;
-        yield break;
-    }
-    private IEnumerator ThirdTime()
-    {
-        StartCoroutine(myText.NextLine());
-        yield return waitForSecs;
-
-
-        input.ChangeTypeOfControl(TypeOfControl.InGameplay);
-        ThisCoroutine = default;
-        yield break;
+        
     }
 
     public override string ToString()

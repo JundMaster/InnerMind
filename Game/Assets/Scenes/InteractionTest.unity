@@ -130,6 +130,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4281755530947114569, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281755531608452497, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
+      propertyPath: currentLine
+      value: 
+      objectReference: {fileID: 982183900}
+    - target: {fileID: 4281755531608452497, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
+      propertyPath: linesOfText.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281755531608452497, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
+      propertyPath: linesOfText.Array.data[0]
+      value: Hello there.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281755531608452497, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
+      propertyPath: linesOfText.Array.data[1]
+      value: What do you need?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281755531608452497, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
+      propertyPath: linesOfText.Array.data[2]
+      value: How may I help you?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281755531608452497, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
+      propertyPath: linesOfText.Array.data[3]
+      value: What now?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281755531608452497, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
+      propertyPath: linesOfText.Array.data[4]
+      value: ...
+      objectReference: {fileID: 0}
     - target: {fileID: 5779046738513946356, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -182,6 +214,14 @@ PrefabInstance:
       propertyPath: myText
       value: 
       objectReference: {fileID: 1640560673}
+    - target: {fileID: 8087826249600305174, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
+      propertyPath: npcBag.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8087826249600305174, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
+      propertyPath: npcBag.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c3bd97f7e5d71544988bad5e39785855, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
 --- !u!1001 &569637632
@@ -546,6 +586,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &982183900 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4281755532025602706, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
+  m_PrefabInstance: {fileID: 191093276}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1361963603
 PrefabInstance:
   m_ObjectHideFlags: 0
