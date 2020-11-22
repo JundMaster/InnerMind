@@ -2,8 +2,10 @@
 
 sealed public class CutsceneControl : MonoBehaviour
 {
+    private PlayerInput input;
     private void Awake()
     {
-        PlayerInput.ChangeTypeOfControl(TypeOfControl.InCutscene);
+        input = FindObjectOfType<PlayerInput>();
+        input.ChangeTypeOfControl(TypeOfControl.InCutscene);
     }
 }

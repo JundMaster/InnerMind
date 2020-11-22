@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public TypeOfRoom CurrentTypeOfRoom { get; set; } 
-    
+    public TypeOfRoom CurrentTypeOfRoom { get; set; }
+    private PlayerInput input;
+
     private void Start()
     {
+        input = FindObjectOfType<PlayerInput>();
+        input.ChangeTypeOfControl(TypeOfControl.InGameplay);
+
         CurrentTypeOfRoom = TypeOfRoom.NonWalkableWalls;
     }
 

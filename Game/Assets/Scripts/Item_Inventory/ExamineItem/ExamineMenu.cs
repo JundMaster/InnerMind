@@ -8,6 +8,13 @@ public class ExamineMenu : MonoBehaviour
     [SerializeField] private Camera examineCamera;
     public Camera ExamineCamera => examineCamera;
 
+    private PlayerInput input;
+
+    private void Start()
+    {
+        input = FindObjectOfType<PlayerInput>();
+    }
+
     private void Update()
     {
         DisplayExamineMenu();
@@ -15,7 +22,7 @@ public class ExamineMenu : MonoBehaviour
 
     private void DisplayExamineMenu()
     {
-        if (PlayerInput.CurrentControl == TypeOfControl.InExamine)
+        if (input.CurrentControl == TypeOfControl.InExamine)
             examineMenu.SetActive(true);
         else
             examineMenu.SetActive(false);

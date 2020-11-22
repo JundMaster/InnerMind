@@ -17,7 +17,6 @@ public class PauseMenu : MonoBehaviour
     private PlayerInput input;
     private GraphicRaycaster graphicRaycaster;
 
-    private SceneController sceneController;
 
     // Variable to control last menu before pause
     TypeOfControl lastTypeOfControl;
@@ -25,7 +24,6 @@ public class PauseMenu : MonoBehaviour
 
     private void Awake()
     {
-        sceneController = new SceneController();
         input = FindObjectOfType<PlayerInput>();
         graphicRaycaster = GetComponent<GraphicRaycaster>();
 
@@ -50,13 +48,13 @@ public class PauseMenu : MonoBehaviour
                 pauseMenu.SetActive(true);
 
                 // Sets cursor icon to default
-                Cursor.SetCursor(default, PlayerInput.CursorPosition,
+                Cursor.SetCursor(default, input.CursorPosition,
                                             CursorMode.Auto);
 
                 // Keeps control before paused in a variable
-                lastTypeOfControl = PlayerInput.CurrentControl;
+                lastTypeOfControl = input.CurrentControl;
 
-                PlayerInput.ChangeTypeOfControl(TypeOfControl.InPauseMenu);
+                input.ChangeTypeOfControl(TypeOfControl.InPauseMenu);
             }
             else if (Gamepaused)
             {
@@ -67,7 +65,7 @@ public class PauseMenu : MonoBehaviour
 
 
                 // Changes type of control back to the last state
-                PlayerInput.ChangeTypeOfControl(lastTypeOfControl);
+                input.ChangeTypeOfControl(lastTypeOfControl);
             }
 
             // Turns on/off graphic raycast and Gamepaused variable
@@ -84,7 +82,7 @@ public class PauseMenu : MonoBehaviour
         optionsMenu.SetActive(false);
 
         // Changes type of control back to the last state
-        PlayerInput.ChangeTypeOfControl(lastTypeOfControl);
+        input.ChangeTypeOfControl(lastTypeOfControl);
 
         // Turns on/off graphic raycast and Gamepaused variable
         graphicRaycaster.enabled = !graphicRaycaster.enabled;
@@ -93,7 +91,7 @@ public class PauseMenu : MonoBehaviour
     public void MainMenu()
     {
         Gamepaused = false;
-        PlayerInput.ChangeTypeOfControl(TypeOfControl.InPauseMenu);
-        sceneController.LoadGameScene(SceneList.MainMenuTest);
+        input.ChangeTypeOfControl(TypeOfControl.InPauseMenu);
+        SceneManager.LoadScene("MainMenuTest");
     }
 }

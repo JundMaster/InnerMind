@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Interaction_FamilyPicture : Interaction_Common, IPointerClickHandler
+public class InteractionFamilyPicture : InteractionCommon, IPointerClickHandler
 {
     private PlayerInput input;
     private GameObject newFrame;
@@ -23,20 +23,20 @@ public class Interaction_FamilyPicture : Interaction_Common, IPointerClickHandle
 
     private void Update()
     {
-        if (PlayerInput.CurrentControl == TypeOfControl.InExamine)
+        if (input.CurrentControl == TypeOfControl.InExamine)
         {
             if (input.RightClick)
             {
                 Destroy(newFrame);
                 frameCanvas.SetActive(false);
-                PlayerInput.ChangeTypeOfControl(TypeOfControl.InGameplay);
+                input.ChangeTypeOfControl(TypeOfControl.InGameplay);
             }
         }
     }
 
     public override void Execute()
     {
-        PlayerInput.ChangeTypeOfControl(TypeOfControl.InExamine);
+        input.ChangeTypeOfControl(TypeOfControl.InExamine);
         frameCanvas.SetActive(true);
         OnLeftClickEvent(frameItem);
         newFrame = Instantiate(frame);
@@ -49,7 +49,7 @@ public class Interaction_FamilyPicture : Interaction_Common, IPointerClickHandle
     {
         Destroy(newFrame);
         frameCanvas.SetActive(false);
-        PlayerInput.ChangeTypeOfControl(TypeOfControl.InGameplay);
+        input.ChangeTypeOfControl(TypeOfControl.InGameplay);
     }
 
     public void OnPointerClick(PointerEventData eventData)

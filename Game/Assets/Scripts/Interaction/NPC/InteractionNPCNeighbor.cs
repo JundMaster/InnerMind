@@ -1,15 +1,26 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Interaction_NPCNeighbor : Interaction_NPCBase
+public class InteractionNPCNeighbor : InteractionNPCBase
 {
+    PlayerInput input;
+
+    private void Start()
+    {
+        myText = GetComponent<NPCText>();
+        input = FindObjectOfType<PlayerInput>();
+    }
+
+
     // NPC Head
     [SerializeField] private Transform head;
-    protected override IEnumerator CoroutineInteraction()
+    public override IEnumerator CoroutineInteraction()
     {
-        PlayerMovement player = FindObjectOfType<PlayerMovement>();
-        PlayerLook playerCamera = player.GetComponentInChildren<PlayerLook>();
-        PlayerInput.ChangeTypeOfControl(TypeOfControl.InNPCInteraction);
+        PlayerMovement player;
+        player = FindObjectOfType<PlayerMovement>();
+        PlayerLook playerCamera;
+        playerCamera = player.GetComponentInChildren<PlayerLook>();
+        input.ChangeTypeOfControl(TypeOfControl.InNPCInteraction);
     
         // Smoothly rotates npc towards the player and player towards npc
         float elapsedTime = 0.0f;
@@ -90,7 +101,7 @@ public class Interaction_NPCNeighbor : Interaction_NPCBase
         yield return waitForSecs;
 
 
-        PlayerInput.ChangeTypeOfControl(TypeOfControl.InGameplay);
+        input.ChangeTypeOfControl(TypeOfControl.InGameplay);
         ThisCoroutine = default;
         yield break;
     }
@@ -100,7 +111,7 @@ public class Interaction_NPCNeighbor : Interaction_NPCBase
         yield return waitForSecs;
 
 
-        PlayerInput.ChangeTypeOfControl(TypeOfControl.InGameplay);
+        input.ChangeTypeOfControl(TypeOfControl.InGameplay);
         ThisCoroutine = default;
         yield break;
     }
@@ -110,7 +121,7 @@ public class Interaction_NPCNeighbor : Interaction_NPCBase
         yield return waitForSecs;
 
 
-        PlayerInput.ChangeTypeOfControl(TypeOfControl.InGameplay);
+        input.ChangeTypeOfControl(TypeOfControl.InGameplay);
         ThisCoroutine = default;
         yield break;
     }

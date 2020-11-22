@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PadlockButton : MonoBehaviour
 {
-    [SerializeField] private Interaction_DoorWithCode padlockDoor;
+    [SerializeField] private InteractionDoorWithCode padlockDoor;
 
     // Variables to get padlockwheels
     private GameObject[]    padlockWheelsGameObjects;
@@ -155,7 +155,6 @@ public class PadlockButton : MonoBehaviour
             padlockDoor.OpenDoor();
 
         coroutine = null;
-        Debug.Log(padlockDoor.UserCode);
     }
 
     public void BackToGameplay()

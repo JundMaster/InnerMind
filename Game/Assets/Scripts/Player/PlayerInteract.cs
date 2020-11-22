@@ -20,7 +20,7 @@ public class PlayerInteract : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerInput.CurrentControl == TypeOfControl.InGameplay)
+        if (input.CurrentControl == TypeOfControl.InGameplay)
         {
             if (input.LeftClick)
             {
@@ -28,7 +28,7 @@ public class PlayerInteract : MonoBehaviour
                     interactDistance))
                 {
                     if (hit.collider.gameObject.TryGetComponent
-                        (out IInteractable other))
+                        (out IInteract other))
                     {
                         other.Execute();
                     }

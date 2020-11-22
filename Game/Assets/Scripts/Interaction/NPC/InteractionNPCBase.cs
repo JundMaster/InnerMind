@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public abstract class Interaction_NPCBase : Interaction_CR
+public abstract class InteractionNPCBase : InteractionCR
 {
 
     [SerializeField] protected float rotationSpeedModifier;
@@ -20,15 +20,14 @@ public abstract class Interaction_NPCBase : Interaction_CR
 
     private void Start()
     {
-        myText = GetComponent<NPCText>();
-
         waitForSecs = new WaitForSeconds(secondsToWait);
         speakCounter = 0;
     }
     
     private void Update()
     {
-        myText.Counter = speakCounter;
+        if (myText != null)
+            myText.Counter = speakCounter;
     }
-    protected abstract override IEnumerator CoroutineInteraction();
+    public abstract override IEnumerator CoroutineInteraction();
 }

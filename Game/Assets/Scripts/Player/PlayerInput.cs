@@ -2,7 +2,7 @@
 
 public class PlayerInput : MonoBehaviour
 {
-    public static TypeOfControl CurrentControl { get; private set; }
+    public TypeOfControl CurrentControl { get; private set; }
     public float ZAxis { get; private set; }
     public float XAxis { get; private set; }
     public float HorizontalMouse { get; private set; }
@@ -15,9 +15,9 @@ public class PlayerInput : MonoBehaviour
     public static float MouseSpeed { get; set; }
 
     // Mouse Cursor ICON position
-    public static Vector2Int CursorPosition { get; private set; }
+    public Vector2Int CursorPosition { get; private set; }
 
-    public static void ChangeTypeOfControl(TypeOfControl control) =>
+    public void ChangeTypeOfControl(TypeOfControl control) =>
         CurrentControl = control;
 
     private void Start()

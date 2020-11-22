@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interaction_Door : Interaction_Common
+public class InteractionDoor : InteractionCommon
 {
     public override void Execute()
     {

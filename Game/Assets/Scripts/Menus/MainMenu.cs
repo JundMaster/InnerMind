@@ -4,26 +4,19 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    // Components
-    private SceneController sceneController;
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerInput.ChangeTypeOfControl(TypeOfControl.InPauseMenu);
-        sceneController = new SceneController();
-    }
-    
-    void Update()
-    {
+
         Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void StartGame()
     {
         Time.timeScale = 1f;
-        sceneController.LoadGameScene(SceneList.InteractionTest);
-        PlayerInput.ChangeTypeOfControl(TypeOfControl.InGameplay);
+        SceneManager.LoadScene("InteractionTest");
+        
     }
 
     public void QuitGame()

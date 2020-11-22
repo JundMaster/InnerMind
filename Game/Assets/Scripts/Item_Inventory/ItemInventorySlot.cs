@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Item_InventorySlot : MonoBehaviour, IPointerClickHandler
+public class ItemInventorySlot : MonoBehaviour, IPointerClickHandler
 {
     // This variable will be equal to a item in the player's bag
     public ScriptableItem Info { get; set; }

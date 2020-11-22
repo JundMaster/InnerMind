@@ -8,18 +8,18 @@ public class Inventory : MonoBehaviour
     public List<ScriptableItem> Bag { get; set; }
 
     // List of items in player's inventory
-    public Item_InventorySlot[] InventorySlot { get; private set; }
+    public ItemInventorySlot[] InventorySlot { get; private set; }
 
     private void Awake()
     {
         // Creates a list with 8 slots
         Bag = new List<ScriptableItem>(new ScriptableItem[8]);
-        InventorySlot = new Item_InventorySlot[8];
+        InventorySlot = new ItemInventorySlot[8];
 
         // GetComponentInChildren<Transform>() is the "Grid" child
         // Fills every InventorySlot index with Item_InventorySlot in children
         InventorySlot = GetComponentInChildren<Transform>().
-                        GetComponentsInChildren<Item_InventorySlot>();
+                        GetComponentsInChildren<ItemInventorySlot>();
     }
 
 

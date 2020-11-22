@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interaction_Item : Interaction_ItemBase
+public class InteractionItem : InteractionItemBase
 {
     public override void Execute()
     {

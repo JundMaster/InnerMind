@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
             obstacleLayer);
 
         // If in gameplay
-        if (PlayerInput.CurrentControl == TypeOfControl.InGameplay)
+        if (input.CurrentControl == TypeOfControl.InGameplay)
         {
             // If there's no floor in front, the player will stop
             if (groundCheckCollider.Length == 0)

@@ -22,7 +22,7 @@ public class PlayerLook : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerInput.CurrentControl == TypeOfControl.InGameplay)
+        if (input.CurrentControl == TypeOfControl.InGameplay)
         {
             // Clamps vertical axis
             VerticalRotation -= input.VerticalMouse * 
@@ -36,7 +36,7 @@ public class PlayerLook : MonoBehaviour
             player.Rotate(Vector3.up * input.HorizontalMouse * 
                 PlayerInput.MouseSpeed * Time.deltaTime);
         }
-        else if (PlayerInput.CurrentControl == TypeOfControl.InCutscene)
+        else if (input.CurrentControl == TypeOfControl.InCutscene)
         {
             // Clamps vertical axis
             VerticalRotation -= input.VerticalMouse *

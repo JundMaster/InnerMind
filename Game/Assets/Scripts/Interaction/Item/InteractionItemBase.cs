@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class Interaction_ItemBase : Interaction_Common
+public abstract class InteractionItemBase : InteractionCommon
 {
     [SerializeField] protected ScriptableItem info;
 

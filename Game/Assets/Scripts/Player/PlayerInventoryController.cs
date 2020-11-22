@@ -49,7 +49,7 @@ public class PlayerInventoryController : MonoBehaviour
     private void ExamineItem(ScriptableItem item)
     {
         Camera examineCamera = FindObjectOfType<ExamineMenu>().ExamineCamera;
-        PlayerInput.ChangeTypeOfControl(TypeOfControl.InExamine);        
+        input.ChangeTypeOfControl(TypeOfControl.InExamine);        
         examiner.SetExaminer(new ItemExaminer(5, item, examineCamera));
     }
 
@@ -61,27 +61,27 @@ public class PlayerInventoryController : MonoBehaviour
         {
             LastClickedItemInfo = item;
             Cursor.SetCursor(LastClickedItemInfo.CursorTexture,
-                            PlayerInput.CursorPosition, CursorMode.Auto);
+                            input.CursorPosition, CursorMode.Auto);
         }
         // If the new selected item is different from the other item
         else if (LastClickedItemInfo != item)
         {
             itemCombine.CombineItem(item, LastClickedItemInfo, inventory);
             LastClickedItemInfo = null;
-            Cursor.SetCursor(default, PlayerInput.CursorPosition, CursorMode.Auto);
+            Cursor.SetCursor(default, input.CursorPosition, CursorMode.Auto);
         }
     }
 
     // Changes actions depending on the current control type
     private void ChangeControl()
     {
-        if (PlayerInput.CurrentControl == TypeOfControl.InGameplay  ||
-            PlayerInput.CurrentControl == TypeOfControl.InInventory ||
-            PlayerInput.CurrentControl == TypeOfControl.InExamine)
+        if (input.CurrentControl == TypeOfControl.InGameplay  ||
+            input.CurrentControl == TypeOfControl.InInventory ||
+            input.CurrentControl == TypeOfControl.InExamine)
         {
             if (input.RightClick || input.MiddleClick)
             {
-                switch (PlayerInput.CurrentControl)
+                switch (input.CurrentControl)
                 {
                     case TypeOfControl.InGameplay:
 
@@ -94,7 +94,7 @@ public class PlayerInventoryController : MonoBehaviour
                         {
                             LastClickedItemInfo = null;
                             Cursor.SetCursor(default, 
-                                            PlayerInput.CursorPosition,
+                                            input.CursorPosition,
                                             CursorMode.Auto);
                         }
                         else
@@ -110,7 +110,7 @@ public class PlayerInventoryController : MonoBehaviour
                             {
                                 examiner.DestroyExaminer();
 
-                                PlayerInput.ChangeTypeOfControl(
+                                input.ChangeTypeOfControl(
                                             TypeOfControl.InInventory);
                             }
                         }

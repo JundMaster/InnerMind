@@ -27,13 +27,13 @@ public class UICrosshair : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerInput.CurrentControl == TypeOfControl.InGameplay)
+        if (input.CurrentControl == TypeOfControl.InGameplay)
         {
             if (Physics.Raycast(ray.RayToMouse, out RaycastHit hit,
                     interact.InteractDistance))
             {
                 if (hit.collider.gameObject.TryGetComponent
-                    (out IInteractable other))
+                    (out IInteract other))
                 {
                     if (actionTextGameObject.activeSelf == false)
                         actionTextGameObject.SetActive(true);
