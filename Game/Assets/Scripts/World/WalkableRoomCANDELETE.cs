@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-sealed public class WalkableRoom : MonoBehaviour
+sealed public class WalkableRoomCANDELETE : MonoBehaviour
 {
     private BoxCollider roomCollider;
 
@@ -20,9 +20,9 @@ sealed public class WalkableRoom : MonoBehaviour
         }
 
         // Sets the collider with the new measures
-        roomCollider.center = new Vector3(0, roomBounds.size.y / 2f, 0);
-        roomCollider.size = new Vector3(roomBounds.size.x - 0.60f,
-            roomBounds.size.y - 0.60f, roomBounds.size.z - 0.60f);
+        roomCollider.center = new Vector3(0f, 0f, 0f);
+        roomCollider.size = new Vector3(roomBounds.size.x - 1.5f,
+            roomBounds.size.y - 1.5f, roomBounds.size.z - 1.5f);
         roomCollider.isTrigger = true;
     }
 }
