@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1496,7 +1496,7 @@ LightingSettings:
   m_BakeResolution: 40
   m_Padding: 2
   m_TextureCompression: 1
-  m_AO: 0
+  m_AO: 1
   m_AOMaxDistance: 1
   m_CompAOExponent: 1
   m_CompAOExponentDirect: 0
@@ -22981,8 +22981,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 425555427}
     m_Modifications:
     - target: {fileID: 9024197372297311727, guid: 0388a5d20a6bde24084f6d1da5499a11, type: 3}
+      propertyPath: m_Range
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 9024197372297311727, guid: 0388a5d20a6bde24084f6d1da5499a11, type: 3}
       propertyPath: m_DrawHalo
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9024197372297311727, guid: 0388a5d20a6bde24084f6d1da5499a11, type: 3}
+      propertyPath: m_Intensity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9024197372297311727, guid: 0388a5d20a6bde24084f6d1da5499a11, type: 3}
       propertyPath: m_Lightmapping
@@ -23006,15 +23014,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9024197372297311727, guid: 0388a5d20a6bde24084f6d1da5499a11, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 0.0000000018117134
+      value: 1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 9024197372297311727, guid: 0388a5d20a6bde24084f6d1da5499a11, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 0
+      value: 3e-45
       objectReference: {fileID: 0}
     - target: {fileID: 9024197372297311727, guid: 0388a5d20a6bde24084f6d1da5499a11, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 3.2056e-41
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9024197372297311727, guid: 0388a5d20a6bde24084f6d1da5499a11, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9024197372347014384, guid: 0388a5d20a6bde24084f6d1da5499a11, type: 3}
       propertyPath: m_RootOrder
