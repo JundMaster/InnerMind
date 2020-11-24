@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-sealed public class CutsceneControl : MonoBehaviour
+sealed public class OnCutsceneAwake : MonoBehaviour
 {
     private PlayerInput input;
     private void Awake()
