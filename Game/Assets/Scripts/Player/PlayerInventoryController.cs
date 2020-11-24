@@ -32,13 +32,22 @@ public class PlayerInventoryController : MonoBehaviour
         pauseMenu = FindObjectOfType<PauseMenu>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         // Runs UseItem when an item is clicked
         for (int i = 0; i < inventory.InventorySlot.Length; i++)
         {
             inventory.InventorySlot[i].OnLeftClickEvent += SelectItem;
             inventory.InventorySlot[i].OnMiddleClickEvent += ExamineItem;
+        }
+    }
+
+    private void OnDisable()
+    {
+        for (int i = 0; i < inventory.InventorySlot.Length; i++)
+        {
+            inventory.InventorySlot[i].OnLeftClickEvent -= SelectItem;
+            inventory.InventorySlot[i].OnMiddleClickEvent -= ExamineItem;
         }
     }
 
