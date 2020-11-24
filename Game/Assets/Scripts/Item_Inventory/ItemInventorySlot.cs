@@ -10,29 +10,20 @@ public class ItemInventorySlot : MonoBehaviour, IPointerClickHandler
 
     private Image image;
 
-    // Events on clicks
-    public event Action<ScriptableItem> OnLeftClickEvent;
-    public event Action<ScriptableItem> OnMiddleClickEvent;
+    // Click event
+    public event Action<ScriptableItem, PointerEventData.InputButton> SlotClick;
+
+    public PointerEventData.InputButton inputButton { get; private set; }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        // Gets left click
-        if (eventData != null && eventData.button ==
-            PointerEventData.InputButton.Left)
-        {
-            if (Info != null && OnLeftClickEvent != null)
-            {
-                // Gets left click as a ScriptableItem
-                OnLeftClickEvent(Info);
-            }
-        }
 
-        if (eventData != null && eventData.button ==
-            PointerEventData.InputButton.Middle)
+        if (eventData != null)
         {
-            if(Info != null && OnMiddleClickEvent != null)
+            if (Info != null && SlotClick != null)
             {
-                OnMiddleClickEvent(Info);
+                inputButton = eventData.button;
+                SlotClick.Invoke(Info, inputButton);
             }
         }
     }
