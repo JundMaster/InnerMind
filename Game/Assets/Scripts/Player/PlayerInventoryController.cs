@@ -35,6 +35,7 @@ public class PlayerInventoryController : MonoBehaviour
     private void OnEnable()
     {
         input.ChangeControl += ChangeControl;
+        // Debug.Log("PlayerInventoryController");
         // Runs UseItem when an item is clicked
         for (int i = 0; i < inventory.InventorySlot.Length; i++)
         {
@@ -102,7 +103,6 @@ public class PlayerInventoryController : MonoBehaviour
             case TypeOfControl.InGameplay:
                 {
                     anim.SetTrigger("showInventory");
-                    Debug.Log("k");
                     break;
                 }
 

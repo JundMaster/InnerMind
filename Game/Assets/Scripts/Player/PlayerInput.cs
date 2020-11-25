@@ -9,7 +9,17 @@ public class PlayerInput : MonoBehaviour
     public float HorizontalMouse { get; private set; }
     public float VerticalMouse { get; private set; }
     public bool LeftClick { get; private set; }
-    public bool RightClick { get; private set; }
+    private bool rightClick;
+    public bool RightClick
+    {
+        get => rightClick;
+        private set
+        {
+            rightClick = value;
+            if (rightClick)
+                OnChangeControlClick();
+        }
+    }
     public bool MiddleClick { get; private set; }
     public bool Pause { get; private set; }
     public bool Enter { get; private set; }
@@ -23,8 +33,7 @@ public class PlayerInput : MonoBehaviour
 
     private void OnChangeControlClick()
     {
-        if (ChangeControl != null)
-            ChangeControl.Invoke();
+        ChangeControl?.Invoke();
     }
     public event Action ChangeControl;
 
@@ -55,7 +64,7 @@ public class PlayerInput : MonoBehaviour
 
                 // Gets right click
                 RightClick = Input.GetButtonDown("Fire2");
-                if (RightClick) OnChangeControlClick();
+                // if (RightClick) OnChangeControlClick();
 
                 // Gets middle click                
                 MiddleClick = Input.GetButtonDown("Fire3");
@@ -79,7 +88,7 @@ public class PlayerInput : MonoBehaviour
 
                 // Gets right click
                 RightClick = Input.GetButtonDown("Fire2");
-                if (RightClick) OnChangeControlClick();
+                // if (RightClick) OnChangeControlClick();
 
                 // Gets ESC key
                 Pause = Input.GetKeyDown(KeyCode.P);
@@ -93,7 +102,7 @@ public class PlayerInput : MonoBehaviour
 
                 // Gets right click
                 RightClick = Input.GetButtonDown("Fire2");
-                if (RightClick) OnChangeControlClick();
+                // if (RightClick) OnChangeControlClick();
 
                 // Gets the ESC key
                 Pause = Input.GetKeyDown(KeyCode.P);

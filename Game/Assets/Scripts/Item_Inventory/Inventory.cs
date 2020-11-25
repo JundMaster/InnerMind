@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour
     {
         // Creates a list with 8 slots
         Bag = new List<ScriptableItem>(new ScriptableItem[8]);
+
         InventorySlot = new ItemInventorySlot[8];
 
         // GetComponentInChildren<Transform>() is the "Grid" child
@@ -21,7 +22,6 @@ public class Inventory : MonoBehaviour
         InventorySlot = GetComponentInChildren<Transform>().
                         GetComponentsInChildren<ItemInventorySlot>();
     }
-
 
     private void Update()
     {

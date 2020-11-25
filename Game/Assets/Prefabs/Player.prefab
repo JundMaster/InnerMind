@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 872244573}
   - component: {fileID: 872244575}
   - component: {fileID: 872244574}
+  - component: {fileID: 511084295}
+  - component: {fileID: 511084294}
   m_Layer: 8
   m_Name: Body(CAN DELETE)
   m_TagString: Untagged
@@ -81,6 +83,44 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!320 &511084295
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872244572}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 0}
+    value: {fileID: 511084294}
+  m_ExposedReferences:
+    m_References: []
+--- !u!95 &511084294
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872244572}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1182740221
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,6 +490,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112904593e86187489d651c55702dec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingControl: 0
+  startingRoom: 0
 --- !u!114 &3119641766379246845
 MonoBehaviour:
   m_ObjectHideFlags: 0
