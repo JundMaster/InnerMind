@@ -9,7 +9,7 @@ sealed public class MirrorPuzzleCube : InteractionCommon
 
     public override void Execute()
     {
-        CubePosition(cubePos);
+        CubePosition?.Invoke(cubePos);
     }
 
     public event Action<LeftMiddleRight> CubePosition;
