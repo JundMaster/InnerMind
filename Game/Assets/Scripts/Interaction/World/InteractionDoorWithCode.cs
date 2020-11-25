@@ -59,6 +59,8 @@ public class InteractionDoorWithCode : InteractionCommon
         Animator doorAnimation = GetComponentInParent<Animator>();
         doorAnimation.SetTrigger("Open Door");
 
+        OnDoorOpened();
+
         Destroy(newPadlock);
         padlockCanvas.SetActive(false);
         input.ChangeTypeOfControl(TypeOfControl.InGameplay);
@@ -70,6 +72,13 @@ public class InteractionDoorWithCode : InteractionCommon
         padlockCanvas.SetActive(false);
         input.ChangeTypeOfControl(TypeOfControl.InGameplay);
     }
+
+    private void OnDoorOpened()
+    {
+        DoorOpened?.Invoke();
+    }
+
+    public event Action DoorOpened;
 
     public override string ToString() => "Open Locked Door";
 }
