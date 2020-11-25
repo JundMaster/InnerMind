@@ -17,14 +17,14 @@ public class PlayerMovement : MonoBehaviour
     private Coroutine CR_ChangeWall;
 
     // Components
-    private GameManager manager;
+    private PlayerGeneralInfo playerInfo;
     private Rigidbody   rb;
     private PlayerInput input;
     private PlayerRays  rays;
 
     private void Start()
     {
-        manager = FindObjectOfType<GameManager>();
+        playerInfo = GetComponent<PlayerGeneralInfo>();
         rb = GetComponent<Rigidbody>();
         input = GetComponent<PlayerInput>();
         rays = GetComponent<PlayerRays>();
@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         // Only runs if the player is in a WallWalkRoom
-        if (manager.CurrentTypeOfRoom == TypeOfRoom.WalkableWalls)
+        if (playerInfo.CurrentTypeOfRoom == TypeOfRoom.WalkableWalls)
         {
             ChangeFace();
         }
@@ -139,14 +139,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("WallWalkRoom"))
         {
-            manager.CurrentTypeOfRoom = TypeOfRoom.WalkableWalls;
+            playerInfo.CurrentTypeOfRoom = TypeOfRoom.WalkableWalls;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("WallWalkRoom"))
         {
-            manager.CurrentTypeOfRoom = TypeOfRoom.NonWalkableWalls;
+            playerInfo.CurrentTypeOfRoom = TypeOfRoom.NonWalkableWalls;
         }
     }
 

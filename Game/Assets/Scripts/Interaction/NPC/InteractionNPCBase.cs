@@ -13,5 +13,5 @@ public abstract class InteractionNPCBase : InteractionCR
     // Dialog for a npc
     protected DialogText dialog;
 
-    public abstract override IEnumerator CoroutineInteraction();
+    public abstract override IEnumerator CoroutineExecute();
 }

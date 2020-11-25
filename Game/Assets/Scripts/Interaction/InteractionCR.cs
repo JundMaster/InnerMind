@@ -6,8 +6,8 @@ public abstract class InteractionCR : InteractionCommon, ICoroutine
     public override void Execute()
     {
         if (ThisCoroutine == null)
-            ThisCoroutine = StartCoroutine(CoroutineInteraction());
+            ThisCoroutine = StartCoroutine(CoroutineExecute());
     }
 
-    public abstract IEnumerator CoroutineInteraction();
+    public abstract IEnumerator CoroutineExecute();
 }

@@ -27,7 +27,7 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         dialog.Counter = speakCounter;
     }
 
-    public override IEnumerator CoroutineInteraction()
+    public override IEnumerator CoroutineExecute()
     {
         input.ChangeTypeOfControl(TypeOfControl.InNPCInteraction);
 

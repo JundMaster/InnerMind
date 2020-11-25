@@ -1,10 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MirrorPuzzleCubeParent : MonoBehaviour
+public class MirrorPuzzleCubeParent : MonoBehaviour, ICoroutineT<LeftMiddleRight>
 {
-    public Coroutine thisCoroutine;
+    public Coroutine ThisCoroutine { get; private set; }
 
     // Correct position to solve puzzle
     [SerializeField] private LeftMiddleRight correctPosition;
@@ -28,7 +27,7 @@ public class MirrorPuzzleCubeParent : MonoBehaviour
 
         room2 = FindObjectOfType<Room2>();
 
-        thisCoroutine = null;
+        ThisCoroutine = null;
     }
 
     // On cube interaction, calls Move method
@@ -51,25 +50,25 @@ public class MirrorPuzzleCubeParent : MonoBehaviour
     // If max position isn't reached, starts a coroutine to move the block
     private void Move(LeftMiddleRight dir)
     {
-        if (room2.Victory == false)
+        if (room2.FinishedPuzzle == false)
         {
             switch (dir)
             {
                 case LeftMiddleRight.Left:
                     if (currentPosition > LeftMiddleRight.Left)
                     {
-                        if (thisCoroutine == null)
-                            thisCoroutine = StartCoroutine(
-                                CoroutineMove(LeftMiddleRight.Left));
+                        if (ThisCoroutine == null)
+                            ThisCoroutine = StartCoroutine(
+                                CoroutineExecute(LeftMiddleRight.Left));
                     }
                     else { }
                     break;
                 case LeftMiddleRight.Right:
                     if (currentPosition < LeftMiddleRight.Right)
                     {
-                        if (thisCoroutine == null)
-                            thisCoroutine = StartCoroutine(
-                                CoroutineMove(LeftMiddleRight.Right));
+                        if (ThisCoroutine == null)
+                            ThisCoroutine = StartCoroutine(
+                                CoroutineExecute(LeftMiddleRight.Right));
                     }
                     else { }
                     break;
@@ -78,7 +77,7 @@ public class MirrorPuzzleCubeParent : MonoBehaviour
     }
 
     // Changes current position and moves the block
-    public IEnumerator CoroutineMove(LeftMiddleRight dir)
+    public IEnumerator CoroutineExecute(LeftMiddleRight dir)
     {
         float direction;
         if (dir == LeftMiddleRight.Left)
@@ -109,8 +108,8 @@ public class MirrorPuzzleCubeParent : MonoBehaviour
         else
             InCorrectPosition = false;
 
-        room2.VictoryCondition();
+        room2.VictoryCheck();
 
-        thisCoroutine = null;
+        ThisCoroutine = null;
     }
 }

@@ -3,6 +3,6 @@ using UnityEngine;
 
 public interface ICoroutine
 {
-    Coroutine ThisCoroutine { get; set; }
-    IEnumerator CoroutineInteraction();
+    Coroutine ThisCoroutine { get; }
+    IEnumerator CoroutineExecute();
 }
