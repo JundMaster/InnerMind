@@ -17,21 +17,6 @@ public class PlayerInput : MonoBehaviour
 
     // Mouse Cursor ICON position
     public Vector2Int CursorPosition { get; private set; }
-    private bool changeControlClick;
-    // Command to change to CurrentControl
-    public bool ChangeControlClick
-    {
-        get => changeControlClick;
-        private set
-        {
-            if (changeControlClick != value)
-            {
-                changeControlClick = value;
-                // Calls method that invokes the ChangeControl event
-                OnChangeControlClick();
-            }
-        }
-    }
 
     public void ChangeTypeOfControl(TypeOfControl control) =>
         CurrentControl = control;
@@ -70,14 +55,13 @@ public class PlayerInput : MonoBehaviour
 
                 // Gets right click
                 RightClick = Input.GetButtonDown("Fire2");
+                if (RightClick) OnChangeControlClick();
 
                 // Gets middle click                
                 MiddleClick = Input.GetButtonDown("Fire3");
 
                 // Gets ESC key
                 Pause = Input.GetKeyDown(KeyCode.P);
-
-                ChangeControlClick = RightClick;
 
                 break;
 
@@ -92,30 +76,33 @@ public class PlayerInput : MonoBehaviour
 
             case TypeOfControl.InInventory:
                 Cursor.lockState = CursorLockMode.Confined;
+
                 // Gets right click
                 RightClick = Input.GetButtonDown("Fire2");
+                if (RightClick) OnChangeControlClick();
 
                 // Gets ESC key
                 Pause = Input.GetKeyDown(KeyCode.P);
-
-                ChangeControlClick = RightClick;
 
                 break;
 
             case TypeOfControl.InExamine:
                 Cursor.lockState = CursorLockMode.Locked;
-                // Gets right click
-                RightClick = Input.GetButtonDown("Fire2");
                 // Gets left click
                 LeftClick = Input.GetButton("Fire1");
+
+                // Gets right click
+                RightClick = Input.GetButtonDown("Fire2");
+                if (RightClick) OnChangeControlClick();
+
                 // Gets the ESC key
                 Pause = Input.GetKeyDown(KeyCode.P);
+
                 // Gets horizontal movement
                 HorizontalMouse = Input.GetAxis("Mouse X");
+
                 // Get vertical movement
                 VerticalMouse = Input.GetAxis("Mouse Y");
-
-                ChangeControlClick = RightClick;
 
                 break;
 
@@ -123,6 +110,7 @@ public class PlayerInput : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Confined;
                 // Gets ESC key
                 Pause = Input.GetKeyDown(KeyCode.P);
+
                 // Gets left click
                 LeftClick = Input.GetButtonDown("Fire1");
 
@@ -138,11 +126,12 @@ public class PlayerInput : MonoBehaviour
 
             case TypeOfControl.InCutscene:
                 Cursor.lockState = CursorLockMode.Locked;
-
                 // Gets ESC key
                 Pause = Input.GetKeyDown(KeyCode.P);
+
                 // Gets horizontal movement
                 HorizontalMouse = Input.GetAxis("Mouse X");
+
                 // Get vertical movement
                 VerticalMouse = Input.GetAxis("Mouse Y");
 

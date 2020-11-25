@@ -97,48 +97,46 @@ public class PlayerInventoryController : MonoBehaviour
     // Changes actions depending on the current control type
     private void ChangeControl()
     {
-        if (input.ChangeControlClick)
+        switch (input.CurrentControl)
         {
-            switch (input.CurrentControl)
-            {
-                case TypeOfControl.InGameplay:
+            case TypeOfControl.InGameplay:
+                {
+                    anim.SetTrigger("showInventory");
+                    Debug.Log("k");
+                    break;
+                }
+
+            case TypeOfControl.InInventory:
+                {
+                    if (LastClickedItemInfo != null)
                     {
-                        anim.SetTrigger("showInventory");
-                        break;
+                        LastClickedItemInfo = null;
+                        Cursor.SetCursor(default,
+                                        input.CursorPosition,
+                                        CursorMode.Auto);
                     }
-
-                case TypeOfControl.InInventory:
+                    else
                     {
-                        if (LastClickedItemInfo != null)
-                        {
-                            LastClickedItemInfo = null;
-                            Cursor.SetCursor(default,
-                                            input.CursorPosition,
-                                            CursorMode.Auto);
-                        }
-                        else
-                        {
-                            anim.SetTrigger("hideInventory");
-                        }
-                        break;
+                        anim.SetTrigger("hideInventory");
                     }
+                    break;
+                }
 
-                case TypeOfControl.InExamine:
+            case TypeOfControl.InExamine:
+                {
+                    if (LastClickedItemInfo == null)
                     {
-                        if (LastClickedItemInfo == null)
+                        if (examiner != null)
                         {
-                            if (examiner != null)
-                            {
-                                examiner.DestroyExaminer();
+                            examiner.DestroyExaminer();
 
-                                input.ChangeTypeOfControl(
-                                            TypeOfControl.InInventory);
-                            }
+                            input.ChangeTypeOfControl(
+                                        TypeOfControl.InInventory);
                         }
-                        break;
                     }
+                    break;
+                }
 
-            }
         }
     }
 }
