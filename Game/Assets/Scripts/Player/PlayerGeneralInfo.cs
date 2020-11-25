@@ -10,6 +10,8 @@ public class PlayerGeneralInfo : MonoBehaviour
     private PlayerInput input;
 
     public PuzzlesEnum PuzzlesDone { get; set; }
+    // Current puzle the player is in (for assist mode)
+    private PuzzlesEnum currentPuzzle;
     public TypeOfRoom CurrentTypeOfRoom { get; set; }
     private void Awake()
     {
