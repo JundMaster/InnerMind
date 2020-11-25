@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -16,9 +17,31 @@ public class PlayerInput : MonoBehaviour
 
     // Mouse Cursor ICON position
     public Vector2Int CursorPosition { get; private set; }
+    private bool changeControlClick;
+    // Command to change to CurrentControl
+    public bool ChangeControlClick
+    {
+        get => changeControlClick;
+        private set
+        {
+            if (changeControlClick != value)
+            {
+                changeControlClick = value;
+                // Calls method that invokes the ChangeControl event
+                OnChangeControlClick();
+            }
+        }
+    }
 
     public void ChangeTypeOfControl(TypeOfControl control) =>
         CurrentControl = control;
+
+    private void OnChangeControlClick()
+    {
+        if (ChangeControl != null)
+            ChangeControl.Invoke();
+    }
+    public event Action ChangeControl;
 
     private void Start()
     {
@@ -48,8 +71,13 @@ public class PlayerInput : MonoBehaviour
                 // Gets right click
                 RightClick = Input.GetButtonDown("Fire2");
 
+                // Gets middle click                
+                MiddleClick = Input.GetButtonDown("Fire3");
+
                 // Gets ESC key
                 Pause = Input.GetKeyDown(KeyCode.P);
+
+                ChangeControlClick = RightClick;
 
                 break;
 
@@ -70,6 +98,8 @@ public class PlayerInput : MonoBehaviour
                 // Gets ESC key
                 Pause = Input.GetKeyDown(KeyCode.P);
 
+                ChangeControlClick = RightClick;
+
                 break;
 
             case TypeOfControl.InExamine:
@@ -84,6 +114,8 @@ public class PlayerInput : MonoBehaviour
                 HorizontalMouse = Input.GetAxis("Mouse X");
                 // Get vertical movement
                 VerticalMouse = Input.GetAxis("Mouse Y");
+
+                ChangeControlClick = RightClick;
 
                 break;
 

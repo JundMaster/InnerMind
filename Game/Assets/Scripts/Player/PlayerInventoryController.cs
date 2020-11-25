@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class PlayerInventoryController : MonoBehaviour
@@ -18,7 +19,6 @@ public class PlayerInventoryController : MonoBehaviour
     // Controlling Items
     private ScriptableItem LastClickedItemInfo;
 
-
     private void Awake()
     {
         inventory = FindObjectOfType<Inventory>();
@@ -34,35 +34,44 @@ public class PlayerInventoryController : MonoBehaviour
 
     private void OnEnable()
     {
+        input.ChangeControl += ChangeControl;
         // Runs UseItem when an item is clicked
         for (int i = 0; i < inventory.InventorySlot.Length; i++)
         {
-            inventory.InventorySlot[i].OnLeftClickEvent += SelectItem;
-            inventory.InventorySlot[i].OnMiddleClickEvent += ExamineItem;
+            inventory.InventorySlot[i].SlotClick += ClickAction;
         }
     }
 
     private void OnDisable()
     {
+        input.ChangeControl -= ChangeControl;
         for (int i = 0; i < inventory.InventorySlot.Length; i++)
         {
-            inventory.InventorySlot[i].OnLeftClickEvent -= SelectItem;
-            inventory.InventorySlot[i].OnMiddleClickEvent -= ExamineItem;
+            inventory.InventorySlot[i].SlotClick -= ClickAction;
         }
     }
 
     private void Update()
     {
-        ChangeControl();
-
         if (pauseMenu.Gamepaused) LastClickedItemInfo = null;
+    }
+
+    private void ClickAction(ScriptableItem item,
+                             PointerEventData.InputButton inputButton)
+    {
+        if (inputButton == PointerEventData.InputButton.Left)
+            SelectItem(item);
+
+        else if (inputButton == PointerEventData.InputButton.Middle)
+            ExamineItem(item);
+
     }
 
     // The item is the item that the player clicked
     private void ExamineItem(ScriptableItem item)
     {
         Camera examineCamera = FindObjectOfType<ExamineMenu>().ExamineCamera;
-        input.ChangeTypeOfControl(TypeOfControl.InExamine);        
+        input.ChangeTypeOfControl(TypeOfControl.InExamine);
         examiner.SetExaminer(new ItemExaminer(5, item, examineCamera));
     }
 
@@ -88,25 +97,22 @@ public class PlayerInventoryController : MonoBehaviour
     // Changes actions depending on the current control type
     private void ChangeControl()
     {
-        if (input.CurrentControl == TypeOfControl.InGameplay  ||
-            input.CurrentControl == TypeOfControl.InInventory ||
-            input.CurrentControl == TypeOfControl.InExamine)
+        if (input.ChangeControlClick)
         {
-            if (input.RightClick || input.MiddleClick)
+            switch (input.CurrentControl)
             {
-                switch (input.CurrentControl)
-                {
-                    case TypeOfControl.InGameplay:
-
+                case TypeOfControl.InGameplay:
+                    {
                         anim.SetTrigger("showInventory");
                         break;
+                    }
 
-                    case TypeOfControl.InInventory:
-
+                case TypeOfControl.InInventory:
+                    {
                         if (LastClickedItemInfo != null)
                         {
                             LastClickedItemInfo = null;
-                            Cursor.SetCursor(default, 
+                            Cursor.SetCursor(default,
                                             input.CursorPosition,
                                             CursorMode.Auto);
                         }
@@ -115,8 +121,10 @@ public class PlayerInventoryController : MonoBehaviour
                             anim.SetTrigger("hideInventory");
                         }
                         break;
+                    }
 
-                    case TypeOfControl.InExamine:
+                case TypeOfControl.InExamine:
+                    {
                         if (LastClickedItemInfo == null)
                         {
                             if (examiner != null)
@@ -128,7 +136,8 @@ public class PlayerInventoryController : MonoBehaviour
                             }
                         }
                         break;
-                }
+                    }
+
             }
         }
     }
