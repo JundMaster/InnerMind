@@ -71,6 +71,9 @@ public class PlayerInventoryController : MonoBehaviour
     // The item is the item that the player clicked
     private void ExamineItem(ScriptableItem item)
     {
+        if (LastClickedItemInfo != null)
+            return;
+            
         Camera examineCamera = FindObjectOfType<ExamineMenu>().ExamineCamera;
         input.ChangeTypeOfControl(TypeOfControl.InExamine);
         examiner.SetExaminer(new ItemExaminer(5, item, examineCamera));
