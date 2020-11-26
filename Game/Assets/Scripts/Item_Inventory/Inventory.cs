@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
     // List of items that player has ( what player actually has on inventory )
-    public List<ScriptableItem> Bag { get; set; }
+    public ObservableList<ScriptableItem> Bag;
 
     // List of items in player's inventory
     public ItemInventorySlot[] InventorySlot { get; private set; }
@@ -13,8 +15,8 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         // Creates a list with 8 slots
-        Bag = new List<ScriptableItem>(new ScriptableItem[8]);
-
+        Bag = new ObservableList<ScriptableItem>(new ScriptableItem[8]);
+        
         InventorySlot = new ItemInventorySlot[8];
 
         // GetComponentInChildren<Transform>() is the "Grid" child
@@ -22,13 +24,30 @@ public class Inventory : MonoBehaviour
         InventorySlot = GetComponentInChildren<Transform>().
                         GetComponentsInChildren<ItemInventorySlot>();
     }
-
-    private void Update()
+    private void OnEnable()
     {
-        // Sets the UI items equal to bag items
+        Bag.CollectionChanged += UpdateUI;
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("OnDisable Inventory");
+        Bag.CollectionChanged -= UpdateUI;
+    }
+
+    private void UpdateUI(object sender, NotifyCollectionChangedEventArgs e)
+    {
+        Debug.Log("UpdateUI has been INVOKED!!!");
+        SortBag();
         for (int i = 0; i < InventorySlot.Length; i++)
         {
             InventorySlot[i].Info = Bag[i];
         }
+    }
+
+    private void SortBag()
+    {
+        Bag.Sort();
+        Bag.Reverse();
     }
 }

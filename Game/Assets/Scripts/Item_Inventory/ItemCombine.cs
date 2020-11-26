@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemCombine : ICombinable<ScriptableItem>
 {
-    public void CombineItem(ScriptableItem item1, ScriptableItem item2, 
+    public void CombineItem(ScriptableItem item1, ScriptableItem item2,
                             Inventory inventory)
     {
         ListOfItems combinationResults =
@@ -16,11 +16,7 @@ public class ItemCombine : ICombinable<ScriptableItem>
             {
                 inventory.Bag.Remove(item1);
                 inventory.Bag.Remove(item2);
-
                 inventory.Bag.Add(item1.CombinationItem);
-
-                inventory.Bag.Sort();
-                inventory.Bag.Reverse();
             }
         }
     }
