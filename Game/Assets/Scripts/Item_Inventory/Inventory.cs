@@ -31,13 +31,11 @@ public class Inventory : MonoBehaviour
 
     private void OnDisable()
     {
-        Debug.Log("OnDisable Inventory");
         Bag.CollectionChanged -= UpdateUI;
     }
 
     private void UpdateUI(object sender, NotifyCollectionChangedEventArgs e)
     {
-        Debug.Log("UpdateUI has been INVOKED!!!");
         SortBag();
         for (int i = 0; i < InventorySlot.Length; i++)
         {

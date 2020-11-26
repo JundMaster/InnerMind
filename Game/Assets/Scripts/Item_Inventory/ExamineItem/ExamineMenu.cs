@@ -15,16 +15,13 @@ public class ExamineMenu : MonoBehaviour
         input = FindObjectOfType<PlayerInput>();
     }
 
-    private void Update()
-    {
-        DisplayExamineMenu();
-    }
-
-    private void DisplayExamineMenu()
+    public void DisplayExamineMenu()
     {
         if (input.CurrentControl == TypeOfControl.InExamine)
             examineMenu.SetActive(true);
-        else
-            examineMenu.SetActive(false);
+    }
+    public void HideDisplayMenu()
+    {
+        examineMenu.SetActive(false);
     }
 }
