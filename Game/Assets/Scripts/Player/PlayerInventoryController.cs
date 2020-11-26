@@ -37,10 +37,15 @@ public class PlayerInventoryController : MonoBehaviour
         input.ChangeControl += ChangeControl;
         // Debug.Log("PlayerInventoryController");
         // Runs UseItem when an item is clicked
-        for (int i = 0; i < inventory.InventorySlot.Length; i++)
+        if (inventory.InventorySlot != null)
         {
-            inventory.InventorySlot[i].SlotClick += ClickAction;
+            for (int i = 0; i < inventory.InventorySlot.Length; i++)
+            {
+
+                inventory.InventorySlot[i].SlotClick += ClickAction;
+            }
         }
+
     }
 
     private void OnDisable()
@@ -73,7 +78,7 @@ public class PlayerInventoryController : MonoBehaviour
     {
         if (LastClickedItemInfo != null)
             return;
-            
+
         Camera examineCamera = FindObjectOfType<ExamineMenu>().ExamineCamera;
         input.ChangeTypeOfControl(TypeOfControl.InExamine);
         examiner.SetExaminer(new ItemExaminer(5, item, examineCamera));

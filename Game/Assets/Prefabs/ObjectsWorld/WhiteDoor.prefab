@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8529491260539718978}
   - component: {fileID: 1579619917}
   - component: {fileID: 1579619913}
-  - component: {fileID: 1579619916}
+  - component: {fileID: 264572927334374497}
   m_Layer: 0
   m_Name: doorWing
   m_TagString: Untagged
@@ -198,7 +198,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1579619916
+--- !u!114 &264572927334374497
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
