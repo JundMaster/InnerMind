@@ -8,6 +8,7 @@ public class PlayerInventoryController : MonoBehaviour
 
     // Actions In inventory
     private Examiner examiner;
+    private ExamineMenu examineMenu;
     private ItemCombine itemCombine;
 
     // Components
@@ -22,7 +23,7 @@ public class PlayerInventoryController : MonoBehaviour
     private void Awake()
     {
         inventory = FindObjectOfType<Inventory>();
-
+        examineMenu = FindObjectOfType<ExamineMenu>();
         examiner = FindObjectOfType<Examiner>();
         itemCombine = new ItemCombine();
 
@@ -37,10 +38,15 @@ public class PlayerInventoryController : MonoBehaviour
         input.ChangeControl += ChangeControl;
         // Debug.Log("PlayerInventoryController");
         // Runs UseItem when an item is clicked
-        for (int i = 0; i < inventory.InventorySlot.Length; i++)
+        if (inventory.InventorySlot != null)
         {
-            inventory.InventorySlot[i].SlotClick += ClickAction;
+            for (int i = 0; i < inventory.InventorySlot.Length; i++)
+            {
+
+                inventory.InventorySlot[i].SlotClick += ClickAction;
+            }
         }
+
     }
 
     private void OnDisable()
@@ -73,10 +79,11 @@ public class PlayerInventoryController : MonoBehaviour
     {
         if (LastClickedItemInfo != null)
             return;
-            
+
         Camera examineCamera = FindObjectOfType<ExamineMenu>().ExamineCamera;
         input.ChangeTypeOfControl(TypeOfControl.InExamine);
         examiner.SetExaminer(new ItemExaminer(5, item, examineCamera));
+        examineMenu.DisplayExamineMenu();
     }
 
     // The item is the item that the player clicked
@@ -135,6 +142,7 @@ public class PlayerInventoryController : MonoBehaviour
 
                             input.ChangeTypeOfControl(
                                         TypeOfControl.InInventory);
+                            examineMenu.HideDisplayMenu();
                         }
                     }
                     break;

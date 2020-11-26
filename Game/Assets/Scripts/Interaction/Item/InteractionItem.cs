@@ -17,11 +17,6 @@ public class InteractionItem : InteractionItemBase
         if (count < 8)
         {
             inventory.Bag.Add(info);
-
-            // Sorts/reverses the list to eliminate free spaces at the beggining
-            inventory.Bag.Sort();
-            inventory.Bag.Reverse();
-
             Destroy(gameObject);
         }
     }
