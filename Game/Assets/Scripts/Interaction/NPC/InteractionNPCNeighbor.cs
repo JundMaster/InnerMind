@@ -119,6 +119,7 @@ public class InteractionNPCNeighbor : InteractionNPCBase
                             newPosition.z),
                 Time.deltaTime * rotationSpeedModifier * 2);
 
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
