@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using UnityEngine;
+using System.IO;
 
 public class Inventory : MonoBehaviour
 {
@@ -12,29 +13,46 @@ public class Inventory : MonoBehaviour
     // List of items in player's inventory
     public ItemInventorySlot[] InventorySlot { get; private set; }
 
+    [SerializeField] private ScriptableItem[] possibleItems;
+
+    // Inventory File
+    private FileReader fileReader;
+    private string path;
+
     private void Awake()
     {
         // Creates a list with 8 slots
         Bag = new ObservableList<ScriptableItem>(new ScriptableItem[8]);
-        
+
         InventorySlot = new ItemInventorySlot[8];
 
-        // GetComponentInChildren<Transform>() is the "Grid" child
         // Fills every InventorySlot index with Item_InventorySlot in children
         InventorySlot = GetComponentInChildren<Transform>().
                         GetComponentsInChildren<ItemInventorySlot>();
+
+        // Reads txt with inventory info ( if it already exists )
+        path = Application.dataPath + "/inventory.txt";
+        if (File.Exists(path))
+        {
+            fileReader = new FileReader(path);
+            fileReader.ReadFromTXT(Bag, possibleItems);
+            UpdateUI();
+        }
     }
     private void OnEnable()
     {
         Bag.CollectionChanged += UpdateUI;
+        Bag.CollectionChanged += WriteTXT;
     }
 
     private void OnDisable()
     {
         Bag.CollectionChanged -= UpdateUI;
+        Bag.CollectionChanged -= WriteTXT;
     }
 
-    private void UpdateUI(object sender, NotifyCollectionChangedEventArgs e)
+    private void UpdateUI(object sender = null, 
+        NotifyCollectionChangedEventArgs e = null)
     {
         SortBag();
         for (int i = 0; i < InventorySlot.Length; i++)
@@ -43,9 +61,22 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    private void WriteTXT(object sender = null, 
+        NotifyCollectionChangedEventArgs e = null)
+    {
+        FileWriter fw = new FileWriter(path);
+        fw.AddToTxt(Bag);
+    }
+
     private void SortBag()
     {
         Bag.Sort();
         Bag.Reverse();
     }
+
+    private void OnApplicationQuit()
+    {
+        File.Delete(path);
+    }
 }
+
