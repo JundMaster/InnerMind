@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
 using UnityEngine;
 using System.IO;
 
@@ -17,7 +14,6 @@ public class Inventory : MonoBehaviour
 
     // Inventory File
     private FileReader fileReader;
-    private string path;
 
     private void Awake()
     {
@@ -31,10 +27,9 @@ public class Inventory : MonoBehaviour
                         GetComponentsInChildren<ItemInventorySlot>();
 
         // Reads txt with inventory info ( if it already exists )
-        path = Application.dataPath + "/inventory.txt";
-        if (File.Exists(path))
+        if (File.Exists(FilePath.inventoryPath))
         {
-            fileReader = new FileReader(path);
+            fileReader = new FileReader(FilePath.inventoryPath);
             fileReader.ReadFromTXT(Bag, possibleItems);
             UpdateUI();
         }
@@ -64,7 +59,7 @@ public class Inventory : MonoBehaviour
     private void WriteTXT(object sender = null, 
         NotifyCollectionChangedEventArgs e = null)
     {
-        FileWriter fw = new FileWriter(path);
+        FileWriter fw = new FileWriter(FilePath.inventoryPath);
         fw.AddToTxt(Bag);
     }
 
@@ -76,7 +71,7 @@ public class Inventory : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        File.Delete(path);
+        File.Delete(FilePath.inventoryPath);
     }
 }
 

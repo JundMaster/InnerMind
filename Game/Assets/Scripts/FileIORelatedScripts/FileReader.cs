@@ -10,6 +10,7 @@ public class FileReader
         this.path = path;
     }
 
+    // Reads inventory items from txt
     public void ReadFromTXT(ObservableList<ScriptableItem> Bag,
         ScriptableItem[] possibleItems)
     {
@@ -28,5 +29,22 @@ public class FileReader
                 }
             }
         }  
+    }
+
+    public void ReadFromTXT(PlayerGeneralInfo player)
+    {
+        using (StreamReader sr = File.OpenText(path))
+        {
+            char[] charsToSplit = { ',', ' ' };
+            string[] strs = sr.ReadLine().Split(charsToSplit);
+
+            foreach (string str in strs)
+            {
+                if (PuzzlesEnum.TryParse(str, out PuzzlesEnum result))
+                {
+                    player.PuzzlesDone |= result;
+                }
+            }
+        }
     }
 }

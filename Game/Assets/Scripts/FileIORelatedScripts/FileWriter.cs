@@ -10,6 +10,7 @@ public class FileWriter
         this.path = path;
     }
 
+    // Saves Items in inventory
     public void AddToTxt(ObservableList<ScriptableItem> Bag)
     {
         using (StreamWriter sw = File.CreateText(path))
@@ -21,6 +22,15 @@ public class FileWriter
                     sw.WriteLine(item.ID);
                 }
             }
+        }
+    }
+
+    // Saves PuzzlesDone
+    public void AddToTxt(PlayerGeneralInfo player)
+    {
+        using (StreamWriter sw = File.CreateText(path))
+        {
+            sw.WriteLine(player.PuzzlesDone);
         }
     }
 }

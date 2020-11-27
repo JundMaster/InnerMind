@@ -14,7 +14,7 @@ public class Room3_1 : PuzzleBase
     }
 
     private void Start()
-    {  
+    {
         if (player.PuzzlesDone.HasFlag(myPuzzle))
             doorWithCode.GetComponentInChildren<Animator>().SetTrigger("Open Door");
     }
