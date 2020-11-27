@@ -13,11 +13,6 @@ public class Room5 : PuzzleBase
 
     private void Start()
     {
-        // If puzzle is done
-        if (player.PuzzlesDone.HasFlag(myPuzzle))
-        {
-            movingWalls.SetActive(false);
-        }
         // If player has the puzzle's map
         if (inventory.Bag.Contains(mapScriptableObject))
         {
@@ -34,10 +29,6 @@ public class Room5 : PuzzleBase
             {
                 this.Victory();
             }
-        }
-        if (player.PuzzlesDone.HasFlag(myPuzzle))
-        {
-            movingWalls.SetActive(false);
         }
     }
 

@@ -9,6 +9,9 @@ public class Room3_2 : PuzzleBase
 
     private void Start()
     {
+        // QUANDO HOUVER AS KEYS REVER O PUZZLE // 
+        //////////////////////////////////////////
+
         // Checks if player finished puzzle4
         if (inventory.Bag.Contains(puzzlePianoKeys[0]) &&
             inventory.Bag.Contains(puzzlePianoKeys[1]) &&
