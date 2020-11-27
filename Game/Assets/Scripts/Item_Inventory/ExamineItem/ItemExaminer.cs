@@ -55,18 +55,19 @@ public class ItemExaminer
     {
         // Instantiates the item that player will interact with
         itemObject = MonoBehaviour.Instantiate(item.Prefab);
-        itemObject.name = "Examined Item";
+        itemObject.name = "Item In Examine";
         // Sets the object to the layer that must be rendered by the camera
         itemObject.layer = 12;
         // Puts the item in front of the camera
         // The item's Z axis point towards the camera
         itemObject.transform.position = examineCamera.transform.position + examineCamera.transform.forward;
-        // Attach parent to the item
         parent = new GameObject();
+        parent.name = "Examine Set";
         itemTransform = itemObject.transform;
         // Makes the item parent position the same as the item position
         parent.transform.position = itemTransform.position;
         itemTransform.parent = parent.transform;
+        light.transform.parent = parent.transform;
         // Points parent to the camera
         itemTransform.parent.LookAt(examineCamera.transform);
         light.transform.position = itemTransform.position;
@@ -77,6 +78,7 @@ public class ItemExaminer
 
     public void StopExamine()
     {
+        MonoBehaviour.Destroy(light);
         MonoBehaviour.Destroy(itemObject);
         MonoBehaviour.Destroy(parent);
     }
