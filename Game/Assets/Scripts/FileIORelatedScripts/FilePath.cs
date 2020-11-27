@@ -3,8 +3,11 @@
 sealed public class FilePath
 {
     public static readonly string puzzlePath = 
-        Application.dataPath + "/_TEMP/puzzlesdone.txt";
+        Application.dataPath + "/puzzlesdone.txt";
 
     public static readonly string inventoryPath = 
-        Application.dataPath + "/_TEMP/puzzlesdone.txt";
+        Application.dataPath + "/inventory.txt";
+
+    public static readonly string lastScenePath =
+        Application.dataPath + "/lastScene.txt";
 }

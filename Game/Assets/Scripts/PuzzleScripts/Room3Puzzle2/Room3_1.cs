@@ -11,20 +11,24 @@ public class Room3_1 : PuzzleBase
     {
         player = FindObjectOfType<PlayerGeneralInfo>();
         doorScriptPuzzle = doorWithCode.GetComponentInChildren<InteractionDoorWithCode>();
-    }
 
-    private void Start()
-    {
-        if (player.PuzzlesDone.HasFlag(myPuzzle))
-            doorWithCode.GetComponentInChildren<Animator>().SetTrigger("Open Door");
+        // Reads the file after 1 second
+        if (readPuzzlesDoneTxtCoroutine == null)
+            readPuzzlesDoneTxtCoroutine = StartCoroutine(ReadPuzzlesDoneTxt());
     }
 
     private void OnEnable()
     {
-        doorScriptPuzzle.DoorOpened += base.Victory;
+        doorScriptPuzzle.DoorOpened += this.Victory;
     }
     private void OnDisable()
     {
-        doorScriptPuzzle.DoorOpened -= base.Victory;
+        doorScriptPuzzle.DoorOpened -= this.Victory;
+    }
+
+    public override void Victory()
+    {
+        base.Victory();
+        doorWithCode.GetComponentInChildren<Animator>().SetTrigger("Open Door");
     }
 }

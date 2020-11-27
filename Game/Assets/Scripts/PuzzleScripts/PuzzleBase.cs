@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using System.IO;
+using System;
 
 public abstract class PuzzleBase : MonoBehaviour, IPuzzle
 {
@@ -12,7 +13,7 @@ public abstract class PuzzleBase : MonoBehaviour, IPuzzle
     // Puzzle txt file
     private FileReader fileReader;
 
-    private Coroutine readPuzzlesDoneTxtCoroutine;
+    protected Coroutine readPuzzlesDoneTxtCoroutine;
 
     private void Awake()
     {
@@ -26,15 +27,19 @@ public abstract class PuzzleBase : MonoBehaviour, IPuzzle
 
     // If a new scene was loaded, the player.PuzzlesDone
     // variable is updated with txt text containing puzzles done
-    private IEnumerator ReadPuzzlesDoneTxt()
+    protected IEnumerator ReadPuzzlesDoneTxt()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.25f);
         // Reads txt with inventory info ( if it already exists )
         if (File.Exists(FilePath.puzzlePath))
         {
             fileReader = new FileReader(FilePath.puzzlePath);
             fileReader.ReadFromTXT(player);
         }
+
+        if (player.PuzzlesDone.HasFlag(myPuzzle))
+            Victory();
+
         yield return null;
     }
 

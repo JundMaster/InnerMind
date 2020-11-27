@@ -6,29 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/TestScenes/DoorInteractionTest.unity
-    guid: e0b1beab65db16d46971dfb6e1ab0fdc
+    path: Assets/Scenes/MainScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: Assets/Scenes/Room2/Room2.unity
+    guid: 14dc9ee42c733b741bfa2ff5d1a401c2
   - enabled: 1
     path: Assets/Scenes/Room5/Room5.unity
     guid: 671038ff8f4cadd4dbfedcf24ccea658
-  - enabled: 1
-    path: Assets/Scenes/MainScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/TestScenes/WallWalkTest.unity
-    guid: f3927585c37480b4c9c52ad0467f06cd
-  - enabled: 1
-    path: Assets/Scenes/TestScenes/InteractionTest.unity
-    guid: 31f96b4903ed0994aad2ccabd9001ce0
-  - enabled: 1
-    path: Assets/Scenes/TestScenes/ItemTest.unity
-    guid: 7706707717e3c8e4e97034a6f4f534f7
-  - enabled: 0
-    path: Assets/Scenes/Cutscenes/ElevatorCutscene.unity
-    guid: 1e412d2b545fbd543b0256abd1d289e5
-  - enabled: 0
-    path: Assets/Scenes/TestScenes/MainMenuTest.unity
-    guid: 3bac381e63a29f04692a6ec074484d1d
   - enabled: 1
     path: Assets/Scenes/Room3/Room3.unity
     guid: f6874dc43280c8d4da589f5ad687d7e3
