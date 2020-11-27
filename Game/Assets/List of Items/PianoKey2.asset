@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PianoKey2
   m_EditorClassIdentifier: 
   name: PianoKey
-  id: 4
+  id: 512
   icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   cursorTexture: {fileID: 10906, guid: 0000000000000000f000000000000000, type: 0}
   prefab: {fileID: 4649446575839400457, guid: cdf891423786dc644a1e934467339434, type: 3}
