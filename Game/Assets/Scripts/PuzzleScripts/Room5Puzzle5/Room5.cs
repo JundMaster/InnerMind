@@ -35,6 +35,10 @@ public class Room5 : PuzzleBase
                 this.Victory();
             }
         }
+        if (player.PuzzlesDone.HasFlag(myPuzzle))
+        {
+            movingWalls.SetActive(false);
+        }
     }
 
     public override void Victory()
