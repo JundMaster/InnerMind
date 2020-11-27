@@ -98,17 +98,17 @@ public class PadlockButton : MonoBehaviour
                 if (dir > 0)
                 {
                     if (padlockDoor.UserCode.x > 0)
-                        padlockDoor.UserCode += new Vector3Int(-1, 0, 0);
+                        padlockDoor.UserCode += new CustomVector3(-1, 0, 0);
                     else
-                        padlockDoor.UserCode = new Vector3Int (9,
+                        padlockDoor.UserCode = new CustomVector3 (9,
                             padlockDoor.UserCode.y, padlockDoor.UserCode.z );
                 }
                 else
                 {
                     if (padlockDoor.UserCode.x < 9)
-                        padlockDoor.UserCode += new Vector3Int(1, 0, 0);
+                        padlockDoor.UserCode += new CustomVector3(1, 0, 0);
                     else
-                        padlockDoor.UserCode = new Vector3Int (0,
+                        padlockDoor.UserCode = new CustomVector3 (0,
                             padlockDoor.UserCode.y, padlockDoor.UserCode.z );
                 }
                 break;
@@ -116,17 +116,17 @@ public class PadlockButton : MonoBehaviour
                 if (dir > 0)
                 {
                     if (padlockDoor.UserCode.y > 0)
-                        padlockDoor.UserCode += new Vector3Int(0, -1, 0);
+                        padlockDoor.UserCode += new CustomVector3(0, -1, 0);
                     else
-                        padlockDoor.UserCode = new Vector3Int(
+                        padlockDoor.UserCode = new CustomVector3(
                             padlockDoor.UserCode.x, 9, padlockDoor.UserCode.z);
                 }
                 else
                 {
                     if (padlockDoor.UserCode.y < 9)
-                        padlockDoor.UserCode += new Vector3Int(0, 1, 0);
+                        padlockDoor.UserCode += new CustomVector3(0, 1, 0);
                     else
-                        padlockDoor.UserCode = new Vector3Int (
+                        padlockDoor.UserCode = new CustomVector3 (
                             padlockDoor.UserCode.x, 0, padlockDoor.UserCode.z);
                 }
                 break;
@@ -134,17 +134,17 @@ public class PadlockButton : MonoBehaviour
                 if (dir > 0)
                 {
                     if (padlockDoor.UserCode.z > 0)
-                        padlockDoor.UserCode += new Vector3Int(0, 0, -1);
+                        padlockDoor.UserCode += new CustomVector3(0, 0, -1);
                     else
-                        padlockDoor.UserCode = new Vector3Int(
+                        padlockDoor.UserCode = new CustomVector3(
                             padlockDoor.UserCode.x, padlockDoor.UserCode.y, 9);
                 }
                 else
                 {
                     if (padlockDoor.UserCode.z < 9)
-                        padlockDoor.UserCode += new Vector3Int(0, 0, 1);
+                        padlockDoor.UserCode += new CustomVector3(0, 0, 1);
                     else
-                        padlockDoor.UserCode = new Vector3Int(
+                        padlockDoor.UserCode = new CustomVector3(
                             padlockDoor.UserCode.x, padlockDoor.UserCode.y, 0);
                 }
                 break;

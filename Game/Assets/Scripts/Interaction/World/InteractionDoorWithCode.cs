@@ -7,9 +7,9 @@ using System;
 public class InteractionDoorWithCode : InteractionCommon
 {
     // Codes to open padlock
-    [SerializeField] private Vector3Int doorCode;
-    public Vector3Int DoorCode => doorCode;
-    public Vector3Int UserCode { get; set; }
+    [SerializeField] private CustomVector3 doorCode;
+    public CustomVector3 DoorCode => doorCode;
+    public CustomVector3 UserCode { get; set; }
 
     // Padlock to spawn
     [SerializeField] private GameObject padlock;
@@ -47,7 +47,7 @@ public class InteractionDoorWithCode : InteractionCommon
             input.ChangeTypeOfControl(TypeOfControl.InDoorWithCode);
             padlockCanvas.SetActive(true);
 
-            UserCode = new Vector3Int(0, 0, 0);
+            UserCode = new CustomVector3(0, 0, 0);
             newPadlock = Instantiate(padlock);
             newPadlock.transform.position = padlockPosition.position;
             newPadlock.transform.rotation = padlockPosition.rotation;
