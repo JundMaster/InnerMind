@@ -2,9 +2,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Room5 : MonoBehaviour
+public class Room5 : PuzzleBase
 {
-    private PuzzlesEnum myPuzzle;
     [SerializeField] private GameObject movingWalls;
     [SerializeField] private Animator lastWallAnimator;
 
@@ -14,15 +13,13 @@ public class Room5 : MonoBehaviour
 
     private void Start()
     {
-        FindObjectOfType<Inventory>().Bag.Add(mapScriptableObject);
-        myPuzzle = PuzzlesEnum.Puzzle5;
         // If puzzle is done
-        if (FindObjectOfType<PlayerGeneralInfo>().PuzzlesDone.HasFlag(myPuzzle))
+        if (player.PuzzlesDone.HasFlag(myPuzzle))
         {
             movingWalls.SetActive(false);
         }
         // If player has the puzzle's map
-        if (FindObjectOfType<Inventory>().Bag.Contains(mapScriptableObject))
+        if (inventory.Bag.Contains(mapScriptableObject))
         {
             mapCanvas?.SetActive(true);
             mapCanvas.GetComponentInChildren<Image>().sprite = mapImage;
@@ -35,14 +32,14 @@ public class Room5 : MonoBehaviour
         {
             if (lastWallAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
             {
-                Victory();
+                this.Victory();
             }
         }
     }
 
-    private void Victory()
+    public override void Victory()
     {
-        FindObjectOfType<PlayerGeneralInfo>().PuzzlesDone |= myPuzzle;
+        base.Victory();
         movingWalls.SetActive(false);
     }
 }

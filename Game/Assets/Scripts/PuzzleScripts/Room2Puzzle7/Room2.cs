@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Room2 : MonoBehaviour
+public class Room2 : PuzzleBase
 {
     [SerializeField] private GameObject prize;
     [SerializeField] private ScriptableItem prizeScriptableItem;
@@ -10,19 +10,23 @@ public class Room2 : MonoBehaviour
 
     public bool FinishedPuzzle { get; private set; }
 
-    private PuzzlesEnum myPuzzle;
     private void Start()
     {
-        myPuzzle = PuzzlesEnum.Puzzle2;
         cubeParentsInRoom = GetComponentsInChildren<MirrorPuzzleCubeParent>();
         FinishedPuzzle = false;
 
         // If player has puzzle done and no map on inventory, plays victory
-        if (FindObjectOfType<PlayerGeneralInfo>().PuzzlesDone.HasFlag(myPuzzle) &&
-            FindObjectOfType<Inventory>().Bag.Contains(prizeScriptableItem) == false)
+        if (player.PuzzlesDone.HasFlag(myPuzzle) &&
+            inventory.Bag.Contains(prizeScriptableItem) == false)
         {
-            StartCoroutine(Victory());
+            Victory();
         }
+    }
+
+    public override void Victory()
+    {
+        base.Victory();
+        StartCoroutine(VictoryCoroutine());
     }
 
     public void VictoryCheck()
@@ -35,13 +39,12 @@ public class Room2 : MonoBehaviour
 
         if (counter == cubeParentsInRoom.Length)
         {
-            StartCoroutine(Victory());
+            Victory();
         }
     }
 
-    private IEnumerator Victory()
+    private IEnumerator VictoryCoroutine()
     {
-        FindObjectOfType<PlayerGeneralInfo>().PuzzlesDone |= PuzzlesEnum.Puzzle2;
         FinishedPuzzle = true;
         GameObject spawn = null;
 

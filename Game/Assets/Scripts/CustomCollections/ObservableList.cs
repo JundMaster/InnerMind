@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 
-public class ObservableList<T> : List<T>, INotifyCollectionChanged, IEnumerable
+public class ObservableList<T> : List<T>, INotifyCollectionChanged
 {
     private bool allowsDuplicates;
     public ObservableList(bool allowsDuplicates = false) : base()
