@@ -10,12 +10,17 @@ public class InteractionNPCNeighbor : InteractionNPCBase
     [SerializeField] private ScriptableItem[] npcBag;
 
     private PlayerInput input;
+    private Animator anim;
 
-    private void Start()
+    private void Awake()
     {
         dialog = GetComponent<DialogText>();
         input = FindObjectOfType<PlayerInput>();
+        anim = GetComponent<Animator>();
+    }
 
+    private void Start()
+    {
         waitForSecs = new WaitForSeconds(secondsToWait);
         speakCounter = 0;
 
@@ -63,6 +68,7 @@ public class InteractionNPCNeighbor : InteractionNPCBase
 
     private IEnumerator RotationAnimation()
     {
+        anim.SetTrigger("turn");
         PlayerMovement player;
         player = FindObjectOfType<PlayerMovement>();
         PlayerLook playerCamera;
@@ -102,24 +108,25 @@ public class InteractionNPCNeighbor : InteractionNPCBase
 
             // Rotates Player's Camera
             playerCamera.transform.rotation = Quaternion.Slerp(pCameraFrom,
-                pCameraTo, elapsedTime * rotationSpeedModifier * 5f);
+                pCameraTo, elapsedTime * rotationSpeedModifier);
 
             // Moves player to desired range
             Vector3 newPosition = transform.position +
                 (player.transform.position - transform.position).normalized * 3f;
-
             player.transform.position =
                 Vector3.MoveTowards(player.transform.position,
                 new Vector3(newPosition.x, player.transform.position.y,
                             newPosition.z),
                 Time.deltaTime * rotationSpeedModifier * 2);
 
-            playerCamera.VerticalRotation = 0;
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+        playerCamera.VerticalRotation = playerCamera.transform.rotation.eulerAngles.x;
+        anim.SetTrigger("idle");
 
-        
+
     }
 
     public override string ToString()
