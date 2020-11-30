@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class InteractionLockedDoor : InteractionCommon
 {
-    private InteractionMedicineCabinet cabinet;
+
+    private Room1 room1;
     private void Start()
     {
-        cabinet = FindObjectOfType<InteractionMedicineCabinet>();
+        room1 = FindObjectOfType<Room1>();
     }
     public override void Execute()
     {
-        if (cabinet.IsOpen)
+
+        if (room1.FinishedPuzzle)
         {
             Animator doorAnimation = GetComponent<Animator>(); ;
             doorAnimation.SetTrigger("Open Door");
         }
-        else Debug.Log("You need to get your meds");
+        
     }
     public override string ToString() => "Open Door";
 }

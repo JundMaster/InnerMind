@@ -2,51 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room1 : MonoBehaviour
+public class Room1 : PuzzleBase
 {
-    [SerializeField] private GameObject prize;
-    [SerializeField] private ScriptableItem prizeScriptableItem;
-    [SerializeField] private Transform prizePosition;
+    InteractionMedicineCabinet cabinet;
 
     public bool FinishedPuzzle { get; private set; }
 
-    private PuzzlesEnum myPuzzle;
+   
     private void Start()
     {
-        myPuzzle = PuzzlesEnum.Puzzle1;
+        cabinet = FindObjectOfType<InteractionMedicineCabinet>();
         FinishedPuzzle = false;
 
-        // If player has puzzle done and no map on inventory, plays victory
-        if (FindObjectOfType<PlayerGeneralInfo>().PuzzlesDone.HasFlag(myPuzzle) &&
-            FindObjectOfType<Inventory>().Bag.Contains(prizeScriptableItem) == false)
-        {
-            StartCoroutine(Victory());
-        }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
-    public IEnumerator Victory()
+    private void Update()
     {
-        FindObjectOfType<PlayerGeneralInfo>().PuzzlesDone |= PuzzlesEnum.Puzzle2;
-        FinishedPuzzle = true;
-        GameObject spawn = null;
+        Victory();
+    }
 
-        if (FindObjectOfType<Inventory>().Bag.Contains(
-            prizeScriptableItem) == false)
+    public override void Victory()
+    {
+        base.Victory();
+        if (cabinet.IsOpen)
         {
-            spawn = Instantiate(prize, prizePosition.transform.position, Quaternion.identity);
+            FinishedPuzzle = true;
         }
-
-        while (spawn)
-        {
-            spawn.transform.Rotate(15 * Time.deltaTime, 0, 15 * Time.deltaTime);
-            yield return null;
-        }
-
-        yield return null;
     }
 }

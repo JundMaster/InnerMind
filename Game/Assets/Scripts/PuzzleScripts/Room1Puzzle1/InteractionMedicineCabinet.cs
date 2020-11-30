@@ -7,14 +7,19 @@ public class InteractionMedicineCabinet : InteractionCommon
 
     private Inventory inventory;
     public bool IsOpen { get; private set; }
+    private Animator cabinetDoorAnimation;
+    private BoxCollider closetBoxCollider;
     private void Start()
     {
         inventory = FindObjectOfType<Inventory>();
         IsOpen = false;
+        cabinetDoorAnimation = GetComponentInChildren<Animator>();
+        closetBoxCollider = GetComponent<BoxCollider>();
     }
     public override void Execute()
     {
 
+        
         foreach (ScriptableItem item in inventory.Bag)
         {
             if (item != null)
@@ -22,12 +27,15 @@ public class InteractionMedicineCabinet : InteractionCommon
                 if (item.ID == ListOfItems.CabinetKey)
                 {
                     IsOpen = true;
-                    Debug.Log("You have the key!");
+                    closetBoxCollider.enabled = false;
+                    cabinetDoorAnimation.SetTrigger("Open Door");
+                    inventory.Bag.Remove(item);
+                    break;
                 }
 
             }
         }
-        if (!IsOpen) Debug.Log("You don't have the key!");
+        
 
     }
     public override string ToString() => "Open Cabinet";
