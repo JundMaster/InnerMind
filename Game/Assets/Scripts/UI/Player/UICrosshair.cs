@@ -17,7 +17,8 @@ public class UICrosshair : MonoBehaviour
 
     void Start()
     {
-        actionText = actionTextGameObject.GetComponent<TextMeshProUGUI>();
+        actionText = actionTextGameObject.
+            GetComponentInChildren<TextMeshProUGUI>();
         ray = FindObjectOfType<PlayerRays>();
         interact = FindObjectOfType<PlayerInteract>();
         crosshair = GetComponent<Image>();

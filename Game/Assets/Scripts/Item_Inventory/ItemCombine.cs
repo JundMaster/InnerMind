@@ -1,14 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ItemCombine : ICombinable<ScriptableItem>
+﻿public class ItemCombine : ICombinable<ScriptableItem>
 {
     public void CombineItem(ScriptableItem item1, ScriptableItem item2,
                             Inventory inventory)
     {
         ListOfItems combinationResults =
-            ListOfItems.Lantern | ListOfItems.Walkman | ListOfItems.Audio_Tape;
+            ListOfItems.Lantern | ListOfItems.Walkman | ListOfItems.AudioTape;
 
         if (item1.CombinationItem != null && item2.CombinationItem != null)
         {

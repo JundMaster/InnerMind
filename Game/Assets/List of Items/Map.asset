@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Map
   m_EditorClassIdentifier: 
   name: Map
-  id: 256
+  id: 1024
   icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   cursorTexture: {fileID: 10910, guid: 0000000000000000f000000000000000, type: 0}
   prefab: {fileID: 4649446575839400457, guid: 12586155337be1a41b612aa1f549ef27, type: 3}

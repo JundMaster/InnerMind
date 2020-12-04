@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lantern
   m_EditorClassIdentifier: 
   name: Lantern
-  id: 12
+  id: 48
   icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   cursorTexture: {fileID: 10900, guid: 0000000000000000f000000000000000, type: 0}
   prefab: {fileID: 7135793135276575373, guid: fc16d1e9091c1ad49a187ba1d5830e21, type: 3}
