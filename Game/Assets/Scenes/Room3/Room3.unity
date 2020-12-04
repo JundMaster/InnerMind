@@ -4792,7 +4792,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2580
+  m_Name: pb_Mesh-68808
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6070,7 +6070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7925831929662690495, guid: 0ef5e5b06345415428911f1a4ab76d61, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 29.874
+      value: 30.056
       objectReference: {fileID: 0}
     - target: {fileID: 7925831929662690495, guid: 0ef5e5b06345415428911f1a4ab76d61, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6490,9 +6490,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3056546008109604628, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3056546008109604630, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3557723930732454712, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
+      propertyPath: m_StandbyUpdate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3557723930732454712, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
+      propertyPath: m_Lens.FarClipPlane
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
@@ -11643,6 +11655,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1380620916, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 120492917871373866, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -15051,7 +15067,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 50
   field of view: 60
   orthographic: 0
   orthographic size: 5

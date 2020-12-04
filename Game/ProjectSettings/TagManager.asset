@@ -11,6 +11,7 @@ TagManager:
   - SecondWheel
   - ThirdWheel
   - Inventory
+  - PlayerLantern
   layers:
   - Default
   - TransparentFX

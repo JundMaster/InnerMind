@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class UICrosshair : MonoBehaviour
 {
     // Text to print action
     [SerializeField] private GameObject actionTextGameObject;
     private TextMeshProUGUI actionText;
+    private Image panel;
 
     // Components
     private PlayerRays ray;
@@ -14,11 +16,13 @@ public class UICrosshair : MonoBehaviour
     private Image crosshair;
     private PlayerInput input;
 
-
-    void Start()
+    void Awake()
     {
         actionText = actionTextGameObject.
             GetComponentInChildren<TextMeshProUGUI>();
+        panel = actionTextGameObject.
+            GetComponentInChildren<Image>();
+
         ray = FindObjectOfType<PlayerRays>();
         interact = FindObjectOfType<PlayerInteract>();
         crosshair = GetComponent<Image>();
@@ -36,34 +40,29 @@ public class UICrosshair : MonoBehaviour
                 if (hit.collider.gameObject.TryGetComponent
                     (out IInteract other))
                 {
-                    if (actionTextGameObject.activeSelf == false)
-                        actionTextGameObject.SetActive(true);
-
-                    if (actionText)
-                        actionText.text = other.ToString();
-
-                    crosshair.color = new Color(1, 0, 0, 1);
+                    panel.color = new Color(0, 0, 0, 0.4f);
+                    actionText.text = other.ToString();
+                    actionText.color = new Color(1, 1, 1, 1);
+                    crosshair.color = new Color(1, 0, 0, 1);          
                 }
                 else
                 {
-                    if (actionTextGameObject.activeSelf)
-                        actionTextGameObject.SetActive(false);
-
+                    panel.color = new Color(0, 0, 0, 0);
+                    actionText.color = new Color(0, 0, 0, 0);
                     crosshair.color = new Color(1, 1, 1, 1);
                 }
             }
             else
             {
-                if (actionTextGameObject.activeSelf)
-                    actionTextGameObject.SetActive(false);
+                panel.color = new Color(0, 0, 0, 0);
+                actionText.color = new Color(0, 0, 0, 0);
                 crosshair.color = new Color(1, 1, 1, 1);
             }
         }
         else
         {
-            if (actionTextGameObject.activeSelf)
-                actionTextGameObject.SetActive(false);
-
+            panel.color = new Color(0, 0, 0, 0f);
+            actionText.color = new Color(0, 0, 0, 0);
             crosshair.color = new Color(0, 0, 0, 0);
         }
     }

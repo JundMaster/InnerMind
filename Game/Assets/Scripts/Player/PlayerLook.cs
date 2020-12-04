@@ -20,7 +20,7 @@ public class PlayerLook : MonoBehaviour
         VerticalRotation = 0f;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (input.CurrentControl == TypeOfControl.InGameplay)
         {

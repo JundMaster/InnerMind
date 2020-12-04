@@ -11,6 +11,9 @@ public class Room5 : PuzzleBase
     [SerializeField] private GameObject mapCanvas;
     [SerializeField] private ScriptableItem mapScriptableObject;
 
+    [SerializeField] private ScriptableItem lanternScriptableObject;
+    private Light lantern;
+
     private void Start()
     {
         // If player has the puzzle's map
@@ -19,6 +22,17 @@ public class Room5 : PuzzleBase
             mapCanvas?.SetActive(true);
             mapCanvas.GetComponentInChildren<Image>().sprite = mapImage;
         }else { }
+
+        // If player has a lantern with battery on inventory
+        if (inventory.Bag.Contains(lanternScriptableObject))
+        {
+            lantern = GameObject.FindGameObjectWithTag("PlayerLantern").
+                GetComponent<Light>();
+            lantern.range = 8;
+            lantern.spotAngle = 80;
+            lantern.intensity = 1;
+        }
+        else { }
     }
 
     private void Update()
