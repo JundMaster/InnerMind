@@ -478,6 +478,34 @@ PrefabInstance:
       propertyPath: head
       value: 
       objectReference: {fileID: 6440113224120851420}
+    - target: {fileID: 577164705024808503, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: npcBag.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 577164705024808503, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: npcBag.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 059767cf0d1e56d46887d2aff33aadc4, type: 2}
+    - target: {fileID: 577164705024808503, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: npcBag.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c3bd97f7e5d71544988bad5e39785855, type: 2}
+    - target: {fileID: 577164705024808503, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: npcItemsToCompare.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 577164705024808503, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: npcItemsToCompare.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 697a76c6c08431041865017385cf8546, type: 2}
+    - target: {fileID: 577164705024808503, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: npcItemsToCompare.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c3bd97f7e5d71544988bad5e39785855, type: 2}
+    - target: {fileID: 577164705024808503, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: npcItemsToCompare.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 46af12c07a60d8e4a8fdcb1276fdc739, type: 2}
     - target: {fileID: 4261077794766521346, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -547,9 +575,37 @@ PrefabInstance:
       value: Neighbor
       objectReference: {fileID: 0}
     - target: {fileID: 4851752128071463856, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: prizeText
+      value: Oh, need help with that lantern? Take this battery.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851752128071463856, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
       propertyPath: currentLine
       value: 
       objectReference: {fileID: 4281755532025602706}
+    - target: {fileID: 4851752128071463856, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: linesOfText.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851752128071463856, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: linesOfText.Array.data[0]
+      value: Hello Josh. How are you?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851752128071463856, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: linesOfText.Array.data[1]
+      value: Can you help me find my Audio Player?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851752128071463856, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: linesOfText.Array.data[2]
+      value: Take this piano key. Something tells me you will need it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851752128071463856, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: linesOfText.Array.data[3]
+      value: How may I help you Josh?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851752128071463856, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: linesOfText.Array.data[4]
+      value: Is everything alright?
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
 --- !u!1 &2389548469209464339 stripped

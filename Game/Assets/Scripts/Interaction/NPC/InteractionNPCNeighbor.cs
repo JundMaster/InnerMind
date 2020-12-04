@@ -7,22 +7,35 @@ public class InteractionNPCNeighbor : InteractionNPCBase
     [SerializeField] private Transform head;
     [SerializeField] private float rotationSpeedModifier;
 
+    [SerializeField] private Animator doorToOpen;
+    [SerializeField] private ScriptableItem[] npcItemsToCompare;
     [SerializeField] private ScriptableItem[] npcBag;
 
     private PlayerInput input;
     private Animator anim;
+    private Inventory playerInventory;
 
     private void Awake()
     {
         dialog = GetComponent<DialogText>();
         input = FindObjectOfType<PlayerInput>();
         anim = GetComponent<Animator>();
+        playerInventory = FindObjectOfType<Inventory>();
     }
 
     private void Start()
     {
+        // If the player already has a piano key, the speakcounter will be 3
+        if (FindObjectOfType<Inventory>().Bag.Contains(npcBag[0]))
+        {
+            speakCounter = 3;
+        }
+        else
+        {
+            speakCounter = 0;
+        }
+
         waitForSecs = new WaitForSeconds(secondsToWait);
-        speakCounter = 0;
 
         dialog.WaitForSecs = waitForSecs;
     }
@@ -30,6 +43,20 @@ public class InteractionNPCNeighbor : InteractionNPCBase
     private void Update()
     {
         dialog.Counter = speakCounter;
+
+        // If the player has a No battery lantern
+        // If the player doesn't have an old battery
+        // If the player doesn't have a lantern
+        if (playerInventory.Bag.Contains(npcItemsToCompare[0]) == true &&
+            playerInventory.Bag.Contains(npcItemsToCompare[1]) == false &&
+            playerInventory.Bag.Contains(npcItemsToCompare[2]) == false)
+        {
+            dialog.givePrize = true;
+        }
+        else
+        {
+            dialog.givePrize = false;
+        }
     }
 
     public override IEnumerator CoroutineExecute()
@@ -49,17 +76,30 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         StartCoroutine(dialog.GetNextLine());
         yield return waitForSecs;
 
+        // If player has a no battery lantern
+        if (dialog.givePrize)
+        {
+            Inventory inventory = FindObjectOfType<Inventory>();
+            inventory.Bag.Add(npcBag[1]);
+        }
 
-        // will be needed to give items to player
-        //Inventory temp = FindObjectOfType<Inventory>();
+        // Give a piano key on second time speaking
+        else if (speakCounter == 2)
+        {
+            Inventory inventory = FindObjectOfType<Inventory>();
+            inventory.Bag.Add(npcBag[0]);
+            speakCounter++;
+        }
 
-
-
-
-        // If speakcounter reaches max number of texts, resets to 1
-        speakCounter++;
+        else
+        {
+            speakCounter++;
+        }
+        
+        // If speakcounter reaches max number of texts, resets the text
         if (speakCounter == dialog.LinesOfText.Length)
-            speakCounter = 1;
+            speakCounter = 3;
+
         ThisCoroutine = default;
         input.ChangeTypeOfControl(TypeOfControl.InGameplay);
         yield break;
