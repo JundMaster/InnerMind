@@ -40,12 +40,12 @@ public class PlayerInput : MonoBehaviour
     private void Start()
     {
         CursorPosition = new Vector2Int(30, 30);
-
-        MouseSpeed = 300f;
     }
 
     private void Update()
     {
+        MouseSpeed = PlayerPrefs.GetFloat("mouseSpeed");
+
         switch (CurrentControl)
         {
             case TypeOfControl.InGameplay:

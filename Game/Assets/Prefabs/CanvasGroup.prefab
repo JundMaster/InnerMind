@@ -2919,7 +2919,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1683042299}
   - component: {fileID: 1683042300}
-  - component: {fileID: 1683042301}
+  - component: {fileID: 1610159028}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -2999,8 +2999,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1683042301}
-        m_TargetAssemblyTypeName: MouseSpeedController, Assembly-CSharp
+      - m_Target: {fileID: 1610159028}
+        m_TargetAssemblyTypeName: OptionSlidersController, Assembly-CSharp
         m_MethodName: AdjustMouseSpeed
         m_Mode: 0
         m_Arguments:
@@ -3011,7 +3011,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1683042301
+--- !u!114 &1610159028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4559,6 +4559,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1024616515020214473}
   - component: {fileID: 1024616515020214474}
+  - component: {fileID: 1736699096}
   m_Layer: 0
   m_Name: CanvasGroup
   m_TagString: Untagged
@@ -4595,6 +4596,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a0cdea30bd8564fac215ca1069b948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1736699096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024616515020214475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9a2983dc3b502c48b45d4e216056ffa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSlider: {fileID: 1683042300}
+  soundSlider: {fileID: 2085528764}
+  musicSlider: {fileID: 1833766187}
 --- !u!1 &1805576383368292742
 GameObject:
   m_ObjectHideFlags: 0

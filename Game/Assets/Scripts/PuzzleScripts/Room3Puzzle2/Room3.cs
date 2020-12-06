@@ -10,6 +10,8 @@ public class Room3 : MonoBehaviour
     private void Awake()
     {
         player = FindObjectOfType<PlayerMovement>();
+
+        // Loads file written in SceneChange script
         if (File.Exists(FilePath.lastScenePath))
         {
             using (StreamReader sr = File.OpenText(FilePath.lastScenePath))
@@ -31,6 +33,7 @@ public class Room3 : MonoBehaviour
                 player.transform.position = spawns[2].transform.position;
                 player.transform.rotation = spawns[2].transform.rotation;
                 break;
+            // On first respawn
             default:
                 player.transform.position = spawns[0].transform.position;
                 player.transform.rotation = spawns[0].transform.rotation;
