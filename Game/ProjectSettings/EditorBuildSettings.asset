@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cutscenes/AmbulanceCutscene/AmbulanceCutscene.unity
     guid: 37efd4eef94a4ce4fadfd322fbba6383
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/ElevatorCutscene/ElevatorCutscene.unity
+    guid: 1e412d2b545fbd543b0256abd1d289e5
   m_configObjects: {}
