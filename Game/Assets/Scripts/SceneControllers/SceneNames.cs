@@ -8,5 +8,7 @@
     Room6,
     Room7,
     Room8,
-    Room9
+    Room9,
+    AmbulanceCutscene,
+    ElevatorCutscene,
 }

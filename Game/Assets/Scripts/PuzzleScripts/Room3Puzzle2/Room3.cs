@@ -33,6 +33,10 @@ public class Room3 : MonoBehaviour
                 player.transform.position = spawns[2].transform.position;
                 player.transform.rotation = spawns[2].transform.rotation;
                 break;
+            case "InAmbulanceCutscene":
+                player.transform.position = spawns[2].transform.position;
+                player.transform.rotation = spawns[2].transform.rotation;
+                break;
             // On first respawn
             default:
                 player.transform.position = spawns[0].transform.position;
