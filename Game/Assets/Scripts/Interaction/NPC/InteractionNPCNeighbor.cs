@@ -51,11 +51,15 @@ public class InteractionNPCNeighbor : InteractionNPCBase
             playerInventory.Bag.Contains(npcItemsToCompare[1]) == false &&
             playerInventory.Bag.Contains(npcItemsToCompare[2]) == false)
         {
-            dialog.givePrize = true;
+            dialog.GivePrize = true;
+        }
+        else if (playerInventory.Bag.Contains(npcItemsToCompare[3]))    
+        {
+            dialog.OpenDoor = true;
         }
         else
         {
-            dialog.givePrize = false;
+            dialog.GivePrize = false;
         }
     }
 
@@ -77,10 +81,16 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         yield return waitForSecs;
 
         // If player has a no battery lantern
-        if (dialog.givePrize)
+        if (dialog.GivePrize)
         {
             Inventory inventory = FindObjectOfType<Inventory>();
             inventory.Bag.Add(npcBag[1]);
+        }
+
+        // If player has a not rewound audio tape
+        else if (dialog.OpenDoor)
+        {
+            doorToOpen.SetTrigger("Open Door");
         }
 
         // Give a piano key on second time speaking

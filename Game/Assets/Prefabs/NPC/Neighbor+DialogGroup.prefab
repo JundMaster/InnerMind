@@ -492,7 +492,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: c3bd97f7e5d71544988bad5e39785855, type: 2}
     - target: {fileID: 577164705024808503, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
       propertyPath: npcItemsToCompare.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 577164705024808503, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
       propertyPath: npcItemsToCompare.Array.data[0]
@@ -506,6 +506,10 @@ PrefabInstance:
       propertyPath: npcItemsToCompare.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 46af12c07a60d8e4a8fdcb1276fdc739, type: 2}
+    - target: {fileID: 577164705024808503, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: npcItemsToCompare.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: fd3f45aa68618214797046d9ce01e392, type: 2}
     - target: {fileID: 4261077794766521346, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -583,6 +587,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4281755532025602706}
     - target: {fileID: 4851752128071463856, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: openDoorText
+      value: You found the audio tape!! You know what? Keep it, it might help.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851752128071463856, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
       propertyPath: linesOfText.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -592,7 +600,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4851752128071463856, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
       propertyPath: linesOfText.Array.data[1]
-      value: Can you help me find my Audio Player?
+      value: Can you help me find my Audio Player? Find it and I will open this door.
       objectReference: {fileID: 0}
     - target: {fileID: 4851752128071463856, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
       propertyPath: linesOfText.Array.data[2]
