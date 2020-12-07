@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class PauseMenu : MonoBehaviour
     private TypeOfControl lastTypeOfControl;
 
 
+    public event Action PauseGameEvent;
+
     private void Awake()
     {
         input = FindObjectOfType<PlayerInput>();
@@ -35,6 +38,9 @@ public class PauseMenu : MonoBehaviour
         PauseGame();
     }
 
+    private void OnPauseGame()
+        => PauseGameEvent?.Invoke();
+
     private void PauseGame()
     {
         if (input.Pause)
@@ -42,6 +48,8 @@ public class PauseMenu : MonoBehaviour
             // If game is paused
             if (Gamepaused == false)
             {
+                OnPauseGame();
+
                 Time.timeScale = 0f;
 
                 pauseMenu.SetActive(true);

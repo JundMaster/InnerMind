@@ -36,6 +36,7 @@ public class PlayerInventoryController : MonoBehaviour
     private void OnEnable()
     {
         input.ChangeControl += ChangeControl;
+        pauseMenu.PauseGameEvent += CancelLastClickItemInfo;
         // Runs UseItem when an item is clicked
         if (inventory.InventorySlot != null)
         {
@@ -49,16 +50,15 @@ public class PlayerInventoryController : MonoBehaviour
     private void OnDisable()
     {
         input.ChangeControl -= ChangeControl;
+        pauseMenu.PauseGameEvent -= CancelLastClickItemInfo;
         for (int i = 0; i < inventory.InventorySlot.Length; i++)
         {
             inventory.InventorySlot[i].SlotClick -= ClickAction;
         }
     }
 
-    private void Update()
-    {
-        if (pauseMenu.Gamepaused) LastClickedItemInfo = null;
-    }
+    private void CancelLastClickItemInfo()
+        => LastClickedItemInfo = null;
 
     private void ClickAction(ScriptableItem item,
                              PointerEventData.InputButton inputButton)

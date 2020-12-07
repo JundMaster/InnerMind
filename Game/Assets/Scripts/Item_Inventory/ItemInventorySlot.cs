@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemInventorySlot : MonoBehaviour, IPointerClickHandler
+public class ItemInventorySlot : MonoBehaviour, IPointerClickHandler, 
+    IPointerEnterHandler, IPointerExitHandler
 {
     // This variable will be equal to a item in the player's bag
     public ScriptableItem Info { get; set; }
@@ -12,6 +13,10 @@ public class ItemInventorySlot : MonoBehaviour, IPointerClickHandler
 
     // Click event
     public event Action<ScriptableItem, PointerEventData.InputButton> SlotClick;
+
+    // Mouse over event
+    public event Action<ScriptableItem> SlotOver;
+    public event Action<ScriptableItem> SlotLeave;
 
     public PointerEventData.InputButton inputButton { get; private set; }
 
@@ -23,7 +28,29 @@ public class ItemInventorySlot : MonoBehaviour, IPointerClickHandler
             if (Info != null && SlotClick != null)
             {
                 inputButton = eventData.button;
-                SlotClick.Invoke(Info, inputButton);
+                SlotClick?.Invoke(Info, inputButton);
+            }
+        }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (eventData != null)
+        {
+            if (Info != null)
+            {
+                SlotOver?.Invoke(Info);
+            }
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (eventData != null)
+        {
+            if (Info != null)
+            {
+                SlotLeave?.Invoke(Info);
             }
         }
     }

@@ -6,7 +6,7 @@
         ListOfItems combinationResults =
             ListOfItems.Flashlight | ListOfItems.Walkman | ListOfItems.AudioTape;
 
-        if (item1.CombinationItem != null && item2.CombinationItem != null)
+        if (item1.CombinationItem == item2.CombinationItem)
         {
             if (combinationResults.HasFlag(item1.ID | item2.ID))
             {
