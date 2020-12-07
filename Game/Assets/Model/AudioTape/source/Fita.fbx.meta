@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: 499516d42c4fd574c88070235c11159b
+guid: 9a00dff12d402d34b8591f5e29f7b5d5
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Flashlight
-    second: {fileID: 2100000, guid: 22eb27afb72986d43aab7dbbceff1c5e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Flashlight Glass
-    second: {fileID: 2100000, guid: 272d8a352f25c174ab910492cf7b615b, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0
