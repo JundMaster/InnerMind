@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38ea6aeb525e292469d59ce1a7fc540f, type: 3}
-  m_Name: Lantern
+  m_Name: Flashlight
   m_EditorClassIdentifier: 
-  name: Lantern
+  name: Flaslight
   id: 48
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  cursorTexture: {fileID: 10900, guid: 0000000000000000f000000000000000, type: 0}
-  prefab: {fileID: 7135793135276575373, guid: fc16d1e9091c1ad49a187ba1d5830e21, type: 3}
+  icon: {fileID: 21300000, guid: 7cceadd6d353b3c4398a1124bce051c0, type: 3}
+  cursorTexture: {fileID: 2800000, guid: 0a6293f44e6764647b3e7836a97ed326, type: 3}
+  prefab: {fileID: 8610691584590358875, guid: fc16d1e9091c1ad49a187ba1d5830e21, type: 3}
   combinationItem: {fileID: 0}

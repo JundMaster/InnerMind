@@ -4,7 +4,7 @@
                             Inventory inventory)
     {
         ListOfItems combinationResults =
-            ListOfItems.Lantern | ListOfItems.Walkman | ListOfItems.AudioTape;
+            ListOfItems.Flashlight | ListOfItems.Walkman | ListOfItems.AudioTape;
 
         if (item1.CombinationItem != null && item2.CombinationItem != null)
         {

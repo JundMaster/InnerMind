@@ -15,6 +15,6 @@ MonoBehaviour:
   name: Old Battery
   id: 32
   icon: {fileID: 21300000, guid: 91ca110f0780c2f4689f617bf153c679, type: 3}
-  cursorTexture: {fileID: 2800000, guid: 99baae7aba98ab341af6446118dac106, type: 3}
+  cursorTexture: {fileID: 2800000, guid: fe07ab1359e8c21418af9d9dc2e931c6, type: 3}
   prefab: {fileID: 9065148647535386607, guid: da7ab1b1a185fea4fadfe8e1f05f4ff2, type: 3}
   combinationItem: {fileID: 11400000, guid: 46af12c07a60d8e4a8fdcb1276fdc739, type: 2}
