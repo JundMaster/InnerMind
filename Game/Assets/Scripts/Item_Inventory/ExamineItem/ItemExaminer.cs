@@ -47,7 +47,7 @@ public class ItemExaminer
         light = new GameObject("Light");
         lightComponent = light.AddComponent<Light>();
         lightComponent.type = LightType.Spot;
-        lightComponent.range = 7.93f;
+        lightComponent.range = 25f;
         lightComponent.intensity = 4;
     }
 
