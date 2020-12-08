@@ -1,67 +1,42 @@
-﻿
-using System;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InteractionFamilyPicture : InteractionCommon, IPointerClickHandler
+public class InteractionFamilyPicture : InteractionCommon
 {
-    private PlayerInput input;
-    private GameObject newFrame;
-    public event Action<ScriptableItem> OnLeftClickEvent;
-    public override string ToString() => "Examine Family's Picture";
-
-    [SerializeField] private GameObject frame;
-    [SerializeField] private Transform framePosition;
-    [SerializeField] private GameObject frameCanvas;
-    [SerializeField] private ScriptableItem frameItem;
+    private Text displayText;
+    private WaitForSeconds waitForSeconds;
+    private string thought;
+    [SerializeField] private string[] thoughts;
+    [SerializeField] private GameObject thoughtCanvas;
 
     private void Start()
     {
-        input = FindObjectOfType<PlayerInput>();
+        waitForSeconds = new WaitForSeconds(2);
+        displayText = thoughtCanvas.GetComponentInChildren<Text>();
     }
 
-    private void Update()
-    {
-        if (input.CurrentControl == TypeOfControl.InExamine)
-        {
-            if (input.RightClick)
-            {
-                Destroy(newFrame);
-                frameCanvas.SetActive(false);
-                input.ChangeTypeOfControl(TypeOfControl.InGameplay);
-            }
-        }
-    }
+   
 
     public override void Execute()
     {
-        input.ChangeTypeOfControl(TypeOfControl.InExamine);
-        frameCanvas.SetActive(true);
-        OnLeftClickEvent(frameItem);
-        newFrame = Instantiate(frame);
-        newFrame.transform.position = framePosition.position;
-        newFrame.transform.rotation = framePosition.rotation;
-
+        StartCoroutine(DisplayThougthText(thoughts));
     }
 
-    public void BackToGameplay()
+    private IEnumerator DisplayThougthText(string[] thoughts)
     {
-        Destroy(newFrame);
-        frameCanvas.SetActive(false);
-        input.ChangeTypeOfControl(TypeOfControl.InGameplay);
-    }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (eventData != null && eventData.button ==
-            PointerEventData.InputButton.Left)
+        for (int i = 0; i < thoughts.Length; i++)
         {
-            if (frameItem != null && OnLeftClickEvent != null)
-            {
-                // Gets left click as a ScriptableItem
-                OnLeftClickEvent(frameItem);
-            }
+            thought = thoughts[i];
+            thoughtCanvas.SetActive(true);
+            displayText.enabled = true;
+            displayText.text = thought;
+            yield return waitForSeconds;
+            thoughtCanvas.SetActive(false);
+            displayText.enabled = false;
         }
     }
+    public override string ToString() => "Examine Photo";
 }

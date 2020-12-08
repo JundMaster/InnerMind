@@ -12,6 +12,7 @@ public class InteractionCloset : InteractionCommon
     private WaitForSeconds waitForSeconds;
     private string thought;
     [SerializeField] private string[] thoughts;
+    [SerializeField] private GameObject thoughtCanvas;
 
 
     private void Start()
@@ -19,7 +20,7 @@ public class InteractionCloset : InteractionCommon
         closetDoorAnimation = GetComponentInChildren<Animator>();
         closetBoxCollider = GetComponent<BoxCollider>();
         waitForSeconds = new WaitForSeconds(2);
-        displayText = FindObjectOfType<Text>();
+        displayText = thoughtCanvas.GetComponentInChildren<Text>();
     }
     public override void Execute()
     {
@@ -31,12 +32,15 @@ public class InteractionCloset : InteractionCommon
 
     private IEnumerator DisplayThougthText(string[] thoughts)
     {
+
         for (int i = 0; i < thoughts.Length; i++)
-        {
+        {           
             thought = thoughts[i];
+            thoughtCanvas.SetActive(true);
             displayText.enabled = true;
             displayText.text = thought;
             yield return waitForSeconds;
+            thoughtCanvas.SetActive(false);
             displayText.enabled = false;
         }
     }
