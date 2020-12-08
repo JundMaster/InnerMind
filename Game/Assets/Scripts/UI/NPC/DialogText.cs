@@ -59,7 +59,7 @@ public class DialogText : MonoBehaviour
             currentLine.GetComponentInChildren<TextMeshProUGUI>().text =
                     prizeText;
         }
-        if (OpenDoor)
+        else if (OpenDoor)
         {
             // Sets current line equal to text line on inspector
             currentLine.GetComponentInChildren<TextMeshProUGUI>().text =

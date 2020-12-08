@@ -64,9 +64,9 @@ public class InteractionNPCNeighbor : InteractionNPCBase
     {
         dialog.Counter = speakCounter;
 
-        // If the player has a No battery lantern
+        // If the player has a No battery flashlight
         // If the player doesn't have an old battery
-        // If the player doesn't have a lantern
+        // If the player doesn't have a flashlight
         if (playerInventory.Bag.Contains(npcItemsToCompare[0]) == true &&
             playerInventory.Bag.Contains(npcItemsToCompare[1]) == false &&
             playerInventory.Bag.Contains(npcItemsToCompare[2]) == false)
@@ -74,15 +74,16 @@ public class InteractionNPCNeighbor : InteractionNPCBase
             // Gives NPC's prize
             dialog.GivePrize = true;
         }
-        // If the player has a not rewound tape
-        else if (playerInventory.Bag.Contains(npcItemsToCompare[3]))    
-        {
-            // Opens NPC's locked door
-            dialog.OpenDoor = true;
-        }
         else
         {
             dialog.GivePrize = false;
+        }
+
+        // If the player has a not rewound tape
+        if (playerInventory.Bag.Contains(npcItemsToCompare[3]))    
+        {
+            // Opens NPC's locked door
+            dialog.OpenDoor = true;
         }
     }
 
@@ -115,7 +116,9 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         yield return waitForSecs;
 
         // If player has a no battery lantern
-        if (dialog.GivePrize)
+        // If the player doesn't have an old battery
+        if (dialog.GivePrize &&
+            playerInventory.Bag.Contains(npcItemsToCompare[1]) == false)
         {
             Inventory inventory = FindObjectOfType<Inventory>();
             inventory.Bag.Add(npcBag[1]);
@@ -139,7 +142,7 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         {
             speakCounter++;
         }
-        
+
         // If speakcounter reaches max number of texts, resets the text
         // to the initial loop after the text that happens only once
         if (speakCounter == dialog.LinesOfText.Length)
