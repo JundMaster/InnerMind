@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿
+/// <summary>
+/// List of types of control ingame
+/// </summary>
 public enum TypeOfControl
 {
     InGameplay,

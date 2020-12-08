@@ -1,15 +1,45 @@
 ﻿using System;
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+/// <summary>
+/// Class to define every player input
+/// </summary>
+public class PlayerInput : MonoBehaviour, IPlayerInput
 {
+    /// <summary>
+    /// Property for player current control
+    /// </summary>
     public TypeOfControl CurrentControl { get; private set; }
+
+    /// <summary>
+    /// Property for ZAxis
+    /// </summary>
     public float ZAxis { get; private set; }
+
+    /// <summary>
+    /// Property for XAxis
+    /// </summary>
     public float XAxis { get; private set; }
+
+    /// <summary>
+    /// Propert for horizontal mouse speed
+    /// </summary>
     public float HorizontalMouse { get; private set; }
+
+    /// <summary>
+    /// Propert for vertical mouse speed
+    /// </summary>
     public float VerticalMouse { get; private set; }
+
+    /// <summary>
+    /// Propert for left click
+    /// </summary>
     public bool LeftClick { get; private set; }
+
     private bool rightClick;
+    /// <summary>
+    /// Property for right click
+    /// </summary>
     public bool RightClick
     {
         get => rightClick;
@@ -20,32 +50,56 @@ public class PlayerInput : MonoBehaviour
                 OnChangeControlClick();
         }
     }
-    public bool MiddleClick { get; private set; }
-    public bool Pause { get; private set; }
-    public bool Enter { get; private set; }
-    public static float MouseSpeed { get; set; }
 
-    // Mouse Cursor ICON position
+    /// <summary>
+    /// Property for pause input
+    /// </summary>
+    public bool Pause { get; private set; }
+
+    /// <summary>
+    /// Property for cursor position relative to cursor in game
+    /// </summary>
     public Vector2Int CursorPosition { get; private set; }
 
+    /// <summary>
+    /// Property for mouse speed
+    /// </summary>
+    public float MouseSpeed { get; set; }
+
+    /// <summary>
+    /// Method to change type of control
+    /// </summary>
+    /// <param name="control">TypeOfControl to change to</param>
     public void ChangeTypeOfControl(TypeOfControl control) =>
         CurrentControl = control;
 
+    /// <summary>
+    /// Method to invoke ChangeControl
+    /// </summary>
     private void OnChangeControlClick()
     {
         ChangeControl?.Invoke();
     }
+
+    // Event for ChangeControl
     public event Action ChangeControl;
 
+    /// <summary>
+    /// Start method for PlayerInput
+    /// </summary>
     private void Start()
     {
         CursorPosition = new Vector2Int(30, 30);
     }
 
+    /// <summary>
+    /// Update method for PlayerInput
+    /// </summary>
     private void Update()
     {
         MouseSpeed = PlayerPrefs.GetFloat("mouseSpeed");
 
+        // Defines player controls depending on current TypeOfControl
         switch (CurrentControl)
         {
             case TypeOfControl.InGameplay:
@@ -64,10 +118,6 @@ public class PlayerInput : MonoBehaviour
 
                 // Gets right click
                 RightClick = Input.GetButtonDown("Fire2");
-                // if (RightClick) OnChangeControlClick();
-
-                // Gets middle click                
-                MiddleClick = Input.GetButtonDown("Fire3");
 
                 // Gets ESC key
                 Pause = Input.GetKeyDown(KeyCode.P);
@@ -88,7 +138,6 @@ public class PlayerInput : MonoBehaviour
 
                 // Gets right click
                 RightClick = Input.GetButtonDown("Fire2");
-                // if (RightClick) OnChangeControlClick();
 
                 // Gets ESC key
                 Pause = Input.GetKeyDown(KeyCode.P);
@@ -102,7 +151,6 @@ public class PlayerInput : MonoBehaviour
 
                 // Gets right click
                 RightClick = Input.GetButtonDown("Fire2");
-                // if (RightClick) OnChangeControlClick();
 
                 // Gets the ESC key
                 Pause = Input.GetKeyDown(KeyCode.P);

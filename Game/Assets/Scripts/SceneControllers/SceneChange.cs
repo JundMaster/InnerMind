@@ -2,11 +2,23 @@
 using UnityEngine.SceneManagement;
 using System.IO;
 
+/// <summary>
+/// Class responsible for changing scenes
+/// </summary>
 public class SceneChange : MonoBehaviour
 {
+    // First scene to change the scene to
     [SerializeField] private SceneNames goToScene;
+
+    // If the goToScene already happened, this will be the scene to change to
     [SerializeField] private SceneNames elseGoToScene;
 
+    /// <summary>
+    /// OnTriggerEnter of SceneChange
+    /// When leaving room 3, writes player's position to a file
+    /// When the player collides with this collider, it loads a new scene
+    /// </summary>
+    /// <param name="other">Collider the SceneChange collided with</param>
     private void OnTriggerEnter(Collider other)
     {
         // Saves room3 last position before entering a new room
@@ -32,16 +44,20 @@ public class SceneChange : MonoBehaviour
                 {
                     while ((watchedCutsceneStr = sr.ReadLine()) != null)
                     {
+                        // If goToScene already happened, sets watchedCutscene
+                        //  to true
                         if (watchedCutsceneStr == goToScene.ToString())
                             watchedCutscene = true;
                     }                   
                 }
-    
-                // If cutscene was watched, loads elseGoToScreen
+                // After reading the file
+
+                // If goToScene was watched, loads elseGoToScreen
                 if (watchedCutscene)
                     SceneManager.LoadScene(elseGoToScene.ToString());
 
-                // Else loads the normal cutscene order
+                // Else, if the goToScene wasn't watched, loads the normal 
+                //  cutscene order and writes its name on the file
                 else
                 {
                     File.AppendAllText(FilePath.watchedCutscenes, $"\n{goToScene}");
@@ -60,6 +76,9 @@ public class SceneChange : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// OnApplicationQuit for SceneChange
+    /// </summary>
     private void OnApplicationQuit()
     {
         File.Delete(FilePath.lastScenePath);

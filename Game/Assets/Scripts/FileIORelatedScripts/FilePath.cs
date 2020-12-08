@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Class with paths to write/read files
+/// </summary>
 sealed public class FilePath
 {
     public static readonly string puzzlePath = 

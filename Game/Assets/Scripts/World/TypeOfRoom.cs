@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿
+/// <summary>
+/// List with every TypeOfRoom ingame
+/// </summary>
 public enum TypeOfRoom
 {
     WalkableWalls,

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +7,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         
+        /*
         // FOR TESTS ONLY
         if (Input.GetKeyDown(KeyCode.Alpha1))
             SceneManager.LoadScene(0);
@@ -19,6 +18,6 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha4))
             SceneManager.LoadScene(3);
         if (Input.GetKeyDown(KeyCode.Alpha5))
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(4);*/
     }
 }

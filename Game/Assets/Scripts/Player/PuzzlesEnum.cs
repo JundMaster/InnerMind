@@ -1,6 +1,8 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
 
+/// <summary>
+/// List of puzzle names ingame
+/// </summary>
 [Flags]
 public enum PuzzlesEnum
 {

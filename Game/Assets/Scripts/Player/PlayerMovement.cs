@@ -1,20 +1,26 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
-
-public class PlayerMovement : MonoBehaviour
+/// <summary>
+/// Class responsible for player movement
+/// </summary>
+public class PlayerMovement : MonoBehaviour, ICoroutineT<RaycastHit>
 {
-    // Movement
+    // Movement variables
     [Range(1, 20)] [SerializeField] private byte speed;
-    [SerializeField] private Transform groundCheck;
 
+    // Groundcheck variables
+    [SerializeField] private Transform groundCheck;
+    /// <summary>
+    /// Poperty that returns groundCheck
+    /// </summary>
     public Transform GroundCheck { get => groundCheck; }
+
+    // Layer to check if there's an obstacle between the player and the floor
     [SerializeField] private LayerMask obstacleLayer;
 
-    // Walkable walls room
-    private Coroutine CR_ChangeWall;
+    // Walkable walls coroutine variable to control the coroutine
+    public Coroutine ThisCoroutine { get; private set; }
 
     // Components
     private PlayerGeneralInfo playerInfo;
@@ -22,6 +28,9 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInput input;
     private PlayerRays  rays;
 
+    /// <summary>
+    /// Start method of PlayerMovement
+    /// </summary>
     private void Start()
     {
         playerInfo = GetComponent<PlayerGeneralInfo>();
@@ -30,11 +39,17 @@ public class PlayerMovement : MonoBehaviour
         rays = GetComponent<PlayerRays>();
     }
 
+    /// <summary>
+    /// FixedUpdate of PlayerMovement
+    /// </summary>
     private void FixedUpdate()
     {
         Movement();
     }
 
+    /// <summary>
+    /// Update of PlayerMovement
+    /// </summary>
     private void Update()
     {
         // Only runs if the player is in a WallWalkRoom
@@ -44,11 +59,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method is responsible for controlling the player's movement
+    /// </summary>
     private void Movement()
     {
-        Vector3 movement;
-        // Movement variable
-        movement = (transform.right * input.XAxis + 
+        Vector3 movement = (transform.right * input.XAxis +
             transform.forward * input.ZAxis).normalized;
 
         // Refresh groundCheck position (position where player is moving towards)
@@ -79,6 +95,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method responsible to check if the player is going to change walls
+    /// </summary>
     private void ChangeFace()
     {
         // If collides with a wall
@@ -91,65 +110,89 @@ public class PlayerMovement : MonoBehaviour
                 if (input.ZAxis > 0)
                 {
                     // And the coroutine isn't already running
-                    if (CR_ChangeWall == null)
+                    if (ThisCoroutine == null)
                     {
-                        CR_ChangeWall = StartCoroutine(CRChangeFace(hit));
+                        ThisCoroutine = StartCoroutine(CoroutineExecute(hit));
                     }
                 }
             }
         }
     }
 
-
-    private IEnumerator CRChangeFace(RaycastHit hit)
+    /// <summary>
+    /// Coroutine responsible for executing and animating wall change action
+    /// </summary>
+    /// <param name="hit">Receives the wall point the player hit</param>
+    /// <returns></returns>
+    public IEnumerator CoroutineExecute(RaycastHit hit)
     {
-        // Stops time, rotates the player towards the point of impact
         rb.isKinematic = true;
-        // Rotates camera and resets its value
+
+        // Rotates camera to wall and resets its value
         transform.LookAt(transform.position - hit.normal, transform.up);
         GetComponentInChildren<PlayerLook>().VerticalRotation = 0;
 
-        // Changes position and rotation smoothly
+        // Sets values for desired rotation
         float elapsedTime = 0.0f;
         Quaternion from = transform.rotation;
         Quaternion to = transform.rotation;
         to *= Quaternion.Euler(-90, 0f, 0f);
+
+        // Translates position and rotation smoothly
         while (elapsedTime < 0.5f)
         {
             elapsedTime += Time.deltaTime;
 
+            // Translates smoothly
             transform.position = Vector3.MoveTowards(transform.position, 
                 hit.point, elapsedTime / 2f);
 
+            // Rotates smoothly
             transform.rotation = Quaternion.Slerp(from, to, elapsedTime * 2f);
             
             yield return null;
         }
+        // Sets final position to hit.point
         transform.position = hit.point;
         transform.rotation = to;
 
         // Gives back all player control
         rb.isKinematic = false;
-        CR_ChangeWall = default;
+        ThisCoroutine = default;
     }
 
-
-    // OnTriggers
+    /// <summary>
+    /// OnTriggerStay of PlayerMovement
+    /// </summary>
+    /// <param name="other">Collider the player collided with</param>
     private void OnTriggerStay(Collider other)
     {
+        // While inside a wallwalkroom, current type of control is set to
+        // TypeOfRoom.WalkableWalls
         if (other.CompareTag("WallWalkRoom"))
         {
             playerInfo.CurrentTypeOfRoom = TypeOfRoom.WalkableWalls;
         }
     }
+
+    /// <summary>
+    /// OnTriggerExit of PlayerMovement
+    /// </summary>
+    /// <param name="other">Collider the player collided with</param>
     private void OnTriggerExit(Collider other)
     {
+        // When leaving a wallwalkroom, current type of control is set to
+        // TypeOfRoom.NonWalkableWalls
         if (other.CompareTag("WallWalkRoom"))
         {
             playerInfo.CurrentTypeOfRoom = TypeOfRoom.NonWalkableWalls;
         }
     }
 
+    /// <summary>
+    /// OnDrawGizmos of PlayerMovement
+    /// Draws rays and a sphere only on editor
+    /// </summary>
     private void OnDrawGizmos()
     {
         // Axis Rays

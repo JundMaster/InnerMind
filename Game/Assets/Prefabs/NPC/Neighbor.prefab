@@ -49,8 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondsToWait: 3
-  head: {fileID: 4261077794766521346}
+  lookAt: {fileID: 4261077794766521346}
   rotationSpeedModifier: 2
+  doorToOpen: {fileID: 0}
+  npcItemsToCompare: []
   npcBag: []
 --- !u!114 &4851752128071463856
 MonoBehaviour:
@@ -69,6 +71,8 @@ MonoBehaviour:
   - hey
   - hey2
   - hey3
+  prizeText: 
+  openDoorText: 
 --- !u!54 &4851752126941438411
 Rigidbody:
   m_ObjectHideFlags: 0

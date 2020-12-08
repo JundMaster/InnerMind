@@ -1,5 +1,8 @@
 ﻿using System;
 
+/// <summary>
+/// List with 3 positions, Left, Middle and Right
+/// </summary>
 [Flags]
 public enum LeftMiddleRight
 {

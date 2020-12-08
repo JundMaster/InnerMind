@@ -1,18 +1,24 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class for PadlockButton from door with code
+/// </summary>
 public class PadlockButton : MonoBehaviour
 {
+    // The door where the padlock is
     [SerializeField] private InteractionDoorWithCode padlockDoor;
 
     // Variables to get padlockwheels
     private GameObject[]    padlockWheelsGameObjects;
     private Transform[]     padlockWheels;
 
-    // Running coroutine
+    // Variable to control coroutine
     private Coroutine coroutine;
 
+    /// <summary>
+    /// Start method for PadlockButton
+    /// </summary>
     private void Start()
     {
         // Gets padlock wheels for the first time
@@ -32,9 +38,12 @@ public class PadlockButton : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Update method for PadlockButton
+    /// </summary>
     private void Update()
     {
-        // Gets padlock wheels after the first time
+        // If null, gets padlock wheels after the first time
         if (padlockWheelsGameObjects[0] == null)
         {
             padlockWheelsGameObjects[0] =
@@ -51,38 +60,60 @@ public class PadlockButton : MonoBehaviour
         }
     }
 
-    // Methods for the 3 wheels
+    /// <summary>
+    /// Method for first wheel
+    /// Called when the button on the padlock is pressed
+    /// </summary>
+    /// <param name="result">Value of the wheel</param>
     public void FirstWheel(int result)
     {
         if (coroutine == null) 
             coroutine = StartCoroutine(Rotate(padlockWheels[0], result, 1));
     }
 
+    /// <summary>
+    /// Method for second wheel
+    /// Called when the button on the padlock is pressed
+    /// </summary>
+    /// <param name="result">Value of the wheel</param>
     public void SecondWheel(int result)
     {
         if (coroutine == null)
             coroutine = StartCoroutine(Rotate(padlockWheels[1], result, 2));
     }
 
+    /// <summary>
+    /// Method for third wheel
+    /// Called when the button on the padlock is pressed
+    /// </summary>
+    /// <param name="result">Value of the wheel</param>
     public void ThirdWheel(int result)
     {
         if (coroutine == null)
             coroutine = StartCoroutine(Rotate(padlockWheels[2], result, 3));
     }
 
-    // Rotates the wheel and changes Usercode value
+    /// <summary>
+    /// Rotates the wheel and changes Usercode value
+    /// </summary>
+    /// <param name="wheel">Wheel to rotate</param>
+    /// <param name="dir">Direction to rotate the wheel to</param>
+    /// <param name="wheelNumber">Wheel's number</param>
+    /// <returns></returns>
     private IEnumerator Rotate(Transform wheel, int dir, int wheelNumber)
     {
         float elapsedTime = 0.0f;
         Quaternion from = wheel.transform.rotation;
         Quaternion to = wheel.transform.rotation;
 
+        // If direction is negative, rotates the wheel to the left
         if (dir < 0)
             to *= Quaternion.Euler(0f, 36f, 0f);
+        // Else rotates the wheel to the right
         else
             to *= Quaternion.Euler(0f, -36f, 0f);
 
-        // Rotate
+        // Rotation animation
         while (elapsedTime < 1f)
         {
             wheel.transform.rotation = 
@@ -91,7 +122,7 @@ public class PadlockButton : MonoBehaviour
             yield return null;
         }
 
-        // Change usercode value
+        // Changes user code depending on the wheel's number
         switch (wheelNumber)
         {
             case 1:
@@ -150,13 +181,18 @@ public class PadlockButton : MonoBehaviour
                 break;
         }
 
+        // After all the operations
         // If the codes are equal, opens the door
         if (padlockDoor.UserCode == padlockDoor.DoorCode)
             padlockDoor.OpenDoor();
 
+        // Sets the coroutine to null so it can be used again
         coroutine = null;
     }
 
+    /// <summary>
+    /// Called when the button back is pressed, while on padlock screen
+    /// </summary>
     public void BackToGameplay()
     {
         padlockDoor.BackToGameplay();

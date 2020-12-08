@@ -1,4 +1,8 @@
-﻿public enum SceneNames
+﻿
+/// <summary>
+/// List with every scene's name ingame
+/// </summary>
+public enum SceneNames
 {
     Room1,
     Room2,

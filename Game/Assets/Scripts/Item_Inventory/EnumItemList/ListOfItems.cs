@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
+/// <summary>
+/// List of interectable items ingame
+/// </summary>
 [Flags]
 public enum ListOfItems
 {

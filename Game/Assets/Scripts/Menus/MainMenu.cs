@@ -1,26 +1,36 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Class for main menu
+/// </summary>
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
+    /// <summary>
+    /// Start method for MainMenu
+    /// </summary>
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
     }
 
+    /// <summary>
+    /// Loads first scene
+    /// Called on new game button
+    /// </summary>
     public void StartGame()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("InteractionTest");
     }
 
+    /// <summary>
+    /// Quits the game
+    /// Called on quit button
+    /// </summary>
     public void QuitGame()
-    {
-        Debug.Log("You left the game!");
-        
-        //Used to exit the actual build;
-        //Application.Quit();
+    {       
+        Application.Quit();
     }
 
     

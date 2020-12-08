@@ -1,20 +1,33 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Class for interaction with Neighbor. Extends InteractionNPCBase
+/// </summary>
 public class InteractionNPCNeighbor : InteractionNPCBase
 {
-    // NPC Head & speed of the rotation
-    [SerializeField] private Transform head;
+    // NPC Head 
+    [SerializeField] private Transform lookAt;
+
+    // NPC rotation speed for its animation
     [SerializeField] private float rotationSpeedModifier;
 
+    // NPC Prize related variables
+    // Door to open when its puzzle is done
     [SerializeField] private Animator doorToOpen;
+    // ScriptableItems to compare if the player as a certain item
     [SerializeField] private ScriptableItem[] npcItemsToCompare;
+    // Items that the npc has in its back
     [SerializeField] private ScriptableItem[] npcBag;
 
+    // Components
     private PlayerInput input;
     private Animator anim;
     private Inventory playerInventory;
 
+    /// <summary>
+    /// Awake method for InteractionNPCNeighbor
+    /// </summary>
     private void Awake()
     {
         dialog = GetComponent<DialogText>();
@@ -23,6 +36,9 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         playerInventory = FindObjectOfType<Inventory>();
     }
 
+    /// <summary>
+    /// Start method for InteractionNPCNeighbor
+    /// </summary>
     private void Start()
     {
         // If the player already has a piano key, the speakcounter will be 3
@@ -30,16 +46,20 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         {
             speakCounter = 3;
         }
+        // Else it wil be 0
         else
         {
             speakCounter = 0;
         }
 
+        // Instantiates a new WaitForSeconds with X seconds to wait
         waitForSecs = new WaitForSeconds(secondsToWait);
-
         dialog.WaitForSecs = waitForSecs;
     }
 
+    /// <summary>
+    /// Updated method for InteractionNPCNeighbor
+    /// </summary>
     private void Update()
     {
         dialog.Counter = speakCounter;
@@ -51,10 +71,13 @@ public class InteractionNPCNeighbor : InteractionNPCBase
             playerInventory.Bag.Contains(npcItemsToCompare[1]) == false &&
             playerInventory.Bag.Contains(npcItemsToCompare[2]) == false)
         {
+            // Gives NPC's prize
             dialog.GivePrize = true;
         }
+        // If the player has a not rewound tape
         else if (playerInventory.Bag.Contains(npcItemsToCompare[3]))    
         {
+            // Opens NPC's locked door
             dialog.OpenDoor = true;
         }
         else
@@ -63,6 +86,10 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         }
     }
 
+    /// <summary>
+    /// This Coroutine determines the action of the NPC when clicked
+    /// </summary>
+    /// <returns>Returns null</returns>
     public override IEnumerator CoroutineExecute()
     {
         input.ChangeTypeOfControl(TypeOfControl.InNPCInteraction);
@@ -70,11 +97,18 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         // Smoothly rotates npc towards the player and player towards npc
         StartCoroutine(RotationAnimation());
 
+        // Gets next npc's action
         StartCoroutine(GetNextAction());
        
         yield break;
     }
 
+    /// <summary>
+    /// Coroutine used to get next line from DialogText.
+    /// This Coroutine also checks NPC's conditions to know if it can
+    /// give items, or open a locked door
+    /// </summary>
+    /// <returns>Returns null</returns>
     private IEnumerator GetNextAction()
     {
         StartCoroutine(dialog.GetNextLine());
@@ -107,25 +141,31 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         }
         
         // If speakcounter reaches max number of texts, resets the text
+        // to the initial loop after the text that happens only once
         if (speakCounter == dialog.LinesOfText.Length)
             speakCounter = 3;
 
+        // Sets the coroutine to false so it can be called again
         ThisCoroutine = default;
+        // Changes type of input
         input.ChangeTypeOfControl(TypeOfControl.InGameplay);
         yield break;
     }
 
-
+    /// <summary>
+    /// Coroutine used to animate the npc and the player at the sametime
+    /// Rotates the npc towards the player and the player towards the npc
+    /// </summary>
+    /// <returns>Returns null</returns>
     private IEnumerator RotationAnimation()
     {
         anim.SetTrigger("turn");
-        PlayerMovement player;
-        player = FindObjectOfType<PlayerMovement>();
-        PlayerLook playerCamera;
-        playerCamera = player.GetComponentInChildren<PlayerLook>();
+        PlayerMovement player = FindObjectOfType<PlayerMovement>();
+        PlayerLook playerCamera = player.GetComponentInChildren<PlayerLook>();
 
         float elapsedTime = 0.0f;
 
+        // Sets desired values
         Quaternion npcFrom = transform.rotation;
         Quaternion npcTo = Quaternion.LookRotation(player.transform.position -
                                                 transform.position);
@@ -136,10 +176,11 @@ public class InteractionNPCNeighbor : InteractionNPCBase
 
         Quaternion pCameraFrom = playerCamera.transform.rotation;
         Quaternion pCameraTo = default;
-        if (head != null)
-            pCameraTo = Quaternion.LookRotation(head.position -
+        if (lookAt != null)
+            pCameraTo = Quaternion.LookRotation(lookAt.position -
                                                 playerCamera.transform.position);
 
+        // Animation for both NPC and player rotations
         while (elapsedTime < 0.5f)
         {
             // Rotates NPC
@@ -173,12 +214,19 @@ public class InteractionNPCNeighbor : InteractionNPCBase
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        playerCamera.VerticalRotation = playerCamera.transform.rotation.eulerAngles.x;
+        // Sets VerticalRotation to the same as rotation.eulerAngles.X at the 
+        // moment, so the camera stays exactly the same angle after the anim
+        playerCamera.VerticalRotation = 
+            playerCamera.transform.rotation.eulerAngles.x;
+
         anim.SetTrigger("idle");
-
-
     }
 
+    /// <summary>
+    /// This method overrides ToString, and it determines what the player sees
+    /// when the Crosshair is on top of this npc
+    /// </summary>
+    /// <returns>Returns a string with an action</returns>
     public override string ToString()
     {
         return "Speak to Neighbor";
