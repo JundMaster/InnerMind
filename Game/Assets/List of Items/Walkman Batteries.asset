@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ea6aeb525e292469d59ce1a7fc540f, type: 3}
+  m_Name: Walkman Batteries
+  m_EditorClassIdentifier: 
+  name: Walkman Batteries
+  id: 2048
+  icon: {fileID: 21300000, guid: 524916a53beabd24ab60403d4d622075, type: 3}
+  cursorTexture: {fileID: 2800000, guid: 208e6eddc50243344990e39b8c35aa2c, type: 3}
+  prefab: {fileID: 8741662961692253442, guid: d070c92c9cfae8142b5db51aa344aa1c, type: 3}
+  combinationItem: {fileID: 11400000, guid: 82f50a7b5083cbb48b8fde67d7343faf, type: 2}

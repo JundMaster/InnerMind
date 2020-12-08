@@ -17,7 +17,8 @@ public class ItemCombine : ICombinable<ScriptableItem>
     {
         // Valid item combination results
         ListOfItems combinationResults =
-            ListOfItems.Flashlight | ListOfItems.Walkman | ListOfItems.AudioTape;
+            ListOfItems.Flashlight | ListOfItems.WalkmanWithoutTape |
+            ListOfItems.AudioTape | ListOfItems.Walkman;
 
         // Of both combination items are the same
         if (item1.CombinationItem == item2.CombinationItem)

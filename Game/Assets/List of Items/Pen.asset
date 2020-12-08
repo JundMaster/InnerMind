@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38ea6aeb525e292469d59ce1a7fc540f, type: 3}
-  m_Name: PianoKey3
+  m_Name: Pen
   m_EditorClassIdentifier: 
-  name: PianoKey
-  id: 8
-  icon: {fileID: 21300000, guid: ccece17c47e176444890f7e4e7d84632, type: 3}
-  cursorTexture: {fileID: 2800000, guid: 8b2b93c8a2566964c9b80f4977693ae4, type: 3}
-  prefab: {fileID: 634804424959308904, guid: abd47164ef83780449c8460ab050140b, type: 3}
-  combinationItem: {fileID: 0}
+  name: Pen
+  id: 256
+  icon: {fileID: 21300000, guid: e70de63084ec69547864068f7a67661a, type: 3}
+  cursorTexture: {fileID: 2800000, guid: d9e09252129df0046ad13eeb9f1187e7, type: 3}
+  prefab: {fileID: 880653184845620338, guid: 2194cd261886ae4439a437834353d828, type: 3}
+  combinationItem: {fileID: 11400000, guid: 3fe2c41b27e5dc64983f1958a0b29f7b, type: 2}

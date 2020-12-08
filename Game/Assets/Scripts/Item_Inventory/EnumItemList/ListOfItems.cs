@@ -18,7 +18,9 @@ public enum ListOfItems
     Pen = 1 << 8,
     CabinetKey = 1 << 9,
     Map = 1 << 10,
+    WalkmanBatteries = 1 << 11,
     Flashlight = OldBattery | NoBatteryFlashlight,
-    Walkman = OldBattery | NoBatteryWalkman,
+    WalkmanWithoutTape = WalkmanBatteries | NoBatteryWalkman,
     AudioTape = NotRewoundAudioTape | Pen,
+    Walkman = AudioTape | WalkmanWithoutTape
 }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38ea6aeb525e292469d59ce1a7fc540f, type: 3}
-  m_Name: PianoKey3
+  m_Name: Walkman
   m_EditorClassIdentifier: 
-  name: PianoKey
-  id: 8
-  icon: {fileID: 21300000, guid: ccece17c47e176444890f7e4e7d84632, type: 3}
-  cursorTexture: {fileID: 2800000, guid: 8b2b93c8a2566964c9b80f4977693ae4, type: 3}
-  prefab: {fileID: 634804424959308904, guid: abd47164ef83780449c8460ab050140b, type: 3}
+  name: Walkman
+  id: 2496
+  icon: {fileID: 21300000, guid: fb8e3f79b1b87544785ad6d268f23fdc, type: 3}
+  cursorTexture: {fileID: 2800000, guid: 8e633629eaa9cab4e9ac873792258e55, type: 3}
+  prefab: {fileID: 1777978001432191154, guid: dc071c95bbf97514d8701547d346c30e, type: 3}
   combinationItem: {fileID: 0}

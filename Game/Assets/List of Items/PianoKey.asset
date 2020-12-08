@@ -16,5 +16,5 @@ MonoBehaviour:
   id: 2
   icon: {fileID: 21300000, guid: ccece17c47e176444890f7e4e7d84632, type: 3}
   cursorTexture: {fileID: 2800000, guid: 8b2b93c8a2566964c9b80f4977693ae4, type: 3}
-  prefab: {fileID: 4649446575839400457, guid: cdf891423786dc644a1e934467339434, type: 3}
+  prefab: {fileID: 634804424959308904, guid: abd47164ef83780449c8460ab050140b, type: 3}
   combinationItem: {fileID: 0}
