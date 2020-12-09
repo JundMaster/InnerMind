@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 /// <summary>
@@ -7,12 +6,13 @@ using UnityEngine;
 /// </summary>
 public class PictureFramePuzzleParent : MonoBehaviour
 {
-    /// <summary>
-    /// Frames on the puzzle
-    /// </summary>
+
     [SerializeField]
     private PictureFramePuzzle[] framePictures;
 
+    /// <summary>
+    /// Frames on the puzzle
+    /// </summary>
     public PictureFramePuzzle[] FramePictures
     {
         get => framePictures;
@@ -23,10 +23,26 @@ public class PictureFramePuzzleParent : MonoBehaviour
     }
 
     /// <summary>
-    /// Defines wether the puzzle is solved
+    /// Defines whether the puzzle is solved
     /// </summary>
     public bool IsSolved { get; private set; }
 
+    /// <summary>
+    /// Event fired when the puzzle is solved
+    /// </summary>
+    public event Action PuzzleSolved;
+
+    #region Unity functions
+    /// <summary>
+    /// OnEnable method for PictureFramePuzzleParent
+    /// </summary>
+    private void OnEnable()
+    {
+        for (int i = 0; i < framePictures.Length; i++)
+        {
+            framePictures[i].FrameChanged += SolvedCheck;
+        }
+    }
     /// <summary>
     /// Start method for PictureFramePuzzleParent
     /// </summary>
@@ -35,19 +51,30 @@ public class PictureFramePuzzleParent : MonoBehaviour
         FramePictures = framePictures;
         IsSolved = false;
     }
-
     /// <summary>
-    /// OnEnable method for PictureFramePuzzleParent
+    /// OnDisable method for PictureFramePuzzleParent
     /// </summary>
-    private void OnEnable()
+    private void OnDisable()
     {
         for (int i = 0; i < framePictures.Length; i++)
         {
-            framePictures[i].PositionChange += Test;
+            framePictures[i].FrameChanged -= SolvedCheck;
         }
     }
+    #endregion
 
-    private void Test()
+    /// <summary>
+    /// Invokes the <see cref="PuzzleSolved"/> event
+    /// </summary>
+    private void OnPuzzleSolved()
+    {
+        PuzzleSolved?.Invoke();
+    }
+
+    /// <summary>
+    /// Checks if frames are all marked as solved
+    /// </summary>
+    private void SolvedCheck()
     {
         int solvedCount = 0;
         for (int i = 0; i < framePictures.Length; i++)
@@ -57,11 +84,10 @@ public class PictureFramePuzzleParent : MonoBehaviour
                 solvedCount++;
             }
         }
-        Debug.Log(solvedCount);
         if (solvedCount == framePictures.Length)
         {
+            OnPuzzleSolved();
             IsSolved = true;
-            Debug.Log("this one is solved bruh");
         }
         
     }

@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
 /// Responsible for each frame in the puzzle
 /// </summary>
 public class PictureFramePuzzle : MonoBehaviour
-{ 
+{
+    #region Suport Variables
     [SerializeField]
     private FramePosition solutionPosition;
     [SerializeField]
@@ -16,7 +15,13 @@ public class PictureFramePuzzle : MonoBehaviour
     private bool flipedSolution;
     [SerializeField]
     private FramePoint framePoint;
+    private bool isFrameFliped;
+    private FramePosition currentPosition;
+    #endregion
 
+    /// <summary>
+    /// FramePoint in which the frame will start
+    /// </summary>
     public FramePoint FramePoint
     {
         get => framePoint;
@@ -26,10 +31,9 @@ public class PictureFramePuzzle : MonoBehaviour
         }
     }
 
-    private bool currentFlipState;
-
-    private FramePosition currentPosition;
-
+    /// <summary>
+    /// Defintion for whether the frame is well positioned and fliped
+    /// </summary>
     public bool IsSolved { get; private set; }
 
     /// <summary>
@@ -65,7 +69,7 @@ public class PictureFramePuzzle : MonoBehaviour
         set
         {
             currentPosition = value;
-            OnPositionChange();               
+            OnFrameChange();               
         }
     }
 
@@ -81,16 +85,18 @@ public class PictureFramePuzzle : MonoBehaviour
             flipedSolution = value;
         }
     }
-
-    public bool CurrentFlipState
+    /// <summary>
+    /// Defines whether the frame is fliped
+    /// </summary>
+    public bool IsFrameFliped
     {
-        get => currentFlipState;
+        get => isFrameFliped;
         set
         {
-            if (currentFlipState != value)
+            if (isFrameFliped != value)
             {
-                currentFlipState = value;
-                OnPositionChange();
+                isFrameFliped = value;
+                OnFrameChange();
             }
         }
     }
@@ -98,7 +104,7 @@ public class PictureFramePuzzle : MonoBehaviour
     /// <summary>
     /// Event fired when the position of the frame changes
     /// </summary>
-    public event Action PositionChange;
+    public event Action FrameChanged;
 
     /// <summary>
     /// Start method for PictureFramePuzzle
@@ -116,20 +122,19 @@ public class PictureFramePuzzle : MonoBehaviour
     /// <param name="currentPositon">Current position of the frame.</param>
     /// <param name="solutionPosition">Position in wich the frame must be in 
     /// order to complete the puzzle </param>
-    private void OnPositionChange()
+    private void OnFrameChange()
     {
         ValidateSolution();
-        PositionChange?.Invoke();
+        FrameChanged?.Invoke();
     }
 
     /// <summary>
-    /// Validates wether the frame is correct positioned
+    /// Validates whether the frame is correct positioned
     /// </summary>
     private void ValidateSolution()
     {
         IsSolved =  (CurrentPosition == SolutionPosition) && 
-                    (CurrentFlipState == FlipedSolution);
-
+                    (IsFrameFliped == FlipedSolution);
     }
 
 }

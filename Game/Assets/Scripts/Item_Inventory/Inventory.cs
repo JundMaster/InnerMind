@@ -26,6 +26,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        Debug.Log("On inventory");
         // Creates a list with 8 slots
         Bag = new ObservableList<ScriptableItem>(new ScriptableItem[8]);
 

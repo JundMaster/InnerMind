@@ -24,10 +24,10 @@ public class TranslateInteractionPictureFrame : InteractionCR
 
     private PictureFramePuzzleParent pictureFramePuzzleParent;
 
-    // Defines wether the interaction is still running
+    // Defines whether the interaction is still running
     private bool onInteraction;
 
-    // Defines wether the frame can be moved
+    // Defines whether the frame can be moved
     private bool canMove;
 
     private FramePosition framePointIndex;
@@ -128,7 +128,7 @@ public class TranslateInteractionPictureFrame : InteractionCR
         {
             canMove = false;
         }
-        else if (frame.CurrentFlipState)
+        else if (frame.IsFrameFliped)
         {
             canMove = false;
         }
@@ -136,9 +136,9 @@ public class TranslateInteractionPictureFrame : InteractionCR
         {
             canMove = true;
         }
-        foreach (PictureFramePuzzle f in pictureFramePuzzleParent.FramePictures)
+        foreach(PictureFramePuzzle f in pictureFramePuzzleParent.FramePictures)
         {
-            if (f.CurrentFlipState && 
+            if (f.IsFrameFliped && 
                 f.CurrentPosition == frame.CurrentPosition + directionModifier)
             {
                 canMove = false;
@@ -155,7 +155,7 @@ public class TranslateInteractionPictureFrame : InteractionCR
     public override string ToString()
     {
         string moveTo = "";
-        if (frame.CurrentFlipState)
+        if (frame.IsFrameFliped)
         {
             return "Unflip before you move";
         }

@@ -30,10 +30,10 @@ public class FlipInteractionPictureFrame : InteractionCR
         float timeLimit = 0.5f;
         Quaternion from = transform.rotation;
         Quaternion to = new Quaternion();
-        if (!frame.CurrentFlipState)
+        if (!frame.IsFrameFliped)
             to = Quaternion.LookRotation(transform.parent.up,
                                          -transform.parent.forward);
-        if (frame.CurrentFlipState)
+        if (frame.IsFrameFliped)
             to = Quaternion.LookRotation(-transform.parent.up,
                                          transform.parent.forward);
 
@@ -53,8 +53,8 @@ public class FlipInteractionPictureFrame : InteractionCR
         }
         onInteraction = false;
 
-        if (frame.CurrentFlipState) frame.CurrentFlipState = false;
-        else if (!frame.CurrentFlipState) frame.CurrentFlipState = true;
+        if (frame.IsFrameFliped) frame.IsFrameFliped = false;
+        else if (!frame.IsFrameFliped) frame.IsFrameFliped = true;
     }
 
     private void CanFlip()
@@ -79,6 +79,6 @@ public class FlipInteractionPictureFrame : InteractionCR
     }
     public override string ToString()
     {
-        return $"Fliped: {frame.CurrentFlipState}";
+        return $"Fliped: {frame.IsFrameFliped}";
     }
 }
