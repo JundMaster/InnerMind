@@ -1396,8 +1396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482ef8432dc17eb4bb995ad94274f206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thoughts:
-  - Humm...It seems some keys are missing
+  thought: 
   thoughtCanvas: {fileID: 145651299}
   keyPosition: {fileID: 919132148075417570}
   pianoKeys:
@@ -1997,8 +1996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482ef8432dc17eb4bb995ad94274f206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thoughts:
-  - Humm...It seems some keys are missing
+  thought: 
   thoughtCanvas: {fileID: 145651299}
   keyPosition: {fileID: 0}
   pianoKeys:
@@ -5539,6 +5537,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 743642489}
     m_Modifications:
+    - target: {fileID: 1275880136, guid: 0ef5e5b06345415428911f1a4ab76d61, type: 3}
+      propertyPath: elseGoToScene
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7925831929662690493, guid: 0ef5e5b06345415428911f1a4ab76d61, type: 3}
       propertyPath: m_Name
       value: SceneChange
@@ -5660,8 +5662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482ef8432dc17eb4bb995ad94274f206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thoughts:
-  - Humm...It seems some keys are missing
+  thought: 
   thoughtCanvas: {fileID: 145651299}
   keyPosition: {fileID: 0}
   pianoKeys:
