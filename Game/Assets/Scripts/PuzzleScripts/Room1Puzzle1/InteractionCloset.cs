@@ -1,20 +1,27 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Class used for the closet  in the 1st Room
+/// </summary>
 public class InteractionCloset : InteractionCommon
 {
    
+    //Components
     private Animator closetDoorAnimation;
     private BoxCollider closetBoxCollider;
     private Text displayText;
     private WaitForSeconds waitForSeconds;
     private string thought;
+
+    //Variables in Inspector
     [SerializeField] private string[] thoughts;
     [SerializeField] private GameObject thoughtCanvas;
 
-
+    /// <summary>
+    /// Start method of InteractionCloset
+    /// </summary>
     private void Start()
     {
         closetDoorAnimation = GetComponentInChildren<Animator>();
@@ -22,6 +29,10 @@ public class InteractionCloset : InteractionCommon
         waitForSeconds = new WaitForSeconds(2);
         displayText = thoughtCanvas.GetComponentInChildren<Text>();
     }
+
+    /// <summary>
+    /// This method determines the action of the closet when clicked
+    /// </summary>
     public override void Execute()
     {
         
@@ -30,6 +41,12 @@ public class InteractionCloset : InteractionCommon
         StartCoroutine(DisplayThougthText(thoughts));
     }
 
+    /// <summary>
+    /// Renders thougths regarding the interacted object
+    /// one at a time during a few seconds before dissapearing
+    /// </summary>
+    /// <param name="thoughts"> Array with all thoughts regarding the object</param>
+    /// <returns>Returns paused time in seconds</returns>
     private IEnumerator DisplayThougthText(string[] thoughts)
     {
 
@@ -45,6 +62,11 @@ public class InteractionCloset : InteractionCommon
         }
     }
 
+    /// <summary>
+    /// This method overrides ToString, and it determines what the player sees
+    /// when the Crosshair is on top of this object
+    /// </summary>
+    /// <returns>Returns a string with an action</returns>
     public override string ToString() => "Open Closet";
 
 

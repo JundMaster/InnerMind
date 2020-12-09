@@ -1,5 +1,8 @@
 ﻿using System;
 
+/// <summary>
+/// List with 3 IDs for the corresponding piano keys
+/// </summary>
 [Flags]
 public enum PianoKeyID
 {

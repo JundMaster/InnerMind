@@ -535,7 +535,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-197894
+  m_Name: pb_Mesh-17218
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1087,7 +1087,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thoughts:
   - Oh!
-  - Theres the cabinet key!
+  - There it is!
   thoughtCanvas: {fileID: 237954515}
 --- !u!65 &278385155
 BoxCollider:
@@ -2259,6 +2259,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddac2e03855eaea43b27b26b4475581e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thought: Sigh...Where did I put that damned key...
+  thoughtCanvas: {fileID: 237954515}
+  cabinetKey: {fileID: 11400000, guid: f4d71641f5f8e8f4592b17b3aab5fb3c, type: 2}
 --- !u!1 &772242377
 GameObject:
   m_ObjectHideFlags: 0
@@ -7698,7 +7701,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-197906
+  m_Name: pb_Mesh-17230
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20975,7 +20978,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-197918
+  m_Name: pb_Mesh-17242
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22297,7 +22300,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8164078559605996762}
   m_LocalRotation: {x: -0.00000020861623, y: -0.10090202, z: 0.9862966, w: 0.13052896}
-  m_LocalPosition: {x: 5.7907495, y: -195.11118, z: -18.88179}
+  m_LocalPosition: {x: 3.75, y: -195.55, z: -20.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 543450651789729465}
@@ -22469,8 +22472,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1420064421}
     - target: {fileID: 1485050959200970709, guid: 1f473102a018b9b459972ecd431caab5, type: 3}
+      propertyPath: thought
+      value: I should get my meds first....
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485050959200970709, guid: 1f473102a018b9b459972ecd431caab5, type: 3}
+      propertyPath: thoughtCanvas
+      value: 
+      objectReference: {fileID: 237954515}
+    - target: {fileID: 1485050959200970709, guid: 1f473102a018b9b459972ecd431caab5, type: 3}
       propertyPath: thoughts.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1485050959200970709, guid: 1f473102a018b9b459972ecd431caab5, type: 3}
       propertyPath: thoughts.Array.data[0]
@@ -22478,7 +22489,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1485050959200970709, guid: 1f473102a018b9b459972ecd431caab5, type: 3}
       propertyPath: thoughts.Array.data[1]
-      value: This works
+      value: Oh shit
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485050959200970709, guid: 1f473102a018b9b459972ecd431caab5, type: 3}
+      propertyPath: thoughts.Array.data[2]
+      value: Oh shit
       objectReference: {fileID: 0}
     - target: {fileID: 1625943863266772715, guid: 1f473102a018b9b459972ecd431caab5, type: 3}
       propertyPath: m_Mesh
