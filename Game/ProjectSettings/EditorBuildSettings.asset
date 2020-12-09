@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Room5/Room5.unity
     guid: 671038ff8f4cadd4dbfedcf24ccea658
   - enabled: 1
+    path: Assets/Scenes/Room7/Room7.unity
+    guid: 91ffb5f7f9d369245b3a898058161412
+  - enabled: 1
     path: Assets/Scenes/Cutscenes/AmbulanceCutscene/AmbulanceCutscene.unity
     guid: 37efd4eef94a4ce4fadfd322fbba6383
   - enabled: 1
