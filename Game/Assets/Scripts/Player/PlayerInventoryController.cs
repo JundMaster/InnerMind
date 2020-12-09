@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class PlayerInventoryController : MonoBehaviour
 {
     // Actions In inventory
-    private Examiner examiner;
+    private ExaminerController examiner;
     private ExamineMenu examineMenu;
     private ItemCombine itemCombine;
 
@@ -26,7 +26,7 @@ public class PlayerInventoryController : MonoBehaviour
     private void Awake()
     {
         examineMenu = FindObjectOfType<ExamineMenu>();
-        examiner = FindObjectOfType<Examiner>();
+        examiner = FindObjectOfType<ExaminerController>();
         itemCombine = new ItemCombine();
 
         inventory = FindObjectOfType<Inventory>();
