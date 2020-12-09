@@ -13,6 +13,15 @@ public class PictureFramePuzzleParent : MonoBehaviour
     [SerializeField]
     private PictureFramePuzzle[] framePictures;
 
+    public PictureFramePuzzle[] FramePictures
+    {
+        get => framePictures;
+        set
+        {
+            framePictures = value;
+        }
+    }
+
     /// <summary>
     /// Defines wether the puzzle is solved
     /// </summary>
@@ -23,6 +32,7 @@ public class PictureFramePuzzleParent : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        FramePictures = framePictures;
         IsSolved = false;
     }
 
@@ -47,11 +57,11 @@ public class PictureFramePuzzleParent : MonoBehaviour
                 solvedCount++;
             }
         }
-
+        Debug.Log(solvedCount);
         if (solvedCount == framePictures.Length)
         {
             IsSolved = true;
-            Debug.Log("this shit is solved bruh");
+            Debug.Log("this one is solved bruh");
         }
         
     }
