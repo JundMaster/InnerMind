@@ -14,6 +14,17 @@ public class PictureFramePuzzle : MonoBehaviour
     private FramePosition initialPosition;
     [SerializeField]
     private bool flipedSolution;
+    [SerializeField]
+    private FramePoint framePoint;
+
+    public FramePoint FramePoint
+    {
+        get => framePoint;
+        set
+        {
+            framePoint = value;
+        }
+    }
 
     private bool currentFlipState;
 
@@ -96,6 +107,7 @@ public class PictureFramePuzzle : MonoBehaviour
     {
         IsSolved = false;
         CurrentPosition = initialPosition;
+        FramePoint = framePoint;
     }
 
     /// <summary>
@@ -115,7 +127,9 @@ public class PictureFramePuzzle : MonoBehaviour
     /// </summary>
     private void ValidateSolution()
     {
-        IsSolved = (CurrentPosition == SolutionPosition) && (CurrentFlipState == FlipedSolution);
+        IsSolved =  (CurrentPosition == SolutionPosition) && 
+                    (CurrentFlipState == FlipedSolution);
+
     }
 
 }
