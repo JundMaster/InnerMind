@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
-public class Examiner : MonoBehaviour
+/// <summary>
+/// Responsible for controlling the <see cref="ItemExaminer"/> 
+/// </summary>
+public class ExaminerController : MonoBehaviour
 {
     private ItemExaminer itemExaminer;
     private void Update()
@@ -8,13 +11,18 @@ public class Examiner : MonoBehaviour
             itemExaminer.Examine();
     }
 
-    // Sets a instance of the ItemExaminer
-    // Way to avoid an instance to be created every frame
+    /// <summary>
+    /// Sets an instance of the <see cref="ItemExaminer"/>
+    /// </summary>
+    /// <param name="examiner"></param>
     public void SetExaminer(ItemExaminer examiner)
     {
         itemExaminer = examiner;
     }
 
+    /// <summary>
+    /// Destroys the <see cref="ItemExaminer"/> that is being controlled
+    /// </summary>
     public void DestroyExaminer()
     {
         if (itemExaminer != null)
