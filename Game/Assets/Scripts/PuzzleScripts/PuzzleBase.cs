@@ -21,7 +21,6 @@ public abstract class PuzzleBase : MonoBehaviour, IPuzzle
 
     private void Awake()
     {
-        Debug.Log("On puzzle base");
         player = FindObjectOfType<PlayerGeneralInfo>();
         inventory = FindObjectOfType<Inventory>();
 
