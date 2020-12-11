@@ -19,9 +19,11 @@ public abstract class PuzzleBase : MonoBehaviour, IPuzzle
     // Variable to control this corroutine
     protected Coroutine readPuzzlesDoneTxtCoroutine;
 
+    /// <summary>
+    /// Awake method for PuzzleBase
+    /// </summary>
     private void Awake()
     {
-        Debug.Log("On puzzle base");
         player = FindObjectOfType<PlayerGeneralInfo>();
         inventory = FindObjectOfType<Inventory>();
 
