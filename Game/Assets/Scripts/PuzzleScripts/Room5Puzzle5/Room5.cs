@@ -44,9 +44,9 @@ public class Room5 : PuzzleBase
             // Turns the player's light stronger
             flashlight = GameObject.FindGameObjectWithTag("PlayerLantern").
                 GetComponent<Light>();
-            flashlight.range = 8;
-            flashlight.spotAngle = 80;
-            flashlight.intensity = 1;
+            flashlight.range = 10;
+            flashlight.spotAngle = 90;
+            flashlight.intensity = 1.5f;
         } else { }
     }
 
