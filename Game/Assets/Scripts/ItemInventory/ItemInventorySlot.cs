@@ -19,16 +19,11 @@ public class ItemInventorySlot : MonoBehaviour, IPointerClickHandler,
     private Image image;
 
     // Click event
-    public event Action<ScriptableItem, PointerEventData.InputButton> SlotClick;
+    public event Action<ScriptableItem> SlotClick;
 
     // Mouse over event
     public event Action<ScriptableItem> SlotOver;
     public event Action SlotLeave;
-
-    /// <summary>
-    /// Property for an input button
-    /// </summary>
-    public PointerEventData.InputButton inputButton { get; private set; }
 
     /// <summary>
     /// Method that happens when the user clicks the mouse in this slot
@@ -36,14 +31,13 @@ public class ItemInventorySlot : MonoBehaviour, IPointerClickHandler,
     /// <param name="eventData">Information about the click</param>
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData != null)
+        if (eventData != null && 
+            eventData.button == PointerEventData.InputButton.Left)
         {
-            if (Info != null && SlotClick != null)
+            if (Info != null)
             {
-                inputButton = eventData.button;
                 // Contains information about which item is in this slot
-                // and which button clicked it
-                SlotClick?.Invoke(Info, inputButton);
+                SlotClick?.Invoke(Info);
             }
         }
     }

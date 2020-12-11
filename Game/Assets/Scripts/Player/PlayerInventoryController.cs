@@ -47,7 +47,7 @@ public class PlayerInventoryController : MonoBehaviour
         {
             for (int i = 0; i < inventory.InventorySlot.Length; i++)
             {
-                inventory.InventorySlot[i].SlotClick += ClickAction;
+                inventory.InventorySlot[i].SlotClick += SelectItem;
             }
         }
     }
@@ -62,7 +62,7 @@ public class PlayerInventoryController : MonoBehaviour
         pauseMenu.PauseGameEvent -= CancelLastClickItemInfo;
         for (int i = 0; i < inventory.InventorySlot.Length; i++)
         {
-            inventory.InventorySlot[i].SlotClick -= ClickAction;
+            inventory.InventorySlot[i].SlotClick -= SelectItem;
         }
     }
 
@@ -71,38 +71,6 @@ public class PlayerInventoryController : MonoBehaviour
     /// </summary>
     private void CancelLastClickItemInfo()
         => LastClickedItemInfo = null;
-
-    /// <summary>
-    /// Method that contains information about the item and button pressed
-    /// </summary>
-    /// <param name="item">Information about the ScriptableItem pressed</param>
-    /// <param name="inputButton">Information about the button pressed</param>
-    private void ClickAction(ScriptableItem item,
-                             PointerEventData.InputButton inputButton)
-    {
-        if (inputButton == PointerEventData.InputButton.Left)
-            SelectItem(item);
-
-        else if (inputButton == PointerEventData.InputButton.Middle)
-            ExamineItem(item);
-
-    }
-
-    /// <summary>
-    /// Runs actions to examine an item
-    /// </summary>
-    /// <param name="item">Information about the ScriptableItem pressed.
-    /// This is the item the player pressed on inventory</param>
-    private void ExamineItem(ScriptableItem item)
-    {
-        if (LastClickedItemInfo != null)
-            return;
-
-        Camera examineCamera = FindObjectOfType<ExamineMenu>().ExamineCamera;
-        input.ChangeTypeOfControl(TypeOfControl.InExamine);
-        examiner.SetExaminer(new ItemExaminer(5, item, examineCamera));
-        examineMenu.DisplayExamineMenu();
-    }
 
     /// <summary>
     /// Runs actions to select an item in inventory
@@ -187,6 +155,55 @@ public class PlayerInventoryController : MonoBehaviour
                     }
                 }
                 break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Uses an item if the item is IUsable. Called on editor, on use
+    /// button on inventory
+    /// </summary>
+    public void Use()
+    {
+        if (LastClickedItemInfo != null)
+        {
+            if (LastClickedItemInfo.Prefab.TryGetComponent(out IUsable item))
+            {
+                item.Use();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Examines an item. Called on editor, on examine
+    /// button on inventory
+    /// </summary>
+    public void Examine()
+    {
+        if (LastClickedItemInfo != null)
+        {
+            Camera examineCamera = FindObjectOfType<ExamineMenu>().ExamineCamera;
+            input.ChangeTypeOfControl(TypeOfControl.InExamine);
+            examiner.SetExaminer(new ItemExaminer(5, LastClickedItemInfo,
+                                examineCamera));
+            examineMenu.DisplayExamineMenu();
+        }
+    }
+
+    /// <summary>
+    /// Update method for PlayerInventoryController
+    /// </summary>
+    private void Update()
+    {
+        if (input.CurrentControl == TypeOfControl.InExamine)
+        {
+            if (input.RightClick)
+            {
+                examiner.DestroyExaminer();
+
+                input.ChangeTypeOfControl(
+                            TypeOfControl.InInventory);
+                examineMenu.HideDisplayMenu();
             }
         }
     }

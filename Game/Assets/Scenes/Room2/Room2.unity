@@ -368,6 +368,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
+--- !u!114 &45003588 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7828585709342165045, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
+  m_PrefabInstance: {fileID: 45003587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80fdfe8a674e2424bb27fcbe84079516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &52694417
 Mesh:
   m_ObjectHideFlags: 0
@@ -4893,6 +4904,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114937783, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 45003588}
+    - target: {fileID: 114937783, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Examine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1896261256, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 45003588}
+    - target: {fileID: 1896261256, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Use
+      objectReference: {fileID: 0}
     - target: {fileID: 120492917871373866, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -15890,7 +15917,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 4e-45, z: 2.5333231e-23, w: 815.38525}
+  m_BoundingSphereOverride: {x: 0, y: 2.7e-44, z: 9.169e-42, w: 1.04e-43}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0

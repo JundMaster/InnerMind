@@ -15,40 +15,6 @@ public class Room5 : PuzzleBase
     // Map related variables/////////////////////////////////////////////
     [SerializeField] private Sprite mapImage;
     [SerializeField] private GameObject mapCanvas;
-    // ScriptableItem with a map, to compare if the player has one
-    [SerializeField] private ScriptableItem mapScriptableObject;
-    /// /////////////////////////////////////////////////////////////////
-
-    // ScriptableItem with a flashlight, to compare if the player has one
-    [SerializeField] private ScriptableItem flashlightScriptableObject;
-
-    // Components
-    private Light flashlight;
-
-    /// <summary>
-    /// Start method for Room5
-    /// </summary>
-    private void Start()
-    {
-        // If player has the puzzle's map
-        if (inventory.Bag.Contains(mapScriptableObject))
-        {
-            // Sets the map canvas active. The player will see a map on screen
-            mapCanvas?.SetActive(true);
-            mapCanvas.GetComponentInChildren<Image>().sprite = mapImage;
-        }else { }
-
-        // If player has a flashlight with battery on inventory
-        if (inventory.Bag.Contains(flashlightScriptableObject))
-        {
-            // Turns the player's light stronger
-            flashlight = GameObject.FindGameObjectWithTag("PlayerLantern").
-                GetComponent<Light>();
-            flashlight.range = 10;
-            flashlight.spotAngle = 90;
-            flashlight.intensity = 1.5f;
-        } else { }
-    }
 
     /// <summary>
     /// Update method of Room5
