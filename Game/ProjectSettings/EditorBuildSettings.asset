@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cutscenes/ElevatorCutscene/ElevatorCutscene.unity
     guid: 1e412d2b545fbd543b0256abd1d289e5
+  - enabled: 1
+    path: Assets/Scenes/Room4/Room4.unity
+    guid: 39ce46bc0cfa7db499ff18a9de02d494
+  - enabled: 1
+    path: Assets/Scenes/Room7/Room7.unity
+    guid: 91ffb5f7f9d369245b3a898058161412
   m_configObjects: {}
