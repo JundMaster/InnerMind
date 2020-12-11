@@ -5,9 +5,9 @@ using UnityEngine.UI;
 /// <summary>
 /// Class used for the closet  in the 1st Room
 /// </summary>
-public class InteractionCloset : InteractionCommon
+public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
 {
-   
+
     //Components
     private Animator closetDoorAnimation;
     private BoxCollider closetBoxCollider;
@@ -19,6 +19,8 @@ public class InteractionCloset : InteractionCommon
     [SerializeField] private string[] thoughts;
     [SerializeField] private GameObject thoughtCanvas;
 
+    public Coroutine ThisCoroutine { get; private set;}
+
     /// <summary>
     /// Start method of InteractionCloset
     /// </summary>
@@ -28,6 +30,7 @@ public class InteractionCloset : InteractionCommon
         closetBoxCollider = GetComponent<BoxCollider>();
         waitForSeconds = new WaitForSeconds(2);
         displayText = thoughtCanvas.GetComponentInChildren<Text>();
+        ThisCoroutine = null;
     }
 
     /// <summary>
@@ -38,7 +41,11 @@ public class InteractionCloset : InteractionCommon
         
         closetDoorAnimation.SetTrigger("Open Door");
         closetBoxCollider.enabled = false;
-        StartCoroutine(DisplayThougthText(thoughts));
+        if(ThisCoroutine == null)
+        {
+            ThisCoroutine = StartCoroutine(CoroutineExecute(thoughts));
+        }
+            
     }
 
     /// <summary>
@@ -47,11 +54,10 @@ public class InteractionCloset : InteractionCommon
     /// </summary>
     /// <param name="thoughts"> Array with all thoughts regarding the object</param>
     /// <returns>Returns paused time in seconds</returns>
-    private IEnumerator DisplayThougthText(string[] thoughts)
+    public IEnumerator CoroutineExecute(string[] thoughts)
     {
-
         for (int i = 0; i < thoughts.Length; i++)
-        {           
+        {
             thought = thoughts[i];
             thoughtCanvas.SetActive(true);
             displayText.enabled = true;
@@ -59,6 +65,7 @@ public class InteractionCloset : InteractionCommon
             yield return waitForSeconds;
             thoughtCanvas.SetActive(false);
             displayText.enabled = false;
+            ThisCoroutine = null;
         }
     }
 
@@ -69,6 +76,5 @@ public class InteractionCloset : InteractionCommon
     /// <returns>Returns a string with an action</returns>
     public override string ToString() => "Open Closet";
 
-
-
+    
 }

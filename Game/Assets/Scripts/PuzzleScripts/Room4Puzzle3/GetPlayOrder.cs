@@ -28,13 +28,17 @@ public class GetPlayOrder : MonoBehaviour
         playCounter = 0;
         PianoPlayerInput = new CustomVector3(0, 0, 0);
         room4 = FindObjectOfType<Room4>();
+        
+
     }
 
+   
     /// <summary>
     /// OnEnable method of GetPlayOrder
     /// </summary>
     private void OnEnable()
     {
+       
         for (int i = 0; i < pianoKeys.Length; i++)
         {
             pianoKeys[i].KeyID += GetPianoKeyPressed;

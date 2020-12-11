@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Class used in Player's family pictures
 /// </summary>
-public class InteractionFamilyPicture : InteractionCommon
+public class InteractionFamilyPicture : InteractionCommon, ICoroutineT<string[]>
 {
     //Components
     private Text displayText;
@@ -16,6 +16,8 @@ public class InteractionFamilyPicture : InteractionCommon
     //Variables in Inspector
     [SerializeField] private string[] thoughts;
     [SerializeField] private GameObject thoughtCanvas;
+
+    public Coroutine ThisCoroutine {get; private set;}
 
     /// <summary>
     /// Start method of InteractionFamilyPicture
@@ -32,7 +34,8 @@ public class InteractionFamilyPicture : InteractionCommon
     /// </summary>
     public override void Execute()
     {
-        StartCoroutine(DisplayThougthText(thoughts));
+        if(ThisCoroutine == null)
+            ThisCoroutine = StartCoroutine(CoroutineExecute(thoughts));
     }
 
     /// <summary>
@@ -41,7 +44,7 @@ public class InteractionFamilyPicture : InteractionCommon
     /// </summary>
     /// <param name="thoughts"> Array with all thoughts regarding the object</param>
     /// <returns>Returns paused time in seconds</returns>
-    private IEnumerator DisplayThougthText(string[] thoughts)
+    public IEnumerator CoroutineExecute(string[] thoughts)
     {
 
         for (int i = 0; i < thoughts.Length; i++)
@@ -62,4 +65,5 @@ public class InteractionFamilyPicture : InteractionCommon
     /// </summary>
     /// <returns>Returns a string with an action</returns>
     public override string ToString() => "Examine Photo";
+
 }

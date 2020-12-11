@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using UnityEngine;
 
 /// <summary>
 /// Class responsible for each cube in MirrorPuzzleCube.

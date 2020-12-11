@@ -1,24 +1,30 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Class responsible for controlling room4 puzzle. Extends PuzzleBase
 /// </summary>
-public class Room4 : PuzzleBase
+public class Room4 : PuzzleBase, ICoroutineT<string>
 {
     //Components
     private GetPlayOrder keyPlayOrder;
+    private Text displayText;
+    private WaitForSeconds waitForSeconds;
 
     //Inspector Variable
     [SerializeField] private GameObject prize;
     [SerializeField] private ScriptableItem prizeScriptableItem;
     [SerializeField] private Transform prizePosition;
+    [SerializeField] private string thought;
+    [SerializeField] private GameObject thoughtCanvas;
 
     /// <summary>
     /// Property used to see if the player has finished the puzzle
     /// </summary>
     public bool FinishedPuzzle { get; private set; }
+
+    public Coroutine ThisCoroutine { get; private set; }
 
     /// <summary>
     /// Start method of Room4
@@ -27,7 +33,9 @@ public class Room4 : PuzzleBase
     {
         keyPlayOrder = FindObjectOfType<GetPlayOrder>();
         FinishedPuzzle = false;
-
+        displayText = thoughtCanvas.GetComponentInChildren<Text>();
+        waitForSeconds = new WaitForSeconds(3);
+        ThisCoroutine = null;
 
         // If player has puzzle done and no audiotape in inventory, plays victory
         if (player.PuzzlesDone.HasFlag(myPuzzle) &&
@@ -36,6 +44,7 @@ public class Room4 : PuzzleBase
             Victory();
         }
     }
+
 
     /// <summary>
     /// Does an action when the puzzle is solved
@@ -60,6 +69,14 @@ public class Room4 : PuzzleBase
             solution[2] == keyPlayOrder.PianoPlayerInput.z)
         {
             Victory();
+        }
+        else
+        {
+            if (ThisCoroutine == null)
+            {
+                ThisCoroutine = StartCoroutine(CoroutineExecute(thought));
+            }
+
         }
     }
 
@@ -87,5 +104,20 @@ public class Room4 : PuzzleBase
         }
 
         yield return null;
+    }
+
+    /// <summary>
+    /// Renders a thought during a few seconds
+    /// </summary>
+    /// <returns>Returns paused time in seconds</returns>
+    public IEnumerator CoroutineExecute(string thought)
+    {
+        thoughtCanvas.SetActive(true);
+        displayText.text = thought;
+        displayText.enabled = true;
+        yield return waitForSeconds;
+        displayText.enabled = false;
+        thoughtCanvas.SetActive(false);
+        ThisCoroutine = null;
     }
 }

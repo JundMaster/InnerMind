@@ -5,7 +5,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Class used for the locked Door in the 1st Room
 /// </summary>
-public class InteractionLockedDoor : InteractionCommon
+public class InteractionLockedDoor : InteractionCommon, ICoroutineT<string>
 {
     //Components
     private Room1 room1;
@@ -16,6 +16,8 @@ public class InteractionLockedDoor : InteractionCommon
     [SerializeField] private string thought;
     [SerializeField] private GameObject thoughtCanvas;
 
+    public Coroutine ThisCoroutine { get; private set; }
+
     /// <summary>
     /// Start method of InteractionLockedDoor
     /// </summary>
@@ -24,6 +26,7 @@ public class InteractionLockedDoor : InteractionCommon
         room1 = FindObjectOfType<Room1>();
         displayText = thoughtCanvas.GetComponentInChildren<Text>();
         waitForSeconds = new WaitForSeconds(3);
+        ThisCoroutine = null;
     }
 
     /// <summary>
@@ -40,7 +43,8 @@ public class InteractionLockedDoor : InteractionCommon
         }
 
         //Else it displays a thought on the locked door
-        StartCoroutine(DisplayThougthText(thought));
+        if(ThisCoroutine == null)
+            ThisCoroutine = StartCoroutine(CoroutineExecute(thought));
 
     }
 
@@ -48,21 +52,21 @@ public class InteractionLockedDoor : InteractionCommon
     /// <summary>
     /// Renders a thought during a few seconds
     /// </summary>
+    /// <param name="thought">Represents a single thought</param>
     /// <returns>Returns paused time in seconds</returns>
-    private IEnumerator DisplayThougthText(string thought)
+    public IEnumerator CoroutineExecute(string thought)
     {
-        //Checks if there is a thought to render
-        if (thought != null)
+        if(thought != null)
         {
             thoughtCanvas.SetActive(true);
-            displayText.enabled = true;
             displayText.text = thought;
+            displayText.enabled = true;
             yield return waitForSeconds;
-            thoughtCanvas.SetActive(false);
             displayText.enabled = false;
+            thoughtCanvas.SetActive(false);
+            ThisCoroutine = null;
         }
-
-
+        
     }
 
     /// <summary>
@@ -71,5 +75,7 @@ public class InteractionLockedDoor : InteractionCommon
     /// </summary>
     /// <returns>Returns a string with an action</returns>
     public override string ToString() => "Open Door";
+
+    
 }
 
