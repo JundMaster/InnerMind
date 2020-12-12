@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 454018340818803925}
   - component: {fileID: 454018340818803924}
   - component: {fileID: 326568434}
+  - component: {fileID: 447079507003890832}
   m_Layer: 0
   m_Name: BottomLight
   m_TagString: Untagged
@@ -106,6 +107,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 2
+--- !u!95 &447079507003890832
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454018340818803926}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e8605fa63a54a5345a7f624e4c9fb6ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &454018340972399819
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +135,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 454018340972399818}
-  - component: {fileID: 442456557}
   - component: {fileID: 442456558}
   - component: {fileID: 8129473347693354554}
   - component: {fileID: 8561118031480887014}
@@ -135,7 +154,7 @@ Transform:
   m_GameObject: {fileID: 454018340972399819}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 22.75, y: 1.803, z: -2.2000194}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 454018341800772933}
   - {fileID: 454018342510351590}
@@ -143,25 +162,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &442456557
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 454018340972399819}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e8605fa63a54a5345a7f624e4c9fb6ce, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &442456558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,10 +174,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d8011d74951dd43bed44eb3ed06571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lampIndex: 4
+  solutionDirection: 3
   lights:
   - {fileID: 2141454785}
   - {fileID: 326568434}
-  direction: 0
+  lamps:
+  - lamp: {fileID: 0}
+    direction: 1
 --- !u!114 &8129473347693354554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,6 +299,7 @@ GameObject:
   - component: {fileID: 454018342510351590}
   - component: {fileID: 454018342510351589}
   - component: {fileID: 2141454785}
+  - component: {fileID: 4146697048906262347}
   m_Layer: 0
   m_Name: TopLight
   m_TagString: Untagged
@@ -390,3 +395,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
+--- !u!95 &4146697048906262347
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454018342510351591}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e8605fa63a54a5345a7f624e4c9fb6ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
