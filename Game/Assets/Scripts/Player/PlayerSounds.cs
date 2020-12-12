@@ -11,6 +11,7 @@ public class PlayerSounds : MonoBehaviour
 
     // Components
     private PlayerMovement movement;
+    private PlayerInput input;
 
     /// <summary>
     /// Awake method for PlayerSounds
@@ -18,6 +19,7 @@ public class PlayerSounds : MonoBehaviour
     private void Awake()
     {
         movement = GetComponent<PlayerMovement>();
+        input = GetComponent<PlayerInput>();
     }
 
     /// <summary>
@@ -26,10 +28,13 @@ public class PlayerSounds : MonoBehaviour
     private void Update()
     {
         // Plays footstep sounds
-        if (movement.Movement.magnitude > 0)
+        if (input.CurrentControl == TypeOfControl.InGameplay)
         {
-            if (footstepCoroutine == null)
-                footstepCoroutine = StartCoroutine(Footstep());
+            if (movement.Movement.magnitude > 0)
+            {
+                if (footstepCoroutine == null)
+                    footstepCoroutine = StartCoroutine(Footstep());
+            }
         }
     }
 

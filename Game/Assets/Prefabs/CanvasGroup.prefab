@@ -290,7 +290,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7828585709342165045, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
         m_TargetAssemblyTypeName: PlayerInventoryController, Assembly-CSharp
         m_MethodName: Examine
         m_Mode: 1
@@ -4402,7 +4402,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7828585709342165045, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
         m_TargetAssemblyTypeName: PlayerInventoryController, Assembly-CSharp
         m_MethodName: Use
         m_Mode: 1

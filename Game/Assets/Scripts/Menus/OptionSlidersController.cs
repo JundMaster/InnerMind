@@ -31,6 +31,7 @@ public class OptionSlidersController : MonoBehaviour
     /// <param name="speed">Value of the slider</param>
     public void AdjustMusicVolume(float music)
     {
-
+        MusicManager musicManager = FindObjectOfType<MusicManager>();
+        PlayerPrefs.SetFloat("musicVolume", musicManager.MusicVolume = music);
     }
 }

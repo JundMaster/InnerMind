@@ -5,4 +5,7 @@
 public enum SoundClip
 {
     footstep,
+    walkmanAudio,
+    flashlightClick,
+    wallSlide,
 }

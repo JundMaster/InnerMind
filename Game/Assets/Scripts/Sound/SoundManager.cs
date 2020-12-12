@@ -10,8 +10,16 @@ sealed public class SoundManager : MonoBehaviour
 
     // Variable to control audiosource
     private static AudioSource audioSource;
-        
-    // Variable to control volume
+
+    /// <summary>
+    /// Property for audiosource
+    /// </summary>
+    public AudioSource AudioSource { get => audioSource; 
+                                    private set => audioSource = value; }
+
+    /// <summary>
+    /// Propert for SoundVolume. Controls volume
+    /// </summary>
     public float SoundVolume { get; set; }
 
     /// <summary>
@@ -19,11 +27,14 @@ sealed public class SoundManager : MonoBehaviour
     /// </summary>
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        AudioSource = GetComponent<AudioSource>();
 
-        sounds = new AudioClip[1];
+        sounds = new AudioClip[4];
 
         sounds[0] = Resources.Load<AudioClip>("Sounds/footstep");
+        sounds[1] = Resources.Load<AudioClip>("Sounds/walkmanAudio");
+        sounds[2] = Resources.Load<AudioClip>("Sounds/flashlightClick");
+        sounds[3] = Resources.Load<AudioClip>("Sounds/wallSlide");
     }
 
     /// <summary>
@@ -31,7 +42,7 @@ sealed public class SoundManager : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        audioSource.volume = SoundVolume;
+        AudioSource.volume = SoundVolume;
     }
 
     /// <summary>
@@ -44,6 +55,15 @@ sealed public class SoundManager : MonoBehaviour
         {
             case SoundClip.footstep:
                 audioSource.PlayOneShot(sounds[0], 1f);
+                break;
+            case SoundClip.walkmanAudio:
+                audioSource.PlayOneShot(sounds[1], 1f);
+                break;
+            case SoundClip.flashlightClick:
+                audioSource.PlayOneShot(sounds[2], 1f);
+                break;
+            case SoundClip.wallSlide:
+                audioSource.PlayOneShot(sounds[3], 1f);
                 break;
         }
     }

@@ -28,6 +28,8 @@ public class FlashlightBehaviour : MonoBehaviour, IUsable
         flashlight = GameObject.FindGameObjectWithTag("PlayerLantern").
             GetComponent<Light>();
 
+        SoundManager.PlaySound(SoundClip.flashlightClick);
+
         if (flashlightActive == false)
         {
             flashlight.range = 10;

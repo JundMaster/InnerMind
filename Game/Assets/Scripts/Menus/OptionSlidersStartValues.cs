@@ -28,8 +28,11 @@ public class OptionSlidersStartValues : MonoBehaviour
             PlayerPrefs.SetFloat("mouseSpeed", 300f);
             mouseSlider.value = 300f;
 
-            PlayerPrefs.SetFloat("soundVolume", 0.4f);
-            soundSlider.value = 0.4f;
+            PlayerPrefs.SetFloat("soundVolume", 0.6f);
+            soundSlider.value = 0.6f;
+
+            PlayerPrefs.SetFloat("musicVolume", 0.2f);
+            musicSlider.value = 0.2f;
 
 
             PlayerPrefs.SetInt("First Play", -1);
@@ -40,6 +43,7 @@ public class OptionSlidersStartValues : MonoBehaviour
         {
             mouseSlider.value = PlayerPrefs.GetFloat("mouseSpeed");
             soundSlider.value = PlayerPrefs.GetFloat("soundVolume");
+            musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
         }
     }
 
@@ -48,6 +52,7 @@ public class OptionSlidersStartValues : MonoBehaviour
     {
         PlayerPrefs.SetFloat("mouseSpeed", mouseSlider.value);
         PlayerPrefs.SetFloat("soundVolume", soundSlider.value);
+        PlayerPrefs.SetFloat("musicVolume", musicSlider.value);
     }
 
     /// <summary>
