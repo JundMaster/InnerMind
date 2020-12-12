@@ -8,4 +8,7 @@ public enum SoundClip
     walkmanAudio,
     flashlightClick,
     wallSlide,
+    MajorAKeyNote,
+    MajorCKeyNote,
+    MajorEKeyNote
 }

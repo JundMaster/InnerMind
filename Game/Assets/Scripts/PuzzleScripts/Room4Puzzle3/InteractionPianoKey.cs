@@ -7,8 +7,6 @@ using System;
 /// </summary>
 public class InteractionPianoKey : InteractionCommon
 {
-    //Components
-    private AudioSource pianoKey;
     //Inspector Variables
     [SerializeField] private Animator keyAnimator;
     [SerializeField] private PianoKeyID keyID;
@@ -19,7 +17,6 @@ public class InteractionPianoKey : InteractionCommon
     private void Start()
     {
         canPlay = true;
-        pianoKey = gameObject.GetComponentInChildren<AudioSource>();
     }
 
     private void Update()
@@ -46,7 +43,20 @@ public class InteractionPianoKey : InteractionCommon
         {
             keyAnimator.SetTrigger("playKey");
             KeyID?.Invoke(keyID);
-            pianoKey.PlayOneShot(pianoKey.clip);
+
+            switch (keyID)
+            {
+                case PianoKeyID.Key1:
+                    SoundManager.PlaySound(SoundClip.MajorAKeyNote);
+                    break;
+                case PianoKeyID.Key2:
+                    SoundManager.PlaySound(SoundClip.MajorCKeyNote);
+                    break;
+                case PianoKeyID.Key3:
+                    SoundManager.PlaySound(SoundClip.MajorEKeyNote);
+                    break;
+            }
+
             canPlay = false;
         }
 

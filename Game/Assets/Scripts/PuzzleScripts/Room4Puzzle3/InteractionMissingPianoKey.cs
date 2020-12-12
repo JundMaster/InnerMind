@@ -5,7 +5,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Class used when interacting with the piano with missing keys
 /// </summary>
-public class InteractionMissingPianoKey : InteractionCommon,ICoroutineT<string>
+public class InteractionMissingPianoKey : InteractionCommon, ICoroutineT<string>
 {
     //Components
     private BoxCollider boxCollider;

@@ -24,6 +24,9 @@ public class Room4 : PuzzleBase, ICoroutineT<string>
     /// </summary>
     public bool FinishedPuzzle { get; private set; }
 
+    /// <summary>
+    /// Property to control a coroutine
+    /// </summary>
     public Coroutine ThisCoroutine { get; private set; }
 
     /// <summary>
@@ -44,7 +47,6 @@ public class Room4 : PuzzleBase, ICoroutineT<string>
             Victory();
         }
     }
-
 
     /// <summary>
     /// Does an action when the puzzle is solved
@@ -94,7 +96,8 @@ public class Room4 : PuzzleBase, ICoroutineT<string>
         if (FindObjectOfType<Inventory>().Bag.Contains(
             prizeScriptableItem) == false)
         {
-            spawn = Instantiate(prize, prizePosition.transform.position, Quaternion.identity);
+            spawn = Instantiate(
+                prize, prizePosition.transform.position, Quaternion.identity);
         }
 
         while (spawn)
