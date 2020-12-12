@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -3941442473196996329}
   - component: {fileID: 2880038468210182246}
   m_Layer: 0
-  m_Name: Piano Key
+  m_Name: Piano Key 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,4 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 562e111cafa815140be3bc949bbc28bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 11400000, guid: 059767cf0d1e56d46887d2aff33aadc4, type: 2}
+  info: {fileID: 11400000, guid: 9d0a2adbe29a41646a6cbfed2e7617df, type: 2}

@@ -528,7 +528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb893f59d5c3c884d964f37a94d7ac21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 6
   groundCheck: {fileID: 1182740222}
   obstacleLayer:
     serializedVersion: 2

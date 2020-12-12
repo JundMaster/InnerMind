@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     // Menus inside PauseMenu
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject optionsMenu;
+    [SerializeField] private GameObject assistMenu;
 
     // Components
     private PlayerInput input;
@@ -86,6 +87,7 @@ public class PauseMenu : MonoBehaviour
 
                 pauseMenu.SetActive(false);
                 optionsMenu.SetActive(false);
+                assistMenu.SetActive(false);
 
                 // Changes type of control back to the last state before the 
                 // game was paused

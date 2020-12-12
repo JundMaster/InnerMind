@@ -190,6 +190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PianoKey
       objectReference: {fileID: 0}
+    - target: {fileID: 2880038468210182246, guid: abd47164ef83780449c8460ab050140b, type: 3}
+      propertyPath: info
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d0a2adbe29a41646a6cbfed2e7617df, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abd47164ef83780449c8460ab050140b, type: 3}
 --- !u!4 &4163353 stripped
