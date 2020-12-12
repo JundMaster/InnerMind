@@ -15,5 +15,6 @@ public enum SceneNames
     Room9,
     AmbulanceCutscene,
     ElevatorCutscene,
+    BuildingCutscene,
     FinalCutscene,
 }
