@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour, ICoroutineT<RaycastHit>
 {
     // Movement variables
     [Range(1, 20)] [SerializeField] private byte speed;
+    public Vector3 Movement { get; private set; }
 
     // Groundcheck variables
     [SerializeField] private Transform groundCheck;
@@ -44,7 +45,7 @@ public class PlayerMovement : MonoBehaviour, ICoroutineT<RaycastHit>
     /// </summary>
     private void FixedUpdate()
     {
-        Movement();
+        Walk();
     }
 
     /// <summary>
@@ -60,15 +61,16 @@ public class PlayerMovement : MonoBehaviour, ICoroutineT<RaycastHit>
     }
 
     /// <summary>
-    /// This method is responsible for controlling the player's movement
+    /// This method is responsible for controlling the player's Movement
     /// </summary>
-    private void Movement()
+    private void Walk()
     {
-        Vector3 movement = (transform.right * input.XAxis +
+        // Movement variable
+        Movement = (transform.right * input.XAxis +
             transform.forward * input.ZAxis).normalized;
 
         // Refresh groundCheck position (position where player is moving towards)
-        groundCheck.transform.position = transform.position + movement * 0.5f;
+        groundCheck.transform.position = transform.position + Movement * 0.5f;
 
         // Collider to check if there is a Walls_Floor layer in front
         Collider[] groundCheckCollider = 
@@ -86,7 +88,7 @@ public class PlayerMovement : MonoBehaviour, ICoroutineT<RaycastHit>
             else
             {
                 // Else the player will move
-                rb.velocity = movement * speed;
+                rb.velocity = Movement * speed;
             }
         }
         else // If not in gameplay

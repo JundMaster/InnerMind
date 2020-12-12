@@ -290,7 +290,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7828585709342165045, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerInventoryController, Assembly-CSharp
         m_MethodName: Examine
         m_Mode: 1
@@ -4402,7 +4402,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7828585709342165045, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerInventoryController, Assembly-CSharp
         m_MethodName: Use
         m_Mode: 1
@@ -4721,10 +4721,22 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.206
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2511583983466846335}
+        m_TargetAssemblyTypeName: OptionSlidersController, Assembly-CSharp
+        m_MethodName: AdjustSoundVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2511583983466846335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5940,6 +5952,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1246017339446379621}
+  - component: {fileID: 1155668891}
   m_Layer: 0
   m_Name: ExamineMenu
   m_TagString: Untagged
@@ -5963,6 +5976,18 @@ Transform:
   m_Father: {fileID: 1024616515020214473}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1155668891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4784661889729412074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdeff53eec3b39d4b966dac4c13deb08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5559271976416971272
 GameObject:
   m_ObjectHideFlags: 0
@@ -6108,7 +6133,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 467123345385281311}
-  - component: {fileID: 818763503}
   m_Layer: 5
   m_Name: ExamineParent
   m_TagString: Untagged
@@ -6137,18 +6161,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &818763503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6611305075875414981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdeff53eec3b39d4b966dac4c13deb08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6859087989963366232
 GameObject:
   m_ObjectHideFlags: 0
