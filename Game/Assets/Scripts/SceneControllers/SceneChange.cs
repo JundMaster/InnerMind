@@ -22,7 +22,8 @@ public class SceneChange : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Saves room3 last position before entering a new room
-        if (SceneManager.GetActiveScene().name.Equals("Room3"))
+        if (SceneManager.GetActiveScene().name.Equals("Room3") ||
+            SceneManager.GetActiveScene().name.Equals("Room7"))
         {
             using (StreamWriter sw = File.CreateText(FilePath.lastScenePath))
             {
