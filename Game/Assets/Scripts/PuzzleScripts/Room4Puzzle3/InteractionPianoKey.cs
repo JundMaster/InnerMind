@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -8,29 +7,49 @@ using System;
 /// </summary>
 public class InteractionPianoKey : InteractionCommon
 {
-    //Component
-    private Animator animator;
-
+    //Components
+    private AudioSource pianoKey;
     //Inspector Variables
+    [SerializeField] private Animator keyAnimator;
     [SerializeField] private PianoKeyID keyID;
-    
 
-    /// <summary>
-    /// Start method InteractionPianoKey
-    /// </summary>
-    void Start()
+    //Variable used to see if the player can play a key
+    private bool canPlay;
+
+    private void Start()
     {
-        animator = GetComponent<Animator>();
+        canPlay = true;
+        pianoKey = gameObject.GetComponentInChildren<AudioSource>();
     }
 
+    private void Update()
+    {
+        //Checks if the animator is still running
+        if (keyAnimator.GetCurrentAnimatorStateInfo(0).IsName("PianoKey"))
+        {
+            
+            // If the animation reached its end
+            if (keyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.98)
+            {
+
+                canPlay = true;
+            }
+        }
+    }
 
     /// <summary>
     /// This method determines the action of the piano key when clicked
     /// </summary>
     public override void Execute()
     {
-        animator.SetTrigger("PlayKey");
-        KeyID?.Invoke(keyID);
+        if (canPlay)
+        {
+            keyAnimator.SetTrigger("playKey");
+            KeyID?.Invoke(keyID);
+            pianoKey.PlayOneShot(pianoKey.clip);
+            canPlay = false;
+        }
+
     }
 
     //KeyID event with played key's ID
@@ -42,5 +61,7 @@ public class InteractionPianoKey : InteractionCommon
     /// </summary>
     /// <returns>Returns a string with an action</returns>
     public override string ToString() => "PlayKey";
+
+
 
 }

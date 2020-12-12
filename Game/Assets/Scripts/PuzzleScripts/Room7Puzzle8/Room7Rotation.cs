@@ -6,7 +6,6 @@ using System.Collections;
 /// </summary>
 public class Room7Rotation : MonoBehaviour
 {
-
     private Animator anim;
 
     /// <summary>

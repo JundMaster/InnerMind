@@ -194,8 +194,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.5
-  m_Range: 5
+  m_Intensity: 0.6
+  m_Range: 7
   m_SpotAngle: 120
   m_InnerSpotAngle: 1
   m_CookieSize: 10
@@ -450,6 +450,7 @@ GameObject:
   - component: {fileID: 7828585709342165045}
   - component: {fileID: 3056546008109604629}
   - component: {fileID: 5012168965480956944}
+  - component: {fileID: 2705321801622869775}
   - component: {fileID: 8164986547570681983}
   - component: {fileID: 905693444}
   - component: {fileID: 3056546008109604628}
@@ -546,6 +547,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactDistance: 3
+--- !u!114 &2705321801622869775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3056546008109604630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f20bbad91e11d0844ae8a91f2967afa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8164986547570681983
 MonoBehaviour:
   m_ObjectHideFlags: 0

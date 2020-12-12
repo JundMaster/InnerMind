@@ -10,6 +10,8 @@ public class Room2 : PuzzleBase
     [SerializeField] private GameObject prize;
     [SerializeField] private ScriptableItem prizeScriptableItem;
     [SerializeField] private Transform prizePosition;
+    [SerializeField] private Light prizeLight;
+    [SerializeField] private Light roomCandle;
 
     // Variable with every cube parents in room
     private MirrorPuzzleCubeParent[] cubeParentsInRoom;
@@ -78,6 +80,8 @@ public class Room2 : PuzzleBase
     {
         FinishedPuzzle = true;
         GameObject spawn = null;
+        roomCandle.range = 30f;
+        prizeLight.intensity = 1f;
 
         if (FindObjectOfType<Inventory>().Bag.Contains(
             prizeScriptableItem) == false)

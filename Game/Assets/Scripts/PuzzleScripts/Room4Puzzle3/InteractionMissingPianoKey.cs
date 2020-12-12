@@ -5,7 +5,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Class used when interacting with the piano with missing keys
 /// </summary>
-public class InteractionMissingPianoKey : InteractionCommon
+public class InteractionMissingPianoKey : InteractionCommon,ICoroutineT<string>
 {
     //Components
     private BoxCollider boxCollider;
@@ -19,6 +19,8 @@ public class InteractionMissingPianoKey : InteractionCommon
     [SerializeField] private GameObject keyPosition;
     [SerializeField] private ScriptableItem[] pianoKeys;
 
+    public Coroutine ThisCoroutine { get; private set; }
+
 
     /// <summary>
     /// Start method of InteractionMissingPianoKey
@@ -29,6 +31,7 @@ public class InteractionMissingPianoKey : InteractionCommon
         boxCollider = gameObject.GetComponent<BoxCollider>();
         displayText = thoughtCanvas.GetComponentInChildren<Text>();
         waitForSeconds = new WaitForSeconds(3);
+        ThisCoroutine = null;
     }
 
     /// <summary>
@@ -51,7 +54,10 @@ public class InteractionMissingPianoKey : InteractionCommon
             else thought = "Hmm...Some keys are missing...";
         }
 
-        StartCoroutine(DisplayThougthText(thought));
+        if (ThisCoroutine == null)
+        {
+            ThisCoroutine = StartCoroutine(CoroutineExecute(thought));
+        }
     }
 
 
@@ -81,7 +87,7 @@ public class InteractionMissingPianoKey : InteractionCommon
     /// </summary>
     /// <param name="thought">Represents a single thought</param>
     /// <returns>Returns paused time in seconds</returns>
-    private IEnumerator DisplayThougthText(string thought)
+    public IEnumerator CoroutineExecute(string thought)
     {
         thoughtCanvas.SetActive(true);
         displayText.text = thought;
@@ -89,5 +95,6 @@ public class InteractionMissingPianoKey : InteractionCommon
         yield return waitForSeconds;
         displayText.enabled = false;
         thoughtCanvas.SetActive(false);
+        ThisCoroutine = null;
     }
 }

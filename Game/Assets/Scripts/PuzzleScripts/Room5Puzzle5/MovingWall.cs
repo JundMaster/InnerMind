@@ -14,7 +14,7 @@ public class MovingWall : MonoBehaviour
     // Bool that defines the wall as an initial hiddenWall or not
     [SerializeField] private bool hiddenWall;
 
-    // Bool the 'tell' the wall if it players the animation only once
+    // Bool to control if the wall plays the animation once or more times
     [SerializeField] private bool animateOnce;
 
     /// <summary>

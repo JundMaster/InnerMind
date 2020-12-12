@@ -12,6 +12,8 @@ TagManager:
   - ThirdWheel
   - Inventory
   - PlayerLantern
+  - Neighbor Text
+  - MapCanvas
   layers:
   - Default
   - TransparentFX

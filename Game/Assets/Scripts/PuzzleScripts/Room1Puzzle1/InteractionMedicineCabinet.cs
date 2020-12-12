@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class InteractionMedicineCabinet : InteractionCommon
+public class InteractionMedicineCabinet : InteractionCommon, ICoroutineT<string>
 {
     //Components 
     private Animator cabinetDoorAnimation;
@@ -18,7 +18,9 @@ public class InteractionMedicineCabinet : InteractionCommon
     /// </summary>
     public bool IsOpen { get; private set; }
 
-   //Inspector Variables
+    public Coroutine ThisCoroutine { get; private set; }
+
+    //Inspector Variables
     [SerializeField] private string thought;
     [SerializeField] private GameObject thoughtCanvas;
     [SerializeField] private ScriptableItem cabinetKey;
@@ -34,6 +36,7 @@ public class InteractionMedicineCabinet : InteractionCommon
         closetBoxCollider = GetComponent<BoxCollider>();
         displayText = thoughtCanvas.GetComponentInChildren<Text>();
         waitForSeconds = new WaitForSeconds(3);
+        ThisCoroutine = null;
     }
 
     /// <summary>
@@ -52,8 +55,8 @@ public class InteractionMedicineCabinet : InteractionCommon
             inventory.Bag.Remove(cabinetKey);
         }
         //Else it displays a thought on the locked cabinet
-        StartCoroutine(DisplayThougthText(thought));
-
+        if(ThisCoroutine == null)
+            ThisCoroutine = StartCoroutine(CoroutineExecute(thought));
     }
 
 
@@ -65,19 +68,18 @@ public class InteractionMedicineCabinet : InteractionCommon
     /// </summary>
     /// <param name="thought">Represents a single thought</param>
     /// <returns>Returns paused time in seconds</returns>
-    private IEnumerator DisplayThougthText(string thought)
+    public IEnumerator CoroutineExecute(string thought)
     {
-        //Checks if there is a thought to render
         if (thought != null)
         {
             thoughtCanvas.SetActive(true);
-            displayText.enabled = true;
             displayText.text = thought;
+            displayText.enabled = true;
             yield return waitForSeconds;
-            thoughtCanvas.SetActive(false);
             displayText.enabled = false;
+            thoughtCanvas.SetActive(false);
+            ThisCoroutine = null;
         }
-        
 
     }
 
