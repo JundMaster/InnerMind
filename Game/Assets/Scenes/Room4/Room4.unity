@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh103496
+  m_Name: pb_Mesh77522
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -348,7 +348,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh103592
+  m_Name: pb_Mesh77618
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -517,7 +517,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh103718
+  m_Name: pb_Mesh77730
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -994,7 +994,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh103564
+  m_Name: pb_Mesh77590
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1555,13 +1555,13 @@ PrefabInstance:
     - target: {fileID: 4271366658271182155, guid: 7b4f5001782c41f48a347eb3e200960e, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: de94fe1821b985e4b8ee0856475e987d, type: 3}
+      objectReference: {fileID: 8300000, guid: 11f8fd3bed706e74885486eba756ff06, type: 3}
     - target: {fileID: 4271366658271182155, guid: 7b4f5001782c41f48a347eb3e200960e, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 4271366658271182144, guid: 7b4f5001782c41f48a347eb3e200960e, type: 3}
+    - {fileID: 0}
     - {fileID: 8846363718218182718, guid: 7b4f5001782c41f48a347eb3e200960e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7b4f5001782c41f48a347eb3e200960e, type: 3}
 --- !u!4 &410795185 stripped
@@ -2396,7 +2396,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh103706
+  m_Name: pb_Mesh77718
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2563,8 +2563,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 886981498}
-  - component: {fileID: 886981499}
   - component: {fileID: 886981500}
+  - component: {fileID: 886981499}
   m_Layer: 0
   m_Name: Position_K2
   m_TagString: Untagged
@@ -4879,7 +4879,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh103656
+  m_Name: pb_Mesh77674
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6403,6 +6403,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Candle
       objectReference: {fileID: 0}
+    - target: {fileID: 9024197373463936448, guid: 0388a5d20a6bde24084f6d1da5499a11, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0388a5d20a6bde24084f6d1da5499a11, type: 3}
 --- !u!1 &1238797771
@@ -6547,7 +6551,7 @@ PrefabInstance:
     - target: {fileID: 4271366658271182155, guid: 7b4f5001782c41f48a347eb3e200960e, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 74546ad0c17f19f4ab8aae0b3ad5529b, type: 3}
+      objectReference: {fileID: 8300000, guid: fa0bd708d1e713a45bbe4c0ea06e27ad, type: 3}
     - target: {fileID: 4271366658271182155, guid: 7b4f5001782c41f48a347eb3e200960e, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -7010,7 +7014,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh103510
+  m_Name: pb_Mesh77536
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7528,7 +7532,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-97922
+  m_Name: pb_Mesh-171948
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7935,7 +7939,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh103608
+  m_Name: pb_Mesh77634
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9943,7 +9947,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerKey01
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4271366658271182155, guid: 7b4f5001782c41f48a347eb3e200960e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3c9b2884106a583428198bd2e7303636, type: 3}
+    m_RemovedComponents:
+    - {fileID: 8846363718218182718, guid: 7b4f5001782c41f48a347eb3e200960e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7b4f5001782c41f48a347eb3e200960e, type: 3}
 --- !u!4 &4216913843598912602
 Transform:
