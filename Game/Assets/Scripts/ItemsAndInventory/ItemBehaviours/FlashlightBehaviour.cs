@@ -41,7 +41,7 @@ public class FlashlightBehaviour : MonoBehaviour, IUsable
         {
             flashlight.range = 7;
             flashlight.spotAngle = 120;
-            flashlight.intensity = 0.6f;
+            flashlight.intensity = 0.3f;
             flashlightActive = false;
         }
     }
