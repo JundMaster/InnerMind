@@ -10,6 +10,8 @@ public class OptionSlidersStartValues : MonoBehaviour
     [SerializeField] private Slider mouseSlider;
     [SerializeField] private Slider soundSlider;
     [SerializeField] private Slider musicSlider;
+    [SerializeField] private Slider brightnessSlider;
+    [SerializeField] private Slider contrastSlider;
 
     // Variable to know if this is the first time the player is playing
     private int firstPlayInt;
@@ -34,6 +36,12 @@ public class OptionSlidersStartValues : MonoBehaviour
             PlayerPrefs.SetFloat("musicVolume", 0.3f);
             musicSlider.value = 0.3f;
 
+            PlayerPrefs.SetFloat("brightness", 0);
+            brightnessSlider.value = 0;
+
+            PlayerPrefs.SetFloat("contrast", 0);
+            contrastSlider.value = 0;
+
 
             PlayerPrefs.SetInt("First Play", -1);
         }
@@ -44,6 +52,8 @@ public class OptionSlidersStartValues : MonoBehaviour
             mouseSlider.value = PlayerPrefs.GetFloat("mouseSpeed");
             soundSlider.value = PlayerPrefs.GetFloat("soundVolume");
             musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+            brightnessSlider.value = PlayerPrefs.GetFloat("brightness");
+            contrastSlider.value = PlayerPrefs.GetFloat("contrast");
         }
     }
 
@@ -53,6 +63,8 @@ public class OptionSlidersStartValues : MonoBehaviour
         PlayerPrefs.SetFloat("mouseSpeed", mouseSlider.value);
         PlayerPrefs.SetFloat("soundVolume", soundSlider.value);
         PlayerPrefs.SetFloat("musicVolume", musicSlider.value);
+        PlayerPrefs.SetFloat("brightness", brightnessSlider.value);
+        PlayerPrefs.SetFloat("contrast", contrastSlider.value);
     }
 
     /// <summary>

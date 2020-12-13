@@ -18,7 +18,7 @@ public class OptionSlidersController : MonoBehaviour
     /// <summary>
     /// Adjusts sound volume
     /// </summary>
-    /// <param name="speed">Value of the slider</param>
+    /// <param name="sound">Value of the slider</param>
     public void AdjustSoundVolume(float sound)
     {
         SoundManager soundManager = FindObjectOfType<SoundManager>();
@@ -28,10 +28,32 @@ public class OptionSlidersController : MonoBehaviour
     /// <summary>
     /// Adjusts music volume
     /// </summary>
-    /// <param name="speed">Value of the slider</param>
+    /// <param name="music">Value of the slider</param>
     public void AdjustMusicVolume(float music)
     {
         MusicManager musicManager = FindObjectOfType<MusicManager>();
         PlayerPrefs.SetFloat("musicVolume", musicManager.MusicVolume = music);
+    }
+
+    /// <summary>
+    /// Adjusts brightness
+    /// </summary>
+    /// <param name="value">Value of the slider</param>
+    public void AdjustBrightness(float value)
+    {
+        PostProcessing postProcess = FindObjectOfType<PostProcessing>();
+        PlayerPrefs.SetFloat("brightness", 
+                            postProcess.BrightnessValue = value);
+    }
+
+    /// <summary>
+    /// Adjusts contrast
+    /// </summary>
+    /// <param name="value">Value of the slider</param>
+    public void AdjustContrast(float value)
+    {
+        PostProcessing postProcess = FindObjectOfType<PostProcessing>();
+        PlayerPrefs.SetFloat("contrast",
+                            postProcess.ContrastValue = value);
     }
 }
