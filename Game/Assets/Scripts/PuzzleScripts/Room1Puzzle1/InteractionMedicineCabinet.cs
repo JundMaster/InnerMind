@@ -1,9 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+/// <summary>
+/// Class for interaction with medicineCabinet on room1
+/// </summary>
 public class InteractionMedicineCabinet : InteractionCommon, ICoroutineT<string>
 {
     //Components 
@@ -21,14 +23,14 @@ public class InteractionMedicineCabinet : InteractionCommon, ICoroutineT<string>
     public Coroutine ThisCoroutine { get; private set; }
 
     //Inspector Variables
-    [SerializeField] private string thought;
-    [SerializeField] private GameObject thoughtCanvas;
+    [SerializeField] private string[] thought;
+    [SerializeField] private Canvas thoughtCanvas;
     [SerializeField] private ScriptableItem cabinetKey;
 
     /// <summary>
     /// Start method of InteractionMedicineCabinet
     /// </summary>
-    private void Start()
+    private void Awake()
     {
         inventory = FindObjectOfType<Inventory>();
         IsOpen = false;
@@ -48,20 +50,23 @@ public class InteractionMedicineCabinet : InteractionCommon, ICoroutineT<string>
         //and plays the animation
         if (inventory.Bag.Contains(cabinetKey))
         {
-            thought = null;
             IsOpen = true;
             closetBoxCollider.enabled = false;
             cabinetDoorAnimation.SetTrigger("Open Door");
             inventory.Bag.Remove(cabinetKey);
+            OnCabinetDoorOpen();
+            ThisCoroutine = StartCoroutine(CoroutineExecute(thought[1]));
         }
         //Else it displays a thought on the locked cabinet
-        if(ThisCoroutine == null)
-            ThisCoroutine = StartCoroutine(CoroutineExecute(thought));
+        if (ThisCoroutine == null)
+            if (thoughtCanvas.enabled == false)
+                ThisCoroutine = StartCoroutine(CoroutineExecute(thought[0]));
     }
 
+    private void OnCabinetDoorOpen() => CabinetDoorOpened?.Invoke();
 
-
-
+    // Event for cabinet door
+    public event Action CabinetDoorOpened;
 
     /// <summary>
     /// Renders a thought during a few seconds
@@ -72,12 +77,12 @@ public class InteractionMedicineCabinet : InteractionCommon, ICoroutineT<string>
     {
         if (thought != null)
         {
-            thoughtCanvas.SetActive(true);
+            thoughtCanvas.enabled = true;
             displayText.text = thought;
             displayText.enabled = true;
             yield return waitForSeconds;
             displayText.enabled = false;
-            thoughtCanvas.SetActive(false);
+            thoughtCanvas.enabled = false;
             ThisCoroutine = null;
         }
 

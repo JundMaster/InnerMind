@@ -104,13 +104,5 @@ public class Inventory : MonoBehaviour
         Bag.Sort();
         Bag.Reverse();
     }
-
-    /// <summary>
-    /// OnApplicationQuit method for Inventory
-    /// </summary>
-    private void OnApplicationQuit()
-    {
-        File.Delete(FilePath.inventoryPath);
-    }
 }
 

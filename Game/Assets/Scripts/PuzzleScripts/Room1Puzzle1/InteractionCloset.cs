@@ -7,7 +7,6 @@ using UnityEngine.UI;
 /// </summary>
 public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
 {
-
     //Components
     private Animator closetDoorAnimation;
     private BoxCollider closetBoxCollider;
@@ -17,14 +16,17 @@ public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
 
     //Variables in Inspector
     [SerializeField] private string[] thoughts;
-    [SerializeField] private GameObject thoughtCanvas;
+    [SerializeField] private Canvas thoughtCanvas;
 
+    /// <summary>
+    /// Property to control a couroutine
+    /// </summary>
     public Coroutine ThisCoroutine { get; private set;}
 
     /// <summary>
     /// Start method of InteractionCloset
     /// </summary>
-    private void Start()
+    private void Awake()
     {
         closetDoorAnimation = GetComponentInChildren<Animator>();
         closetBoxCollider = GetComponent<BoxCollider>();
@@ -37,15 +39,13 @@ public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
     /// This method determines the action of the closet when clicked
     /// </summary>
     public override void Execute()
-    {
-        
+    { 
         closetDoorAnimation.SetTrigger("Open Door");
         closetBoxCollider.enabled = false;
+
         if(ThisCoroutine == null)
-        {
-            ThisCoroutine = StartCoroutine(CoroutineExecute(thoughts));
-        }
-            
+            if (thoughtCanvas.enabled == false)
+                ThisCoroutine = StartCoroutine(CoroutineExecute(thoughts));
     }
 
     /// <summary>
@@ -59,11 +59,11 @@ public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
         for (int i = 0; i < thoughts.Length; i++)
         {
             thought = thoughts[i];
-            thoughtCanvas.SetActive(true);
+            thoughtCanvas.enabled = true;
             displayText.enabled = true;
             displayText.text = thought;
             yield return waitForSeconds;
-            thoughtCanvas.SetActive(false);
+            thoughtCanvas.enabled = false;
             displayText.enabled = false;
             ThisCoroutine = null;
         }

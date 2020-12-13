@@ -15,7 +15,7 @@ public class InteractionFamilyPicture : InteractionCommon, ICoroutineT<string[]>
 
     //Variables in Inspector
     [SerializeField] private string[] thoughts;
-    [SerializeField] private GameObject thoughtCanvas;
+    [SerializeField] private Canvas thoughtCanvas;
 
     public Coroutine ThisCoroutine {get; private set;}
 
@@ -34,8 +34,9 @@ public class InteractionFamilyPicture : InteractionCommon, ICoroutineT<string[]>
     /// </summary>
     public override void Execute()
     {
-        if(ThisCoroutine == null)
-            ThisCoroutine = StartCoroutine(CoroutineExecute(thoughts));
+        if (ThisCoroutine == null)
+            if (thoughtCanvas.enabled == false)
+                ThisCoroutine = StartCoroutine(CoroutineExecute(thoughts));
     }
 
     /// <summary>
@@ -50,11 +51,11 @@ public class InteractionFamilyPicture : InteractionCommon, ICoroutineT<string[]>
         for (int i = 0; i < thoughts.Length; i++)
         {
             thought = thoughts[i];
-            thoughtCanvas.SetActive(true);
+            thoughtCanvas.enabled = true;
             displayText.enabled = true;
             displayText.text = thought;
             yield return waitForSeconds;
-            thoughtCanvas.SetActive(false);
+            thoughtCanvas.enabled = false;
             displayText.enabled = false;
         }
     }

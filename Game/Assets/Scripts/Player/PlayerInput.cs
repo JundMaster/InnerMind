@@ -57,6 +57,11 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
     public bool Pause { get; private set; }
 
     /// <summary>
+    /// Property to get a key to pass a scene
+    /// </summary>
+    public bool PassScene { get; private set; }
+
+    /// <summary>
     /// Property for cursor position relative to cursor in game
     /// </summary>
     public Vector2Int CursorPosition { get; private set; }
@@ -120,7 +125,7 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
                 RightClick = Input.GetButtonDown("Fire2");
 
                 // Gets ESC key
-                Pause = Input.GetKeyDown(KeyCode.P);
+                Pause = Input.GetKeyDown(KeyCode.Escape);
 
                 break;
 
@@ -129,7 +134,7 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
                 LeftClick = Input.GetButtonDown("Fire1");
 
                 // Gets ESC key
-                Pause = Input.GetKeyDown(KeyCode.P);
+                Pause = Input.GetKeyDown(KeyCode.Escape);
 
                 break;
 
@@ -140,7 +145,7 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
                 RightClick = Input.GetButtonDown("Fire2");
 
                 // Gets ESC key
-                Pause = Input.GetKeyDown(KeyCode.P);
+                Pause = Input.GetKeyDown(KeyCode.Escape);
 
                 break;
 
@@ -153,7 +158,7 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
                 RightClick = Input.GetButtonDown("Fire2");
 
                 // Gets the ESC key
-                Pause = Input.GetKeyDown(KeyCode.P);
+                Pause = Input.GetKeyDown(KeyCode.Escape);
 
                 // Gets horizontal movement
                 HorizontalMouse = Input.GetAxis("Mouse X");
@@ -166,7 +171,7 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
             case TypeOfControl.InDoorWithCode:
                 Cursor.lockState = CursorLockMode.Confined;
                 // Gets ESC key
-                Pause = Input.GetKeyDown(KeyCode.P);
+                Pause = Input.GetKeyDown(KeyCode.Escape);
 
                 // Gets left click
                 LeftClick = Input.GetButtonDown("Fire1");
@@ -177,20 +182,23 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
                 Cursor.lockState = CursorLockMode.Confined;
 
                 // Gets ESC key
-                Pause = Input.GetKeyDown(KeyCode.P);
+                Pause = Input.GetKeyDown(KeyCode.Escape);
 
                 break;
 
             case TypeOfControl.InCutscene:
                 Cursor.lockState = CursorLockMode.Locked;
                 // Gets ESC key
-                Pause = Input.GetKeyDown(KeyCode.P);
+                Pause = Input.GetKeyDown(KeyCode.Escape);
 
                 // Gets horizontal movement
                 HorizontalMouse = Input.GetAxis("Mouse X");
 
                 // Get vertical movement
                 VerticalMouse = Input.GetAxis("Mouse Y");
+
+                // Gets Space key
+                PassScene = Input.GetKeyDown(KeyCode.Space);
 
                 break;
         }
