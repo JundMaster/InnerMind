@@ -5,7 +5,7 @@
 /// </summary>
 public class Room7Rotation : MonoBehaviour
 {
-    private Animator anim;
+    public Animator anim { get; private set; }
 
     /// <summary>
     /// Start method for Room7Rotation

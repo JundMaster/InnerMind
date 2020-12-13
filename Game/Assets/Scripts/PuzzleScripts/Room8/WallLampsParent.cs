@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,13 @@ public class WallLampsParent : MonoBehaviour
     // will be affected by the chain rotation
     private YieldInstruction waitForSecs;
 
+    public event Action LampsAligned;
+
+    /// <summary>
+    /// Collection of <see cref="WallLamp"/> objects being controlled
+    /// </summary>
+    public WallLamp[] Lamps { get; private set; }
+
     /// <summary>
     /// OnEnable method for WallLampsParent
     /// </summary>
@@ -25,15 +33,55 @@ public class WallLampsParent : MonoBehaviour
         for (int i = 0; i < lamps.Length; i ++)
         {
             lamps[i].LampRotated += ChainRotation;
+            lamps[i].LampAligned += CheckLampsAlignmed;
         }
     }
-
     /// <summary>
     /// Start method for WallLampsParent
     /// </summary>
     private void Start()
     {
+        Lamps = lamps;
         waitForSecs = new WaitForSeconds(0.5f);
+    }
+
+    /// <summary>
+    /// OnDisable method for WallLampsParent
+    /// </summary>
+    private void OnDisable()
+    {
+        for (int i = 0; i < lamps.Length; i++)
+        {
+            lamps[i].LampRotated -= ChainRotation;
+            lamps[i].LampAligned -= CheckLampsAlignmed;
+        }
+    }
+
+    /// <summary>
+    /// Invokes the <see cref="LampsAligned"/> event
+    /// </summary>
+    private void OnLampsAligned()
+    {
+        LampsAligned?.Invoke();
+    }
+
+    /// <summary>
+    /// Checks the alignment of all wall lamps
+    /// </summary>
+    private void CheckLampsAlignmed()
+    {
+        byte numOfLampsAligned = 0;
+        for (int i = 0; i < Lamps.Length; i ++)
+        {
+            if (Lamps[i].IsAligned())
+            {
+                numOfLampsAligned++;
+            }
+        }
+        if (numOfLampsAligned == Lamps.Length)
+        {
+            OnLampsAligned();
+        }
     }
 
     /// <summary>
@@ -58,7 +106,7 @@ public class WallLampsParent : MonoBehaviour
         for (int i = index - 1; i >= 0; i--)
         {
             yield return waitForSecs;
-            IEnumerator chainRotation = lamps[i].
+            IEnumerator chainRotation = Lamps[i].
                                         interactionController.
                                         ChainRotationExecute();
             StartCoroutine(chainRotation);
