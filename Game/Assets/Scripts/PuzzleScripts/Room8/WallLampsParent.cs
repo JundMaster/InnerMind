@@ -21,6 +21,11 @@ public class WallLampsParent : MonoBehaviour
     public event Action LampsAligned;
 
     /// <summary>
+    /// Collection of <see cref="WallLamp"/> objects being controlled
+    /// </summary>
+    public WallLamp[] Lamps { get; private set; }
+
+    /// <summary>
     /// OnEnable method for WallLampsParent
     /// </summary>
     private void OnEnable()
@@ -36,6 +41,7 @@ public class WallLampsParent : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        Lamps = lamps;
         waitForSecs = new WaitForSeconds(0.5f);
     }
 
@@ -65,14 +71,14 @@ public class WallLampsParent : MonoBehaviour
     private void CheckLampsAlignmed()
     {
         byte numOfLampsAligned = 0;
-        for (int i = 0; i < lamps.Length; i ++)
+        for (int i = 0; i < Lamps.Length; i ++)
         {
-            if (lamps[i].IsAligned())
+            if (Lamps[i].IsAligned())
             {
                 numOfLampsAligned++;
             }
         }
-        if (numOfLampsAligned == lamps.Length)
+        if (numOfLampsAligned == Lamps.Length)
         {
             OnLampsAligned();
         }
@@ -100,7 +106,7 @@ public class WallLampsParent : MonoBehaviour
         for (int i = index - 1; i >= 0; i--)
         {
             yield return waitForSecs;
-            IEnumerator chainRotation = lamps[i].
+            IEnumerator chainRotation = Lamps[i].
                                         interactionController.
                                         ChainRotationExecute();
             StartCoroutine(chainRotation);

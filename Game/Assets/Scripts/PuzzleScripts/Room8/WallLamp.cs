@@ -24,6 +24,11 @@ public class WallLamp : MonoBehaviour
     [SerializeField]
     private List<LampDirectionAssociation> lamps;
 
+    /// <summary>
+    /// Collection of Lights associated to the WallLamp
+    /// </summary>
+    public List<WallLampLight> Lights { get; private set; }
+
     private WallLampDirection currentDirection;
 
     /// <summary>
@@ -85,6 +90,7 @@ public class WallLamp : MonoBehaviour
     private void Start()
     {
         interactionController = GetComponent<WallLampInteraction>();
+        Lights = lights;
         LampIndex = lampIndex;
         CurrentDirection = WallLampDirection.Top;
         CheckLights(false);
@@ -132,11 +138,11 @@ public class WallLamp : MonoBehaviour
                 if (adjacentLamp.lamp.IsAligned())
                 {
                     count++;
-                    for (int i = 0; i < lights.Count; i++)
+                    for (int i = 0; i < Lights.Count; i++)
                     {
-                        if (adjacentLamp.side == lights[i].CurrentDirection)
+                        if (adjacentLamp.side == Lights[i].CurrentDirection)
                         {
-                            SetLight(lights[i], LightStates.On);
+                            SetLight(Lights[i], LightStates.On);
                         }
                     }
                 }
@@ -145,23 +151,24 @@ public class WallLamp : MonoBehaviour
                 else
                 {
                     // Lopps through all the lights
-                    for (int i = 0; i < lights.Count; i++)
+                    for (int i = 0; i < Lights.Count; i++)
                     {
                         // Check if the number of adjacent lamps is 1
                         if (lamps.Count == 1)
                         {
                             // The light pointing to the not aligned adjacent
                             // lamp will start blinking
-                            if (lights[i].CurrentDirection == adjacentLamp.side)
+                            if (Lights[i].CurrentDirection == 
+                                adjacentLamp.side)
                             {
-                                SetLight(lights[i], LightStates.Blink);
+                                SetLight(Lights[i], LightStates.Blink);
                             }
 
                             // The light that is not pointing on the direction
                             // of the adjacent lamp will be turned on
                             else
                             {
-                                SetLight(lights[i], LightStates.On);
+                                SetLight(Lights[i], LightStates.On);
                             }
                         }
                         
@@ -170,9 +177,10 @@ public class WallLamp : MonoBehaviour
                         {
                             // The light pointing to the not aligned adjacent
                             // lamp will start blinking
-                            if (lights[i].CurrentDirection == adjacentLamp.side)
+                            if (Lights[i].CurrentDirection == 
+                                adjacentLamp.side)
                             {
-                                SetLight(lights[i], LightStates.Blink);
+                                SetLight(Lights[i], LightStates.Blink);
                             }
                         }
                         
@@ -184,8 +192,8 @@ public class WallLamp : MonoBehaviour
             if (count == lamps.Count)
             {
                 // Set both lights of the lamp on
-                SetLight(lights[0], LightStates.On);
-                SetLight(lights[1], LightStates.On);
+                SetLight(Lights[0], LightStates.On);
+                SetLight(Lights[1], LightStates.On);
             }
         }
 
@@ -211,8 +219,8 @@ public class WallLamp : MonoBehaviour
             if (CurrentDirection == WallLampDirection.Top ||
                 CurrentDirection == WallLampDirection.Bottom)
             { 
-                SetLight(lights[0], LightStates.Blink);
-                SetLight(lights[1], LightStates.Blink);
+                SetLight(Lights[0], LightStates.Blink);
+                SetLight(Lights[1], LightStates.Blink);
             }
 
             
@@ -225,20 +233,20 @@ public class WallLamp : MonoBehaviour
                     // Loops throught the lights on THIS lamp
                     // this does not loop throught the lights of 
                     // the adjacent lamps
-                    for (int i = 0; i < lights.Count; i++)
+                    for (int i = 0; i < Lights.Count; i++)
                     {
                         // If the light is pointing on the direction of an
                         // adjacent lamp it will blink
-                        if (lights[i].CurrentDirection == lamp.side)
+                        if (Lights[i].CurrentDirection == lamp.side)
                         {
-                            SetLight(lights[i], LightStates.Blink);
+                            SetLight(Lights[i], LightStates.Blink);
                         }
 
                         // If there is only 1 adjacent lamps, both lights
                         // will be off
                         else if (lamps.Count == 1)
                         {
-                            SetLight(lights[i], LightStates.Off);
+                            SetLight(Lights[i], LightStates.Off);
                         }
                     }
                 }
@@ -311,9 +319,9 @@ public class WallLamp : MonoBehaviour
     /// </summary>
     private void RotateLights()
     {
-        for (int i = 0; i < lights.Count; i++)
+        for (int i = 0; i < Lights.Count; i++)
         {
-            lights[i].CurrentDirection++;
+            Lights[i].CurrentDirection++;
         }
     }
 }

@@ -3782,6 +3782,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.466
       objectReference: {fileID: 0}
+    - target: {fileID: 3999425584325566669, guid: 27e0bc285d070384cb79017c45b5f735, type: 3}
+      propertyPath: far clip plane
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27e0bc285d070384cb79017c45b5f735, type: 3}
 --- !u!1 &1394323893
@@ -7248,8 +7252,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 1394323894}
     m_Modifications:
     - target: {fileID: 1275880136, guid: 0ef5e5b06345415428911f1a4ab76d61, type: 3}
+      propertyPath: goToScene
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275880136, guid: 0ef5e5b06345415428911f1a4ab76d61, type: 3}
       propertyPath: elseGoToScene
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7925831929662690493, guid: 0ef5e5b06345415428911f1a4ab76d61, type: 3}
       propertyPath: m_Name

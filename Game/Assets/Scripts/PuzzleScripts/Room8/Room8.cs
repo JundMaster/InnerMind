@@ -15,13 +15,16 @@ public class Room8 : PuzzleBase
     private void Start()
     {
         wallLampsParent.LampsAligned += Victory;
+        prize.SetActive(false);
     }
 
-    
+
     public override void Victory()
     {
+        prize.SetActive(true);
         doorAnimator.SetTrigger("Open Door");
         StartCoroutine(VictoryCoroutine());
+        StartCoroutine(BlinkLights());
         base.Victory();
 
     }
@@ -37,5 +40,30 @@ public class Room8 : PuzzleBase
         }
 
         yield return null;
+    }
+
+    private IEnumerator BlinkLights()
+    {
+
+        while (prize)
+        {
+            for (int i = 0; i < wallLampsParent.Lamps.Length; i++)
+            {
+                wallLampsParent.Lamps[i].Lights[1].LightComponent.range = 3;
+                wallLampsParent.Lamps[i].Lights[0].LightComponent.range = 0;
+                yield return new WaitForSeconds(0.1f);
+                wallLampsParent.Lamps[i].Lights[1].LightComponent.range = 0f;
+            }
+        }
+
+        while (!prize)
+        {
+            for (int i = 0; i < wallLampsParent.Lamps.Length; i++)
+            {
+                wallLampsParent.Lamps[i].Lights[1].LightComponent.range = 1.54f;
+                wallLampsParent.Lamps[i].Lights[0].LightComponent.range = 1.54f;
+                yield return null;
+            }
+        }
     }
 }

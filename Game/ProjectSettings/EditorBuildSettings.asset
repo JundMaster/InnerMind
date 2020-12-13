@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cutscenes/FinalCutscene/FinalCutscene.unity
     guid: 51f342e2de4fd934ebb330ef5dfbbf19
+  - enabled: 1
+    path: Assets/Scenes/Room8/Room8.unity
+    guid: 84da6dd83c563764284111161a6de720
   m_configObjects: {}
