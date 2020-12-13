@@ -11,6 +11,7 @@ public class InteractionDoor : InteractionCommon
     /// </summary>
     public override void Execute()
     {
+        SoundManager.PlaySound(SoundClip.DoorOpen);
         Animator doorAnimation = GetComponent<Animator>(); ;
         doorAnimation.SetTrigger("Open Door");
     }

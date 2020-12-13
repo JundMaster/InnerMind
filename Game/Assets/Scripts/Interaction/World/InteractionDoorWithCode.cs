@@ -74,6 +74,7 @@ public class InteractionDoorWithCode : InteractionCommon
     /// </summary>
     public void OpenDoor()
     {
+        SoundManager.PlaySound(SoundClip.DoorOpen);
         Animator doorAnimation = GetComponentInParent<Animator>();
         doorAnimation.SetTrigger("Open Door");
 

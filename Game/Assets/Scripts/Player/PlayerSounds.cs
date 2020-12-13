@@ -44,7 +44,7 @@ public class PlayerSounds : MonoBehaviour
     /// <returns>Returns new waitforseconds</returns>
     private IEnumerator Footstep()
     {
-        SoundManager.PlaySound(SoundClip.footstep);
+        SoundManager.PlaySound(SoundClip.Footstep);
         yield return new WaitForSeconds(0.5f);
         footstepCoroutine = null;
     }

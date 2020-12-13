@@ -4,11 +4,12 @@
 /// </summary>
 public enum SoundClip
 {
-    footstep,
-    walkmanAudio,
-    flashlightClick,
-    wallSlide,
+    Footstep,
+    WalkmanAudio,
+    FlashlightClick,
+    WallSlide,
     MajorAKeyNote,
     MajorCKeyNote,
-    MajorEKeyNote
+    MajorEKeyNote,
+    DoorOpen
 }
