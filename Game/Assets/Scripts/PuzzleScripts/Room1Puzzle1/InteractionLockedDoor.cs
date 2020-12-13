@@ -14,18 +14,21 @@ public class InteractionLockedDoor : InteractionCommon, ICoroutineT<string>
 
     //Variables in Inspector
     [SerializeField] private string thought;
-    [SerializeField] private GameObject thoughtCanvas;
+    [SerializeField] private Canvas thoughtCanvas;
 
+    /// <summary>
+    /// This property controls a coroutine
+    /// </summary>
     public Coroutine ThisCoroutine { get; private set; }
 
     /// <summary>
     /// Start method of InteractionLockedDoor
     /// </summary>
-    private void Start()
+    private void Awake()
     {
         room1 = FindObjectOfType<Room1>();
         displayText = thoughtCanvas.GetComponentInChildren<Text>();
-        waitForSeconds = new WaitForSeconds(3);
+        waitForSeconds = new WaitForSeconds(2);
         ThisCoroutine = null;
     }
 
@@ -43,11 +46,11 @@ public class InteractionLockedDoor : InteractionCommon, ICoroutineT<string>
         }
 
         //Else it displays a thought on the locked door
-        if(ThisCoroutine == null)
-            ThisCoroutine = StartCoroutine(CoroutineExecute(thought));
+        if (ThisCoroutine == null)
+            if (thoughtCanvas.enabled == false)
+                ThisCoroutine = StartCoroutine(CoroutineExecute(thought));
 
     }
-
 
     /// <summary>
     /// Renders a thought during a few seconds
@@ -58,15 +61,14 @@ public class InteractionLockedDoor : InteractionCommon, ICoroutineT<string>
     {
         if(thought != null)
         {
-            thoughtCanvas.SetActive(true);
+            thoughtCanvas.enabled = true;
             displayText.text = thought;
             displayText.enabled = true;
             yield return waitForSeconds;
             displayText.enabled = false;
-            thoughtCanvas.SetActive(false);
+            thoughtCanvas.enabled = false;
             ThisCoroutine = null;
-        }
-        
+        }   
     }
 
     /// <summary>

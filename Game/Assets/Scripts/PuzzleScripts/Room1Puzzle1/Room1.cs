@@ -1,14 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿
 /// <summary>
 /// Class responsible for controlling room1 puzzle. Extends PuzzleBase
 /// </summary>
 public class Room1 : PuzzleBase
 {
     //Components
-    InteractionMedicineCabinet cabinet;
+    private InteractionMedicineCabinet cabinet;
 
     /// <summary>
     /// Property that checks if the puzzle was finished
@@ -16,22 +13,26 @@ public class Room1 : PuzzleBase
     public bool FinishedPuzzle { get; private set; }
 
     /// <summary>
-    /// Start method of Room1
+    /// Awake method of Room1. This awake is overriding puzzlebase Awake
     /// </summary>
-    private void Start()
+    private void Awake()
     {
+        player = FindObjectOfType<PlayerGeneralInfo>();
+        inventory = FindObjectOfType<Inventory>();
+
         cabinet = FindObjectOfType<InteractionMedicineCabinet>();
         FinishedPuzzle = false;
     }
 
-    /// <summary>
-    /// Update method of Room1
-    /// </summary>
-    private void Update()
+    private void OnEnable()
     {
-        Victory();
+        cabinet.CabinetDoorOpened += Victory;
     }
 
+    private void OnDisable()
+    {
+        cabinet.CabinetDoorOpened -= Victory;
+    }
 
     /// <summary>
     /// Does an action when the puzzle is solved
@@ -39,9 +40,6 @@ public class Room1 : PuzzleBase
     public override void Victory()
     {
         base.Victory();
-        if (cabinet.IsOpen)
-        {
-            FinishedPuzzle = true;
-        }
+        FinishedPuzzle = true;
     }
 }
