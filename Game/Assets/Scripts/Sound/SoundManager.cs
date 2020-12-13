@@ -29,7 +29,7 @@ sealed public class SoundManager : MonoBehaviour
     {
         AudioSource = GetComponent<AudioSource>();
 
-        sounds = new AudioClip[7];
+        sounds = new AudioClip[8];
 
         sounds[0] = Resources.Load<AudioClip>("Sounds/footstep");
         sounds[1] = Resources.Load<AudioClip>("Sounds/walkmanAudio");
@@ -38,6 +38,7 @@ sealed public class SoundManager : MonoBehaviour
         sounds[4] = Resources.Load<AudioClip>("Sounds/MajorAKeyNote");
         sounds[5] = Resources.Load<AudioClip>("Sounds/MajorCKeyNote");
         sounds[6] = Resources.Load<AudioClip>("Sounds/MajorEKeyNote");
+        sounds[7] = Resources.Load<AudioClip>("Sounds/doorOpen");
     }
 
     /// <summary>
@@ -56,16 +57,16 @@ sealed public class SoundManager : MonoBehaviour
     {
         switch (clip)
         {
-            case SoundClip.footstep:
+            case SoundClip.Footstep:
                 audioSource.PlayOneShot(sounds[0], 1f);
                 break;
-            case SoundClip.walkmanAudio:
+            case SoundClip.WalkmanAudio:
                 audioSource.PlayOneShot(sounds[1], 1f);
                 break;
-            case SoundClip.flashlightClick:
+            case SoundClip.FlashlightClick:
                 audioSource.PlayOneShot(sounds[2], 1f);
                 break;
-            case SoundClip.wallSlide:
+            case SoundClip.WallSlide:
                 audioSource.PlayOneShot(sounds[3], 1f);
                 break;
             case SoundClip.MajorAKeyNote:
@@ -76,6 +77,9 @@ sealed public class SoundManager : MonoBehaviour
                 break;
             case SoundClip.MajorEKeyNote:
                 audioSource.PlayOneShot(sounds[6], 0.4f);
+                break;
+            case SoundClip.DoorOpen:
+                audioSource.PlayOneShot(sounds[7], 0.4f);
                 break;
         }
     }

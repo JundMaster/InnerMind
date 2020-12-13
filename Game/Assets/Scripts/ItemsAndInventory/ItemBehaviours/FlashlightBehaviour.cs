@@ -28,7 +28,7 @@ public class FlashlightBehaviour : MonoBehaviour, IUsable
         flashlight = GameObject.FindGameObjectWithTag("PlayerLantern").
             GetComponent<Light>();
 
-        SoundManager.PlaySound(SoundClip.flashlightClick);
+        SoundManager.PlaySound(SoundClip.FlashlightClick);
 
         if (flashlightActive == false)
         {

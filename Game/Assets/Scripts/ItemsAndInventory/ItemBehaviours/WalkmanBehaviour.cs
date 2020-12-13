@@ -15,6 +15,6 @@ public class WalkmanBehaviour : MonoBehaviour, IUsable
 
         // Plays walkmanAudio only if the audio isn't already playing
         if (soundManager.AudioSource.isPlaying == false)
-            SoundManager.PlaySound(SoundClip.walkmanAudio);
+            SoundManager.PlaySound(SoundClip.WalkmanAudio);
     }
 }
