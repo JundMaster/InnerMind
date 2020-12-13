@@ -11,6 +11,7 @@ public class WallLampInteraction : InteractionCR
     private bool onInteraction;
     private bool interacting;
 
+    public bool CanInteract { get; set; }
     // Reference to the lamp
     private WallLamp lamp;
 
@@ -21,6 +22,7 @@ public class WallLampInteraction : InteractionCR
     {
         onInteraction = false;
         interacting = false;
+        CanInteract = true;
         lamp = GetComponent<WallLamp>();
     }
 
@@ -41,7 +43,8 @@ public class WallLampInteraction : InteractionCR
     /// <returns>Returns null</returns>
     public IEnumerator ChainRotationExecute()
     {
-        StartCoroutine(RotationInteractionCommon());
+        if (RotationInteractionCommon() != null)
+            StartCoroutine(RotationInteractionCommon());
         yield break;
     }
 
@@ -57,7 +60,7 @@ public class WallLampInteraction : InteractionCR
         Quaternion to = Quaternion.LookRotation(transform.forward, -transform.right);
 
         // Verification to avoid click spam
-        if (elapsedTime < timeLimit && onInteraction)
+        if (elapsedTime < timeLimit && onInteraction || CanInteract == false)
             yield break;
 
         onInteraction = true;

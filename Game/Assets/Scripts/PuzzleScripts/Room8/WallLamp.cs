@@ -280,8 +280,11 @@ public class WallLamp : MonoBehaviour
                 
                 break;
             case LightStates.Blink:
-                light.LightComponent.range = 1.57f;
-                light.LightComponent.color = Color.yellow;
+                if (light != null && light.LightComponent != null)
+                {
+                    light.LightComponent.range = 1.57f;
+                    light.LightComponent.color = Color.yellow;
+                }
                 break;
         }
     }

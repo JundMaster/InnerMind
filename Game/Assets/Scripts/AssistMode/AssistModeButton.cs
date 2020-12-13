@@ -35,7 +35,7 @@ public class AssistModeButton : AssistMode
                 break;
             // Lamps puzzle
             case PuzzlesEnum.Puzzle9:
-                //puzzleVariable = FindObjectOfType<Room8>();
+                puzzleVariable = FindObjectOfType<Room8>();
                 break;
         }
     }
