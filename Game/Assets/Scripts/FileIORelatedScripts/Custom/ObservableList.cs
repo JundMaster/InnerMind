@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 
@@ -20,12 +20,16 @@ public class ObservableList<T> : List<T>, INotifyCollectionChanged
 
     public event NotifyCollectionChangedEventHandler CollectionChanged;
 
+    public event Action<ScriptableItem> AddedItem;
+
     private void OnCollectionChanged(object sender = null,
                                      NotifyCollectionChangedEventArgs e = null)
     {
 
         CollectionChanged?.Invoke(sender, e);
     }
+
+    private void OnItemAdded(ScriptableItem item) => AddedItem?.Invoke(item);
 
     public new void Add(T item)
     {
@@ -34,6 +38,7 @@ public class ObservableList<T> : List<T>, INotifyCollectionChanged
             
         base.Add(item);
         OnCollectionChanged();
+        OnItemAdded(item as ScriptableItem);
     }
     public new void Remove(T item)
     {
