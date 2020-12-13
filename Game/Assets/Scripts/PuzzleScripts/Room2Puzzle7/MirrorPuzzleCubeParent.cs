@@ -84,18 +84,28 @@ public class MirrorPuzzleCubeParent : MonoBehaviour, ICoroutineT<LeftMiddleRight
                 case LeftMiddleRight.Left:
                     if (currentPosition > LeftMiddleRight.Left)
                     {
+                        // Plays sound and plays coroutine
                         if (ThisCoroutine == null)
+                        {
+                            SoundManager.PlaySound(SoundClip.wallSlide);
+
                             ThisCoroutine = StartCoroutine(
                                 CoroutineExecute(LeftMiddleRight.Left));
+                        }
                     }
                     else { }
                     break;
                 case LeftMiddleRight.Right:
                     if (currentPosition < LeftMiddleRight.Right)
                     {
+                        // Plays sound and plays coroutine
                         if (ThisCoroutine == null)
+                        {
+                            SoundManager.PlaySound(SoundClip.wallSlide);
+
                             ThisCoroutine = StartCoroutine(
                                 CoroutineExecute(LeftMiddleRight.Right));
+                        }
                     }
                     else { }
                     break;
