@@ -41,7 +41,7 @@ public abstract class PuzzleBase : MonoBehaviour, IPuzzle
     /// <returns>Returns null</returns>
     protected IEnumerator ReadPuzzlesDoneTxt()
     {
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(1f);
 
         // Reads txt with inventory info ( if it already exists )
         if (File.Exists(FilePath.puzzlePath))

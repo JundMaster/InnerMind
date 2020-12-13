@@ -10,17 +10,33 @@ public class Room8 : PuzzleBase
     [SerializeField] private Animator doorAnimator;
 
     /// <summary>
+    /// Property that checks if the puzzle was finished
+    /// </summary>
+    public bool PuzzleAlreadyDone { get; private set; }
+
+    /// <summary>
     /// OnEnable method for Room8
     /// </summary>
     private void Start()
     {
         wallLampsParent.LampsAligned += Victory;
         prize.SetActive(false);
+
+        if (player.PuzzlesDone.HasFlag(myPuzzle))
+        {
+            Debug.Log("IT WAS SOLVED ALREADY");
+            prize = null;
+            Victory();
+        }
     }
 
 
     public override void Victory()
     {
+        foreach (WallLamp lamp in wallLampsParent.Lamps)
+        {
+            Destroy(lamp.GetComponent<WallLampInteraction>());
+        }
         prize.SetActive(true);
         doorAnimator.SetTrigger("Open Door");
         StartCoroutine(VictoryCoroutine());
@@ -50,6 +66,9 @@ public class Room8 : PuzzleBase
             for (int i = 0; i < wallLampsParent.Lamps.Length; i++)
             {
                 wallLampsParent.Lamps[i].Lights[1].LightComponent.range = 3;
+                wallLampsParent.Lamps[i].Lights[1].
+                    LightComponent.color = Color.white;
+
                 wallLampsParent.Lamps[i].Lights[0].LightComponent.range = 0;
                 yield return new WaitForSeconds(0.1f);
                 wallLampsParent.Lamps[i].Lights[1].LightComponent.range = 0f;
