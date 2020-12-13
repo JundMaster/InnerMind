@@ -13,6 +13,7 @@ public enum SceneNames
     Room7,
     Room8,
     Room9,
+    StairsCutscene,
     AmbulanceCutscene,
     ElevatorCutscene,
     BuildingCutscene,
