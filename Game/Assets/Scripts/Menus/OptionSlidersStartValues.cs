@@ -25,14 +25,14 @@ public class OptionSlidersStartValues : MonoBehaviour
         // If it's the first time the user is opening the game
         if (firstPlayInt == 0)
         {
-            PlayerPrefs.SetFloat("mouseSpeed", 300f);
-            mouseSlider.value = 300f;
+            PlayerPrefs.SetFloat("mouseSpeed", 100f);
+            mouseSlider.value = 100f;
 
-            PlayerPrefs.SetFloat("soundVolume", 0.6f);
-            soundSlider.value = 0.6f;
+            PlayerPrefs.SetFloat("soundVolume", 0.8f);
+            soundSlider.value = 0.8f;
 
-            PlayerPrefs.SetFloat("musicVolume", 0.2f);
-            musicSlider.value = 0.2f;
+            PlayerPrefs.SetFloat("musicVolume", 0.3f);
+            musicSlider.value = 0.3f;
 
 
             PlayerPrefs.SetInt("First Play", -1);
