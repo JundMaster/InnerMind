@@ -5,24 +5,29 @@
 /// </summary>
 public class MapBehaviour : MonoBehaviour, IUsable
 {
-    private Canvas map;
-
     /// <summary>
     /// Determins MapBehaviour action when used.
     /// If the player uses the map, the map is set to active.
     /// </summary>
     public void Use()
     {
-        map = GameObject.FindGameObjectWithTag("MapCanvas").
-            GetComponent<Canvas>();
+        GameObject mapGO = GameObject.FindGameObjectWithTag("MapCanvas");
 
-        if (map.enabled)
+        Canvas map = null;
+
+        if (mapGO != null)
+            map = mapGO.GetComponent<Canvas>();
+
+        if (mapGO != null)
         {
-            map.enabled = false;
-        }
-        else
-        {
-            map.enabled = true;
+            if (map.enabled)
+            {
+                map.enabled = false;
+            }
+            else
+            {
+                map.enabled = true;
+            }
         }
     }
 }

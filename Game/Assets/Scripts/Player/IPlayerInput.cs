@@ -46,6 +46,11 @@ public interface IPlayerInput
     bool Pause { get; }
 
     /// <summary>
+    /// Property to get key to pass a scene
+    /// </summary>
+    bool PassScene { get; }
+
+    /// <summary>
     /// Property for cursor position relative to cursor in game
     /// </summary>
     Vector2Int CursorPosition { get; }

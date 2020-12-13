@@ -10,6 +10,11 @@ public class SceneChange : MonoBehaviour
     // First scene to change the scene to
     [SerializeField] private SceneNames goToScene;
 
+    /// <summary>
+    /// Property to get goToScene
+    /// </summary>
+    public SceneNames GoToScene => goToScene;
+
     // If the goToScene already happened, this will be the scene to change to
     [SerializeField] private SceneNames elseGoToScene;
 
@@ -61,7 +66,8 @@ public class SceneChange : MonoBehaviour
                 //  cutscene order and writes its name on the file
                 else
                 {
-                    File.AppendAllText(FilePath.watchedCutscenes, $"\n{goToScene}");
+                    File.AppendAllText(FilePath.watchedCutscenes, 
+                                        $"\n{goToScene}");
 
                     SceneManager.LoadScene(goToScene.ToString());
                 }
@@ -75,14 +81,5 @@ public class SceneChange : MonoBehaviour
                 SceneManager.LoadScene(goToScene.ToString());
             }
         }
-    }
-
-    /// <summary>
-    /// OnApplicationQuit for SceneChange
-    /// </summary>
-    private void OnApplicationQuit()
-    {
-        File.Delete(FilePath.lastScenePath);
-        File.Delete(FilePath.watchedCutscenes);
     }
 }

@@ -70,12 +70,4 @@ public abstract class PuzzleBase : MonoBehaviour, IPuzzle
         FileWriter fw = new FileWriter(FilePath.puzzlePath);
         fw.AddToTxt(player);
     }
-
-    /// <summary>
-    /// OnApplicationQuit for PuzzleBase
-    /// </summary>
-    private void OnApplicationQuit()
-    {
-        File.Delete(FilePath.puzzlePath);
-    }
 }
