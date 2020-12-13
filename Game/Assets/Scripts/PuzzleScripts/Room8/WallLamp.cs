@@ -70,9 +70,14 @@ public class WallLamp : MonoBehaviour
     }
 
     /// <summary>
-    /// Event that is fires when the lamp rotates
+    /// Event that is fired when the lamp rotates
     /// </summary>
     public event Action<int> LampRotated;
+
+    /// <summary>
+    /// Event that when the lamp is aligned
+    /// </summary>
+    public event Action LampAligned;
      
     /// <summary>
     /// Start method for WallLamp
@@ -92,6 +97,14 @@ public class WallLamp : MonoBehaviour
     private void OnLampRotated(int index)
     {
         LampRotated?.Invoke(index);
+    }
+
+    /// <summary>
+    /// Invokes the <see cref="LampAligned"/> event
+    /// </summary>
+    private void OnLampAligned()
+    {
+        LampAligned?.Invoke();
     }
 
     /// <summary>
@@ -273,6 +286,10 @@ public class WallLamp : MonoBehaviour
         CurrentDirection++;
         RotateLights();
         CheckLights(true);
+        if (IsAligned())
+        {
+            OnLampAligned();
+        }
     }
     
     /// <summary>
@@ -283,6 +300,10 @@ public class WallLamp : MonoBehaviour
         RotateLamp();
         OnLampRotated(LampIndex);
         CheckLights(true);
+        if (IsAligned())
+        {
+            OnLampAligned();
+        }
     }
 
     /// <summary>

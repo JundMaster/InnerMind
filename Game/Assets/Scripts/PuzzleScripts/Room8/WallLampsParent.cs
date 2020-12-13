@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,8 @@ public class WallLampsParent : MonoBehaviour
     // will be affected by the chain rotation
     private YieldInstruction waitForSecs;
 
+    public event Action LampsAligned;
+
     /// <summary>
     /// OnEnable method for WallLampsParent
     /// </summary>
@@ -25,15 +28,54 @@ public class WallLampsParent : MonoBehaviour
         for (int i = 0; i < lamps.Length; i ++)
         {
             lamps[i].LampRotated += ChainRotation;
+            lamps[i].LampAligned += CheckLampsAlignmed;
         }
     }
-
     /// <summary>
     /// Start method for WallLampsParent
     /// </summary>
     private void Start()
     {
         waitForSecs = new WaitForSeconds(0.5f);
+    }
+
+    /// <summary>
+    /// OnDisable method for WallLampsParent
+    /// </summary>
+    private void OnDisable()
+    {
+        for (int i = 0; i < lamps.Length; i++)
+        {
+            lamps[i].LampRotated -= ChainRotation;
+            lamps[i].LampAligned -= CheckLampsAlignmed;
+        }
+    }
+
+    /// <summary>
+    /// Invokes the <see cref="LampsAligned"/> event
+    /// </summary>
+    private void OnLampsAligned()
+    {
+        LampsAligned?.Invoke();
+    }
+
+    /// <summary>
+    /// Checks the alignment of all wall lamps
+    /// </summary>
+    private void CheckLampsAlignmed()
+    {
+        byte numOfLampsAligned = 0;
+        for (int i = 0; i < lamps.Length; i ++)
+        {
+            if (lamps[i].IsAligned())
+            {
+                numOfLampsAligned++;
+            }
+        }
+        if (numOfLampsAligned == lamps.Length)
+        {
+            OnLampsAligned();
+        }
     }
 
     /// <summary>
