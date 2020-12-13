@@ -22,12 +22,12 @@ public class Room8 : PuzzleBase
         wallLampsParent.LampsAligned += Victory;
         prize.SetActive(false);
 
-        if (player.PuzzlesDone.HasFlag(myPuzzle))
-        {
-            Debug.Log("IT WAS SOLVED ALREADY");
-            prize = null;
-            Victory();
-        }
+        //if (player.PuzzlesDone.HasFlag(myPuzzle))
+        //{
+        //    //prize = null;
+        //    Destroy(prize);
+        //    Victory();
+        //} 
     }
 
 
@@ -49,6 +49,10 @@ public class Room8 : PuzzleBase
     {
 
         // While the item is active, it keeps rotating
+        if (player.PuzzlesDone.HasFlag(myPuzzle))
+        {
+            Destroy(prize);
+        }
         while (prize)
         {
             prize.transform.Rotate(20 * Time.deltaTime, 0, 20 * Time.deltaTime);
