@@ -59,7 +59,7 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
     /// <summary>
     /// Property to get a key to pass a scene
     /// </summary>
-    public bool PassScene { get; private set; }
+    public bool Space { get; private set; }
 
     /// <summary>
     /// Property for cursor position relative to cursor in game
@@ -126,6 +126,9 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
 
                 // Gets ESC key
                 Pause = Input.GetKeyDown(KeyCode.Escape);
+
+                // Gets Space key
+                Space = Input.GetKeyDown(KeyCode.Space);
 
                 break;
 
@@ -198,7 +201,7 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
                 VerticalMouse = Input.GetAxis("Mouse Y");
 
                 // Gets Space key
-                PassScene = Input.GetKeyDown(KeyCode.Space);
+                Space = Input.GetKeyDown(KeyCode.Space);
 
                 break;
         }

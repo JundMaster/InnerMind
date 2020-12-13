@@ -109,7 +109,7 @@ public class PlayerMovement : MonoBehaviour, ICoroutineT<RaycastHit>
             if (hit.collider.gameObject.layer == 9)
             {
                 // if the player is moving forward
-                if (input.ZAxis > 0)
+                if (input.ZAxis > 0 && input.Space)
                 {
                     // And the coroutine isn't already running
                     if (ThisCoroutine == null)

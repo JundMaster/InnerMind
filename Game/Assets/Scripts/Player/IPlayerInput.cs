@@ -48,7 +48,7 @@ public interface IPlayerInput
     /// <summary>
     /// Property to get key to pass a scene
     /// </summary>
-    bool PassScene { get; }
+    bool Space { get; }
 
     /// <summary>
     /// Property for cursor position relative to cursor in game

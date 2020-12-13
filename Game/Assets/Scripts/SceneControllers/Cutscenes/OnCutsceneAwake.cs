@@ -29,7 +29,7 @@ sealed public class OnCutsceneAwake : MonoBehaviour
     {
         if (sceneChange)
         {
-            if (input.PassScene)
+            if (input.Space)
             {
                 File.AppendAllText(FilePath.watchedCutscenes,
                                             $"\n{sceneChange.GoToScene}");
