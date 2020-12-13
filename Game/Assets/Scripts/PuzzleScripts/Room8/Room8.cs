@@ -49,7 +49,8 @@ public class Room8 : PuzzleBase
     {
 
         // While the item is active, it keeps rotating
-        if (player.PuzzlesDone.HasFlag(myPuzzle))
+        if (player.PuzzlesDone.HasFlag(myPuzzle) && 
+            inventory.Bag.Contains(prizeScriptableItem) == true)
         {
             Destroy(prize);
         }
