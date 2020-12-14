@@ -25,13 +25,11 @@ public class InteractionDrawer : InteractionCommon
     {
         if(!isOpen)
         {
-            SoundManager.PlaySound(SoundClip.DrawerOpen);
             drawerAnimator.SetTrigger("openDrawer");
             isOpen = true;
         }
         else if (isOpen)
         {
-            SoundManager.PlaySound(SoundClip.DrawerClosing);
             drawerAnimator.SetTrigger("closeDrawer");
             isOpen = false;
         }  

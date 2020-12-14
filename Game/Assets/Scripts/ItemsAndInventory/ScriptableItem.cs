@@ -16,6 +16,7 @@ public class ScriptableItem : ScriptableObject, IItem,
     [SerializeField] private Texture2D cursorTexture;
     [SerializeField] private GameObject prefab;
     [SerializeField] private ScriptableItem combinationItem;
+    [SerializeField] private SoundClip combinationSound;
 
     /// <summary>
     /// Name of the item
@@ -47,6 +48,11 @@ public class ScriptableItem : ScriptableObject, IItem,
     /// combination item
     /// </summary>
     public ScriptableItem CombinationItem { get => combinationItem; }
+
+    /// <summary>
+    /// Sound that plays when the item is combined
+    /// </summary>
+    public SoundClip CombinationSound { get => combinationSound; }
 
     /// <summary>
     /// Compares this ScriptableItem with another ScriptableItem

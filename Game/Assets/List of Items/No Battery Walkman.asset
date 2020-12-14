@@ -18,3 +18,4 @@ MonoBehaviour:
   cursorTexture: {fileID: 2800000, guid: 8e2be757184b65647900d56103788396, type: 3}
   prefab: {fileID: 1777978001432191154, guid: a9f8008f9bdd8ab49b5f11771a44560a, type: 3}
   combinationItem: {fileID: 11400000, guid: 82f50a7b5083cbb48b8fde67d7343faf, type: 2}
+  combinationSound: 16

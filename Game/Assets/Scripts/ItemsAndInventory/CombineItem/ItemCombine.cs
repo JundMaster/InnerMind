@@ -26,6 +26,10 @@ public class ItemCombine : ICombinable<ScriptableItem>
             // And a combination result has item 1 and item 2
             if (combinationResults.HasFlag(item1.ID | item2.ID))
             {
+                // Plays combination sound
+                if (item1.CombinationSound != SoundClip.Default)
+                    SoundManager.PlaySound(item1.CombinationSound);
+
                 // Removes both items from the bag and adds a new item
                 inventory.Bag.Remove(item1);
                 inventory.Bag.Remove(item2);

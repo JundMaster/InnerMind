@@ -106,6 +106,8 @@ public class PadlockButton : MonoBehaviour
         Quaternion from = wheel.transform.rotation;
         Quaternion to = wheel.transform.rotation;
 
+        SoundManager.PlaySound(SoundClip.PadlockWheel);
+
         // If direction is negative, rotates the wheel to the left
         if (dir < 0)
             to *= Quaternion.Euler(0f, 36f, 0f);
@@ -184,7 +186,10 @@ public class PadlockButton : MonoBehaviour
         // After all the operations
         // If the codes are equal, opens the door
         if (padlockDoor.UserCode == padlockDoor.DoorCode)
+        {
+            SoundManager.PlaySound(SoundClip.PadlockOpened);
             padlockDoor.OpenDoor();
+        }
 
         // Sets the coroutine to null so it can be used again
         coroutine = null;

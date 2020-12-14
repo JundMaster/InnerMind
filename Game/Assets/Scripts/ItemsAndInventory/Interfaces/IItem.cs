@@ -35,4 +35,9 @@ public interface IItem
     /// combination item
     /// </summary>
     ScriptableItem CombinationItem { get; }
+
+    /// <summary>
+    /// Sound that plays when item is combined
+    /// </summary>
+    SoundClip CombinationSound { get; }
 }

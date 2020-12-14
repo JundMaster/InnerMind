@@ -4,6 +4,7 @@
 /// </summary>
 public enum SoundClip
 {
+    Default,
     Footstep,
     WalkmanAudio,
     FlashlightClick,
@@ -13,5 +14,11 @@ public enum SoundClip
     MajorEKeyNote,
     DoorOpen,
     DrawerOpen,
-    DrawerClosing
+    DrawerClosing,
+    PickUpObject,
+    PadlockWheel,
+    PadlockOpened,
+    CubeRotating,
+    AudioTapeRewind,
+    BatteryInsert,
 }
