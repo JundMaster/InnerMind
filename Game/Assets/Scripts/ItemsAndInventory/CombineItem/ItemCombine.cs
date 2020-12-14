@@ -15,26 +15,18 @@ public class ItemCombine : ICombinable<ScriptableItem>
     public void CombineItem(ScriptableItem item1, ScriptableItem item2,
                             Inventory inventory)
     {
-        // Valid item combination results
-        ListOfItems combinationResults =
-            ListOfItems.Flashlight | ListOfItems.WalkmanWithoutTape |
-            ListOfItems.AudioTape | ListOfItems.Walkman;
-
         // Of both combination items are the same
-        if (item1.CombinationItem == item2.CombinationItem)
+        if (item1.CombinationItem == item2.CombinationItem &&
+            item1.CombinationItem != null & item2.CombinationItem != null)
         {
-            // And a combination result has item 1 and item 2
-            if (combinationResults.HasFlag(item1.ID | item2.ID))
-            {
-                // Plays combination sound
-                if (item1.CombinationSound != SoundClip.Default)
-                    SoundManager.PlaySound(item1.CombinationSound);
+            // Plays combination sound
+            if (item1.CombinationSound != SoundClip.Default)
+                SoundManager.PlaySound(item1.CombinationSound);
 
-                // Removes both items from the bag and adds a new item
-                inventory.Bag.Remove(item1);
-                inventory.Bag.Remove(item2);
-                inventory.Bag.Add(item1.CombinationItem);
-            }
+            // Removes both items from the bag and adds a new item
+            inventory.Bag.Remove(item1);
+            inventory.Bag.Remove(item2);
+            inventory.Bag.Add(item1.CombinationItem);
         }
     }
 };

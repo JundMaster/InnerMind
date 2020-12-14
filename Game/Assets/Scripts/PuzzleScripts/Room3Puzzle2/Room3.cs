@@ -60,13 +60,17 @@ public class Room3 : MonoBehaviour
                 player.transform.rotation = spawns[2].transform.rotation;
                 break;
 
-
             case "InRoom4":
                 player.transform.position = spawns[3].transform.position;
                 player.transform.rotation = spawns[3].transform.rotation;
                 break;
 
             case "InRoom6":
+                player.transform.position = spawns[4].transform.position;
+                player.transform.rotation = spawns[4].transform.rotation;
+                break;
+
+            case "InJohanneCutscene":
                 player.transform.position = spawns[4].transform.position;
                 player.transform.rotation = spawns[4].transform.rotation;
                 break;
