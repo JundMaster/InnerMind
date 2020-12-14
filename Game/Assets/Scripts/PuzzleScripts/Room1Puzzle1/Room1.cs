@@ -1,11 +1,10 @@
-﻿
+﻿using UnityEngine;
+using System;
 /// <summary>
 /// Class responsible for controlling room1 puzzle. Extends PuzzleBase
 /// </summary>
 public class Room1 : PuzzleBase
 {
-    //Components
-    private InteractionMedicineCabinet cabinet;
 
     /// <summary>
     /// Property that checks if the puzzle was finished
@@ -19,19 +18,20 @@ public class Room1 : PuzzleBase
     {
         player = FindObjectOfType<PlayerGeneralInfo>();
         inventory = FindObjectOfType<Inventory>();
-
-        cabinet = FindObjectOfType<InteractionMedicineCabinet>();
         FinishedPuzzle = false;
     }
 
+    /// <summary>
+    /// OnEnable method for Room1
+    /// </summary>
     private void OnEnable()
     {
-        cabinet.CabinetDoorOpened += Victory;
+        inventory.Bag.AddedItem += OnPillsGrab;
     }
 
-    private void OnDisable()
+    private void OnPillsGrab(ScriptableItem item)
     {
-        cabinet.CabinetDoorOpened -= Victory;
+        if (inventory.Bag.Contains(item)) Victory();
     }
 
     /// <summary>
@@ -41,5 +41,13 @@ public class Room1 : PuzzleBase
     {
         base.Victory();
         FinishedPuzzle = true;
+    }
+
+    /// <summary>
+    /// OnDisable method for Room1
+    /// </summary>
+    private void OnDisable()
+    {
+        inventory.Bag.AddedItem -= OnPillsGrab;
     }
 }

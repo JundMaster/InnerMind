@@ -15,11 +15,6 @@ public class InteractionMedicineCabinet : InteractionCommon, ICoroutineT<string>
     private Text displayText;
     private WaitForSeconds waitForSeconds;
 
-    /// <summary>
-    /// Property used to check if the player has opened the cabinet
-    /// </summary>
-    public bool IsOpen { get; private set; }
-
     public Coroutine ThisCoroutine { get; private set; }
 
     //Inspector Variables
@@ -33,7 +28,6 @@ public class InteractionMedicineCabinet : InteractionCommon, ICoroutineT<string>
     private void Awake()
     {
         inventory = FindObjectOfType<Inventory>();
-        IsOpen = false;
         cabinetDoorAnimation = GetComponentInChildren<Animator>();
         closetBoxCollider = GetComponent<BoxCollider>();
         displayText = thoughtCanvas.GetComponentInChildren<Text>();
@@ -50,11 +44,9 @@ public class InteractionMedicineCabinet : InteractionCommon, ICoroutineT<string>
         //and plays the animation
         if (inventory.Bag.Contains(cabinetKey))
         {
-            IsOpen = true;
             closetBoxCollider.enabled = false;
             cabinetDoorAnimation.SetTrigger("Open Door");
             inventory.Bag.Remove(cabinetKey);
-            OnCabinetDoorOpen();
             ThisCoroutine = StartCoroutine(CoroutineExecute(thought[1]));
         }
         //Else it displays a thought on the locked cabinet
@@ -62,11 +54,6 @@ public class InteractionMedicineCabinet : InteractionCommon, ICoroutineT<string>
             if (thoughtCanvas.enabled == false)
                 ThisCoroutine = StartCoroutine(CoroutineExecute(thought[0]));
     }
-
-    private void OnCabinetDoorOpen() => CabinetDoorOpened?.Invoke();
-
-    // Event for cabinet door
-    public event Action CabinetDoorOpened;
 
     /// <summary>
     /// Renders a thought during a few seconds
