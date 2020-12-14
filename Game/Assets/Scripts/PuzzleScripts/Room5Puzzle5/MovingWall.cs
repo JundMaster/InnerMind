@@ -22,7 +22,7 @@ public class MovingWall : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        if (hiddenWall) wall.SetTrigger("hide");
+        if (hiddenWall) wall.SetTrigger("hideFirstTime");
     }
 
     /// <summary>
@@ -54,6 +54,7 @@ public class MovingWall : MonoBehaviour
         }
     }
 
+    /*
     /// <summary>
     /// OnDrawGizmos of MovingWall. Draws spheres only on editor
     /// </summary>
@@ -66,4 +67,5 @@ public class MovingWall : MonoBehaviour
         Gizmos.DrawSphere(transform.position + new Vector3(
                             col.center.x, 0f, col.center.z) , 0.5f);
     }
+    */
 }
