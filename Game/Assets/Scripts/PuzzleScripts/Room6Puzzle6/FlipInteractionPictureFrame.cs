@@ -1,29 +1,45 @@
 ﻿using System.Collections;
 using UnityEngine;
-
+/// <summary>
+/// Responsible for the flipping of the frame
+/// </summary>
 public class FlipInteractionPictureFrame : InteractionCR
 {
     private bool onInteraction;
     private bool canFlip;
-
+    [SerializeField]
+    private ThoughtHandler thoughtHandler;
     // The actual frame
     private PictureFramePuzzle frame;
 
     private PictureFramePuzzleParent pictureFramePuzzleParent;
 
+    /// <summary>
+    /// Start method for FlipInteractionPictureFrame
+    /// </summary>
     private void Start()
     {
-        pictureFramePuzzleParent = FindObjectOfType<PictureFramePuzzleParent>();
+        pictureFramePuzzleParent = 
+                                FindObjectOfType<PictureFramePuzzleParent>();
         frame = GetComponentInParent<PictureFramePuzzle>();
         onInteraction = false;
         canFlip = false;
     }
+
+    /// <summary>
+    /// Responsible for executing the coroutine action.
+    /// </summary>
+    /// <returns>Returns null.</returns>
     public override IEnumerator CoroutineExecute()
     {
         StartCoroutine(RotationAnimation());
         yield break;
     }
 
+    /// <summary>
+    /// Concrete action that is executed when the frame is interacted with.
+    /// </summary>
+    /// <returns>Returns null.</returns>
     private IEnumerator RotationAnimation()
     {
         float elapsedTime = 0f;
@@ -57,6 +73,9 @@ public class FlipInteractionPictureFrame : InteractionCR
         else if (!frame.IsFrameFliped) frame.IsFrameFliped = true;
     }
 
+    /// <summary>
+    /// Defines whether the frame can be flipped
+    /// </summary>
     private void CanFlip()
     {
         int count = 0;
@@ -70,6 +89,7 @@ public class FlipInteractionPictureFrame : InteractionCR
         }
         if (count > 1)
         {
+            thoughtHandler.ExecuteThought(2);
             canFlip = false;
         }
         else
@@ -77,8 +97,14 @@ public class FlipInteractionPictureFrame : InteractionCR
             canFlip = true;
         }
     }
+
+    /// <summary>
+    /// This method overrides ToString, and it determines what the player sees
+    /// when the Crosshair is on top of this npc
+    /// </summary>
+    /// <returns>Returns a string with an action</returns>
     public override string ToString()
     {
-        return $"Fliped: {frame.IsFrameFliped}";
+        return $"Flip frame";
     }
 }
