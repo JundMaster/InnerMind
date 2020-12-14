@@ -15,5 +15,6 @@ public enum PuzzlesEnum
     Puzzle6 = 32,
     Puzzle7 = 64,
     Puzzle8 = 128,
-    Puzzle9 = 256
+    Puzzle9 = 256,
+    Puzzle10 = 512
 }

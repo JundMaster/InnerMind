@@ -11,5 +11,7 @@ public enum SoundClip
     MajorAKeyNote,
     MajorCKeyNote,
     MajorEKeyNote,
-    DoorOpen
+    DoorOpen,
+    DrawerOpen,
+    DrawerClosing
 }
