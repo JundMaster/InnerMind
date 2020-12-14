@@ -8,6 +8,8 @@ public class Room6 : PuzzleBase
     // Prize related variables in inspector
     [SerializeField] private GameObject prize;
     [SerializeField] private ScriptableItem prizeScriptableItem;
+    [SerializeField] private Transform prizePosition;
+    [SerializeField] private Light prizeLight;
     [SerializeField] private Animator drawerAnimator;
 
     private PictureFramePuzzleParent pictureFramePuzzleParent;
@@ -42,6 +44,12 @@ public class Room6 : PuzzleBase
     public override void Victory()
     {
         base.Victory();
+
+        if (inventory.Bag.Contains(prizeScriptableItem) == false)
+        {
+            Instantiate(prize, prizePosition);
+        }
+
         drawerAnimator.SetTrigger("OpenDrawer");
     }
 }
