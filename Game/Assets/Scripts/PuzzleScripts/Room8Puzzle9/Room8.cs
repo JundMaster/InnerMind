@@ -1,7 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Responsible for controlling the puzzle of the room 8
+/// </summary>
 public class Room8 : PuzzleBase
 {
     [SerializeField] private GameObject prize;
@@ -10,27 +12,17 @@ public class Room8 : PuzzleBase
     [SerializeField] private Animator doorAnimator;
 
     /// <summary>
-    /// Property that checks if the puzzle was finished
-    /// </summary>
-    public bool PuzzleAlreadyDone { get; private set; }
-
-    /// <summary>
-    /// OnEnable method for Room8
+    /// Start method for Room8
     /// </summary>
     private void Start()
     {
         wallLampsParent.LampsAligned += Victory;
         prize.SetActive(false);
-
-        //if (player.PuzzlesDone.HasFlag(myPuzzle))
-        //{
-        //    //prize = null;
-        //    Destroy(prize);
-        //    Victory();
-        //} 
     }
 
-
+    /// <summary>
+    /// Executes the actions for when the puzzle is solved
+    /// </summary>
     public override void Victory()
     {
         foreach (WallLamp lamp in wallLampsParent.Lamps)
@@ -45,6 +37,10 @@ public class Room8 : PuzzleBase
 
     }
 
+    /// <summary>
+    /// Coroutine to be executed when the puzzle is solved
+    /// </summary>
+    /// <returns>Returns null.</returns>
     private IEnumerator VictoryCoroutine()
     {
 
@@ -63,6 +59,10 @@ public class Room8 : PuzzleBase
         yield return null;
     }
 
+    /// <summary>
+    /// Coroutine responsible for making the lights blink
+    /// </summary>
+    /// <returns>Returns null.</returns>
     private IEnumerator BlinkLights()
     {
 

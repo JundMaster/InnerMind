@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -10,6 +11,9 @@ public class TranslateInteractionPictureFrame : InteractionCR
     // Direction to which the frame will translate to
     [SerializeField]
     private int directionModifier;
+
+    [SerializeField]
+    private ThoughtHandler thoughtHandler;
 
     // Modifier for the translation speed of the frame
     [SerializeField]
@@ -38,7 +42,8 @@ public class TranslateInteractionPictureFrame : InteractionCR
     /// </summary>
     private void Start()
     {
-        pictureFramePuzzleParent = FindObjectOfType<PictureFramePuzzleParent>();
+        pictureFramePuzzleParent = 
+                                FindObjectOfType<PictureFramePuzzleParent>();
         framePointParent = FindObjectOfType<FramePointParent>();
         frame = GetComponentInParent<PictureFramePuzzle>();
         onInteraction = false;
@@ -83,8 +88,7 @@ public class TranslateInteractionPictureFrame : InteractionCR
             yield break;
 
         Vector3 framePointPos = framePointParent.
-                                FramePoints[(int)framePointIndex].
-                                transform.position;
+                                FramePoints[(int)framePointIndex].position;
 
         Vector3 desiredPoint =  transform.parent.position - 
                                 (transform.parent.position - framePointPos);
@@ -121,15 +125,18 @@ public class TranslateInteractionPictureFrame : InteractionCR
         if (frame.CurrentPosition == FramePosition.Right &&
             directionModifier == 1)
         {
+            thoughtHandler.ExecuteThought(3);
             canMove = false;
         }
         else if (frame.CurrentPosition == FramePosition.Left &&
                 directionModifier == -1)
         {
+            thoughtHandler.ExecuteThought(3);
             canMove = false;
         }
         else if (frame.IsFrameFliped)
         {
+            thoughtHandler.ExecuteThought(0);
             canMove = false;
         }
         else
@@ -141,6 +148,7 @@ public class TranslateInteractionPictureFrame : InteractionCR
             if (f.IsFrameFliped && 
                 f.CurrentPosition == frame.CurrentPosition + directionModifier)
             {
+                thoughtHandler.ExecuteThought(1);
                 canMove = false;
             }
         }
@@ -155,10 +163,6 @@ public class TranslateInteractionPictureFrame : InteractionCR
     public override string ToString()
     {
         string moveTo = "";
-        if (frame.IsFrameFliped)
-        {
-            return "Unflip before you move";
-        }
         if (directionModifier == 1)
             moveTo = "Move to the left";
         else if (directionModifier == -1)

@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3266d84c59dbc8848ad2c2bf800e114c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thoughtHandler: {fileID: 1141388976}
 --- !u!65 &49280765
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -224,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3266d84c59dbc8848ad2c2bf800e114c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thoughtHandler: {fileID: 1141388976}
 --- !u!65 &58161449
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -818,6 +820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionModifier: -1
+  thoughtHandler: {fileID: 1141388976}
   translationSpeedModifier: 0.03
 --- !u!1001 &495600292
 PrefabInstance:
@@ -1083,6 +1086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionModifier: 1
+  thoughtHandler: {fileID: 1141388976}
   translationSpeedModifier: 0.03
 --- !u!4 &795308695 stripped
 Transform:
@@ -1445,6 +1449,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -7711389561449682558, guid: e589e3df58117d240a8733122f424a1b, type: 3}
   m_PrefabInstance: {fileID: 853309651}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1141388975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1141388977}
+  - component: {fileID: 1141388976}
+  m_Layer: 0
+  m_Name: TextThoughtsHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1141388976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141388975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffe144866f807f4791de652bf02069f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textThoughtCanvas: {fileID: 1991804578}
+  thoughtsText:
+  - I should unflip this frame before I move it.
+  - Hmm... The other frame is blocking the way.
+  - I should move the other frame, before flipping this one.
+  - I can't move this frame there.
+--- !u!4 &1141388977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141388975}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14, y: -14.6, z: -1.5665998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1237734230
 GameObject:
   m_ObjectHideFlags: 0
@@ -2145,6 +2198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3266d84c59dbc8848ad2c2bf800e114c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thoughtHandler: {fileID: 1141388976}
 --- !u!65 &1242063761
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2216,6 +2270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionModifier: 1
+  thoughtHandler: {fileID: 1141388976}
   translationSpeedModifier: 0.03
 --- !u!850595691 &1349414531
 LightingSettings:
@@ -2336,6 +2391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionModifier: -1
+  thoughtHandler: {fileID: 1141388976}
   translationSpeedModifier: 0.03
 --- !u!1 &1394323893
 GameObject:
@@ -2392,7 +2448,6 @@ MonoBehaviour:
   prize: {fileID: 634804424959308904, guid: 39fb47bf566d2e9469e44c5ef1f38885, type: 3}
   prizeScriptableItem: {fileID: 11400000, guid: 6ef0082547051634f93f2d83a866b11d, type: 2}
   prizePosition: {fileID: 504707213}
-  prizeLight: {fileID: 0}
   drawerAnimator: {fileID: 853309653}
 --- !u!1 &1464413444
 GameObject:
@@ -2546,6 +2601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionModifier: -1
+  thoughtHandler: {fileID: 1141388976}
   translationSpeedModifier: 0.03
 --- !u!1 &1479089704
 GameObject:
@@ -2594,16 +2650,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   framePoints:
-  - {fileID: 1464413449}
-  - {fileID: 701683941}
-  - {fileID: 136619251}
+  - {fileID: 1464413445}
+  - {fileID: 701683937}
+  - {fileID: 136619247}
 --- !u!43 &1536685244
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh576076
+  m_Name: pb_Mesh26012
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2905,17 +2961,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d68a7def01e7e4882c3d9686098428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movePoints: []
+  initialPoint: {fileID: 0}
   solutionPosition: 0
   initialPosition: 1
   flipedSolution: 0
-  framePoint: {fileID: 701683941}
 --- !u!43 &1816002203
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-346502
+  m_Name: pb_Mesh-17868
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3163,10 +3220,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d68a7def01e7e4882c3d9686098428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movePoints: []
+  initialPoint: {fileID: 0}
   solutionPosition: 2
   initialPosition: 0
   flipedSolution: 0
-  framePoint: {fileID: 701683941}
 --- !u!4 &1827439541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e75e093b7ef98ba48ae12ffaf7c1c315, type: 3}
@@ -3413,7 +3471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5186632269640648858, guid: 05b17f35ff9abc64b92adfa8f6e2b160, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.2246013
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5186632269640648858, guid: 05b17f35ff9abc64b92adfa8f6e2b160, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3421,23 +3479,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5186632269640648858, guid: 05b17f35ff9abc64b92adfa8f6e2b160, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5186632269640648858, guid: 05b17f35ff9abc64b92adfa8f6e2b160, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5186632269640648858, guid: 05b17f35ff9abc64b92adfa8f6e2b160, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5186632269640648858, guid: 05b17f35ff9abc64b92adfa8f6e2b160, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -53.72194
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5186632269640648858, guid: 05b17f35ff9abc64b92adfa8f6e2b160, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -49.52667
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5186632269640648858, guid: 05b17f35ff9abc64b92adfa8f6e2b160, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3455,8 +3513,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemInteractionTextCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5186632269640648861, guid: 05b17f35ff9abc64b92adfa8f6e2b160, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05b17f35ff9abc64b92adfa8f6e2b160, type: 3}
+--- !u!1 &1991804578 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5186632269640648861, guid: 05b17f35ff9abc64b92adfa8f6e2b160, type: 3}
+  m_PrefabInstance: {fileID: 1991804577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1994634163
 GameObject:
   m_ObjectHideFlags: 0
@@ -3515,6 +3582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionModifier: 1
+  thoughtHandler: {fileID: 1141388976}
   translationSpeedModifier: 0.03
 --- !u!43 &1997645217
 Mesh:
@@ -3522,7 +3590,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh576096
+  m_Name: pb_Mesh26032
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3820,7 +3888,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d68a7def01e7e4882c3d9686098428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movePoints: []
+  initialPoint: {fileID: 0}
   solutionPosition: 1
   initialPosition: 2
   flipedSolution: 1
-  framePoint: {fileID: 701683941}

@@ -7,29 +7,34 @@ using UnityEngine;
 public class PictureFramePuzzle : MonoBehaviour
 {
     #region Suport Variables
+
+    [SerializeField]
+    private Transform[] movePoints;
+
+    [SerializeField]
+    private Transform initialPoint;
+
     [SerializeField]
     private FramePosition solutionPosition;
     [SerializeField]
     private FramePosition initialPosition;
     [SerializeField]
     private bool flipedSolution;
-    [SerializeField]
-    private FramePoint framePoint;
+
     private bool isFrameFliped;
     private FramePosition currentPosition;
     #endregion
 
-    /// <summary>
-    /// FramePoint in which the frame will start
-    /// </summary>
-    public FramePoint FramePoint
+
+    public Transform InitialPoint
     {
-        get => framePoint;
+        get => initialPoint;
         set
         {
-            framePoint = value;
+            initialPoint = value;
         }
     }
+
 
     /// <summary>
     /// Defintion for whether the frame is well positioned and fliped
@@ -111,9 +116,9 @@ public class PictureFramePuzzle : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        InitialPoint = initialPoint;
         IsSolved = false;
-        CurrentPosition = initialPosition;
-        FramePoint = framePoint;
+        CurrentPosition = initialPosition;      
     }
 
     /// <summary>

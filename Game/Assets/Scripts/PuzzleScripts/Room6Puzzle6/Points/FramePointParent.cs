@@ -2,24 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Responsible for containing the points in which the 
+/// <see cref="PictureFramePuzzle"/> objects will move
+/// </summary>
 public class FramePointParent : MonoBehaviour
 {
     [SerializeField]
-    private FramePoint[] framePoints;
-
-    public FramePoint[] FramePoints
-    {
-        get => framePoints;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private Transform[] framePoints;
+    /// <summary>
+    /// Points in which the <see cref="PictureFramePuzzle"/> objects will move
+    /// </summary>
+    public Transform[] FramePoints => framePoints;
 }
