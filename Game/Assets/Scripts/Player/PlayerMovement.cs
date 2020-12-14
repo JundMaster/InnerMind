@@ -191,6 +191,7 @@ public class PlayerMovement : MonoBehaviour, ICoroutineT<RaycastHit>
         }
     }
 
+    /*
     /// <summary>
     /// OnDrawGizmos of PlayerMovement
     /// Draws rays and a sphere only on editor
@@ -205,5 +206,5 @@ public class PlayerMovement : MonoBehaviour, ICoroutineT<RaycastHit>
         // GroundCheck Sphere
         Gizmos.color = Color.black;
         Gizmos.DrawSphere(groundCheck.transform.position, 0.1f);
-    }
+    }*/
 }
