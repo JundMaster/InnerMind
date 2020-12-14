@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using System.IO;
+using System;
 
 /// <summary>
 /// Abstract class responsible for creating puzzles in rooms.
@@ -41,7 +42,7 @@ public abstract class PuzzleBase : MonoBehaviour, IPuzzle
     /// <returns>Returns null</returns>
     protected IEnumerator ReadPuzzlesDoneTxt()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.25f);
 
         // Reads txt with inventory info ( if it already exists )
         if (File.Exists(FilePath.puzzlePath))
@@ -54,8 +55,18 @@ public abstract class PuzzleBase : MonoBehaviour, IPuzzle
         if (player.PuzzlesDone.HasFlag(myPuzzle))
             Victory();
 
+        OnReadPuzzlesDone();
+
         yield return null;
     }
+
+    /// <summary>
+    /// Method to invoke ReadPuzzlesDone
+    /// </summary>
+    private void OnReadPuzzlesDone() => ReadPuzzlesDone?.Invoke();
+
+    // Event to check if coroutine read puzzles done txt has ran
+    public event Action ReadPuzzlesDone;
 
     /// <summary>
     /// Does an action when the puzzle is solved

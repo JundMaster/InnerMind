@@ -50,12 +50,12 @@ public class Room7 : MonoBehaviour
                 player.transform.rotation = spawns[1].transform.rotation;
                 break;
 
-            case "InRoom9":
-                player.transform.position = spawns[2].transform.position;
-                player.transform.rotation = spawns[2].transform.rotation;
+            case "InBuildingCutscene":
+                player.transform.position = spawns[1].transform.position;
+                player.transform.rotation = spawns[1].transform.rotation;
                 break;
 
-            case "InBuildingCutscene":
+            case "InRoom9":
                 player.transform.position = spawns[2].transform.position;
                 player.transform.rotation = spawns[2].transform.rotation;
                 break;
