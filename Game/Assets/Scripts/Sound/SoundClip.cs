@@ -21,4 +21,5 @@ public enum SoundClip
     CubeRotating,
     AudioTapeRewind,
     BatteryInsert,
+    WallSlideLower,
 }

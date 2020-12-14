@@ -113,6 +113,9 @@ sealed public class SoundManager : MonoBehaviour
             case SoundClip.BatteryInsert:
                 audioSource.PlayOneShot(sounds[15], 0.8f);
                 break;
+            case SoundClip.WallSlideLower:
+                audioSource.PlayOneShot(sounds[3], 0.3f);
+                break;
         }
     }
 }

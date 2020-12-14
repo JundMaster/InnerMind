@@ -60,8 +60,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 12, y: 1, z: 12}
-  m_Center: {x: 1.5, y: 0.5, z: -4.5}
+  m_Size: {x: 13, y: 1, z: 13}
+  m_Center: {x: 1.5, y: 0.5, z: -4.538862}
 --- !u!1 &6201170701890008237
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,8 +75,8 @@ GameObject:
   - component: {fileID: 6201170701890008233}
   - component: {fileID: 6201170701890008232}
   - component: {fileID: 6201170701890008239}
+  - component: {fileID: 993645477438449273}
   - component: {fileID: 6201170701890008235}
-  - component: {fileID: 5565101812452676898}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -377,6 +377,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &993645477438449273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6201170701890008237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a75dc66edb21c74fa02aa9216dd426e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &6201170701890008235
 Animator:
   serializedVersion: 3
@@ -396,15 +408,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5565101812452676898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6201170701890008237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ab922d4a2003a3449a4975e67d11ff0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
