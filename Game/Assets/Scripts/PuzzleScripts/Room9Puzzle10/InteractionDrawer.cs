@@ -1,19 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Classe for interaction with drawer
+/// </summary>
 public class InteractionDrawer : InteractionCommon
 {
+    // Editor variables
     [SerializeField] private Animator drawerAnimator;
 
     private bool isOpen;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Start method for InteractionDrawer
+    /// </summary>
     void Start()
     {
         isOpen = false;
     }
-
 
     /// <summary>
     /// This method determines the action of the piano key when clicked
@@ -31,8 +34,7 @@ public class InteractionDrawer : InteractionCommon
             SoundManager.PlaySound(SoundClip.DrawerClosing);
             drawerAnimator.SetTrigger("closeDrawer");
             isOpen = false;
-        }
-        
+        }  
     }
 
     /// <summary>
