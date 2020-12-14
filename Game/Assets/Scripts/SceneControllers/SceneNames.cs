@@ -18,4 +18,5 @@ public enum SceneNames
     ElevatorCutscene,
     BuildingCutscene,
     FinalCutscene,
+    JohanneCutscene
 }

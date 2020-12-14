@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cutscenes/FinalCutscene/FinalCutscene.unity
     guid: 51f342e2de4fd934ebb330ef5dfbbf19
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/JohanneCutscene/JohanneCutscene.unity
+    guid: 7182b97b134cd924193a38bdbc783532
   m_configObjects: {}
