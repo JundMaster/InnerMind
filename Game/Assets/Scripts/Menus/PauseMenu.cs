@@ -19,7 +19,6 @@ public class PauseMenu : MonoBehaviour
     // Components
     private PlayerInput input;
     private GraphicRaycaster graphicRaycaster;
-    [SerializeField] private AudioSource musicSource;
 
     // Variable to control last menu before pause
     private TypeOfControl lastTypeOfControl;
@@ -125,7 +124,6 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void MainMenu()
     {
-        Destroy(musicSource);
         Gamepaused = false;
         input.ChangeTypeOfControl(TypeOfControl.InPauseMenu);  
         SceneManager.LoadScene("MainMenu");

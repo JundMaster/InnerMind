@@ -84,7 +84,8 @@ public class Room2 : PuzzleBase
         prizeLight.intensity = 1f;
 
         if (FindObjectOfType<Inventory>().Bag.Contains(
-            prizeScriptableItem) == false)
+            prizeScriptableItem) == false &&
+            player.PuzzlesDone.HasFlag(PuzzlesEnum.Puzzle3) == false)
         {
             spawn = Instantiate(
                 prize, prizePosition.transform.position, Quaternion.identity);
