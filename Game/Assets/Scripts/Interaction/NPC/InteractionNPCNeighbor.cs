@@ -82,6 +82,15 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         // If the player has a not rewound tape
         if (playerInventory.Bag.Contains(npcItemsToCompare[3]))    
         {
+            PlayerGeneralInfo player = FindObjectOfType<PlayerGeneralInfo>();
+            // Adds mypuzzle to player's puzzles done
+            player.PuzzlesDone |= PuzzlesEnum.Puzzle2;
+
+            // Save puzzle to txt, so the txt will know which puzzles the player
+            // has alreayd done
+            FileWriter fw = new FileWriter(FilePath.puzzlePath);
+            fw.AddToTxt(player);
+
             // Opens NPC's locked door
             dialog.OpenDoor = true;
         }
