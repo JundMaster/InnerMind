@@ -15,10 +15,6 @@ public class TranslateInteractionPictureFrame : InteractionCR
     [SerializeField]
     private ThoughtHandler thoughtHandler;
 
-    // Modifier for the translation speed of the frame
-    [SerializeField]
-    [Range(0.01f, 0.5f)]
-    private float translationSpeedModifier = 0.03f;
 
     // The actual frame 
     private PictureFramePuzzle frame;
@@ -26,28 +22,26 @@ public class TranslateInteractionPictureFrame : InteractionCR
     // Object that hold all the frame points
     private FramePointParent framePointParent;
 
-    private PictureFramePuzzleParent pictureFramePuzzleParent;
 
     // Defines whether the interaction is still running
     private bool onInteraction;
 
-    // Defines whether the frame can be moved
-    private bool canMove;
+    private bool interacting;
 
-    private FramePosition framePointIndex;
-
+    private FramePosition FramePositionIndex { get; set; }
 
     /// <summary>
     /// Start method for TranslateInteractionPictureFrame
     /// </summary>
     private void Start()
     {
-        pictureFramePuzzleParent = 
-                                FindObjectOfType<PictureFramePuzzleParent>();
+        interacting = false;
+
         framePointParent = FindObjectOfType<FramePointParent>();
         frame = GetComponentInParent<PictureFramePuzzle>();
+        FramePositionIndex = frame.CurrentPosition;
         onInteraction = false;
-        canMove = false;
+
     }
 
     /// <summary>
@@ -60,37 +54,36 @@ public class TranslateInteractionPictureFrame : InteractionCR
         yield break;
     }
 
-    /// <summary>
-    /// Concrete action that is executed when the frame is interacted with.
-    /// </summary>
-    /// <returns>Returns null.</returns>
-    private IEnumerator TranslateInteraction()
+    public IEnumerator ChainTranslationExecute(int pointModifier)
+    {
+        if (TranslateInteractionCommon(pointModifier) != null)
+            StartCoroutine(TranslateInteractionCommon(pointModifier));
+        yield break;
+    }
+
+    private IEnumerator Translate(int pointModifier = 0)
     {
         float elapsedTime = 0f;
-        float timeLimit = 0.5f;
-
-        framePointIndex = frame.CurrentPosition + 
-                                        directionModifier;
-
-        if (framePointIndex > FramePosition.Right)
-        {
-            framePointIndex = FramePosition.Right;
-        }
-        else if (framePointIndex < FramePosition.Left)
-        {
-            framePointIndex = FramePosition.Left;
-        }
-
-        CanMove();
+        float timeLimit = 0.25f;
 
         // Verification to avoid click spam
-        if (elapsedTime < timeLimit && onInteraction || canMove == false)
+        if (elapsedTime < timeLimit && onInteraction)
             yield break;
 
-        Vector3 framePointPos = framePointParent.
-                                FramePoints[(int)framePointIndex].position;
 
-        Vector3 desiredPoint =  transform.parent.position - 
+        FramePositionIndex += pointModifier;
+        //FramePositionIndex++;
+
+        if (FramePositionIndex > FramePosition.Right)
+        {
+            int newPositionIndex = (int)FramePositionIndex - 3;
+            FramePositionIndex = (FramePosition)newPositionIndex;
+        }
+
+        Vector3 framePointPos = framePointParent.
+                                FramePoints[(int)FramePositionIndex].position;
+
+        Vector3 desiredPoint = transform.parent.position -
                                 (transform.parent.position - framePointPos);
 
         desiredPoint = new Vector3(desiredPoint.x,
@@ -100,58 +93,65 @@ public class TranslateInteractionPictureFrame : InteractionCR
         onInteraction = true;
         while (elapsedTime < timeLimit)
         {
-            transform.parent.position =
-                                Vector3.MoveTowards(
-                                    transform.parent.position,
-                                    desiredPoint,
-                                    elapsedTime);
+            transform.parent.position = Vector3.MoveTowards(
+                                            transform.parent.position,
+                                            desiredPoint,
+                                            elapsedTime);
 
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
-        // Changes the CurrentPosition of the frame
-        frame.CurrentPosition += directionModifier;
         onInteraction = false;
-
     }
 
     /// <summary>
-    /// Validates wheater the action is possible.
+    /// Concrete action that is executed when the frame is interacted with.
     /// </summary>
-    private void CanMove()
+    /// <returns>Returns null.</returns>
+    public IEnumerator TranslateInteraction()
     {
-        
-        if (frame.CurrentPosition == FramePosition.Right &&
-            directionModifier == 1)
+        StartCoroutine(Translate(1));
+
+        float elapsedTime = 0f;
+        float timeLimit = 0.5f;
+
+        // Verification to avoid click spam
+        if (elapsedTime < timeLimit && interacting)
+            yield break;
+
+        interacting = true;
+        while (elapsedTime < timeLimit)
         {
-            thoughtHandler.ExecuteThought(3);
-            canMove = false;
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
-        else if (frame.CurrentPosition == FramePosition.Left &&
-                directionModifier == -1)
+        interacting = false;
+
+        frame.ChainTranslation(FramePositionIndex);
+        yield break;
+    }
+
+    private IEnumerator TranslateInteractionCommon(int pointModifier = 0)
+    {
+        StartCoroutine(Translate(pointModifier));
+
+        float elapsedTime = 0f;
+        float timeLimit = 0.5f;
+
+        // Verification to avoid click spam
+        if (elapsedTime < timeLimit && interacting)
+            yield break;
+
+        interacting = true;
+        while (elapsedTime < timeLimit)
         {
-            thoughtHandler.ExecuteThought(3);
-            canMove = false;
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
-        else if (frame.IsFrameFliped)
-        {
-            thoughtHandler.ExecuteThought(0);
-            canMove = false;
-        }
-        else
-        {
-            canMove = true;
-        }
-        foreach(PictureFramePuzzle f in pictureFramePuzzleParent.FramePictures)
-        {
-            if (f.IsFrameFliped && 
-                f.CurrentPosition == frame.CurrentPosition + directionModifier)
-            {
-                thoughtHandler.ExecuteThought(1);
-                canMove = false;
-            }
-        }
+        interacting = false;
+
+        frame.MoveFrame(FramePositionIndex);
+        yield break;
     }
 
 

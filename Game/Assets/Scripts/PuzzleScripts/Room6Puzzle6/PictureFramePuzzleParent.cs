@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -40,9 +41,34 @@ public class PictureFramePuzzleParent : MonoBehaviour
     {
         for (int i = 0; i < framePictures.Length; i++)
         {
-            framePictures[i].FrameChanged += SolvedCheck;
+            //framePictures[i].FrameAligned += SolvedCheck;
+            framePictures[i].FrameChanged += ChainTranslation;
         }
     }
+
+    private void ChainTranslation(PictureFramePuzzle pictureFramePuzzle)
+    {
+        StartCoroutine(ChainTranslationCoroutine(pictureFramePuzzle));
+    }
+
+    private IEnumerator ChainTranslationCoroutine(PictureFramePuzzle pictureFramePuzzle)
+    {
+        if (pictureFramePuzzle.name != "RedFrame")
+        {
+            for (int i = 0; i < pictureFramePuzzle.LinkedFrames.Length; i++)
+            {
+                yield return new WaitForSeconds(0.5f);
+                IEnumerator chainTranslation = pictureFramePuzzle.LinkedFrames[i].InteractionController.
+                                                ChainTranslationExecute(i + 1);
+                StartCoroutine(chainTranslation);
+            }
+        }
+        yield return new WaitForSeconds(0.5f);
+        SolvedCheck(pictureFramePuzzle);
+        //CheckTest(pictureFramePuzzle);
+        yield break;
+    }
+
     /// <summary>
     /// Start method for PictureFramePuzzleParent
     /// </summary>
@@ -58,7 +84,8 @@ public class PictureFramePuzzleParent : MonoBehaviour
     {
         for (int i = 0; i < framePictures.Length; i++)
         {
-            framePictures[i].FrameChanged -= SolvedCheck;
+            //framePictures[i].FrameAligned -= SolvedCheck;
+            framePictures[i].FrameChanged -= ChainTranslation;
         }
     }
     #endregion
@@ -74,21 +101,22 @@ public class PictureFramePuzzleParent : MonoBehaviour
     /// <summary>
     /// Checks if frames are all marked as solved
     /// </summary>
-    private void SolvedCheck()
+    private void SolvedCheck(PictureFramePuzzle pictureFramePuzzle)
     {
+        Debug.Log("entrou?");
         int solvedCount = 0;
         for (int i = 0; i < framePictures.Length; i++)
         {
-            if (framePictures[i].IsSolved)
+            if (framePictures[i].IsFrameAligned())
             {
                 solvedCount++;
             }
         }
         if (solvedCount == framePictures.Length)
         {
+            Debug.Log("isto quer dizer que resolveu");
             OnPuzzleSolved();
             IsSolved = true;
         }
-        
     }
 }
