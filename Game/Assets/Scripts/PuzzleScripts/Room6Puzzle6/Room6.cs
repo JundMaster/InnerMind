@@ -42,12 +42,12 @@ public class Room6 : PuzzleBase
     /// </summary>
     public override void Victory()
     {
-        base.Victory();
-
-        if (inventory.Bag.Contains(prizeScriptableItem) == false)
+        if (!player.PuzzlesDone.HasFlag(myPuzzle) &&
+            inventory.Bag.Contains(prizeScriptableItem) == false)
         {
             Instantiate(prize, prizePosition);
         }
+        base.Victory();
         
         for (int i  = 0; i < pictureFramePuzzleParent.FramePictures.Length; i++)
         {
