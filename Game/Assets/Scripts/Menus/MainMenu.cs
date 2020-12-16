@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 /// <summary>
 /// Class for main menu
 /// </summary>
 public class MainMenu : MonoBehaviour
 {
-    
-
     /// <summary>
     /// Start method for MainMenu
     /// </summary>
     private void Start()
     {
-        
+        DeleteFiles();
+
         Cursor.lockState = CursorLockMode.Confined;
     }
 
@@ -36,5 +36,11 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    
+    private void DeleteFiles()
+    {
+        File.Delete(FilePath.lastScenePath);
+        File.Delete(FilePath.watchedCutscenes);
+        File.Delete(FilePath.inventoryPath);
+        File.Delete(FilePath.puzzlePath);
+    }
 }
