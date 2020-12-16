@@ -31,7 +31,7 @@ public class Room1 : PuzzleBase
 
     private void OnPillsGrab(ScriptableItem item)
     {
-        if (inventory.Bag.Contains(item) && item.ID == ListOfItems.Pillbottle) 
+        if (inventory.Bag.Contains(item) && item.ID == ListOfItems.PillBottle) 
             Victory();
     }
 

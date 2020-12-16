@@ -9145,6 +9145,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 8594658063580576507}
   optionsMenu: {fileID: 727105343}
   assistMenu: {fileID: 1839358406}
+  musicSource: {fileID: 0}
 --- !u!1 &1688771369
 GameObject:
   m_ObjectHideFlags: 0
@@ -12493,6 +12494,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3fe63cc0cbd02104d848a202264707f5, type: 2}
   - {fileID: 11400000, guid: 82f50a7b5083cbb48b8fde67d7343faf, type: 2}
   - {fileID: 11400000, guid: 2a308db0f4c7349449c17e121ea0cf7c, type: 2}
+  - {fileID: 11400000, guid: 863585a87a8e66a4a862f7b3b181040d, type: 2}
 --- !u!114 &6802797411661038712
 MonoBehaviour:
   m_ObjectHideFlags: 0
