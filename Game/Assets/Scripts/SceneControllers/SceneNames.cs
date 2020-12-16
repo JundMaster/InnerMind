@@ -18,5 +18,6 @@ public enum SceneNames
     ElevatorCutscene,
     BuildingCutscene,
     FinalCutscene,
-    JohanneCutscene
+    JohanneCutscene,
+    MainMenu
 }
