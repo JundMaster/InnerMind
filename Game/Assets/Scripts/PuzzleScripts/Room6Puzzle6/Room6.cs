@@ -48,7 +48,12 @@ public class Room6 : PuzzleBase
         {
             Instantiate(prize, prizePosition);
         }
-
+        
+        for (int i  = 0; i < pictureFramePuzzleParent.FramePictures.Length; i++)
+        {
+            Destroy(pictureFramePuzzleParent.FramePictures[i].
+                GetComponentInChildren<TranslateInteractionPictureFrame>());
+        }
         drawerAnimator.SetTrigger("OpenDrawer");
     }
 }

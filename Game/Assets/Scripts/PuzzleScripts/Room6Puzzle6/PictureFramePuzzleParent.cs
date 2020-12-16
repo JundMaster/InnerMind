@@ -24,11 +24,6 @@ public class PictureFramePuzzleParent : MonoBehaviour
     }
 
     /// <summary>
-    /// Defines whether the puzzle is solved
-    /// </summary>
-    public bool IsSolved { get; private set; }
-
-    /// <summary>
     /// Event fired when the puzzle is solved
     /// </summary>
     public event Action PuzzleSolved;
@@ -41,33 +36,10 @@ public class PictureFramePuzzleParent : MonoBehaviour
     {
         for (int i = 0; i < framePictures.Length; i++)
         {
-            //framePictures[i].FrameAligned += SolvedCheck;
             framePictures[i].FrameChanged += ChainTranslation;
         }
     }
 
-    private void ChainTranslation(PictureFramePuzzle pictureFramePuzzle)
-    {
-        StartCoroutine(ChainTranslationCoroutine(pictureFramePuzzle));
-    }
-
-    private IEnumerator ChainTranslationCoroutine(PictureFramePuzzle pictureFramePuzzle)
-    {
-        if (pictureFramePuzzle.name != "RedFrame")
-        {
-            for (int i = 0; i < pictureFramePuzzle.LinkedFrames.Length; i++)
-            {
-                yield return new WaitForSeconds(0.5f);
-                IEnumerator chainTranslation = pictureFramePuzzle.LinkedFrames[i].InteractionController.
-                                                ChainTranslationExecute(i + 1);
-                StartCoroutine(chainTranslation);
-            }
-        }
-        yield return new WaitForSeconds(0.5f);
-        SolvedCheck(pictureFramePuzzle);
-        //CheckTest(pictureFramePuzzle);
-        yield break;
-    }
 
     /// <summary>
     /// Start method for PictureFramePuzzleParent
@@ -75,7 +47,6 @@ public class PictureFramePuzzleParent : MonoBehaviour
     private void Start()
     {
         FramePictures = framePictures;
-        IsSolved = false;
     }
     /// <summary>
     /// OnDisable method for PictureFramePuzzleParent
@@ -84,7 +55,6 @@ public class PictureFramePuzzleParent : MonoBehaviour
     {
         for (int i = 0; i < framePictures.Length; i++)
         {
-            //framePictures[i].FrameAligned -= SolvedCheck;
             framePictures[i].FrameChanged -= ChainTranslation;
         }
     }
@@ -97,13 +67,47 @@ public class PictureFramePuzzleParent : MonoBehaviour
     {
         PuzzleSolved?.Invoke();
     }
+    /// <summary>
+    /// Executes the coroutine that moves the given frame in chain reaction
+    /// </summary>
+    /// <param name="pictureFramePuzzle">Frame to be moved</param>
+    private void ChainTranslation(PictureFramePuzzle pictureFramePuzzle)
+    {
+        StartCoroutine(ChainTranslationCoroutine(pictureFramePuzzle));
+    }
+
+    /// <summary>
+    /// Coroutine that moves the given frame in chain reaction
+    /// </summary>
+    /// <param name="pictureFramePuzzle">Frame to be moved</param>
+    /// <returns></returns>
+    private IEnumerator ChainTranslationCoroutine(
+                PictureFramePuzzle pictureFramePuzzle)
+    {
+        if (pictureFramePuzzle.name != "RedFrame")
+        {
+            for (int i = 0; i < pictureFramePuzzle.LinkedFrames.Length; i++)
+            {
+                yield return new WaitForSeconds(0.5f);
+                IEnumerator chainTranslation = 
+                                                pictureFramePuzzle.
+                                                LinkedFrames[i].
+                                                InteractionController.
+                                                ChainTranslationExecute(i + 1);
+
+                StartCoroutine(chainTranslation);
+            }
+        }
+        yield return new WaitForSeconds(0.5f);
+        SolvedCheck(pictureFramePuzzle);
+        yield break;
+    }
 
     /// <summary>
     /// Checks if frames are all marked as solved
     /// </summary>
     private void SolvedCheck(PictureFramePuzzle pictureFramePuzzle)
     {
-        Debug.Log("entrou?");
         int solvedCount = 0;
         for (int i = 0; i < framePictures.Length; i++)
         {
@@ -114,9 +118,7 @@ public class PictureFramePuzzleParent : MonoBehaviour
         }
         if (solvedCount == framePictures.Length)
         {
-            Debug.Log("isto quer dizer que resolveu");
             OnPuzzleSolved();
-            IsSolved = true;
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -22,12 +20,14 @@ public class TranslateInteractionPictureFrame : InteractionCR
     // Object that hold all the frame points
     private FramePointParent framePointParent;
 
-
     // Defines whether the interaction is still running
     private bool onInteraction;
 
     private bool interacting;
 
+    /// <summary>
+    /// Index of the point in which the frame is
+    /// </summary>
     private FramePosition FramePositionIndex { get; set; }
 
     /// <summary>
@@ -54,6 +54,12 @@ public class TranslateInteractionPictureFrame : InteractionCR
         yield break;
     }
 
+    /// <summary>
+    /// Coroutine that moves the frames in chain reaction
+    /// </summary>
+    /// <param name="pointModifier">Index of the point to which the
+    /// frame will move</param>
+    /// <returns>Returns null</returns>
     public IEnumerator ChainTranslationExecute(int pointModifier)
     {
         if (TranslateInteractionCommon(pointModifier) != null)
@@ -61,6 +67,12 @@ public class TranslateInteractionPictureFrame : InteractionCR
         yield break;
     }
 
+    /// <summary>
+    /// Coroutine that moves the frame
+    /// </summary>
+    /// <param name="pointModifier">Index of the point to which the
+    /// frame will move</param>
+    /// <returns>Returns null</returns>
     private IEnumerator Translate(int pointModifier = 0)
     {
         float elapsedTime = 0f;
@@ -105,6 +117,35 @@ public class TranslateInteractionPictureFrame : InteractionCR
     }
 
     /// <summary>
+    /// Coroutine that simply moves the frame
+    /// </summary>
+    /// <param name="pointModifier">Index of the point to which the
+    /// frame will move</param>
+    /// <returns>Returns null</returns>
+    private IEnumerator TranslateInteractionCommon(int pointModifier = 0)
+    {
+        StartCoroutine(Translate(pointModifier));
+
+        float elapsedTime = 0f;
+        float timeLimit = 0.5f;
+
+        // Verification to avoid click spam
+        if (elapsedTime < timeLimit && interacting)
+            yield break;
+
+        interacting = true;
+        while (elapsedTime < timeLimit)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        interacting = false;
+
+        frame.MoveFrame(FramePositionIndex);
+        yield break;
+    }
+
+    /// <summary>
     /// Concrete action that is executed when the frame is interacted with.
     /// </summary>
     /// <returns>Returns null.</returns>
@@ -131,42 +172,14 @@ public class TranslateInteractionPictureFrame : InteractionCR
         yield break;
     }
 
-    private IEnumerator TranslateInteractionCommon(int pointModifier = 0)
-    {
-        StartCoroutine(Translate(pointModifier));
-
-        float elapsedTime = 0f;
-        float timeLimit = 0.5f;
-
-        // Verification to avoid click spam
-        if (elapsedTime < timeLimit && interacting)
-            yield break;
-
-        interacting = true;
-        while (elapsedTime < timeLimit)
-        {
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-        interacting = false;
-
-        frame.MoveFrame(FramePositionIndex);
-        yield break;
-    }
-
 
     /// <summary>
     /// This method overrides ToString, and it determines what the player sees
-    /// when the Crosshair is on top of this npc
+    /// when the Crosshair is on top of this frame
     /// </summary>
     /// <returns>Returns a string with an action</returns>
     public override string ToString()
     {
-        string moveTo = "";
-        if (directionModifier == 1)
-            moveTo = "Move to the left";
-        else if (directionModifier == -1)
-            moveTo = "Move to the right";
-        return moveTo;
+        return "Move frame";
     }
 }

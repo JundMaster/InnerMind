@@ -18,6 +18,9 @@ public class WallLampsParent : MonoBehaviour
     // will be affected by the chain rotation
     private YieldInstruction waitForSecs;
 
+    /// <summary>
+    /// Event that fires when all the frames are aligned
+    /// </summary>
     public event Action LampsAligned;
 
     /// <summary>
@@ -25,6 +28,7 @@ public class WallLampsParent : MonoBehaviour
     /// </summary>
     public WallLamp[] Lamps { get; private set; }
 
+    #region Unity funcions
     /// <summary>
     /// OnEnable method for WallLampsParent
     /// </summary>
@@ -56,6 +60,7 @@ public class WallLampsParent : MonoBehaviour
             lamps[i].LampAligned -= CheckLampsAlignmed;
         }
     }
+    #endregion
 
     /// <summary>
     /// Invokes the <see cref="LampsAligned"/> event
