@@ -13,9 +13,18 @@ public class PictureFramePuzzle : MonoBehaviour
     private FramePosition initialPosition;
     [SerializeField]
     private PictureFramePuzzle[] linkedFrames;
-    public TranslateInteractionPictureFrame InteractionController { get; private set; }
+    private FramePosition currentPosition;
     #endregion
+    
+    /// <summary>
+    /// Interaction controller of the frame 
+    /// </summary>
+    public TranslateInteractionPictureFrame InteractionController 
+    { get; private set; }
 
+    /// <summary>
+    /// Frames that are attatched to this frame
+    /// </summary>
     public PictureFramePuzzle[] LinkedFrames { get; private set; }
 
     /// <summary>
@@ -30,7 +39,6 @@ public class PictureFramePuzzle : MonoBehaviour
         }
     }
 
-    private FramePosition currentPosition;
     /// <summary>
     /// Current position of the frame
     /// </summary>
@@ -41,10 +49,8 @@ public class PictureFramePuzzle : MonoBehaviour
         private set
         {
             currentPosition = value;
-            //Debug.Log($"{name} CURRENT DAMN POSITION: {value}");
         }
     }
-
 
     /// <summary>
     /// Event fired when the position of the frame changes

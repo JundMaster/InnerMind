@@ -11,6 +11,8 @@ public class PictureFramePuzzleParent : MonoBehaviour
     [SerializeField]
     private PictureFramePuzzle[] framePictures;
 
+    private Room6 room6;
+
     /// <summary>
     /// Frames on the puzzle
     /// </summary>
@@ -46,6 +48,7 @@ public class PictureFramePuzzleParent : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        room6 = FindObjectOfType<Room6>();
         FramePictures = framePictures;
     }
     /// <summary>
@@ -66,6 +69,7 @@ public class PictureFramePuzzleParent : MonoBehaviour
     private void OnPuzzleSolved()
     {
         PuzzleSolved?.Invoke();
+        Debug.Log("OnPuzzleSolved");
     }
     /// <summary>
     /// Executes the coroutine that moves the given frame in chain reaction
@@ -118,7 +122,7 @@ public class PictureFramePuzzleParent : MonoBehaviour
         }
         if (solvedCount == framePictures.Length)
         {
-            OnPuzzleSolved();
+            room6.Victory();
         }
     }
 }
