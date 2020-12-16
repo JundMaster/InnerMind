@@ -6,11 +6,14 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class MainMenu : MonoBehaviour
 {
+    
+
     /// <summary>
     /// Start method for MainMenu
     /// </summary>
     private void Start()
     {
+        
         Cursor.lockState = CursorLockMode.Confined;
     }
 

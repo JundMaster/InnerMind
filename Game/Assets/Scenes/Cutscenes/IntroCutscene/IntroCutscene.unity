@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh620784
+  m_Name: pb_Mesh108786
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -854,7 +854,6 @@ GameObject:
   m_Component:
   - component: {fileID: 278385153}
   - component: {fileID: 278385155}
-  - component: {fileID: 278385154}
   m_Layer: 0
   m_Name: Closet
   m_TagString: Untagged
@@ -883,22 +882,6 @@ RectTransform:
   m_AnchoredPosition: {x: -2.303733, y: 1.5507993}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &278385154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278385152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42ed300fdf7aeac4a8a28f9c73382a06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thoughts:
-  - Oh!
-  - There it is!
-  thoughtCanvas: {fileID: 0}
 --- !u!65 &278385155
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7322,7 +7305,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2686314
+  m_Name: pb_Mesh-127080
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20570,7 +20553,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2686324
+  m_Name: pb_Mesh-127078
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22463,6 +22446,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7151952082635094858, guid: 1f473102a018b9b459972ecd431caab5, type: 3}
     - {fileID: 4182003812159856823, guid: 1f473102a018b9b459972ecd431caab5, type: 3}
+    - {fileID: 1485050959200970709, guid: 1f473102a018b9b459972ecd431caab5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1f473102a018b9b459972ecd431caab5, type: 3}
 --- !u!1 &8164078559605996762
 GameObject:
@@ -22476,7 +22460,6 @@ GameObject:
   - component: {fileID: 2823090747699271339}
   - component: {fileID: 1587545475835081279}
   - component: {fileID: 8164078559605996764}
-  - component: {fileID: 8164078559605996763}
   m_Layer: 0
   m_Name: Frame
   m_TagString: Untagged
@@ -22484,23 +22467,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8164078559605996763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8164078559605996762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e06100a8e5e562242bab3ea3d2f6ba23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thoughts:
-  - I remeber this....
-  - It's from when we all went to the lake house
-  - I miss those family trips....
-  thoughtCanvas: {fileID: 0}
 --- !u!65 &8164078559605996764
 BoxCollider:
   m_ObjectHideFlags: 0
