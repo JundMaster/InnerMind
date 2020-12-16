@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PillBottle
   m_EditorClassIdentifier: 
   name: PillBottle
-  id: 0
+  id: 4096
   icon: {fileID: 21300000, guid: f4d06037eeaad20458b9596dcb7ea14c, type: 3}
   cursorTexture: {fileID: 2800000, guid: d5ecc061e761dc245bbe35838d702f12, type: 3}
-  prefab: {fileID: 7572697031931166484, guid: 4d477a8d23502ed49a2d655476b39ed7, type: 3}
+  prefab: {fileID: 6638596584898446820, guid: 4d477a8d23502ed49a2d655476b39ed7, type: 3}
   combinationItem: {fileID: 0}
   combinationSound: 0
