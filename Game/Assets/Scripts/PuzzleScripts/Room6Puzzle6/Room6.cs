@@ -8,7 +8,6 @@ public class Room6 : PuzzleBase
     // Prize related variables in inspector
     [SerializeField] private GameObject prize;
     [SerializeField] private ScriptableItem prizeScriptableItem;
-    [SerializeField] private Transform prizePosition;
     [SerializeField] private Animator drawerAnimator;
 
     private PictureFramePuzzleParent pictureFramePuzzleParent;
@@ -20,9 +19,19 @@ public class Room6 : PuzzleBase
     private void Start()
     {
         pictureFramePuzzleParent = FindObjectOfType<PictureFramePuzzleParent>();
-        pictureFramePuzzleParent.PuzzleSolved += Victory;
         inventory.Bag.CollectionChanged += PrizedPicked;
+        if (player.PuzzlesDone.HasFlag(myPuzzle))
+        {
+            this.Victory();
+        }
     }
+
+    private void OnDisable()
+    {
+        //pictureFramePuzzleParent.PuzzleSolved -= Victory;
+        inventory.Bag.CollectionChanged -= PrizedPicked;
+    }
+
     #endregion
 
     /// <summary>
@@ -42,18 +51,17 @@ public class Room6 : PuzzleBase
     /// </summary>
     public override void Victory()
     {
-        if (!player.PuzzlesDone.HasFlag(myPuzzle) &&
-            inventory.Bag.Contains(prizeScriptableItem) == false)
-        {
-            Instantiate(prize, prizePosition);
-        }
         base.Victory();
-        
+        if (inventory.Bag.Contains(prizeScriptableItem) == false)
+        {
+            prize.SetActive(true);
+            drawerAnimator.SetTrigger("OpenDrawer");
+        }
+
         for (int i  = 0; i < pictureFramePuzzleParent.FramePictures.Length; i++)
         {
             Destroy(pictureFramePuzzleParent.FramePictures[i].
                 GetComponentInChildren<TranslateInteractionPictureFrame>());
         }
-        drawerAnimator.SetTrigger("OpenDrawer");
     }
 }
