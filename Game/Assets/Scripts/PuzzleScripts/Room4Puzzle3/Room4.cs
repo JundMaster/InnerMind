@@ -11,10 +11,10 @@ public class Room4 : PuzzleBase, ICoroutineT<string>
     private GetPlayOrder keyPlayOrder;
     private Text displayText;
     private WaitForSeconds waitForSeconds;
+    private ItemComparer itemComparer;
 
     //Inspector Variable
     [SerializeField] private GameObject prize;
-    [SerializeField] private ScriptableItem prizeScriptableItem;
     [SerializeField] private Transform prizePosition;
     [SerializeField] private string thought;
     [SerializeField] private GameObject thoughtCanvas;
@@ -34,6 +34,7 @@ public class Room4 : PuzzleBase, ICoroutineT<string>
     /// </summary>
     private void Start()
     {
+        itemComparer = FindObjectOfType<ItemComparer>();
         keyPlayOrder = FindObjectOfType<GetPlayOrder>();
         FinishedPuzzle = false;
         displayText = thoughtCanvas.GetComponentInChildren<Text>();
@@ -42,7 +43,7 @@ public class Room4 : PuzzleBase, ICoroutineT<string>
 
         // If player has puzzle done and no audiotape in inventory, plays victory
         if (player.PuzzlesDone.HasFlag(myPuzzle) &&
-            inventory.Bag.Contains(prizeScriptableItem) == false)
+            inventory.Bag.Contains(itemComparer.NotRewoundAudioTape) == false)
         {
             Victory();
         }
@@ -94,7 +95,7 @@ public class Room4 : PuzzleBase, ICoroutineT<string>
         GameObject spawn = null;
 
         if (FindObjectOfType<Inventory>().Bag.Contains(
-            prizeScriptableItem) == false)
+            itemComparer.NotRewoundAudioTape) == false)
         {
             spawn = Instantiate(
                 prize, prizePosition.transform.position, Quaternion.identity);

@@ -1173,22 +1173,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114937783, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 956594553}
-    - target: {fileID: 114937783, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Examine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1896261256, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 956594553}
-    - target: {fileID: 1896261256, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Use
-      objectReference: {fileID: 0}
     - target: {fileID: 120492917871373866, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -10421,9 +10405,6 @@ MonoBehaviour:
   lastWallAnimator: {fileID: 218650928}
   mapImage: {fileID: 21300000, guid: 4112c4f9954a6e24fae7577578730672, type: 3}
   mapCanvas: {fileID: 1103081592}
-  flaslight: {fileID: 11400000, guid: 46af12c07a60d8e4a8fdcb1276fdc739, type: 2}
-  noBatteryFlashlight: {fileID: 11400000, guid: 697a76c6c08431041865017385cf8546, type: 2}
-  pianoKey2: {fileID: 11400000, guid: 9d0a2adbe29a41646a6cbfed2e7617df, type: 2}
   flashlightSpawn: {fileID: 1959834904}
   pianoKeySpawn: {fileID: 1185581738}
 --- !u!43 &576210854
@@ -15565,17 +15546,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &956594553 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7828585709342165045, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
-  m_PrefabInstance: {fileID: 641551228}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80fdfe8a674e2424bb27fcbe84079516, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &956798670 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6201170700445436501, guid: 0aa7de60a18205946a2615c281fceaf5, type: 3}

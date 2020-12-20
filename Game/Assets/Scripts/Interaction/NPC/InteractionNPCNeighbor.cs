@@ -15,15 +15,12 @@ public class InteractionNPCNeighbor : InteractionNPCBase
     // NPC Prize related variables
     // Door to open when its puzzle is done
     [SerializeField] private Animator doorToOpen;
-    // ScriptableItems to compare if the player as a certain item
-    [SerializeField] private ScriptableItem[] npcItemsToCompare;
-    // Items that the npc has in its back
-    [SerializeField] private ScriptableItem[] npcBag;
 
     // Components
     private PlayerInput input;
     private Animator anim;
     private Inventory playerInventory;
+    private ItemComparer itemComparer;
 
     /// <summary>
     /// Awake method for InteractionNPCNeighbor
@@ -34,6 +31,7 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         input = FindObjectOfType<PlayerInput>();
         anim = GetComponent<Animator>();
         playerInventory = FindObjectOfType<Inventory>();
+        itemComparer = FindObjectOfType<ItemComparer>();
     }
 
     /// <summary>
@@ -41,8 +39,8 @@ public class InteractionNPCNeighbor : InteractionNPCBase
     /// </summary>
     private void Start()
     {
-        // If the player already has a piano key, the speakcounter will be 3
-        if (FindObjectOfType<Inventory>().Bag.Contains(npcBag[0]))
+        // If the player already has a map, the speakcounter will be 3
+        if (FindObjectOfType<Inventory>().Bag.Contains(itemComparer.Map))
         {
             speakCounter = 3;
         }
@@ -67,9 +65,10 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         // If the player has a No battery flashlight
         // If the player doesn't have an old battery
         // If the player doesn't have a flashlight
-        if (playerInventory.Bag.Contains(npcItemsToCompare[0]) == true &&
-            playerInventory.Bag.Contains(npcItemsToCompare[1]) == false &&
-            playerInventory.Bag.Contains(npcItemsToCompare[2]) == false)
+        if (playerInventory.Bag.Contains(
+                                itemComparer.NoBatteryFlashlight) == true &&
+            playerInventory.Bag.Contains(itemComparer.OldBattery) == false &&
+            playerInventory.Bag.Contains(itemComparer.FlashLight) == false)
         {
             // Gives NPC's prize
             dialog.GivePrize = true;
@@ -80,7 +79,7 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         }
 
         // If the player has a not rewound tape
-        if (playerInventory.Bag.Contains(npcItemsToCompare[3]))    
+        if (playerInventory.Bag.Contains(itemComparer.NotRewoundAudioTape))
         {
             // Opens NPC's locked door
             dialog.OpenDoor = true;
@@ -118,10 +117,10 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         // If player has a no battery lantern
         // If the player doesn't have an old battery
         if (dialog.GivePrize &&
-            playerInventory.Bag.Contains(npcItemsToCompare[1]) == false)
+            playerInventory.Bag.Contains(itemComparer.OldBattery) == false)
         {
             Inventory inventory = FindObjectOfType<Inventory>();
-            inventory.Bag.Add(npcBag[1]);
+            inventory.Bag.Add(itemComparer.OldBattery);
         }
 
         // If player has a not rewound audio tape
@@ -143,7 +142,7 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         else if (speakCounter == 2)
         {
             Inventory inventory = FindObjectOfType<Inventory>();
-            inventory.Bag.Add(npcBag[0]);
+            inventory.Bag.Add(itemComparer.Map);
             speakCounter++;
         }
 

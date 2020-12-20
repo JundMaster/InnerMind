@@ -12062,6 +12062,7 @@ GameObject:
   - component: {fileID: 6921278638857866482}
   - component: {fileID: 1693637951}
   - component: {fileID: 380800772}
+  - component: {fileID: 632695516}
   m_Layer: 5
   m_Name: InventorySystem
   m_TagString: Untagged
@@ -12119,6 +12120,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 602184870}
   image: {fileID: 602184872}
+--- !u!114 &632695516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011182564929922595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 660b3a1ca51d5574da1ef919bb92bbed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioTape: {fileID: 11400000, guid: 3fe2c41b27e5dc64983f1958a0b29f7b, type: 2}
+  cabinetKey: {fileID: 11400000, guid: f4d71641f5f8e8f4592b17b3aab5fb3c, type: 2}
+  flashLight: {fileID: 11400000, guid: 46af12c07a60d8e4a8fdcb1276fdc739, type: 2}
+  map: {fileID: 11400000, guid: 7868614e7950a2843bad389a1df292b9, type: 2}
+  noBatteryFlashlight: {fileID: 11400000, guid: 697a76c6c08431041865017385cf8546, type: 2}
+  noBatteryWalkman: {fileID: 11400000, guid: 4ed08d3acad2cb5488ee28e00917131d, type: 2}
+  notRewoundAudioTape: {fileID: 11400000, guid: fd3f45aa68618214797046d9ce01e392, type: 2}
+  oldBattery: {fileID: 11400000, guid: c3bd97f7e5d71544988bad5e39785855, type: 2}
+  pen: {fileID: 11400000, guid: 74fa893f3d231504284ecb8bd21deaf4, type: 2}
+  pianoKey1: {fileID: 11400000, guid: 059767cf0d1e56d46887d2aff33aadc4, type: 2}
+  pianoKey2: {fileID: 11400000, guid: 9d0a2adbe29a41646a6cbfed2e7617df, type: 2}
+  pianoKey3: {fileID: 11400000, guid: 6ef0082547051634f93f2d83a866b11d, type: 2}
+  pillBottle: {fileID: 11400000, guid: 863585a87a8e66a4a862f7b3b181040d, type: 2}
+  walkmanBatteries: {fileID: 11400000, guid: 3fe63cc0cbd02104d848a202264707f5, type: 2}
+  walkmanWithoutTape: {fileID: 11400000, guid: 82f50a7b5083cbb48b8fde67d7343faf, type: 2}
+  walkman: {fileID: 11400000, guid: 2a308db0f4c7349449c17e121ea0cf7c, type: 2}
 --- !u!1 &3199675469603434227
 GameObject:
   m_ObjectHideFlags: 0
@@ -12464,23 +12493,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d465ba782f17884196a2536f93c50a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possibleItems:
-  - {fileID: 11400000, guid: 3fe2c41b27e5dc64983f1958a0b29f7b, type: 2}
-  - {fileID: 11400000, guid: f4d71641f5f8e8f4592b17b3aab5fb3c, type: 2}
-  - {fileID: 11400000, guid: 46af12c07a60d8e4a8fdcb1276fdc739, type: 2}
-  - {fileID: 11400000, guid: 7868614e7950a2843bad389a1df292b9, type: 2}
-  - {fileID: 11400000, guid: 74fa893f3d231504284ecb8bd21deaf4, type: 2}
-  - {fileID: 11400000, guid: 697a76c6c08431041865017385cf8546, type: 2}
-  - {fileID: 11400000, guid: 4ed08d3acad2cb5488ee28e00917131d, type: 2}
-  - {fileID: 11400000, guid: fd3f45aa68618214797046d9ce01e392, type: 2}
-  - {fileID: 11400000, guid: c3bd97f7e5d71544988bad5e39785855, type: 2}
-  - {fileID: 11400000, guid: 059767cf0d1e56d46887d2aff33aadc4, type: 2}
-  - {fileID: 11400000, guid: 9d0a2adbe29a41646a6cbfed2e7617df, type: 2}
-  - {fileID: 11400000, guid: 6ef0082547051634f93f2d83a866b11d, type: 2}
-  - {fileID: 11400000, guid: 3fe63cc0cbd02104d848a202264707f5, type: 2}
-  - {fileID: 11400000, guid: 82f50a7b5083cbb48b8fde67d7343faf, type: 2}
-  - {fileID: 11400000, guid: 2a308db0f4c7349449c17e121ea0cf7c, type: 2}
-  - {fileID: 11400000, guid: 863585a87a8e66a4a862f7b3b181040d, type: 2}
 --- !u!114 &6802797411661038712
 MonoBehaviour:
   m_ObjectHideFlags: 0

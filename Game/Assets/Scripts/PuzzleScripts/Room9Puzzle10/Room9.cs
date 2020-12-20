@@ -8,8 +8,15 @@ public class Room9 : PuzzleBase
     [SerializeField] private GameObject penGameObject;
     [SerializeField] private GameObject WalkmanBatteriesGameObject;
 
-    [SerializeField] private ScriptableItem pen;
-    [SerializeField] private ScriptableItem walkmanBatteries;
+    private ItemComparer itemComparer;
+
+    /// <summary>
+    /// Start method for Room9
+    /// </summary>
+    private void Start()
+    {
+        itemComparer = FindObjectOfType<ItemComparer>();
+    }
 
     /// <summary>
     /// OnEnable method for room9
@@ -32,9 +39,9 @@ public class Room9 : PuzzleBase
     /// </summary>
     private void DestroyPrizes()
     {
-        if (inventory.Bag.Contains(pen))
+        if (inventory.Bag.Contains(itemComparer.Pen))
             Destroy(penGameObject);
-        if (inventory.Bag.Contains(walkmanBatteries))
+        if (inventory.Bag.Contains(itemComparer.WalkmanBatteries))
             Destroy(WalkmanBatteriesGameObject);
     }
 }

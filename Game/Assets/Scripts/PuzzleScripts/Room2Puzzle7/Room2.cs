@@ -8,7 +8,6 @@ public class Room2 : PuzzleBase
 {
     // Prize related variables in inspector
     [SerializeField] private GameObject prize;
-    [SerializeField] private ScriptableItem prizeScriptableItem;
     [SerializeField] private Transform prizePosition;
     [SerializeField] private Light prizeLight;
     [SerializeField] private Light roomCandle;
@@ -21,6 +20,8 @@ public class Room2 : PuzzleBase
     /// </summary>
     public bool FinishedPuzzle { get; private set; }
 
+    private ItemComparer itemComparer;
+
     /// <summary>
     /// Start method of Room2
     /// </summary>
@@ -28,12 +29,13 @@ public class Room2 : PuzzleBase
     {
         cubeParentsInRoom = GetComponentsInChildren<MirrorPuzzleCubeParent>();
         FinishedPuzzle = false;
+        itemComparer = FindObjectOfType<ItemComparer>();
 
         // If player has puzzle done and no map on inventory, plays victory
         // This happens for example if the player leaves the room without
         // picking the map, and then returns to the room
         if (player.PuzzlesDone.HasFlag(myPuzzle) &&
-            inventory.Bag.Contains(prizeScriptableItem) == false)
+            inventory.Bag.Contains(itemComparer.PianoKey1) == false)
         {
             Victory();
         }
@@ -84,7 +86,7 @@ public class Room2 : PuzzleBase
         prizeLight.intensity = 1f;
 
         if (FindObjectOfType<Inventory>().Bag.Contains(
-            prizeScriptableItem) == false &&
+            itemComparer.PianoKey1) == false &&
             player.PuzzlesDone.HasFlag(PuzzlesEnum.Puzzle3) == false)
         {
             spawn = Instantiate(

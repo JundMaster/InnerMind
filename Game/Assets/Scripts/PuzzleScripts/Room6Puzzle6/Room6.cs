@@ -7,10 +7,11 @@ public class Room6 : PuzzleBase
 {
     // Prize related variables in inspector
     [SerializeField] private GameObject prize;
-    [SerializeField] private ScriptableItem prizeScriptableItem;
     [SerializeField] private Animator drawerAnimator;
 
+    // Components
     private PictureFramePuzzleParent pictureFramePuzzleParent;
+    private ItemComparer itemComparer;
 
     #region Unity Functions
     /// <summary>
@@ -19,7 +20,10 @@ public class Room6 : PuzzleBase
     private void Start()
     {
         pictureFramePuzzleParent = FindObjectOfType<PictureFramePuzzleParent>();
+        itemComparer = FindObjectOfType<ItemComparer>();
+
         inventory.Bag.CollectionChanged += PrizedPicked;
+
         if (player.PuzzlesDone.HasFlag(myPuzzle))
         {
             this.Victory();
@@ -52,7 +56,7 @@ public class Room6 : PuzzleBase
     public override void Victory()
     {
         base.Victory();
-        if (inventory.Bag.Contains(prizeScriptableItem) == false)
+        if (inventory.Bag.Contains(itemComparer.PianoKey3) == false)
         {
             prize.SetActive(true);
             drawerAnimator.SetTrigger("OpenDrawer");

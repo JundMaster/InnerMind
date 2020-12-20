@@ -16,20 +16,18 @@ public class Room5 : PuzzleBase
     [SerializeField] private Sprite mapImage;
     [SerializeField] private GameObject mapCanvas;
 
-    // Items to compare
-    [SerializeField] private ScriptableItem flaslight;
-    [SerializeField] private ScriptableItem noBatteryFlashlight;
-    [SerializeField] private ScriptableItem pianoKey2;
-
     // Objects to destroy
     [SerializeField] private GameObject flashlightSpawn;
     [SerializeField] private GameObject pianoKeySpawn;
+
+    private ItemComparer comparer;
 
     /// <summary>
     /// Start method for Room5
     /// </summary>
     private void Start()
     {
+        comparer = FindObjectOfType<ItemComparer>();
         StartCoroutine(CheckItemSpawn());
     }
 
@@ -64,12 +62,11 @@ public class Room5 : PuzzleBase
     private IEnumerator CheckItemSpawn()
     {
         yield return new WaitForSeconds(0.25f);
-
-        if (inventory.Bag.Contains(flaslight) ||
-            inventory.Bag.Contains(noBatteryFlashlight))
+        if (inventory.Bag.Contains(comparer.FlashLight) ||
+            inventory.Bag.Contains(comparer.NoBatteryFlashlight))
             Destroy(flashlightSpawn);
 
-        if (inventory.Bag.Contains(pianoKey2) ||
+        if (inventory.Bag.Contains(comparer.PianoKey2) ||
             player.PuzzlesDone.HasFlag(PuzzlesEnum.Puzzle3))
             Destroy(pianoKeySpawn);
     }

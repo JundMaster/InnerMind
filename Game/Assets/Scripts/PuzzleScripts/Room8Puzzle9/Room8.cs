@@ -7,15 +7,19 @@ using UnityEngine;
 public class Room8 : PuzzleBase
 {
     [SerializeField] private GameObject prize;
-    [SerializeField] private ScriptableItem prizeScriptableItem;
     [SerializeField] private WallLampsParent wallLampsParent;
     [SerializeField] private Animator doorAnimator;
+
+    // Components
+    private ItemComparer itemComparer;
 
     /// <summary>
     /// Start method for Room8
     /// </summary>
     private void Start()
     {
+        itemComparer = FindObjectOfType<ItemComparer>();
+
         wallLampsParent.LampsAligned += Victory;
         prize.SetActive(false);
     }
@@ -46,7 +50,7 @@ public class Room8 : PuzzleBase
 
         // While the item is active, it keeps rotating
         if (player.PuzzlesDone.HasFlag(myPuzzle) && 
-            inventory.Bag.Contains(prizeScriptableItem) == true)
+            inventory.Bag.Contains(itemComparer.NoBatteryWalkman) == true)
         {
             Destroy(prize);
         }

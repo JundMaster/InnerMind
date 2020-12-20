@@ -13,9 +13,8 @@ public class Inventory : MonoBehaviour
     // List of slots that construct the inventory
     public ItemInventorySlot[] InventorySlot { get; private set; }
 
-    // Variable that contains every possible items ingame
-    // This variable is used so the filereader knows which items to write/read
-    [SerializeField] private ScriptableItem[] possibleItems;
+    // Variable to compare items in inventory
+    private ItemComparer comparer;
 
     // FileReader that will be used to read player's items from a txt
     // This file has a list with all items in inventory
@@ -36,6 +35,8 @@ public class Inventory : MonoBehaviour
         InventorySlot = GetComponentInChildren<Transform>().
                         GetComponentsInChildren<ItemInventorySlot>();
 
+        comparer = FindObjectOfType<ItemComparer>();
+
         // Reads txt with inventory info (if it already exists)
         // If it exists, it means the inventory will have this items
         // when a scene is loaded
@@ -44,7 +45,7 @@ public class Inventory : MonoBehaviour
             // Reads file from inventorypath
             fileReader = new FileReader(FilePath.inventoryPath);
             // Updates de bag and ui with items from the .txt
-            fileReader.ReadFromTXT(Bag, possibleItems);
+            fileReader.ReadFromTXT(Bag, comparer.PossibleItems);
             UpdateUI();
         }
     }
