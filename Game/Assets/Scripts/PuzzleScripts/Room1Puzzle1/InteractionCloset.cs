@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
 {
     //Components
-    private Animator closetDoorAnimation;
     private BoxCollider closetBoxCollider;
     private Text displayText;
     private WaitForSeconds waitForSeconds;
@@ -17,11 +16,13 @@ public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
     //Variables in Inspector
     [SerializeField] private string[] thoughts;
     [SerializeField] private Canvas thoughtCanvas;
+    [SerializeField] private string animTrigger;
+    [SerializeField] private Animator closetDoorAnimation;
 
     /// <summary>
     /// Property to control a couroutine
     /// </summary>
-    public Coroutine ThisCoroutine { get; private set;}
+    public Coroutine ThisCoroutine { get; private set; }
 
     /// <summary>
     /// Start method of InteractionCloset
@@ -39,11 +40,11 @@ public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
     /// This method determines the action of the closet when clicked
     /// </summary>
     public override void Execute()
-    { 
-        closetDoorAnimation.SetTrigger("Open Door");
+    {
+        closetDoorAnimation.SetTrigger(animTrigger);
         closetBoxCollider.enabled = false;
 
-        if(ThisCoroutine == null)
+        if (ThisCoroutine == null)
             if (thoughtCanvas.enabled == false)
                 ThisCoroutine = StartCoroutine(CoroutineExecute(thoughts));
     }
@@ -74,7 +75,7 @@ public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
     /// when the Crosshair is on top of this object
     /// </summary>
     /// <returns>Returns a string with an action</returns>
-    public override string ToString() => "Open Closet";
+    public override string ToString() => "Open closet's door";
 
-    
+
 }
