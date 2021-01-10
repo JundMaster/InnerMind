@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4851752126941438409}
   - component: {fileID: 577164705024808503}
+  - component: {fileID: 5876634296854999058}
   - component: {fileID: 4851752128071463856}
   - component: {fileID: 4851752126941438411}
   - component: {fileID: 4851752126941438410}
@@ -49,11 +50,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondsToWait: 3
-  lookAt: {fileID: 4261077794766521346}
-  rotationSpeedModifier: 2
   doorToOpen: {fileID: 0}
-  npcItemsToCompare: []
-  npcBag: []
+  behaviour: {fileID: 0}
+--- !u!114 &5876634296854999058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4851752126941438413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aad9289f958e5140a7a9ce9cca6c317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookAt: {fileID: 0}
+  rotationSpeedModifier: 0
 --- !u!114 &4851752128071463856
 MonoBehaviour:
   m_ObjectHideFlags: 0
