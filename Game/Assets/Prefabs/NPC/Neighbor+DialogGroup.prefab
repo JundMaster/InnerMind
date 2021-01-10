@@ -479,6 +479,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6440113224120851420}
     - target: {fileID: 577164705024808503, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: movementBehaviour
+      value: 
+      objectReference: {fileID: 3742628417555836876}
+    - target: {fileID: 577164705024808503, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
       propertyPath: npcBag.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -604,7 +608,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4851752128071463856, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
       propertyPath: linesOfText.Array.data[2]
-      value: Take this piano key. Something tells me you will need it.
+      value: Take this map. Something tells me you will need it.
       objectReference: {fileID: 0}
     - target: {fileID: 4851752128071463856, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
       propertyPath: linesOfText.Array.data[3]
@@ -612,7 +616,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4851752128071463856, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
       propertyPath: linesOfText.Array.data[4]
-      value: Is everything alright?
+      value: Let me know if there's something I can help you with.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5876634296854999058, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: lookAt
+      value: 
+      objectReference: {fileID: 6440113224120851420}
+    - target: {fileID: 5876634296854999058, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+      propertyPath: rotationSpeedModifier
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
@@ -626,6 +638,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4851752126941438409, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
   m_PrefabInstance: {fileID: 7096973133593829342}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3742628417555836876 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5876634296854999058, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
+  m_PrefabInstance: {fileID: 7096973133593829342}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2389548469209464339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aad9289f958e5140a7a9ce9cca6c317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6440113224120851420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4261077794766521346, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
