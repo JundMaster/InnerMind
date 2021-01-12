@@ -50,7 +50,10 @@ public class Room8 : PuzzleBase
 
         // While the item is active, it keeps rotating
         if (player.PuzzlesDone.HasFlag(myPuzzle) && 
-            inventory.Bag.Contains(itemComparer.NoBatteryWalkman) == true)
+            (inventory.Bag.Contains(itemComparer.NoBatteryWalkman) ||
+            inventory.Bag.Contains(itemComparer.Walkman) ||
+             inventory.Bag.Contains(itemComparer.WalkmanBatteries) ||
+              inventory.Bag.Contains(itemComparer.WalkmanWithoutTape)))
         {
             Destroy(prize);
         }

@@ -39,9 +39,12 @@ public class Room9 : PuzzleBase
     /// </summary>
     private void DestroyPrizes()
     {
-        if (inventory.Bag.Contains(itemComparer.Pen))
+        if (inventory.Bag.Contains(itemComparer.Pen) || 
+            inventory.Bag.Contains(itemComparer.AudioTape))
             Destroy(penGameObject);
-        if (inventory.Bag.Contains(itemComparer.WalkmanBatteries))
+        if (inventory.Bag.Contains(itemComparer.WalkmanBatteries) ||
+            inventory.Bag.Contains(itemComparer.Walkman))
             Destroy(WalkmanBatteriesGameObject);
+
     }
 }
