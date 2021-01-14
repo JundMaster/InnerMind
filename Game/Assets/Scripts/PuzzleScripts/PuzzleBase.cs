@@ -61,14 +61,6 @@ public abstract class PuzzleBase : MonoBehaviour, IPuzzle
     }
 
     /// <summary>
-    /// Method to invoke ReadPuzzlesDone
-    /// </summary>
-    private void OnReadPuzzlesDone() => ReadPuzzlesDone?.Invoke();
-
-    // Event to check if coroutine read puzzles done txt has ran
-    public event Action ReadPuzzlesDone;
-
-    /// <summary>
     /// Does an action when the puzzle is solved
     /// </summary>
     public virtual void Victory()
@@ -81,4 +73,12 @@ public abstract class PuzzleBase : MonoBehaviour, IPuzzle
         FileWriter fw = new FileWriter(FilePath.puzzlePath);
         fw.AddToTxt(player);
     }
+
+    /// <summary>
+    /// Method to invoke ReadPuzzlesDone
+    /// </summary>
+    protected virtual void OnReadPuzzlesDone() => ReadPuzzlesDone?.Invoke();
+
+    // Event to check if coroutine read puzzles done txt has ran
+    public event Action ReadPuzzlesDone;
 }

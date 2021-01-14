@@ -10,7 +10,7 @@ public class Room2 : PuzzleBase
     [SerializeField] private GameObject prize;
     [SerializeField] private Transform prizePosition;
     [SerializeField] private Light prizeLight;
-    [SerializeField] private Light roomCandle;
+    [SerializeField] private GameObject roomCandle;
 
     // Variable with every cube parents in room
     private MirrorPuzzleCubeParent[] cubeParentsInRoom;
@@ -31,9 +31,9 @@ public class Room2 : PuzzleBase
         FinishedPuzzle = false;
         itemComparer = FindObjectOfType<ItemComparer>();
 
-        // If player has puzzle done and no map on inventory, plays victory
+        // If player has puzzle done and no prize on inventory, plays victory
         // This happens for example if the player leaves the room without
-        // picking the map, and then returns to the room
+        // picking the prize, and then returns to the room
         if (player.PuzzlesDone.HasFlag(myPuzzle) &&
             inventory.Bag.Contains(itemComparer.PianoKey1) == false)
         {
@@ -82,7 +82,7 @@ public class Room2 : PuzzleBase
     {
         FinishedPuzzle = true;
         GameObject spawn = null;
-        roomCandle.range = 30f;
+        roomCandle.SetActive(false);
         prizeLight.intensity = 1f;
 
         if (FindObjectOfType<Inventory>().Bag.Contains(
