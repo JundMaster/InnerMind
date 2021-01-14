@@ -509,7 +509,7 @@ PrefabInstance:
       objectReference: {fileID: 1186851480}
     - target: {fileID: 3861651247980746779, guid: 5abf0ad2601aa4345bc609f2066d7b77, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3861651247980746779, guid: 5abf0ad2601aa4345bc609f2066d7b77, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1109,7 +1109,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e589e3df58117d240a8733122f424a1b, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e589e3df58117d240a8733122f424a1b, type: 3}
       propertyPath: m_LocalScale.x
@@ -2866,7 +2866,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: e75e093b7ef98ba48ae12ffaf7c1c315, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ac4195fd7e2490649a7e09b0bd94b366, type: 2}
+      objectReference: {fileID: 2100000, guid: 256f531e9f766a4498ad68a1456944e4, type: 2}
     - target: {fileID: 919132149155446097, guid: e75e093b7ef98ba48ae12ffaf7c1c315, type: 3}
       propertyPath: m_Name
       value: GreenFrame
@@ -3031,7 +3031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7925831929662690495, guid: 0ef5e5b06345415428911f1a4ab76d61, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7925831929662690495, guid: 0ef5e5b06345415428911f1a4ab76d61, type: 3}
       propertyPath: m_LocalScale.x
