@@ -32,4 +32,6 @@ public class Room7Rotation : MonoBehaviour
     {
         anim.SetTrigger("Stop Rotation");
     }
+
+
 }
