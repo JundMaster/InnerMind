@@ -1085,6 +1085,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 3999425584325566664, guid: 27e0bc285d070384cb79017c45b5f735, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3999425584325566668, guid: 27e0bc285d070384cb79017c45b5f735, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -5454,7 +5458,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh75756
+  m_Name: pb_Mesh1270306
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7416,6 +7420,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 713099445216120642, guid: 416fd492f82112742b503af85776f4aa, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2499006872218910435, guid: 416fd492f82112742b503af85776f4aa, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6110049635077011649, guid: 416fd492f82112742b503af85776f4aa, type: 3}

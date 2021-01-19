@@ -33,5 +33,12 @@ public class Room7Rotation : MonoBehaviour
         anim.SetTrigger("Stop Rotation");
     }
 
-
+    /// <summary>
+    /// OnTriggerStay for Room7Rotation. Sets a trigger
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerExit(Collider other)
+    {
+        anim.SetTrigger("Stop Rotation");
+    }
 }
