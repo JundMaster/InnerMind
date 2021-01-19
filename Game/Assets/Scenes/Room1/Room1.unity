@@ -325,7 +325,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -7632,25 +7632,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1523901741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148069579124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddac2e03855eaea43b27b26b4475581e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  closetBoxDoorCollider: {fileID: 2258330302511742373}
-  closetBoxCollider: {fileID: 919132148069579126}
-  thought:
-  - Sigh...Where did I put that damned key...
-  - Ah, found the meds.
-  thoughtCanvas: {fileID: 237954519}
-  cabinetKey: {fileID: 11400000, guid: f4d71641f5f8e8f4592b17b3aab5fb3c, type: 2}
 --- !u!1 &1558460473
 GameObject:
   m_ObjectHideFlags: 0
@@ -23214,7 +23195,6 @@ GameObject:
   - component: {fileID: 3469287838676905067}
   - component: {fileID: 1711813854616066209}
   - component: {fileID: 1523901740}
-  - component: {fileID: 1523901741}
   - component: {fileID: 919132148069579126}
   - component: {fileID: 919132148069579125}
   - component: {fileID: 919132148069579127}
@@ -23619,7 +23599,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e773ad8a950da2419064b25b3749671, type: 2}
+  - {fileID: 2100000, guid: a559777343cc764458ff54ba3221562f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24210,12 +24190,13 @@ GameObject:
   - component: {fileID: 1207765119984387030}
   - component: {fileID: 6471243354215183043}
   - component: {fileID: 2258330302511742373}
+  - component: {fileID: 2258330302511742374}
   m_Layer: 0
   m_Name: MedicineCabinet_01_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &2258330302511742373
 BoxCollider:
@@ -24226,10 +24207,29 @@ BoxCollider:
   m_GameObject: {fileID: 2258330302511742372}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.0030210083, y: 0.00012714165, z: 0.0039999997}
   m_Center: {x: 0.0014894921, y: -0.000042301763, z: 0}
+--- !u!114 &2258330302511742374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2258330302511742372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddac2e03855eaea43b27b26b4475581e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closetBoxDoorCollider: {fileID: 2258330302511742373}
+  closetBoxCollider: {fileID: 919132148069579126}
+  thought:
+  - Sigh...Where did I put that damned key...
+  - Ah, found the meds.
+  thoughtCanvas: {fileID: 237954519}
+  cabinetKey: {fileID: 11400000, guid: f4d71641f5f8e8f4592b17b3aab5fb3c, type: 2}
 --- !u!33 &2269369459253317148
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -29,8 +29,7 @@ public class InteractionMedicineCabinet : InteractionCommon, ICoroutineT<string>
     private void Awake()
     {
         inventory = FindObjectOfType<Inventory>();
-        cabinetDoorAnimation = GetComponentInChildren<Animator>();
-        closetBoxCollider = GetComponent<BoxCollider>();
+        cabinetDoorAnimation = GetComponentInParent<Animator>();
         displayText = thoughtCanvas.GetComponentInChildren<Text>();
         waitForSeconds = new WaitForSeconds(3);
         ThisCoroutine = null;
