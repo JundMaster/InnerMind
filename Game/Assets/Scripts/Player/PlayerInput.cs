@@ -191,8 +191,6 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
 
             case TypeOfControl.InCutscene:
                 Cursor.lockState = CursorLockMode.Locked;
-                // Gets ESC key
-                Pause = Input.GetKeyDown(KeyCode.Escape);
 
                 // Gets horizontal movement
                 HorizontalMouse = Input.GetAxis("Mouse X");

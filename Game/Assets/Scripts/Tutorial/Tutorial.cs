@@ -13,13 +13,21 @@ public class Tutorial : MonoBehaviour
     // Components
     private PlayerInput input;
 
+    // Variable to know the control it was before tutorial
+    private TypeOfControl lastTypeOfControl;
+
     /// <summary>
     /// Awake method for Tutorial
     /// </summary>
     private void Awake()
     {
         input = FindObjectOfType<PlayerInput>();
+    }
+
+    private void OnEnable()
+    {
         index = 0;
+        lastTypeOfControl = input.CurrentControl;
     }
 
     /// <summary>
@@ -27,8 +35,7 @@ public class Tutorial : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        tutorials?[0]?.SetActive(true);
-        
+        tutorials?[0]?.SetActive(true);   
     }
 
     /// <summary>
@@ -53,7 +60,7 @@ public class Tutorial : MonoBehaviour
             tutorials?[index]?.SetActive(true);
         else
         {
-            input.ChangeTypeOfControl(TypeOfControl.InGameplay);
+            input.ChangeTypeOfControl(lastTypeOfControl);
             tutorialParent.SetActive(false);
         }
     }
