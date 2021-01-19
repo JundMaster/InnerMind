@@ -10,5 +10,6 @@ public enum TypeOfControl
     InNPCInteraction,
     InDoorWithCode,
     InPauseMenu,
-    InCutscene
+    InCutscene,
+    InTutorial
 }

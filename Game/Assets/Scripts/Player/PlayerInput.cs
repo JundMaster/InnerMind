@@ -204,6 +204,14 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
                 Space = Input.GetKeyDown(KeyCode.Space);
 
                 break;
+
+            case TypeOfControl.InTutorial:
+                Cursor.lockState = CursorLockMode.Locked;
+
+                // Gets Space key
+                Space = Input.GetKeyDown(KeyCode.Space);
+
+                break;
         }
     }
 }
