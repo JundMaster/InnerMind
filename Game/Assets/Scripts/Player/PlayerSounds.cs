@@ -11,7 +11,7 @@ public class PlayerSounds : MonoBehaviour
 
     // Components
     private PlayerMovement movement;
-    private PlayerInput input;
+    private IPlayerInput input;
 
     /// <summary>
     /// Awake method for PlayerSounds

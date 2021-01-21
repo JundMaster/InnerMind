@@ -11,7 +11,7 @@ public class Tutorial : MonoBehaviour
     byte index;
 
     // Components
-    private PlayerInput input;
+    private IPlayerInput input;
 
     // Variable to know the control it was before tutorial
     private TypeOfControl lastTypeOfControl;

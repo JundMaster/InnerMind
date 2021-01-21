@@ -8,7 +8,7 @@ using System.IO;
 sealed public class OnCutsceneAwake : MonoBehaviour
 {
     // Components
-    private PlayerInput input;
+    private IPlayerInput input;
     [SerializeField] private SceneChange sceneChange;
 
     /// <summary>

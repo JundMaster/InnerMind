@@ -11,7 +11,7 @@ public class InteractionNPCNeighbor : InteractionNPCBase
     [SerializeField] private Animator doorToOpen;
 
     // Components
-    private PlayerInput input;
+    private IPlayerInput input;
     private Inventory playerInventory;
     private ItemComparer itemComparer;
 

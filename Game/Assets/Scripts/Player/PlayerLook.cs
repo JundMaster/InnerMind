@@ -14,7 +14,7 @@ public class PlayerLook : MonoBehaviour
 
     // Components
     private Transform player;
-    private PlayerInput input;
+    private IPlayerInput input;
 
     /// <summary>
     /// Start method for PlayerLook

@@ -11,7 +11,7 @@ public class PlayerGeneralInfo : MonoBehaviour
     [SerializeField] private TypeOfRoom startingRoom;
 
     // Components
-    private PlayerInput input;
+    private IPlayerInput input;
 
     /// <summary>
     /// Property to know which puzzles the player has already done

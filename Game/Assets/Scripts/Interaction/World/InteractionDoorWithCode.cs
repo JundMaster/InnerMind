@@ -23,7 +23,7 @@ public class InteractionDoorWithCode : InteractionCommon
     [SerializeField] private Transform padlockPosition;
 
     // Components
-    private PlayerInput input;
+    private IPlayerInput input;
 
     /// <summary>
     /// Start method for InteractionDoorWithCode

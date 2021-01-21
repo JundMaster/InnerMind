@@ -19,7 +19,7 @@ public class UICrosshair : MonoBehaviour
     private PlayerRays ray;
     private PlayerInteract interact;
     private Image crosshair;
-    private PlayerInput input;
+    private IPlayerInput input;
 
     /// <summary>
     /// Awake method for UICrosshair

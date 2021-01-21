@@ -17,7 +17,7 @@ public class ExamineMenu : MonoBehaviour
     /// </summary>
     public Camera ExamineCamera => examineCamera;
 
-    private PlayerInput input;
+    private IPlayerInput input;
 
     /// <summary>
     /// Start method for ExamineMenu

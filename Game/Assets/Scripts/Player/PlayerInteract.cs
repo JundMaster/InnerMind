@@ -14,7 +14,7 @@ public class PlayerInteract : MonoBehaviour
     public byte InteractDistance { get => interactDistance; }
 
     // Components
-    private PlayerInput input;
+    private IPlayerInput input;
     private PlayerRays ray;
 
     /// <summary>

@@ -18,7 +18,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject mainMenuConfirmation;
 
     // Components
-    private PlayerInput input;
+    private IPlayerInput input;
     private GraphicRaycaster graphicRaycaster;
 
     // Variable to control last menu before pause

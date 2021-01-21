@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour, ICoroutineT<RaycastHit>
     // Components
     private PlayerGeneralInfo playerInfo;
     private Rigidbody   rb;
-    private PlayerInput input;
+    private IPlayerInput input;
     private PlayerRays  rays;
 
     /// <summary>

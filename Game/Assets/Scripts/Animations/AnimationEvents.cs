@@ -21,7 +21,7 @@ public class AnimationEvents : MonoBehaviour
     /// <param name="typeOfControl">TypeOfControl to change to</param>
     public void ChangeTypeOfControl(TypeOfControl typeOfControl)
     {
-        PlayerInput input;
+        IPlayerInput input;
         input = FindObjectOfType<PlayerInput>();
         input.ChangeTypeOfControl(typeOfControl);
     }
