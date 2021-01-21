@@ -3,12 +3,21 @@ using UnityEngine.SceneManagement;
 using System.IO;
 
 /// <summary>
-/// Class for main menu
+/// Class for main menu.
 /// </summary>
 public class MainMenu : MonoBehaviour
 {
     /// <summary>
-    /// Start method for MainMenu
+    /// Awake method for MainMenu.
+    /// Destroys audio manager prefab.
+    /// </summary>
+    private void Awake()
+    {
+        Destroy(FindObjectOfType<AudioManagerPrefab>()?.gameObject);
+    }
+
+    /// <summary>
+    /// Start method for MainMenu.
     /// </summary>
     private void Start()
     {
@@ -18,8 +27,8 @@ public class MainMenu : MonoBehaviour
     }
 
     /// <summary>
-    /// Loads first scene
-    /// Called on new game button
+    /// Loads first scene.
+    /// Called on new game button.
     /// </summary>
     public void StartGame()
     {
@@ -28,14 +37,17 @@ public class MainMenu : MonoBehaviour
     }
 
     /// <summary>
-    /// Quits the game
-    /// Called on quit button
+    /// Quits the game.
+    /// Called on quit button.
     /// </summary>
     public void QuitGame()
     {       
         Application.Quit();
     }
 
+    /// <summary>
+    /// Deletes existing .txts.
+    /// </summary>
     private void DeleteFiles()
     {
         File.Delete(FilePath.lastScenePath);
