@@ -61,7 +61,8 @@ public class PlayerLook : MonoBehaviour
             horizontalRotation = Mathf.Clamp(horizontalRotation, -20f, 20f);
 
             // Rotates with a limit position
-            transform.localRotation = Quaternion.Euler(VerticalRotation, horizontalRotation, 0f);
+            transform.localRotation = Quaternion.Euler(VerticalRotation,
+                horizontalRotation, 0f);
         }
     }
 }
