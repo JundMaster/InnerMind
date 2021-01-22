@@ -4,10 +4,10 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
-/// Class for Slots that construct an inventory
-/// Implements IPointerClickHandler for click events
-/// Implements IPointerEnterHandler for mouse over events
-/// Implements IPointerExitHandler for mouse over events
+/// Class for Slots that construct an inventory.
+/// Implements IPointerClickHandler for click events.
+/// Implements IPointerEnterHandler for mouse over events.
+/// Implements IPointerExitHandler for mouse over events.
 /// </summary>
 public class ItemInventorySlot : MonoBehaviour, IPointerClickHandler, 
     IPointerEnterHandler, IPointerExitHandler
@@ -19,14 +19,15 @@ public class ItemInventorySlot : MonoBehaviour, IPointerClickHandler,
     private Image image;
 
     // Click event
-    public event Action<ScriptableItem> SlotClick;
+    public event Action<ScriptableItem> SlotClick;      // left click
+    public event Action<ScriptableItem> ActionClick;    // right click
 
     // Mouse over event
     public event Action<ScriptableItem> SlotOver;
     public event Action SlotLeave;
 
     /// <summary>
-    /// Method that happens when the user clicks the mouse in this slot
+    /// Method that happens when the user clicks the mouse in this slot.
     /// </summary>
     /// <param name="eventData">Information about the click</param>
     public void OnPointerClick(PointerEventData eventData)
@@ -38,6 +39,16 @@ public class ItemInventorySlot : MonoBehaviour, IPointerClickHandler,
             {
                 // Contains information about which item is in this slot
                 SlotClick?.Invoke(Info);
+            }
+        }
+
+        if (eventData != null &&
+            eventData.button == PointerEventData.InputButton.Right)
+        {
+            if (Info != null)
+            {
+                // Contains information about which item is in this slot
+                ActionClick?.Invoke(Info);
             }
         }
     }
@@ -59,7 +70,7 @@ public class ItemInventorySlot : MonoBehaviour, IPointerClickHandler,
     }
 
     /// <summary>
-    /// Method that happens when the user takes off the mouse of this slot
+    /// Method that happens when the user takes off the mouse of this slot.
     /// </summary>
     /// <param name="eventData"></param>
     public void OnPointerExit(PointerEventData eventData)
@@ -75,7 +86,7 @@ public class ItemInventorySlot : MonoBehaviour, IPointerClickHandler,
 
     /// <summary>
     /// Update method for ItemInventorySlot
-    /// If the ScritableItem icon changes, the image changes in game
+    /// If the ScritableItem icon changes, the image changes in game.
     /// </summary>
     private void Update()
     {

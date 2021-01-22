@@ -2,84 +2,89 @@
 using UnityEngine;
 
 /// <summary>
-/// Class to define every player input
+/// Class to define every player input.
 /// </summary>
 public class PlayerInput : MonoBehaviour, IPlayerInput
 {
     /// <summary>
-    /// Property for player current control
+    /// Property for player current control.
     /// </summary>
     public TypeOfControl CurrentControl { get; private set; }
 
     /// <summary>
-    /// Property for ZAxis
+    /// Property for ZAxis.
     /// </summary>
     public float ZAxis { get; private set; }
 
     /// <summary>
-    /// Property for XAxis
+    /// Property for XAxis.
     /// </summary>
     public float XAxis { get; private set; }
 
     /// <summary>
-    /// Propert for horizontal mouse speed
+    /// Propert for horizontal mouse speed.
     /// </summary>
     public float HorizontalMouse { get; private set; }
 
     /// <summary>
-    /// Propert for vertical mouse speed
+    /// Propert for vertical mouse speed.
     /// </summary>
     public float VerticalMouse { get; private set; }
 
     /// <summary>
-    /// Propert for left click
+    /// Propert for left click.
     /// </summary>
     public bool LeftClick { get; private set; }
 
-    private bool rightClick;
     /// <summary>
-    /// Property for right click
+    /// Propert for right click.
     /// </summary>
-    public bool RightClick
+    public bool RightClick { get; private set; }
+
+    private bool inventory;
+    /// <summary>
+    /// Property for right click.
+    /// </summary>
+    public bool Inventory
     {
-        get => rightClick;
+        get => inventory;
         private set
         {
-            rightClick = value;
-            if (rightClick)
+            inventory = value;
+            if (inventory)
                 OnChangeControlClick();
         }
     }
 
     /// <summary>
-    /// Property for pause input
+    /// Property for pause input.
     /// </summary>
     public bool Pause { get; private set; }
 
     /// <summary>
-    /// Property to get a key to pass a scene
+    /// Property to get a key to pass a scene.
     /// </summary>
     public bool Space { get; private set; }
 
     /// <summary>
-    /// Property for cursor position relative to cursor in game
+    /// Property for cursor position relative to cursor in game.
     /// </summary>
     public Vector2Int CursorPosition { get; private set; }
 
     /// <summary>
-    /// Property for mouse speed
+    /// Property for mouse speed.
     /// </summary>
     public float MouseSpeed { get; set; }
 
     /// <summary>
-    /// Method to change type of control
+    /// Method to change type of control.
     /// </summary>
     /// <param name="control">TypeOfControl to change to</param>
     public void ChangeTypeOfControl(TypeOfControl control) =>
         CurrentControl = control;
 
     /// <summary>
-    /// Method to invoke ChangeControl
+    /// Method to invoke ChangeControl.
     /// </summary>
     private void OnChangeControlClick()
     {
@@ -90,7 +95,7 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
     public event Action ChangeControl;
 
     /// <summary>
-    /// Start method for PlayerInput
+    /// Start method for PlayerInput.
     /// </summary>
     private void Start()
     {
@@ -98,7 +103,7 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
     }
 
     /// <summary>
-    /// Update method for PlayerInput
+    /// Update method for PlayerInput.
     /// </summary>
     private void Update()
     {
@@ -121,8 +126,8 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
                 // Gets left click
                 LeftClick = Input.GetButtonDown("Fire1");
 
-                // Gets right click
-                RightClick = Input.GetButtonDown("Fire2");
+                // Gets I key
+                Inventory = Input.GetKeyDown(KeyCode.I);
 
                 // Gets ESC key
                 Pause = Input.GetKeyDown(KeyCode.Escape);
@@ -143,6 +148,9 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
 
             case TypeOfControl.InInventory:
                 Cursor.lockState = CursorLockMode.Confined;
+
+                // Gets I key
+                Inventory = Input.GetKeyDown(KeyCode.I);
 
                 // Gets right click
                 RightClick = Input.GetButtonDown("Fire2");
@@ -178,6 +186,9 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
 
                 // Gets left click
                 LeftClick = Input.GetButtonDown("Fire1");
+
+                // Gets right click
+                RightClick = Input.GetButtonDown("Fire2");
 
                 break;
 

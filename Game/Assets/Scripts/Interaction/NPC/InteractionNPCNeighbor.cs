@@ -37,7 +37,7 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         // If the player already has a map, the speakcounter will be 3
         if (FindObjectOfType<Inventory>().Bag.Contains(itemComparer.Map))
         {
-            speakCounter = 3;
+            speakCounter = 2;
         }
         // Else it wil be 0
         else
@@ -56,22 +56,6 @@ public class InteractionNPCNeighbor : InteractionNPCBase
     private void Update()
     {
         dialog.Counter = speakCounter;
-
-        // If the player has a No battery flashlight
-        // If the player doesn't have an old battery
-        // If the player doesn't have a flashlight
-        if (playerInventory.Bag.Contains(
-                                itemComparer.NoBatteryFlashlight) == true &&
-            playerInventory.Bag.Contains(itemComparer.OldBattery) == false &&
-            playerInventory.Bag.Contains(itemComparer.FlashLight) == false)
-        {
-            // Gives NPC's prize
-            dialog.GivePrize = true;
-        }
-        else
-        {
-            dialog.GivePrize = false;
-        }
 
         // If the player has a not rewound tape
         if (playerInventory.Bag.Contains(itemComparer.NotRewoundAudioTape))
@@ -109,17 +93,8 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         StartCoroutine(dialog.GetNextLine());
         yield return waitForSecs;
 
-        // If player has a no battery lantern
-        // If the player doesn't have an old battery
-        if (dialog.GivePrize &&
-            playerInventory.Bag.Contains(itemComparer.OldBattery) == false)
-        {
-            Inventory inventory = FindObjectOfType<Inventory>();
-            inventory.Bag.Add(itemComparer.OldBattery);
-        }
-
         // If player has a not rewound audio tape
-        else if (dialog.OpenDoor)
+        if (dialog.OpenDoor)
         {
             doorToOpen.SetTrigger("Open Door");
 
@@ -133,8 +108,8 @@ public class InteractionNPCNeighbor : InteractionNPCBase
             fw.AddToTxt(player);
         }
 
-        // Give a piano key on second time speaking
-        else if (speakCounter == 2)
+        // Give a map on the first time speaking
+        else if (speakCounter == 0)
         {
             Inventory inventory = FindObjectOfType<Inventory>();
             inventory.Bag.Add(itemComparer.Map);
@@ -147,9 +122,9 @@ public class InteractionNPCNeighbor : InteractionNPCBase
         }
 
         // If speakcounter reaches max number of texts, resets the text
-        // to the initial loop after the text that happens only once
+        // to a certain value
         if (speakCounter == dialog.LinesOfText.Length)
-            speakCounter = 3;
+            speakCounter = 1;
 
         // Sets the coroutine to false so it can be called again
         ThisCoroutine = default;

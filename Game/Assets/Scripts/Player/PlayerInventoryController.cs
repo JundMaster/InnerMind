@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// Class to define user control inside inventory
+/// Class to define user control inside inventory.
 /// </summary>
 public class PlayerInventoryController : MonoBehaviour
 {
@@ -18,9 +18,10 @@ public class PlayerInventoryController : MonoBehaviour
 
     // Variable that keeps the item pressed in inventory
     private ScriptableItem LastClickedItemInfo;
+    public ScriptableItem LastClickedActionsAvailable { get; private set; }
 
     /// <summary>
-    /// Awake method for PlayerInventoryController
+    /// Awake method for PlayerInventoryController.
     /// </summary>
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class PlayerInventoryController : MonoBehaviour
     }
 
     /// <summary>
-    /// OnEnable method for PlayerInventoryController
+    /// OnEnable method for PlayerInventoryController.
     /// </summary>
     private void OnEnable()
     {
@@ -47,12 +48,13 @@ public class PlayerInventoryController : MonoBehaviour
             for (int i = 0; i < inventory.InventorySlot.Length; i++)
             {
                 inventory.InventorySlot[i].SlotClick += SelectItem;
+                inventory.InventorySlot[i].ActionClick += ActionOnItem;
             }
         }
     }
 
     /// <summary>
-    /// OnDisableMethod for PlayerInventoryController
+    /// OnDisableMethod for PlayerInventoryController.
     /// </summary>
     private void OnDisable()
     {
@@ -62,24 +64,28 @@ public class PlayerInventoryController : MonoBehaviour
         for (int i = 0; i < inventory.InventorySlot.Length; i++)
         {
             inventory.InventorySlot[i].SlotClick -= SelectItem;
+            inventory.InventorySlot[i].ActionClick -= ActionOnItem;
         }
     }
 
     /// <summary>
-    /// Sets LastClickedItemInfo variable to null
+    /// Sets LastClickedItemInfo variable to null.
     /// </summary>
     private void CancelLastClickItemInfo()
         => LastClickedItemInfo = null;
 
     /// <summary>
-    /// Runs actions to select an item in inventory
+    /// Runs actions to select an item in inventory.
     /// This method is responsible for changing the cursor and trying to
-    /// combine two items
+    /// combine two items.
     /// </summary>
     /// <param name="item">Information about the ScriptableItem pressed.
-    /// This is the item the player pressed on inventory</param>
+    /// This is the item the player pressed on inventory.</param>
     private void SelectItem(ScriptableItem item)
     {
+        // If the icon was selected with right mouse button, it's set to null
+        LastClickedActionsAvailable = null;
+
         // Selects the item and changes the cursor to that item's cursor 
         // texture
         if (LastClickedItemInfo == null)
@@ -100,10 +106,25 @@ public class PlayerInventoryController : MonoBehaviour
     }
 
     /// <summary>
-    /// After the user pressed RightClick from PlayerInput, this method
-    /// does something depending on type of control. Shows the inventory, 
-    /// hides the inventory or sets the cursor and lastClickedItem to default
-    /// It also triggers inventory animations
+    /// If the user pressed right mouse button, a variable is 'filled' with
+    /// the last clicked item
+    /// </summary>
+    private void ActionOnItem(ScriptableItem item)
+    {
+        // If the icon was selected with left mouse button, it's set to null
+        LastClickedItemInfo = null;
+
+        LastClickedActionsAvailable = item;
+
+        Cursor.SetCursor(LastClickedActionsAvailable.CursorTexture,
+                            input.CursorPosition, CursorMode.Auto);
+    }
+
+    /// <summary>
+    /// After the user pressed inventory from PlayerInput, this method
+    /// does something depending on the type of control. Shows the inventory, 
+    /// hides the inventory or sets the cursor and lastClickedItem to default.
+    /// It also triggers inventory animations.
     /// </summary>
     private void ChangeControl()
     {
@@ -122,9 +143,10 @@ public class PlayerInventoryController : MonoBehaviour
             {
                 // If there's an item selected
                 // Removes the item from the mouse
-                if (LastClickedItemInfo != null)
+                if (LastClickedActionsAvailable != null)
                 {
-                    LastClickedItemInfo = null;
+                    LastClickedActionsAvailable = null;
+
                     Cursor.SetCursor(default,
                                     input.CursorPosition,
                                     CursorMode.Auto);
@@ -140,7 +162,7 @@ public class PlayerInventoryController : MonoBehaviour
             case TypeOfControl.InExamine:
             {
                 // If there's a selected item in the mouse
-                if (LastClickedItemInfo == null)
+                if (LastClickedActionsAvailable == null)
                 {   
                     // And the player is in examine
                     if (examiner != null)
@@ -160,13 +182,14 @@ public class PlayerInventoryController : MonoBehaviour
 
     /// <summary>
     /// Uses an item if the item is IUsable. Called on editor, on use
-    /// button on inventory
+    /// button on inventory.
     /// </summary>
     public void Use()
     {
-        if (LastClickedItemInfo != null)
+        if (LastClickedActionsAvailable != null)
         {
-            if (LastClickedItemInfo.Prefab.TryGetComponent(out IUsable item))
+            if (LastClickedActionsAvailable.Prefab.
+                TryGetComponent(out IUsable item))
             {
                 item.Use();
             }
@@ -175,25 +198,26 @@ public class PlayerInventoryController : MonoBehaviour
 
     /// <summary>
     /// Examines an item. Called on editor, on examine
-    /// button on inventory
+    /// button on inventory.
     /// </summary>
     public void Examine()
     {
-        if (LastClickedItemInfo != null)
+        if (LastClickedActionsAvailable != null)
         {
             Camera examineCamera = FindObjectOfType<ExamineMenu>().ExamineCamera;
             input.ChangeTypeOfControl(TypeOfControl.InExamine);
-            examiner.SetExaminer(new ItemExaminer(5, LastClickedItemInfo,
+            examiner.SetExaminer(new ItemExaminer(5, LastClickedActionsAvailable,
                                 examineCamera));
             examineMenu.DisplayExamineMenu();
         }
     }
 
     /// <summary>
-    /// Update method for PlayerInventoryController
+    /// Update method for PlayerInventoryController.
     /// </summary>
     private void Update()
     {
+        // Right click cancels examine
         if (input.CurrentControl == TypeOfControl.InExamine)
         {
             if (input.RightClick)
@@ -203,6 +227,21 @@ public class PlayerInventoryController : MonoBehaviour
                 input.ChangeTypeOfControl(
                             TypeOfControl.InInventory);
                 examineMenu.HideDisplayMenu();
+            }
+        }
+
+        // Right click cancels selected item
+        if (LastClickedItemInfo != null ||
+            LastClickedActionsAvailable != null)
+        {
+            if (input.RightClick)
+            {
+                LastClickedActionsAvailable = null;
+                LastClickedItemInfo = null;
+
+                Cursor.SetCursor(default,
+                                input.CursorPosition,
+                                CursorMode.Auto);
             }
         }
     }

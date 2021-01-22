@@ -75,7 +75,7 @@ sealed public class SoundManager : MonoBehaviour
                 audioSource.PlayOneShot(sounds[2], 1f);
                 break;
             case SoundClip.WallSlide:
-                audioSource.PlayOneShot(sounds[3], 1f);
+                audioSource.PlayOneShot(sounds[3], 0.5f);
                 break;
             case SoundClip.MajorAKeyNote:
                 audioSource.PlayOneShot(sounds[4], 0.4f);

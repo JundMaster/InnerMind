@@ -849,7 +849,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh166678
+  m_Name: pb_Mesh367130
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1102,7 +1102,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh166178
+  m_Name: pb_Mesh366644
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2860,7 +2860,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-282220
+  m_Name: pb_Mesh-299384
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3163,7 +3163,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-272544
+  m_Name: pb_Mesh-289676
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5102,7 +5102,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-273528
+  m_Name: pb_Mesh-290660
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5628,7 +5628,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh165056
+  m_Name: pb_Mesh365564
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8191,7 +8191,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh166422
+  m_Name: pb_Mesh366884
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14371,7 +14371,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-278556
+  m_Name: pb_Mesh-295720
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16085,7 +16085,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-280514
+  m_Name: pb_Mesh-297678
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -30290,7 +30290,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh165214
+  m_Name: pb_Mesh365716
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -38161,7 +38161,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh165960
+  m_Name: pb_Mesh366430
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -41872,6 +41872,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1637644903}
     m_Modifications:
+    - target: {fileID: 2389548469209464343, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0685221
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389548469209464343, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0685221
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389548469209464343, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0685221
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389548470330993774, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
+      propertyPath: linesOfText.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389548470330993774, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
+      propertyPath: linesOfText.Array.data[0]
+      value: Hello Josh. Take this old map.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389548470330993774, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
+      propertyPath: linesOfText.Array.data[1]
+      value: Can you help me find my audio tape? Find it and I will open this door.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389548470330993774, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
+      propertyPath: linesOfText.Array.data[2]
+      value: Have you found my audio tape yet?
+      objectReference: {fileID: 0}
     - target: {fileID: 5779046738513946356, guid: 2c80c190c1cf13a4da3d085e067afec6, type: 3}
       propertyPath: m_RootOrder
       value: 8

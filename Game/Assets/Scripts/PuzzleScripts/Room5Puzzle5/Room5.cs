@@ -2,7 +2,7 @@
 using System.Collections;
 
 /// <summary>
-/// Class responsible for Room5 puzzle. Extends PuzzleBase
+/// Class responsible for Room5 puzzle. Extends PuzzleBase.
 /// </summary>
 public class Room5 : PuzzleBase
 {
@@ -12,18 +12,16 @@ public class Room5 : PuzzleBase
     // Variable with animator from the last wall on the puzzle on editor
     [SerializeField] private Animator lastWallAnimator;
 
-    // Map related variables/////////////////////////////////////////////
-    [SerializeField] private Sprite mapImage;
-    [SerializeField] private GameObject mapCanvas;
-
     // Objects to destroy
     [SerializeField] private GameObject flashlightSpawn;
     [SerializeField] private GameObject pianoKeySpawn;
+    [SerializeField] private GameObject oldBatterySpawn;
 
+    // Components
     private ItemComparer comparer;
 
     /// <summary>
-    /// Start method for Room5
+    /// Start method for Room5.
     /// </summary>
     private void Start()
     {
@@ -32,7 +30,7 @@ public class Room5 : PuzzleBase
     }
 
     /// <summary>
-    /// Update method of Room5
+    /// Update method of Room5.
     /// </summary>
     private void Update()
     {
@@ -49,7 +47,7 @@ public class Room5 : PuzzleBase
     }
 
     /// <summary>
-    /// Does an action when the puzzle is solved
+    /// Does an action when the puzzle is solved.
     /// </summary>
     public override void Victory()
     {
@@ -59,12 +57,22 @@ public class Room5 : PuzzleBase
         movingWalls.SetActive(false);
     }
 
+    /// <summary>
+    /// If the player has a certain item, that item is not spawned 
+    /// (destroyed) in this scene.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator CheckItemSpawn()
     {
         yield return new WaitForSeconds(0.25f);
+
         if (inventory.Bag.Contains(comparer.FlashLight) ||
             inventory.Bag.Contains(comparer.NoBatteryFlashlight))
             Destroy(flashlightSpawn);
+
+        if (inventory.Bag.Contains(comparer.OldBattery) ||
+            inventory.Bag.Contains(comparer.NoBatteryFlashlight))
+            Destroy(oldBatterySpawn);
 
         if (inventory.Bag.Contains(comparer.PianoKey2) ||
             player.PuzzlesDone.HasFlag(PuzzlesEnum.Puzzle3))
