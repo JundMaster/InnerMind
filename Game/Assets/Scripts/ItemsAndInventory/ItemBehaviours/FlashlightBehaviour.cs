@@ -20,6 +20,25 @@ public class FlashlightBehaviour : MonoBehaviour, IUsable
     }
 
     /// <summary>
+    /// OnEnable method for FlashlightBehaviour
+    /// </summary>
+    private void OnEnable()
+    {
+        flashlightActive = false;
+    }
+
+    /// <summary>
+    /// OnDisable method for Flashlight behaviour
+    /// </summary>
+    private void OnDisable()
+    {
+        flashlight.range = 7;
+        flashlight.spotAngle = 120;
+        flashlight.intensity = 0.3f;
+        flashlightActive = false;
+    }
+
+    /// <summary>
     /// Determins FlashlightBehaviour action when used.
     /// If the player uses the flashlight, the light gets stronger.
     /// </summary>
