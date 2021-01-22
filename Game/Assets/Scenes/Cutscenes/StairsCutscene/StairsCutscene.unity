@@ -140,31 +140,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3999425584325566668, guid: 27e0bc285d070384cb79017c45b5f735, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.724614
+      value: 14.840342
       objectReference: {fileID: 0}
     - target: {fileID: 3999425584325566668, guid: 27e0bc285d070384cb79017c45b5f735, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.534938
+      value: 7.759676
       objectReference: {fileID: 0}
     - target: {fileID: 3999425584325566668, guid: 27e0bc285d070384cb79017c45b5f735, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 56.75111
+      value: 56.242775
       objectReference: {fileID: 0}
     - target: {fileID: 3999425584325566668, guid: 27e0bc285d070384cb79017c45b5f735, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8396435
+      value: 0.7778312
       objectReference: {fileID: 0}
     - target: {fileID: 3999425584325566668, guid: 27e0bc285d070384cb79017c45b5f735, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5425093
+      value: 0.62824833
       objectReference: {fileID: 0}
     - target: {fileID: 3999425584325566668, guid: 27e0bc285d070384cb79017c45b5f735, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.025556143
+      value: 0.004491031
       objectReference: {fileID: 0}
     - target: {fileID: 3999425584325566668, guid: 27e0bc285d070384cb79017c45b5f735, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.005420833
+      value: -0.016205087
       objectReference: {fileID: 0}
     - target: {fileID: 3999425584325566668, guid: 27e0bc285d070384cb79017c45b5f735, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1183,12 +1183,12 @@ PlayableDirector:
     value: {fileID: 1952512462}
   - key: {fileID: 7493732213722642522, guid: 42de82b28ae46e24dbd2b6174e9c5b97, type: 2}
     value: {fileID: 307539505}
-  - key: {fileID: 4754002463573948162, guid: 42de82b28ae46e24dbd2b6174e9c5b97, type: 2}
-    value: {fileID: 1309432845}
   - key: {fileID: 4688404542594743432, guid: 42de82b28ae46e24dbd2b6174e9c5b97, type: 2}
     value: {fileID: 1585975259}
   - key: {fileID: 7516768410132399560, guid: 42de82b28ae46e24dbd2b6174e9c5b97, type: 2}
     value: {fileID: 1017085039}
+  - key: {fileID: -8955301592829352421, guid: 42de82b28ae46e24dbd2b6174e9c5b97, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 8b47312dcabb60447ada89d94db939b3: {fileID: 94298333}

@@ -11,6 +11,7 @@ public class UseAndExamineButton : MonoBehaviour
 
     // Components
     private PlayerInventoryController inventoryController;
+    private PlayerInput input;
 
     /// <summary>
     /// Awake method for UseAndExamineButton.
@@ -18,6 +19,7 @@ public class UseAndExamineButton : MonoBehaviour
     private void Awake()
     {
         inventoryController = FindObjectOfType<PlayerInventoryController>();
+        input = FindObjectOfType<PlayerInput>();
     }
 
     /// <summary>
@@ -28,32 +30,35 @@ public class UseAndExamineButton : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (inventoryController.LastClickedActionsAvailable != null)
+        if (input?.CurrentControl == TypeOfControl.InInventory)
         {
-            // If the item is usable, shows the 'use' icon
-            if (inventoryController.LastClickedActionsAvailable.Prefab.
-                TryGetComponent(out IUsable temp))
+            if (inventoryController.LastClickedActionsAvailable != null)
             {
-                if (useButton?.activeSelf == false)
-                    useButton?.SetActive(true);
+                // If the item is usable, shows the 'use' icon
+                if (inventoryController.LastClickedActionsAvailable.Prefab.
+                    TryGetComponent(out IUsable temp))
+                {
+                    if (useButton?.activeSelf == false)
+                        useButton?.SetActive(true);
+                }
+                else
+                {
+                    if (useButton?.activeSelf == true)
+                        useButton?.SetActive(false);
+                }
+
+                // shows 'examine' icon
+                if (examineButton?.activeSelf == false)
+                    examineButton?.SetActive(true);
             }
             else
             {
+                // If no item is selected, doesn't show the icons
                 if (useButton?.activeSelf == true)
                     useButton?.SetActive(false);
+                if (examineButton?.activeSelf == true)
+                    examineButton?.SetActive(false);
             }
-
-            // shows 'examine' icon
-            if (examineButton?.activeSelf == false)
-                examineButton?.SetActive(true);
-        }
-        else
-        {
-            // If no item is selected, doesn't show the icons
-            if (useButton?.activeSelf == true)
-                useButton?.SetActive(false);
-            if (examineButton?.activeSelf == true)
-                examineButton?.SetActive(false);
         }
     }
 
