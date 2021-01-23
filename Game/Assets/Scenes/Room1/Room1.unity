@@ -341,7 +341,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26976
+  m_Name: pb_Mesh16542
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -505,7 +505,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-21866
+  m_Name: pb_Mesh-3834
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -747,7 +747,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27002
+  m_Name: pb_Mesh16568
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -924,7 +924,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27080
+  m_Name: pb_Mesh16646
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1088,7 +1088,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27076
+  m_Name: pb_Mesh16642
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6327,7 +6327,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27078
+  m_Name: pb_Mesh16644
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6794,7 +6794,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27122
+  m_Name: pb_Mesh16686
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7190,7 +7190,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-21876
+  m_Name: pb_Mesh-3844
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20592,7 +20592,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-21888
+  m_Name: pb_Mesh-3856
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -23676,6 +23676,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1948826835764443506, guid: 5bd0dc1fd7fa4b84baa5472b7f0e0f55, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948826835809168398, guid: 5bd0dc1fd7fa4b84baa5472b7f0e0f55, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 285212671
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948826835840051726, guid: 5bd0dc1fd7fa4b84baa5472b7f0e0f55, type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: 169a45f1d1e03db41b0693188d55d6a3, type: 3}
+    - target: {fileID: 1948826835880122349, guid: 5bd0dc1fd7fa4b84baa5472b7f0e0f55, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948826835963483449, guid: 5bd0dc1fd7fa4b84baa5472b7f0e0f55, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948826836073212038, guid: 5bd0dc1fd7fa4b84baa5472b7f0e0f55, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: c40d0990b053ac842b699ccef7d1779d, type: 3}
     - target: {fileID: 1948826836431473265, guid: 5bd0dc1fd7fa4b84baa5472b7f0e0f55, type: 3}
       propertyPath: m_Name
       value: Tutorial
@@ -23727,6 +23751,40 @@ PrefabInstance:
     - target: {fileID: 1948826836431473270, guid: 5bd0dc1fd7fa4b84baa5472b7f0e0f55, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948826836461511337, guid: 5bd0dc1fd7fa4b84baa5472b7f0e0f55, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948826837145765495, guid: 5bd0dc1fd7fa4b84baa5472b7f0e0f55, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948826837433907170, guid: 5bd0dc1fd7fa4b84baa5472b7f0e0f55, type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: 44703ec627b504a45b879fcca7de1a75, type: 3}
+    - target: {fileID: 1948826837440393736, guid: 5bd0dc1fd7fa4b84baa5472b7f0e0f55, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948826837547424056, guid: 5bd0dc1fd7fa4b84baa5472b7f0e0f55, type: 3}
+      propertyPath: m_text
+      value: Press i to open and close the inventory. There are some items that can
+        be used. Press the item with right mouse button, drag the item to the icon
+        on the left of the screen and press it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948826837547424056, guid: 5bd0dc1fd7fa4b84baa5472b7f0e0f55, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4244635647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948826837547424059, guid: 5bd0dc1fd7fa4b84baa5472b7f0e0f55, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 719.8211
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948826837547424059, guid: 5bd0dc1fd7fa4b84baa5472b7f0e0f55, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0000076293945
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bd0dc1fd7fa4b84baa5472b7f0e0f55, type: 3}
