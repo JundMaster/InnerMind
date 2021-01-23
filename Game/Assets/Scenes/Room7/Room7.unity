@@ -21740,7 +21740,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4968731174705634224, guid: d3902927cfdbb4148ac964f86456f9d8, type: 3}
       propertyPath: m_Name
-      value: AudioManagers
+      value: Don'tDestroyOnLoad
       objectReference: {fileID: 0}
     - target: {fileID: 4968731174705634225, guid: d3902927cfdbb4148ac964f86456f9d8, type: 3}
       propertyPath: m_RootOrder

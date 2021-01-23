@@ -19,5 +19,6 @@ public enum SceneNames
     BuildingCutscene,
     FinalCutscene,
     JohanneCutscene,
-    MainMenu
+    MainMenu,
+    IntroCutscene,
 }

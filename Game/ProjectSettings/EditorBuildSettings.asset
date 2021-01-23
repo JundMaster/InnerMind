@@ -5,55 +5,58 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 3bac381e63a29f04692a6ec074484d1d
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Room1/Room1.unity
     guid: 653c866dea908a5429ec5a42f91b3612
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Room2/Room2.unity
     guid: 14dc9ee42c733b741bfa2ff5d1a401c2
   - enabled: 1
     path: Assets/Scenes/Room3/Room3.unity
     guid: f6874dc43280c8d4da589f5ad687d7e3
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Room4/Room4.unity
     guid: 39ce46bc0cfa7db499ff18a9de02d494
   - enabled: 1
     path: Assets/Scenes/Room5/Room5.unity
     guid: 671038ff8f4cadd4dbfedcf24ccea658
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Room6/Room6.unity
     guid: 1707365852365504a900786de873d072
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Room7/Room7.unity
     guid: 91ffb5f7f9d369245b3a898058161412
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Room8/Room8.unity
     guid: 84da6dd83c563764284111161a6de720
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Room9/Room9.unity
     guid: c01e3a4e6339d844f80ee00df329d862
-  - enabled: 0
-    path: Assets/Scenes/Cutscenes/IntroCutscene/IntroCutscene.unity
-    guid: e9ab42a470ffbbf4d93c9ade71c08c46
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Cutscenes/StairsCutscene/StairsCutscene.unity
     guid: ad8b5405a4dd51d4fa8b56716f73ad2a
   - enabled: 1
     path: Assets/Scenes/Cutscenes/AmbulanceCutscene/AmbulanceCutscene.unity
     guid: 37efd4eef94a4ce4fadfd322fbba6383
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Cutscenes/ElevatorCutscene/ElevatorCutscene.unity
     guid: 1e412d2b545fbd543b0256abd1d289e5
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Cutscenes/BuildingCutscene/BuildingCutscene.unity
     guid: 8a524755ab452da46820aba57d01d6cc
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Cutscenes/FinalCutscene/FinalCutscene.unity
     guid: 51f342e2de4fd934ebb330ef5dfbbf19
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Cutscenes/JohanneCutscene/JohanneCutscene.unity
     guid: 7182b97b134cd924193a38bdbc783532
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/IntroCutscene/IntroCutscene.unity
+    guid: e9ab42a470ffbbf4d93c9ade71c08c46
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: c856b26820ea4754a9b13cbbe61a7d30
   m_configObjects: {}
