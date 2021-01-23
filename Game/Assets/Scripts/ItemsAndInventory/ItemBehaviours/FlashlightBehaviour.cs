@@ -1,67 +1,46 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// Class for Flashlight Behaviour. Implements IUsable
+/// Class for Flashlight Behaviour. Implements IUsable.
 /// </summary>
 public class FlashlightBehaviour : MonoBehaviour, IUsable
 {
     // Flashlight
     private Light flashlight;
 
-    // Bool to control if flashlight is active
-    private bool flashlightActive;
-
     /// <summary>
-    /// Start method for Flashlight Behaviour
-    /// </summary>
-    private void Start()
-    {
-        flashlightActive = false;
-    }
-
-    /// <summary>
-    /// OnEnable method for FlashlightBehaviour
-    /// </summary>
-    private void OnEnable()
-    {
-        flashlightActive = false;
-    }
-
-    /// <summary>
-    /// OnDisable method for Flashlight behaviour
+    /// OnDisable method for Flashlight behaviour.
     /// </summary>
     private void OnDisable()
     {
         flashlight.range = 7;
         flashlight.spotAngle = 120;
         flashlight.intensity = 0.3f;
-        flashlightActive = false;
     }
 
     /// <summary>
-    /// Determins FlashlightBehaviour action when used.
+    /// Determines FlashlightBehaviour action when used.
     /// If the player uses the flashlight, the light gets stronger.
     /// </summary>
     public void Use()
-    {
+    {      
         flashlight = GameObject.FindGameObjectWithTag("PlayerLantern").
             GetComponent<Light>();
 
         SoundManager.PlaySound(SoundClip.FlashlightClick);
 
-        if (flashlightActive == false)
+        // Turns on flashlight
+        if (flashlight.range == 7)
         {
             flashlight.range = 10;
             flashlight.spotAngle = 90;
             flashlight.intensity = 1.5f;
-            flashlightActive = true;
         }
-        else
+        else // Turns off flaslight
         {
             flashlight.range = 7;
             flashlight.spotAngle = 120;
             flashlight.intensity = 0.3f;
-            flashlightActive = false;
         }
     }
 }
