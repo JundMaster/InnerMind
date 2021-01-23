@@ -44,7 +44,7 @@ public class InteractionMedicineCabinet : InteractionCommon, ICoroutineT<string>
         //and plays the animation
         if (inventory.Bag.Contains(cabinetKey))
         {
-            closetBoxDoorCollider.enabled = true;
+            closetBoxDoorCollider.enabled = false;
             closetBoxCollider.enabled = false;
             cabinetDoorAnimation.SetTrigger("Open Door");
             inventory.Bag.Remove(cabinetKey);

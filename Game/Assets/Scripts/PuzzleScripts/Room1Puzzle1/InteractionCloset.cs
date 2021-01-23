@@ -12,12 +12,15 @@ public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
     private Text displayText;
     private WaitForSeconds waitForSeconds;
     private string thought;
+    private Inventory inventory;
 
     //Variables in Inspector
     [SerializeField] private string[] thoughts;
     [SerializeField] private Canvas thoughtCanvas;
     [SerializeField] private string animTrigger;
     [SerializeField] private Animator closetDoorAnimation;
+    [SerializeField] private ScriptableItem cabinetKey;
+    [SerializeField] private ScriptableItem pillBottle;
 
     /// <summary>
     /// Property to control a couroutine
@@ -29,6 +32,7 @@ public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
     /// </summary>
     private void Awake()
     {
+        inventory = FindObjectOfType<Inventory>();
         closetDoorAnimation = GetComponentInChildren<Animator>();
         closetBoxCollider = GetComponent<BoxCollider>();
         waitForSeconds = new WaitForSeconds(2);
@@ -40,13 +44,16 @@ public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
     /// This method determines the action of the closet when clicked
     /// </summary>
     public override void Execute()
-    {
-        closetDoorAnimation.SetTrigger(animTrigger);
-        closetBoxCollider.enabled = false;
-
-        if (ThisCoroutine == null)
-            if (thoughtCanvas.enabled == false)
-                ThisCoroutine = StartCoroutine(CoroutineExecute(thoughts));
+    { 
+            closetDoorAnimation.SetTrigger(animTrigger);
+            closetBoxCollider.enabled = false;
+            if (!inventory.Bag.Contains(cabinetKey) && 
+                !inventory.Bag.Contains(pillBottle))
+            {
+                if (ThisCoroutine == null)
+                    if (thoughtCanvas.enabled == false)
+                        ThisCoroutine = StartCoroutine(CoroutineExecute(thoughts));
+            }
     }
 
     /// <summary>
