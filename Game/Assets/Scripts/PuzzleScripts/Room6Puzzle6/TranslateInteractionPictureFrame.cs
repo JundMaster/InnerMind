@@ -51,6 +51,7 @@ public class TranslateInteractionPictureFrame : InteractionCR
     public override IEnumerator CoroutineExecute()
     {
         StartCoroutine(TranslateInteraction());
+        SoundManager.PlaySound(SoundClip.WoodDragging);
         yield break;
     }
 
@@ -63,7 +64,10 @@ public class TranslateInteractionPictureFrame : InteractionCR
     public IEnumerator ChainTranslationExecute(int pointModifier)
     {
         if (TranslateInteractionCommon(pointModifier) != null)
+        {
             StartCoroutine(TranslateInteractionCommon(pointModifier));
+            SoundManager.PlaySound(SoundClip.WoodDragging);
+        }
         yield break;
     }
 

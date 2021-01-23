@@ -22,5 +22,6 @@ public enum SoundClip
     AudioTapeRewind,
     BatteryInsert,
     WallSlideLower,
-    DoorClose
+    DoorClose,
+    WoodDragging,
 }

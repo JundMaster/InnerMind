@@ -48,6 +48,7 @@ public class Room6 : PuzzleBase
         System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
     {
         drawerAnimator.SetTrigger("CloseDrawer");
+        SoundManager.PlaySound(SoundClip.DrawerClosing);
     }
 
     /// <summary>
@@ -60,6 +61,7 @@ public class Room6 : PuzzleBase
         {
             prize.SetActive(true);
             drawerAnimator.SetTrigger("OpenDrawer");
+            SoundManager.PlaySound(SoundClip.DrawerOpen);
         }
 
         for (int i  = 0; i < pictureFramePuzzleParent.FramePictures.Length; i++)
