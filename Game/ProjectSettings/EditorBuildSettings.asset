@@ -59,7 +59,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cutscenes/IntroCutscene/IntroCutscene.unity
     guid: e9ab42a470ffbbf4d93c9ade71c08c46
-  - enabled: 1
-    path: Assets/Scenes/LoadingScene.unity
-    guid: c856b26820ea4754a9b13cbbe61a7d30
   m_configObjects: {}

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 
 /// <summary>
 /// Class responsible for loading loadingscene and setting the next scene to
@@ -8,7 +9,7 @@ using System.Collections;
 /// </summary>
 public class LoadingHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject loadingScreen;
+    [SerializeField] private GameObject loadingScreen; 
 
     private Coroutine loadSceneCoroutine;
 
