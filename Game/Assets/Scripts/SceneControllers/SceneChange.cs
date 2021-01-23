@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
+using System;
+using System.Collections.Generic;
 
 /// <summary>
 /// Class responsible for changing scenes
@@ -36,7 +38,7 @@ public class SceneChange : MonoBehaviour
             }
         }
         
-        // On collision with player
+        // On collision with player, loads new scene
         if (other.CompareTag("Player"))
         {
             // If file exists
@@ -60,16 +62,18 @@ public class SceneChange : MonoBehaviour
 
                 // If goToScene was watched, loads elseGoToScreen
                 if (watchedCutscene)
-                    SceneManager.LoadScene(elseGoToScene.ToString());
+                {
+                    OnChangedScene(elseGoToScene);
+                }
 
                 // Else, if the goToScene wasn't watched, loads the normal 
                 //  cutscene order and writes its name on the file
                 else
                 {
-                    File.AppendAllText(FilePath.watchedCutscenes, 
+                    File.AppendAllText(FilePath.watchedCutscenes,
                                         $"\n{goToScene}");
 
-                    SceneManager.LoadScene(goToScene.ToString());
+                    OnChangedScene(GoToScene);
                 }
             }
 
@@ -78,8 +82,21 @@ public class SceneChange : MonoBehaviour
             {
                 File.AppendAllText(FilePath.watchedCutscenes, $"{goToScene}");
 
-                SceneManager.LoadScene(goToScene.ToString());
+                OnChangedScene(GoToScene);
             }
         }
     }
+
+    /// <summary>
+    /// Method that invokes ChangeScene event
+    /// </summary>
+    /// <param name="scene">Scene to change to</param>
+    protected virtual void OnChangedScene(SceneNames scene)
+        => ChangedScene?.Invoke(scene);
+
+    /// <summary>
+    /// Event that happens when a scene is changed.
+    /// Event called on LoadingHandler script.
+    /// </summary>
+    public event Action<SceneNames> ChangedScene;
 }

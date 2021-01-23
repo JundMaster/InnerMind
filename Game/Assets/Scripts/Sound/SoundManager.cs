@@ -29,7 +29,7 @@ sealed public class SoundManager : MonoBehaviour
     {
         AudioSource = GetComponent<AudioSource>();
 
-        sounds = new AudioClip[16];
+        sounds = new AudioClip[17];
 
         sounds[0] = Resources.Load<AudioClip>("Sounds/footstep");
         sounds[1] = Resources.Load<AudioClip>("Sounds/walkmanAudio");
@@ -47,6 +47,7 @@ sealed public class SoundManager : MonoBehaviour
         sounds[13] = Resources.Load<AudioClip>("Sounds/cubeRotating");
         sounds[14] = Resources.Load<AudioClip>("Sounds/audioTapeRewind");
         sounds[15] = Resources.Load<AudioClip>("Sounds/batteryInsert");
+        sounds[16] = Resources.Load<AudioClip>("Sounds/doorClose");
     }
 
     /// <summary>
@@ -115,6 +116,9 @@ sealed public class SoundManager : MonoBehaviour
                 break;
             case SoundClip.WallSlideLower:
                 audioSource.PlayOneShot(sounds[3], 0.3f);
+                break;
+            case SoundClip.DoorClose:
+                audioSource.PlayOneShot(sounds[16], 0.3f);
                 break;
         }
     }

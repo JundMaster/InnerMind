@@ -58,6 +58,7 @@ public class InteractionFamilyPicture : InteractionCommon, ICoroutineT<string[]>
             thoughtCanvas.enabled = false;
             displayText.enabled = false;
         }
+        ThisCoroutine = null;
     }
 
     /// <summary>
