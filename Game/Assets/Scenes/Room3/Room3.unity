@@ -36496,6 +36496,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 440072805}
     m_Modifications:
+    - target: {fileID: 142025496, guid: a1fe6915a6356434590dacba04b56773, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 142025496, guid: a1fe6915a6356434590dacba04b56773, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 142025496, guid: a1fe6915a6356434590dacba04b56773, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 142025496, guid: a1fe6915a6356434590dacba04b56773, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 161898450, guid: a1fe6915a6356434590dacba04b56773, type: 3}
+      propertyPath: m_Name
+      value: Back
+      objectReference: {fileID: 0}
+    - target: {fileID: 161898453, guid: a1fe6915a6356434590dacba04b56773, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a26659202d881eb48bb584f826d2f477, type: 3}
     - target: {fileID: 5206634064778609927, guid: a1fe6915a6356434590dacba04b56773, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -36543,6 +36567,10 @@ PrefabInstance:
     - target: {fileID: 5206634064778610168, guid: a1fe6915a6356434590dacba04b56773, type: 3}
       propertyPath: m_Name
       value: DoorWithCode
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206634066517329445, guid: a1fe6915a6356434590dacba04b56773, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1fe6915a6356434590dacba04b56773, type: 3}

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 
 /// <summary>
@@ -14,11 +13,17 @@ public class InteractionPianoKey : InteractionCommon
     //Variable used to see if the player can play a key
     private bool canPlay;
 
+    /// <summary>
+    /// Start method for InteractionPianoKey
+    /// </summary>
     private void Start()
     {
         canPlay = true;
     }
 
+    /// <summary>
+    /// Update method for InteractionPianoKey
+    /// </summary>
     private void Update()
     {
         //Checks if the animator is still running
@@ -42,7 +47,7 @@ public class InteractionPianoKey : InteractionCommon
         if (canPlay)
         {
             keyAnimator.SetTrigger("playKey");
-            KeyID?.Invoke(keyID);
+            OnKeyID(keyID);
 
             switch (keyID)
             {
@@ -62,7 +67,15 @@ public class InteractionPianoKey : InteractionCommon
 
     }
 
-    //KeyID event with played key's ID
+    /// <summary>
+    /// Method that invokes KeyID event.
+    /// </summary>
+    /// <param name="keyID">ID of the piano key.</param>
+    protected virtual void OnKeyID(PianoKeyID keyID) => KeyID?.Invoke(keyID);
+
+    /// <summary>
+    /// KeyID event with played key's ID
+    /// </summary>
     public event Action<PianoKeyID> KeyID;
 
     /// <summary>
@@ -70,7 +83,7 @@ public class InteractionPianoKey : InteractionCommon
     /// when the Crosshair is on top of this object
     /// </summary>
     /// <returns>Returns a string with an action</returns>
-    public override string ToString() => "PlayKey";
+    public override string ToString() => "Play Piano Key";
 
 
 

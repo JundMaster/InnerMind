@@ -5,26 +5,13 @@
 /// </summary>
 public class FlashlightBehaviour : MonoBehaviour, IUsable
 {
-    // Flashlight
-    private Light flashlight;
-
-    /// <summary>
-    /// OnDisable method for Flashlight behaviour.
-    /// </summary>
-    private void OnDisable()
-    {
-        flashlight.range = 7;
-        flashlight.spotAngle = 120;
-        flashlight.intensity = 0.3f;
-    }
-
     /// <summary>
     /// Determines FlashlightBehaviour action when used.
     /// If the player uses the flashlight, the light gets stronger.
     /// </summary>
     public void Use()
-    {      
-        flashlight = GameObject.FindGameObjectWithTag("PlayerLantern").
+    {
+        Light flashlight = GameObject.FindGameObjectWithTag("PlayerLantern").
             GetComponent<Light>();
 
         SoundManager.PlaySound(SoundClip.FlashlightClick);
