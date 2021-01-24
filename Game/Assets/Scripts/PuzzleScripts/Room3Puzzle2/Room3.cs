@@ -81,6 +81,5 @@ public class Room3 : PuzzleBase
     public override void Victory()
     {
         base.Victory();
-        anim.SetTrigger("Open Door");
     }
 }
