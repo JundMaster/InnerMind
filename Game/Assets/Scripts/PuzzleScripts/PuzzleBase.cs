@@ -5,7 +5,7 @@ using System;
 
 /// <summary>
 /// Abstract class responsible for creating puzzles in rooms.
-/// Implements IPuzzle
+/// Implements IPuzzle.
 /// </summary>
 public abstract class PuzzleBase : MonoBehaviour, IPuzzle
 {
@@ -21,7 +21,7 @@ public abstract class PuzzleBase : MonoBehaviour, IPuzzle
     protected Coroutine readPuzzlesDoneTxtCoroutine;
 
     /// <summary>
-    /// Awake method for PuzzleBase
+    /// Awake method for PuzzleBase.
     /// </summary>
     private void Awake()
     {
@@ -37,7 +37,7 @@ public abstract class PuzzleBase : MonoBehaviour, IPuzzle
 
     /// <summary>
     /// If a new scene was loaded, the player.PuzzlesDone variable is updated
-    /// with txt text containing puzzles done after 0.25 seconds
+    /// with txt text containing puzzles done after 0.25 seconds.
     /// </summary>
     /// <returns>Returns null</returns>
     protected IEnumerator ReadPuzzlesDoneTxt()
@@ -61,7 +61,7 @@ public abstract class PuzzleBase : MonoBehaviour, IPuzzle
     }
 
     /// <summary>
-    /// Does an action when the puzzle is solved
+    /// Does an action when the puzzle is solved.
     /// </summary>
     public virtual void Victory()
     {
@@ -75,10 +75,12 @@ public abstract class PuzzleBase : MonoBehaviour, IPuzzle
     }
 
     /// <summary>
-    /// Method to invoke ReadPuzzlesDone
+    /// Method to invoke ReadPuzzlesDone.
     /// </summary>
     protected virtual void OnReadPuzzlesDone() => ReadPuzzlesDone?.Invoke();
 
-    // Event to check if coroutine read puzzles done txt has ran
+    /// <summary>
+    /// Event to check if coroutine read puzzles done txt has run.
+    /// </summary>
     public event Action ReadPuzzlesDone;
 }
