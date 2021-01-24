@@ -93,12 +93,6 @@ public class WallLamp : MonoBehaviour
         Lights = lights;
         LampIndex = lampIndex;
         CurrentDirection = WallLampDirection.Top;
-        CheckLights(false);
-        //Debug.Log($"Lamp {lampIndex} is aligned: {IsAligned()}");
-        //Debug.Log($"Top light: {Lights[0].LightComponent.range}");
-        //Debug.Log($"Top light: {Lights[0].LightComponent.color}");
-        //Debug.Log($"Top light: {Lights[1].LightComponent.range}");
-        //Debug.Log($"Top light: {Lights[1].LightComponent.color}");
     }
 
     /// <summary>
