@@ -21,4 +21,5 @@ public enum SceneNames
     JohanneCutscene,
     MainMenu,
     IntroCutscene,
+    CreditsScene,
 }
