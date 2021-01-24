@@ -6,13 +6,12 @@ using UnityEngine;
 /// </summary>
 public class TranslateInteractionPictureFrame : InteractionCR
 {
-    // Direction to which the frame will translate to
+    // Direction to which the frame will translate
     [SerializeField]
     private int directionModifier;
 
     [SerializeField]
     private ThoughtHandler thoughtHandler;
-
 
     // The actual frame 
     private PictureFramePuzzle frame;
@@ -25,6 +24,8 @@ public class TranslateInteractionPictureFrame : InteractionCR
 
     private bool interacting;
 
+    public bool CanInteract { get; set; }
+
     /// <summary>
     /// Index of the point in which the frame is
     /// </summary>
@@ -36,7 +37,7 @@ public class TranslateInteractionPictureFrame : InteractionCR
     private void Start()
     {
         interacting = false;
-
+        CanInteract = true;
         framePointParent = FindObjectOfType<FramePointParent>();
         frame = GetComponentInParent<PictureFramePuzzle>();
         FramePositionIndex = frame.CurrentPosition;
@@ -50,8 +51,11 @@ public class TranslateInteractionPictureFrame : InteractionCR
     /// <returns>Returns null.</returns>
     public override IEnumerator CoroutineExecute()
     {
-        StartCoroutine(TranslateInteraction());
-        SoundManager.PlaySound(SoundClip.WoodDragging);
+        if (CanInteract)
+        {
+            StartCoroutine(TranslateInteraction());
+            SoundManager.PlaySound(SoundClip.WoodDragging);
+        }
         yield break;
     }
 

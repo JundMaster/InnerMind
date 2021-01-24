@@ -66,8 +66,8 @@ public class Room6 : PuzzleBase
 
         for (int i  = 0; i < pictureFramePuzzleParent.FramePictures.Length; i++)
         {
-            Destroy(pictureFramePuzzleParent.FramePictures[i].
-                GetComponentInChildren<TranslateInteractionPictureFrame>());
+            pictureFramePuzzleParent.FramePictures[i].
+                GetComponentInChildren<TranslateInteractionPictureFrame>().CanInteract = false;
         }
     }
 }

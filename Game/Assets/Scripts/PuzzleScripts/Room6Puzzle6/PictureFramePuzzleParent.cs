@@ -7,7 +7,6 @@ using UnityEngine;
 /// </summary>
 public class PictureFramePuzzleParent : MonoBehaviour
 {
-
     [SerializeField]
     private PictureFramePuzzle[] framePictures;
 
