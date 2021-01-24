@@ -17,8 +17,6 @@ public class InteractionMedicineCabinet : InteractionCommon, ICoroutineT<string>
     public Coroutine ThisCoroutine { get; private set; }
 
     //Inspector Variables
-    [SerializeField] private BoxCollider closetBoxDoorCollider;
-    [SerializeField] private BoxCollider closetBoxCollider;
     [SerializeField] private string[] thought;
     [SerializeField] private Canvas thoughtCanvas;
     [SerializeField] private ScriptableItem cabinetKey;
@@ -44,8 +42,7 @@ public class InteractionMedicineCabinet : InteractionCommon, ICoroutineT<string>
         //and plays the animation
         if (inventory.Bag.Contains(cabinetKey))
         {
-            closetBoxDoorCollider.enabled = false;
-            closetBoxCollider.enabled = false;
+            gameObject.layer = 2;
             cabinetDoorAnimation.SetTrigger("Open Door");
             inventory.Bag.Remove(cabinetKey);
             ThisCoroutine = StartCoroutine(CoroutineExecute(thought[1]));

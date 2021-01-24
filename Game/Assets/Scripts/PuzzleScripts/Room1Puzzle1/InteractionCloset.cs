@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
 {
     //Components
-    private BoxCollider closetBoxCollider;
     private Text displayText;
     private WaitForSeconds waitForSeconds;
     private string thought;
@@ -34,7 +33,6 @@ public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
     {
         inventory = FindObjectOfType<Inventory>();
         closetDoorAnimation = GetComponentInChildren<Animator>();
-        closetBoxCollider = GetComponent<BoxCollider>();
         waitForSeconds = new WaitForSeconds(2);
         displayText = thoughtCanvas.GetComponentInChildren<Text>();
         ThisCoroutine = null;
@@ -44,9 +42,9 @@ public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
     /// This method determines the action of the closet when clicked
     /// </summary>
     public override void Execute()
-    { 
+    {
+            this.gameObject.layer = 2;
             closetDoorAnimation.SetTrigger(animTrigger);
-            closetBoxCollider.enabled = false;
             if (!inventory.Bag.Contains(cabinetKey) && 
                 !inventory.Bag.Contains(pillBottle))
             {

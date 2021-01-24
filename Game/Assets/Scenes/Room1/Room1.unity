@@ -341,7 +341,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3838
+  m_Name: pb_Mesh-10690
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -662,8 +662,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 220660535}
-  - component: {fileID: 220660536}
-  - component: {fileID: 220660537}
   m_Layer: 0
   m_Name: RightDoor
   m_TagString: Untagged
@@ -686,38 +684,6 @@ Transform:
   m_Father: {fileID: 543450653452158896}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &220660536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 220660534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42ed300fdf7aeac4a8a28f9c73382a06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thoughts:
-  - Maybe its somewhere else...?
-  thoughtCanvas: {fileID: 341177102}
-  animTrigger: OpenRightDoor
-  closetDoorAnimation: {fileID: 4025185846794525041}
-  cabinetKey: {fileID: 11400000, guid: f4d71641f5f8e8f4592b17b3aab5fb3c, type: 2}
-  pillBottle: {fileID: 11400000, guid: 863585a87a8e66a4a862f7b3b181040d, type: 2}
---- !u!65 &220660537
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 220660534}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.21872783, y: 0.014709955, z: 0.6265949}
-  m_Center: {x: -0.4026505, y: -0.07984123, z: 0.1867027}
 --- !u!4 &254566480 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5570837001001033880, guid: d31f586f1e8e1e04a8262b533e4766e9, type: 3}
@@ -734,8 +700,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.81974506, y: 0.20609833, z: 0.65464354}
-  m_Center: {x: -0.09846867, y: 0.03153435, z: 0.17267843}
+  m_Size: {x: 0.012126765, y: 0.20609833, z: 0.65464354}
+  m_Center: {x: 0.30180126, y: 0.031534355, z: 0.17267843}
 --- !u!1 &341177098
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,7 +817,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16660
+  m_Name: pb_Mesh26026
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1015,7 +981,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16588
+  m_Name: pb_Mesh25954
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5402,7 +5368,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16664
+  m_Name: pb_Mesh26030
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6721,7 +6687,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16706
+  m_Name: pb_Mesh26076
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7117,7 +7083,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3848
+  m_Name: pb_Mesh-10700
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7557,6 +7523,78 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 120492917871373866, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 120492917871373866, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 120492917871373866, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 120492917871373866, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 120492917871373866, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 120492917871373866, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 206117808009821299, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 206117808009821299, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 206117808009821299, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 206117808009821299, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 206117808009821299, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 206117808009821299, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 272747025530829863, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 272747025530829863, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 272747025530829863, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 272747025530829863, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 272747025530829863, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 272747025530829863, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1024616515020214473, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -7604,6 +7642,126 @@ PrefabInstance:
     - target: {fileID: 1024616515020214475, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
       propertyPath: m_Name
       value: CanvasGroup
+      objectReference: {fileID: 0}
+    - target: {fileID: 1184455648742373399, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1184455648742373399, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1184455648742373399, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1184455648742373399, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1184455648742373399, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1184455648742373399, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6215481540905947659, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6215481540905947659, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6215481540905947659, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6215481540905947659, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6215481540905947659, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6215481540905947659, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6651580443683668091, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6651580443683668091, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6651580443683668091, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6651580443683668091, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6651580443683668091, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6651580443683668091, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683645743764682909, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683645743764682909, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683645743764682909, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683645743764682909, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683645743764682909, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683645743764682909, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8421663583866598999, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8421663583866598999, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8421663583866598999, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8421663583866598999, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8421663583866598999, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8421663583866598999, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
@@ -20250,7 +20408,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16662
+  m_Name: pb_Mesh26028
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20414,7 +20572,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16562
+  m_Name: pb_Mesh25926
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20674,7 +20832,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3860
+  m_Name: pb_Mesh-10712
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20919,8 +21077,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1799402613}
-  - component: {fileID: 1799402614}
-  - component: {fileID: 1799402615}
   m_Layer: 0
   m_Name: LeftDoor
   m_TagString: Untagged
@@ -20943,38 +21099,6 @@ Transform:
   m_Father: {fileID: 543450653452158896}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1799402614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1799402612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42ed300fdf7aeac4a8a28f9c73382a06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thoughts:
-  - Humm...Does not seem to be here
-  thoughtCanvas: {fileID: 341177102}
-  animTrigger: OpenLeftDoor
-  closetDoorAnimation: {fileID: 5866334226876904528}
-  cabinetKey: {fileID: 11400000, guid: f4d71641f5f8e8f4592b17b3aab5fb3c, type: 2}
-  pillBottle: {fileID: 11400000, guid: 863585a87a8e66a4a862f7b3b181040d, type: 2}
---- !u!65 &1799402615
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1799402612}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.22167334, y: 0.013739114, z: 0.6123084}
-  m_Center: {x: 0.1970607, y: -0.07874341, z: 0.1820042}
 --- !u!4 &1848673158 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0aec8ccb4868ce942ba7315f830bb944, type: 3}
@@ -21864,8 +21988,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2084177567}
-  - component: {fileID: 2084177568}
-  - component: {fileID: 2084177569}
   m_Layer: 0
   m_Name: RightMiddleDoor
   m_TagString: Untagged
@@ -21888,38 +22010,6 @@ Transform:
   m_Father: {fileID: 543450653452158896}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2084177568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084177566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42ed300fdf7aeac4a8a28f9c73382a06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thoughts:
-  - Ah! There she is. Why did I put it here...?
-  thoughtCanvas: {fileID: 341177102}
-  animTrigger: OpenRightMiddleDoor
-  closetDoorAnimation: {fileID: 3550592865946687237}
-  cabinetKey: {fileID: 11400000, guid: f4d71641f5f8e8f4592b17b3aab5fb3c, type: 2}
-  pillBottle: {fileID: 11400000, guid: 863585a87a8e66a4a862f7b3b181040d, type: 2}
---- !u!65 &2084177569
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084177566}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.19080617, y: 0.013739114, z: 0.6123084}
-  m_Center: {x: -0.20241527, y: -0.0787434, z: 0.1820042}
 --- !u!1 &2102700946
 GameObject:
   m_ObjectHideFlags: 0
@@ -21929,8 +22019,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2102700947}
-  - component: {fileID: 2102700948}
-  - component: {fileID: 2102700949}
   m_Layer: 0
   m_Name: LeftMiddleDoor
   m_TagString: Untagged
@@ -21953,38 +22041,6 @@ Transform:
   m_Father: {fileID: 543450653452158896}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2102700948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102700946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42ed300fdf7aeac4a8a28f9c73382a06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thoughts:
-  - God dammit....where the hell did I put it?!
-  thoughtCanvas: {fileID: 341177102}
-  animTrigger: OpenLeftMiddleDoor
-  closetDoorAnimation: {fileID: 1096796673540993620}
-  cabinetKey: {fileID: 11400000, guid: f4d71641f5f8e8f4592b17b3aab5fb3c, type: 2}
-  pillBottle: {fileID: 11400000, guid: 863585a87a8e66a4a862f7b3b181040d, type: 2}
---- !u!65 &2102700949
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102700946}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.19409297, y: 0.013739114, z: 0.6123084}
-  m_Center: {x: -0.009769385, y: -0.07874341, z: 0.1820042}
 --- !u!1001 &2111815482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22837,6 +22893,7 @@ GameObject:
   - component: {fileID: 4167280743641950817}
   - component: {fileID: 5835772783916470201}
   - component: {fileID: 2570646523779143549}
+  - component: {fileID: 635547659801609268}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -22844,6 +22901,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &635547659801609268
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635547659801609267}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.60955524, y: 0.8263644, z: 0.5010855}
+  m_Center: {x: -0.05005986, y: 0.39979482, z: 0.22401515}
 --- !u!4 &661771212769629582
 Transform:
   m_ObjectHideFlags: 0
@@ -23040,7 +23110,6 @@ GameObject:
   - component: {fileID: 3469287838676905067}
   - component: {fileID: 1711813854616066209}
   - component: {fileID: 1523901740}
-  - component: {fileID: 919132148069579126}
   - component: {fileID: 919132148069579125}
   - component: {fileID: 919132148069579127}
   m_Layer: 0
@@ -23061,21 +23130,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0002839585, y: 0.001373461, z: 0.0039999997}
-  m_Center: {x: 0.0013580247, y: -0.00068672653, z: 3.8241635e-19}
---- !u!65 &919132148069579126
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148069579124}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.0030000003, y: 0.00012880808, z: 0.0039999997}
-  m_Center: {x: 0, y: -0.001435591, z: 3.733728e-20}
+  m_Size: {x: 0.0002839585, y: 0.0016024208, z: 0.0039999997}
+  m_Center: {x: 0.0013580247, y: -0.0008012063, z: -9.578793e-19}
 --- !u!65 &919132148069579127
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23087,8 +23143,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0001815062, y: 0.0014999999, z: 0.0039999997}
-  m_Center: {x: -0.001418061, y: -0.0007499961, z: -3.583272e-19}
+  m_Size: {x: 0.0001815062, y: 0.0015979845, z: 0.0039999997}
+  m_Center: {x: -0.0014180612, y: -0.0007989887, z: -9.319157e-19}
 --- !u!1 &919132148082736041
 GameObject:
   m_ObjectHideFlags: 0
@@ -23115,6 +23171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450653452158896}
   - component: {fileID: 298564296}
+  - component: {fileID: 919132149444517131}
   m_Layer: 2
   m_Name: Closet
   m_TagString: Untagged
@@ -23122,6 +23179,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &919132149444517131
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149444517130}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.008524338, y: 0.20609833, z: 0.65464354}
+  m_Center: {x: -0.5040802, y: 0.03153436, z: 0.17267843}
 --- !u!33 &930400696732936691
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -23205,6 +23275,8 @@ GameObject:
   - component: {fileID: 6189399719249449176}
   - component: {fileID: 181840919449898652}
   - component: {fileID: 1096796673540993620}
+  - component: {fileID: 1096796673540993622}
+  - component: {fileID: 1096796673540993621}
   m_Layer: 0
   m_Name: Door2
   m_TagString: Untagged
@@ -23231,6 +23303,38 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &1096796673540993621
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096796673540993619}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.523744, y: 0.00873096, z: 0.4729816}
+  m_Center: {x: -1.7673068, y: -0.00043508087, z: 0.2364908}
+--- !u!114 &1096796673540993622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096796673540993619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ed300fdf7aeac4a8a28f9c73382a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thoughts:
+  - God dammit....where the hell did I put it?!
+  thoughtCanvas: {fileID: 341177102}
+  animTrigger: OpenLeftMiddleDoor
+  closetDoorAnimation: {fileID: 1096796673540993620}
+  cabinetKey: {fileID: 11400000, guid: f4d71641f5f8e8f4592b17b3aab5fb3c, type: 2}
+  pillBottle: {fileID: 11400000, guid: 863585a87a8e66a4a862f7b3b181040d, type: 2}
 --- !u!33 &1105013367435720508
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -24130,8 +24234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddac2e03855eaea43b27b26b4475581e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closetBoxDoorCollider: {fileID: 2258330302511742373}
-  closetBoxCollider: {fileID: 919132148069579126}
   thought:
   - Sigh...Where did I put that damned key...
   - Ah, found the meds.
@@ -24258,7 +24360,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5332902733945777892}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 52.128693}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2445606767763354893
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25229,6 +25331,8 @@ GameObject:
   - component: {fileID: 4603542376243680951}
   - component: {fileID: 3062256052014395598}
   - component: {fileID: 3550592865946687237}
+  - component: {fileID: 3550592865946687239}
+  - component: {fileID: 3550592865946687238}
   m_Layer: 0
   m_Name: Door3
   m_TagString: Untagged
@@ -25255,6 +25359,38 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &3550592865946687238
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3550592865946687236}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.523201, y: 0.008813201, z: 0.4729816}
+  m_Center: {x: 1.7445574, y: 0.00032547562, z: 0.2364908}
+--- !u!114 &3550592865946687239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3550592865946687236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ed300fdf7aeac4a8a28f9c73382a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thoughts:
+  - Ah! There she is. Why did I put it here...?
+  thoughtCanvas: {fileID: 341177102}
+  animTrigger: OpenRightMiddleDoor
+  closetDoorAnimation: {fileID: 3550592865946687237}
+  cabinetKey: {fileID: 11400000, guid: f4d71641f5f8e8f4592b17b3aab5fb3c, type: 2}
+  pillBottle: {fileID: 11400000, guid: 863585a87a8e66a4a862f7b3b181040d, type: 2}
 --- !u!23 &3561953822175359016
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25639,6 +25775,8 @@ GameObject:
   - component: {fileID: 2613433250435921654}
   - component: {fileID: 7477432662680800121}
   - component: {fileID: 4025185846794525041}
+  - component: {fileID: 4025185846794525042}
+  - component: {fileID: 4025185846794525043}
   m_Layer: 0
   m_Name: Door4
   m_TagString: Untagged
@@ -25665,6 +25803,38 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &4025185846794525042
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4025185846794525040}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6039243, y: 0.007860827, z: 0.4719398}
+  m_Center: {x: -0.3073972, y: 0.00000025262136, z: 0.2359699}
+--- !u!114 &4025185846794525043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4025185846794525040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ed300fdf7aeac4a8a28f9c73382a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thoughts:
+  - Maybe its somewhere else...?
+  thoughtCanvas: {fileID: 341177102}
+  animTrigger: OpenRightDoor
+  closetDoorAnimation: {fileID: 4025185846794525041}
+  cabinetKey: {fileID: 11400000, guid: f4d71641f5f8e8f4592b17b3aab5fb3c, type: 2}
+  pillBottle: {fileID: 11400000, guid: 863585a87a8e66a4a862f7b3b181040d, type: 2}
 --- !u!4 &4072531761609576481
 Transform:
   m_ObjectHideFlags: 0
@@ -26191,7 +26361,7 @@ Transform:
   - {fileID: 843295181488947163}
   m_Father: {fileID: 543450652544885710}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.00001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4830510992072737561
 GameObject:
   m_ObjectHideFlags: 0
@@ -26471,7 +26641,7 @@ Transform:
   - {fileID: 2441182507708002952}
   m_Father: {fileID: 6344903996145121080}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -48.19247}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0}
 --- !u!33 &5398687574899009520
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -26719,6 +26889,8 @@ GameObject:
   - component: {fileID: 3829566804926617}
   - component: {fileID: 8769756863553903754}
   - component: {fileID: 5866334226876904528}
+  - component: {fileID: 5866334226876904530}
+  - component: {fileID: 5866334226876904529}
   m_Layer: 0
   m_Name: Door1
   m_TagString: Untagged
@@ -26745,6 +26917,38 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &5866334226876904529
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5866334226876904527}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6039243, y: 0.007860827, z: 0.4719398}
+  m_Center: {x: -0.30739734, y: 0.00000011987183, z: 0.2359699}
+--- !u!114 &5866334226876904530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5866334226876904527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ed300fdf7aeac4a8a28f9c73382a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thoughts:
+  - Humm...Does not seem to be here
+  thoughtCanvas: {fileID: 341177102}
+  animTrigger: OpenLeftDoor
+  closetDoorAnimation: {fileID: 5866334226876904528}
+  cabinetKey: {fileID: 11400000, guid: f4d71641f5f8e8f4592b17b3aab5fb3c, type: 2}
+  pillBottle: {fileID: 11400000, guid: 863585a87a8e66a4a862f7b3b181040d, type: 2}
 --- !u!1 &5893078573639447583
 GameObject:
   m_ObjectHideFlags: 0
