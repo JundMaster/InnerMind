@@ -2,7 +2,7 @@
 using System.IO;
 
 /// <summary>
-/// Class responsible for Room3
+/// Class responsible for Room3.
 /// </summary>
 public class Room3 : PuzzleBase
 {
@@ -18,7 +18,7 @@ public class Room3 : PuzzleBase
     private PlayerMovement movement;
 
     /// <summary>
-    /// Start method of Room3
+    /// Start method of Room3.
     /// </summary>
     private void Start()
     {
@@ -78,9 +78,11 @@ public class Room3 : PuzzleBase
         }
     }
 
+    /// <summary>
+    /// Method that calls victory from base class.
+    /// </summary>
     public override void Victory()
     {
         base.Victory();
-        anim.SetTrigger("Open Door");
     }
 }

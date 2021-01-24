@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// Class responsible for puzzle 2 in room 3
+/// Class responsible for puzzle 2 in room 3.
 /// </summary>
 public class Room3_1 : PuzzleBase
 {
@@ -29,25 +29,23 @@ public class Room3_1 : PuzzleBase
     }
 
     /// <summary>
-    /// OnEnable method of Room3_1
+    /// OnEnable method of Room3_1.
     /// </summary>
     private void OnEnable()
     {
-        // Subscribes to an event
-        doorScriptPuzzle.DoorOpened += this.Victory;
+        doorScriptPuzzle.DoorOpened += Victory;
     }
 
     /// <summary>
-    /// OnDisable method of Room3_1
+    /// OnDisable method of Room3_1.
     /// </summary>
     private void OnDisable()
     {
-        // Unsubscribes to an event
-        doorScriptPuzzle.DoorOpened -= this.Victory;
+        doorScriptPuzzle.DoorOpened -= Victory;
     }
 
     /// <summary>
-    /// Does an action when the puzzle is solved
+    /// Does an action when the puzzle is solved.
     /// Opens a door
     /// </summary>
     public override void Victory()
