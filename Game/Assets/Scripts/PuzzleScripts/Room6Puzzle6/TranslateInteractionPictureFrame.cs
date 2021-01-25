@@ -15,6 +15,7 @@ public class TranslateInteractionPictureFrame : InteractionCR
 
     // The actual frame 
     private PictureFramePuzzle frame;
+    private PictureFramePuzzleParent pictureFramePuzzleParent;
 
     // Object that hold all the frame points
     private FramePointParent framePointParent;
@@ -24,7 +25,10 @@ public class TranslateInteractionPictureFrame : InteractionCR
 
     private bool interacting;
 
-    public bool CanInteract { get; set; }
+    public bool CanInteract 
+    {
+        get; set;
+    }
 
     /// <summary>
     /// Index of the point in which the frame is
@@ -40,9 +44,9 @@ public class TranslateInteractionPictureFrame : InteractionCR
         CanInteract = true;
         framePointParent = FindObjectOfType<FramePointParent>();
         frame = GetComponentInParent<PictureFramePuzzle>();
+        pictureFramePuzzleParent = FindObjectOfType<PictureFramePuzzleParent>();
         FramePositionIndex = frame.CurrentPosition;
         onInteraction = false;
-
     }
 
     /// <summary>
