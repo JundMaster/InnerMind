@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Cinemachine;
 
 /// <summary>
 /// Class for player camera/look
@@ -15,18 +16,38 @@ public class PlayerLook : MonoBehaviour
     // Components
     private Transform player;
     private IPlayerInput input;
+    private PlayerMovement movement;
+    private CinemachineBasicMultiChannelPerlin cam;
 
     /// <summary>
-    /// Start method for PlayerLook
+    /// Awake method for PlayerLook
     /// </summary>
-    private void Start()
+    private void Awake()
     {
         input = GetComponentInParent<PlayerInput>();
+        movement = GetComponentInParent<PlayerMovement>();
+        cam = GetComponent<CinemachineVirtualCamera>().
+            GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
         // player Transform is the same as this class's parent
         player = transform.parent.transform;
 
         VerticalRotation = 0f;
+    }
+
+    /// <summary>
+    /// Update method for PlayerLook. Shakes camera while walking.
+    /// </summary>
+    private void Update()
+    {
+        if (movement.Movement.magnitude > 0)
+        {
+            cam.m_FrequencyGain = 1.5f;
+        }
+        else
+        {
+            cam.m_FrequencyGain = 0.3f;
+        }
     }
 
     /// <summary>

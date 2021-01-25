@@ -3099,6 +3099,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1637644903}
     m_Modifications:
+    - target: {fileID: 1513829939, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
+      propertyPath: m_NoiseProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: b241f91b9ccf8ff489abf204b30d3112, type: 2}
+    - target: {fileID: 1513829939, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
+      propertyPath: m_AmplitudeGain
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3056546008109604626, guid: 8fe0fc37c596f844bb91e6924a312df7, type: 3}
       propertyPath: m_RootOrder
       value: 1
