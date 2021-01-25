@@ -64,7 +64,7 @@ public class Room4 : PuzzleBase, ICoroutineT<string>
     public void VictoryCheck()
     {
         //Puzzle's Solution Input
-        int[] solution = new int[] { 3, 2, 1 };
+        int[] solution = new int[] { 3, 3, 1 };
 
         //Checks if the players input is the same as the solution
         if (solution[0] == keyPlayOrder.PianoPlayerInput.x &&
