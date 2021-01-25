@@ -40,9 +40,16 @@ public class PlayerLook : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (movement.Movement.magnitude > 0)
+        if (input.CurrentControl == TypeOfControl.InGameplay)
         {
-            cam.m_FrequencyGain = 1.5f;
+            if (movement?.Movement.magnitude > 0)
+            {
+                cam.m_FrequencyGain = 1.5f;
+            }
+            else
+            {
+                cam.m_FrequencyGain = 0.3f;
+            }
         }
         else
         {

@@ -92,10 +92,32 @@ public class NeighborMovementBehaviour : NPCMovementBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        // Corrects camera position after the player transform is updated to
+        // its new position.
+        // This new rotation can only happen after the position is updated.
+        pCameraFrom = playerCamera.transform.rotation;
+        pCameraTo = default;
+        if (lookAt != null)
+            pCameraTo = Quaternion.LookRotation(lookAt.position -
+                                                playerCamera.transform.position);
+
+        // Rotates camera to the correct position after moving the player
+        float elapsedTime2 = 0.0f;
+        while (elapsedTime2 < 0.5f)
+        {
+            // Rotates Player's Camera
+            playerCamera.transform.rotation = Quaternion.Slerp(pCameraFrom,
+                pCameraTo, elapsedTime2 * rotationSpeedModifier);
+
+            elapsedTime2 += Time.deltaTime;
+            yield return null;
+        }
+
         // Sets VerticalRotation to the same as rotation.eulerAngles.X at the 
         // moment, so the camera stays exactly the same angle after the anim
         playerCamera.VerticalRotation =
-            playerCamera.transform.rotation.eulerAngles.x;
+        playerCamera.transform.rotation.eulerAngles.x;
 
         anim.SetTrigger("idle");
     }
