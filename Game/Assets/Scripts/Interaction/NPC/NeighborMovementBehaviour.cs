@@ -23,7 +23,6 @@ public class NeighborMovementBehaviour : NPCMovementBehaviour
         PlayerMovement player = FindObjectOfType<PlayerMovement>();
         PlayerLook playerCamera = player.GetComponentInChildren<PlayerLook>();
 
-        anim.SetTrigger("turn");
 
         float elapsedTime = 0.0f;
 
@@ -41,6 +40,23 @@ public class NeighborMovementBehaviour : NPCMovementBehaviour
         if (lookAt != null)
             pCameraTo = Quaternion.LookRotation(lookAt.position -
                                                 playerCamera.transform.position);
+
+        // Plays turn animation if the player is not on npc's front
+        // else it plays idle animation
+        if (transform.eulerAngles.y - 20 <
+            Quaternion.LookRotation(player.transform.position -
+                                   transform.position).eulerAngles.y &&
+            transform.eulerAngles.y + 20 >
+            Quaternion.LookRotation(player.transform.position -
+                                   transform.position).eulerAngles.y)
+        {
+            anim.SetTrigger("idle");
+        }
+        else
+        {
+            anim.ResetTrigger("idle");
+            anim.SetTrigger("turn");
+        }
 
         // Animation for both NPC and player rotations
         while (elapsedTime < 0.5f)
@@ -76,10 +92,32 @@ public class NeighborMovementBehaviour : NPCMovementBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        // Corrects camera position after the player transform is updated to
+        // its new position.
+        // This new rotation can only happen after the position is updated.
+        pCameraFrom = playerCamera.transform.rotation;
+        pCameraTo = default;
+        if (lookAt != null)
+            pCameraTo = Quaternion.LookRotation(lookAt.position -
+                                                playerCamera.transform.position);
+
+        // Rotates camera to the correct position after moving the player
+        float elapsedTime2 = 0.0f;
+        while (elapsedTime2 < 0.5f)
+        {
+            // Rotates Player's Camera
+            playerCamera.transform.rotation = Quaternion.Slerp(pCameraFrom,
+                pCameraTo, elapsedTime2 * rotationSpeedModifier);
+
+            elapsedTime2 += Time.deltaTime;
+            yield return null;
+        }
+
         // Sets VerticalRotation to the same as rotation.eulerAngles.X at the 
         // moment, so the camera stays exactly the same angle after the anim
         playerCamera.VerticalRotation =
-            playerCamera.transform.rotation.eulerAngles.x;
+        playerCamera.transform.rotation.eulerAngles.x;
 
         anim.SetTrigger("idle");
     }
