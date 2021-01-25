@@ -64,10 +64,12 @@ public class Room6 : PuzzleBase
             SoundManager.PlaySound(SoundClip.DrawerOpen);
         }
 
-        for (int i  = 0; i < pictureFramePuzzleParent.FramePictures.Length; i++)
+        for (int i = 0; i < pictureFramePuzzleParent.FramePictures.Length; i++)
         {
-            pictureFramePuzzleParent.FramePictures[i].
-                GetComponentInChildren<TranslateInteractionPictureFrame>().CanInteract = false;
+            pictureFramePuzzleParent.
+                FramePictures[i].
+                GetComponentInChildren<TranslateInteractionPictureFrame>().
+                CanInteract = false;
         }
     }
 }

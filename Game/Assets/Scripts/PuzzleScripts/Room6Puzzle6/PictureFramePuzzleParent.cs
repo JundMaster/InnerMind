@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 /// <summary>
-/// Responsible for controlling the frames in the Oldportrait Puzzle
+/// Responsible for controlling the frames in the Oldportrait Puzzle.
 /// </summary>
 public class PictureFramePuzzleParent : MonoBehaviour
 {
@@ -13,19 +13,15 @@ public class PictureFramePuzzleParent : MonoBehaviour
     private Room6 room6;
 
     /// <summary>
-    /// Frames on the puzzle
+    /// Frames on the puzzle.
     /// </summary>
     public PictureFramePuzzle[] FramePictures
     {
         get => framePictures;
-        set
-        {
-            framePictures = value;
-        }
     }
 
     /// <summary>
-    /// Event fired when the puzzle is solved
+    /// Event fired when the puzzle is solved.
     /// </summary>
     public event Action PuzzleSolved;
 
@@ -35,9 +31,9 @@ public class PictureFramePuzzleParent : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        for (int i = 0; i < framePictures.Length; i++)
+        for (int i = 0; i < FramePictures.Length; i++)
         {
-            framePictures[i].FrameChanged += ChainTranslation;
+            FramePictures[i].FrameChanged += ChainTranslation;
         }
     }
 
@@ -48,16 +44,16 @@ public class PictureFramePuzzleParent : MonoBehaviour
     private void Start()
     {
         room6 = FindObjectOfType<Room6>();
-        FramePictures = framePictures;
+        //FramePictures = framePictures;
     }
     /// <summary>
     /// OnDisable method for PictureFramePuzzleParent
     /// </summary>
     private void OnDisable()
     {
-        for (int i = 0; i < framePictures.Length; i++)
+        for (int i = 0; i < FramePictures.Length; i++)
         {
-            framePictures[i].FrameChanged -= ChainTranslation;
+            FramePictures[i].FrameChanged -= ChainTranslation;
         }
     }
     #endregion
@@ -75,7 +71,7 @@ public class PictureFramePuzzleParent : MonoBehaviour
     /// </summary>
     /// <param name="pictureFramePuzzle">Frame to be moved</param>
     private void ChainTranslation(PictureFramePuzzle pictureFramePuzzle)
-    {
+    {   
         StartCoroutine(ChainTranslationCoroutine(pictureFramePuzzle));
     }
 
@@ -101,8 +97,15 @@ public class PictureFramePuzzleParent : MonoBehaviour
                 StartCoroutine(chainTranslation);
             }
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         SolvedCheck(pictureFramePuzzle);
+        //yield return new WaitForSeconds(2f);
+        //for (int i = 0; i < FramePictures.Length; i++)
+        //{
+        //    FramePictures[i].
+        //        GetComponentInChildren<TranslateInteractionPictureFrame>().
+        //        CanInteract = true;
+        //}
         yield break;
     }
 
