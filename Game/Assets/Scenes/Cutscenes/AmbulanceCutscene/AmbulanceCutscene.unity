@@ -899,7 +899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d8a14513b59eaa418da8d7d85428a6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneChange: {fileID: 0}
+  sceneChange: {fileID: 881843089}
 --- !u!4 &854643085
 Transform:
   m_ObjectHideFlags: 0
@@ -944,6 +944,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &881843089 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1275880136, guid: 0ef5e5b06345415428911f1a4ab76d61, type: 3}
+  m_PrefabInstance: {fileID: 122062365}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881843086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2951f94986e76084791e58fbabee4c78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &968377605
 GameObject:
   m_ObjectHideFlags: 0
