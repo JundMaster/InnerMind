@@ -23,7 +23,6 @@ public class NeighborMovementBehaviour : NPCMovementBehaviour
         PlayerMovement player = FindObjectOfType<PlayerMovement>();
         PlayerLook playerCamera = player.GetComponentInChildren<PlayerLook>();
 
-        anim.SetTrigger("turn");
 
         float elapsedTime = 0.0f;
 
@@ -41,6 +40,23 @@ public class NeighborMovementBehaviour : NPCMovementBehaviour
         if (lookAt != null)
             pCameraTo = Quaternion.LookRotation(lookAt.position -
                                                 playerCamera.transform.position);
+
+        // Plays turn animation if the player is not on npc's front
+        // else it plays idle animation
+        if (transform.eulerAngles.y - 20 <
+            Quaternion.LookRotation(player.transform.position -
+                                   transform.position).eulerAngles.y &&
+            transform.eulerAngles.y + 20 >
+            Quaternion.LookRotation(player.transform.position -
+                                   transform.position).eulerAngles.y)
+        {
+            anim.SetTrigger("idle");
+        }
+        else
+        {
+            anim.ResetTrigger("idle");
+            anim.SetTrigger("turn");
+        }
 
         // Animation for both NPC and player rotations
         while (elapsedTime < 0.5f)
