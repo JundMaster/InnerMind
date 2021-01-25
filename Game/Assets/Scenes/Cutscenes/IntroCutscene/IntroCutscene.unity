@@ -15165,6 +15165,8 @@ MonoBehaviour:
   thoughtCanvas: {fileID: 362769855}
   animTrigger: OpenRightDoor
   closetDoorAnimation: {fileID: 2043031825}
+  cabinetKey: {fileID: 0}
+  pillBottle: {fileID: 0}
 --- !u!43 &561374055
 Mesh:
   m_ObjectHideFlags: 0
@@ -18285,7 +18287,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 03c483dce419c334da5816033e8d67da, type: 2}
+  - {fileID: 2100000, guid: 52c9083b299dfa3479caa56bb9f0a98c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -26628,8 +26630,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddac2e03855eaea43b27b26b4475581e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closetBoxDoorCollider: {fileID: 1588232159}
-  closetBoxCollider: {fileID: 885772788}
   thought:
   - Sigh...Where did I put that damned key...
   - Ah, found the meds.
@@ -26928,6 +26928,8 @@ MonoBehaviour:
   thoughtCanvas: {fileID: 362769855}
   animTrigger: OpenLeftDoor
   closetDoorAnimation: {fileID: 852925147}
+  cabinetKey: {fileID: 0}
+  pillBottle: {fileID: 0}
 --- !u!1 &1698474705
 GameObject:
   m_ObjectHideFlags: 0
@@ -27590,6 +27592,8 @@ MonoBehaviour:
   thoughtCanvas: {fileID: 362769855}
   animTrigger: OpenLeftMiddleDoor
   closetDoorAnimation: {fileID: 446447199}
+  cabinetKey: {fileID: 0}
+  pillBottle: {fileID: 0}
 --- !u!43 &1811779399
 Mesh:
   m_ObjectHideFlags: 0
@@ -29656,3 +29660,5 @@ MonoBehaviour:
   thoughtCanvas: {fileID: 362769855}
   animTrigger: OpenRightMiddleDoor
   closetDoorAnimation: {fileID: 1348549377}
+  cabinetKey: {fileID: 0}
+  pillBottle: {fileID: 0}

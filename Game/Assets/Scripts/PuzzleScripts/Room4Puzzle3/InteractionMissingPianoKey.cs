@@ -12,14 +12,18 @@ public class InteractionMissingPianoKey : InteractionCommon, ICoroutineT<string>
     private Inventory inventory;
     private Text displayText;
     private WaitForSeconds waitForSeconds;
+    private Room4 roomPuzzle;
+    
 
     //Inspector Variables
     [SerializeField] private string thought;
     [SerializeField] private GameObject thoughtCanvas;
     [SerializeField] private GameObject keyPosition;
     [SerializeField] private ScriptableItem[] pianoKeys;
+    
 
     public Coroutine ThisCoroutine { get; private set; }
+    public bool CanInteractWithPiano { get; private set; }
 
 
     /// <summary>
@@ -32,6 +36,12 @@ public class InteractionMissingPianoKey : InteractionCommon, ICoroutineT<string>
         displayText = thoughtCanvas.GetComponentInChildren<Text>();
         waitForSeconds = new WaitForSeconds(3);
         ThisCoroutine = null;
+        roomPuzzle = FindObjectOfType<Room4>();
+
+
+        CanInteractWithPiano = inventory.Bag.Contains(pianoKeys[0]) &&
+                inventory.Bag.Contains(pianoKeys[1]) &&
+                    inventory.Bag.Contains(pianoKeys[2]);
     }
 
     /// <summary>
@@ -39,25 +49,33 @@ public class InteractionMissingPianoKey : InteractionCommon, ICoroutineT<string>
     /// </summary>
     public override void Execute()
     {
-        for (int i = 0; i < pianoKeys.Length; i++)
+        if (CanInteractWithPiano)
         {
-            //Checks if the player has piano keys in its inventory
-            //placing missing key and removing it from it's inventory
-            if (inventory.Bag.Contains(pianoKeys[i]))
+            for (int i = 0; i < pianoKeys.Length; i++)
             {
-                inventory.Bag.Remove(pianoKeys[i]);
-                keyPosition.SetActive(true);
-                boxCollider.enabled = false;
-                thought = "Ah, there ya go.";
-                break;
+
+                //Checks if the player has piano keys in its inventory
+                //placing missing key and removing it from it's inventory
+                if (inventory.Bag.Contains(pianoKeys[i]))
+                {
+
+                    inventory.Bag.Remove(pianoKeys[i]);
+                    keyPosition.SetActive(true);
+                    boxCollider.enabled = false;
+                    thought = "Ah, there ya go.";
+                    break;
+
+
+                }
             }
-            else thought = "Hmm...Some keys are missing...";
         }
+        else thought = "Hmm...Some keys are missing...";
 
         if (ThisCoroutine == null && !thoughtCanvas.activeSelf)
         {
             ThisCoroutine = StartCoroutine(CoroutineExecute(thought));
         }
+        
     }
 
 

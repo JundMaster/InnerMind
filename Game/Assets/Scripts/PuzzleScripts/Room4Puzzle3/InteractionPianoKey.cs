@@ -35,7 +35,6 @@ public class InteractionPianoKey : InteractionCommon
             {
                 
                 canPlay = true;
-                print(canPlay);
             }
         }
     }
@@ -66,7 +65,6 @@ public class InteractionPianoKey : InteractionCommon
 
             canPlay = false;
         }
-        print(canPlay);
     }
 
     /// <summary>

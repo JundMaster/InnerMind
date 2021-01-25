@@ -18,6 +18,7 @@ public class Room4 : PuzzleBase, ICoroutineT<string>
     [SerializeField] private Transform prizePosition;
     [SerializeField] private string thought;
     [SerializeField] private GameObject thoughtCanvas;
+    [SerializeField] private BoxCollider roomDoor;
 
     /// <summary>
     /// Property used to see if the player has finished the puzzle
@@ -54,6 +55,7 @@ public class Room4 : PuzzleBase, ICoroutineT<string>
     /// </summary>
     public override void Victory()
     {
+        roomDoor.enabled = false;
         base.Victory();
         StartCoroutine(VictoryCoroutine());
     }

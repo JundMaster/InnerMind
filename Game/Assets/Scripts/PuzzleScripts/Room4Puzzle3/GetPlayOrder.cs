@@ -7,9 +7,12 @@ public class GetPlayOrder : MonoBehaviour
 {
     //Components
     private Room4 room4;
+    private Inventory inventory;
+    private ItemComparer itemComparer;
 
     //Inspector Variables
     [SerializeField] private InteractionPianoKey[] pianoKeys;
+    [SerializeField] private BoxCollider roomDoor;
 
     /// <summary>
     /// Property used to save the played keys order
@@ -28,7 +31,13 @@ public class GetPlayOrder : MonoBehaviour
         playCounter = 0;
         PianoPlayerInput = new CustomVector3(0, 0, 0);
         room4 = FindObjectOfType<Room4>();
-        
+        inventory = FindObjectOfType<Inventory>();
+        itemComparer = FindObjectOfType<ItemComparer>();
+
+        if (inventory.Bag.Contains(itemComparer.PianoKey1) &&
+                inventory.Bag.Contains(itemComparer.PianoKey2) &&
+                    inventory.Bag.Contains(itemComparer.PianoKey3))
+            roomDoor.enabled = true;
 
     }
 
