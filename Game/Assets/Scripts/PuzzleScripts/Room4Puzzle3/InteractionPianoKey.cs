@@ -31,10 +31,11 @@ public class InteractionPianoKey : InteractionCommon
         {
             
             // If the animation reached its end
-            if (keyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.98)
+            if (keyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.85f)
             {
-
+                
                 canPlay = true;
+                print(canPlay);
             }
         }
     }
@@ -46,6 +47,7 @@ public class InteractionPianoKey : InteractionCommon
     {
         if (canPlay)
         {
+
             keyAnimator.SetTrigger("playKey");
             OnKeyID(keyID);
 
@@ -64,7 +66,7 @@ public class InteractionPianoKey : InteractionCommon
 
             canPlay = false;
         }
-
+        print(canPlay);
     }
 
     /// <summary>

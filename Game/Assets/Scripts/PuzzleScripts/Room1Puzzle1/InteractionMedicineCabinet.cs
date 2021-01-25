@@ -42,7 +42,7 @@ public class InteractionMedicineCabinet : InteractionCommon, ICoroutineT<string>
         //and plays the animation
         if (inventory.Bag.Contains(cabinetKey))
         {
-            gameObject.layer = 2;
+            
             cabinetDoorAnimation.SetTrigger("Open Door");
             inventory.Bag.Remove(cabinetKey);
             ThisCoroutine = StartCoroutine(CoroutineExecute(thought[1]));

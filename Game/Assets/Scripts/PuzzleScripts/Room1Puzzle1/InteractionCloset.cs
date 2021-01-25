@@ -43,7 +43,7 @@ public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
     /// </summary>
     public override void Execute()
     {
-            this.gameObject.layer = 2;
+            gameObject.layer = 2;
             closetDoorAnimation.SetTrigger(animTrigger);
             if (!inventory.Bag.Contains(cabinetKey) && 
                 !inventory.Bag.Contains(pillBottle))
