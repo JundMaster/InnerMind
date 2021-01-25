@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Class for PadlockButton from door with code
@@ -15,6 +16,8 @@ public class PadlockButton : MonoBehaviour
 
     // Variable to control coroutine
     private Coroutine coroutine;
+
+    [SerializeField] private Button backButton;
 
     /// <summary>
     /// Start method for PadlockButton
@@ -58,6 +61,12 @@ public class PadlockButton : MonoBehaviour
                     padlockWheelsGameObjects[i].GetComponent<Transform>();
             }
         }
+
+        // If any of the wheels is rotating, the backButton is inactive
+        if (coroutine != null)
+            backButton.interactable = false;
+        else
+            backButton.interactable = true;
     }
 
     /// <summary>
@@ -200,6 +209,8 @@ public class PadlockButton : MonoBehaviour
     /// </summary>
     public void BackToGameplay()
     {
-        padlockDoor.BackToGameplay();
+        // Only happens if the wheels are stopped
+        if (coroutine == null)
+            padlockDoor.BackToGameplay();
     }
 }

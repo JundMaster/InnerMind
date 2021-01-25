@@ -34,22 +34,6 @@ public class InteractionDoorWithCode : InteractionCommon
     }
 
     /// <summary>
-    /// Updated method for InteractionDoorWithCode
-    /// </summary>
-    private void Update()
-    {
-        if (input.CurrentControl == TypeOfControl.InDoorWithCode)
-        {
-            if (input.RightClick)
-            {
-                Destroy(newPadlock);
-                padlockCanvas.SetActive(false);
-                input.ChangeTypeOfControl(TypeOfControl.InGameplay);
-            }
-        }
-    }
-
-    /// <summary>
     /// This method determines the action of the door when clicked
     /// </summary>
     public override void Execute()
