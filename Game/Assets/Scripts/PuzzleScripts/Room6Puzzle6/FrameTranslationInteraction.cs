@@ -25,15 +25,6 @@ public class FrameTranslationInteraction : InteractionCommon
     public bool CanInteract { get; set; }
 
     /// <summary>
-    /// Event that is fired when the player interacts with the frame.
-    /// </summary>
-    /// <remarks>
-    /// This event is fired so the <see cref="Room6"/> makes the verification
-    /// of the solution.
-    /// </remarks>
-    public event Action FramesChanged;
-
-    /// <summary>
     /// Start method for FrameTranslationInteraction.
     /// </summary>
     private void Start()
@@ -257,4 +248,13 @@ public class FrameTranslationInteraction : InteractionCommon
     {
         return "Move Frame";
     }
+
+    /// <summary>
+    /// Event that is fired when the player interacts with the frame.
+    /// </summary>
+    /// <remarks>
+    /// This event is fired so the <see cref="Room6"/> makes the verification
+    /// of the solution.
+    /// </remarks>
+    public event Action FramesChanged;
 }

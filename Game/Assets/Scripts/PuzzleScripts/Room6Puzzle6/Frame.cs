@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// Responsible for controlling the frames on puzzle 6.
+/// </summary>
 public class Frame : MonoBehaviour
 {
     [SerializeField]
