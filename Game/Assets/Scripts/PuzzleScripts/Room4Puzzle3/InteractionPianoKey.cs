@@ -12,13 +12,19 @@ public class InteractionPianoKey : InteractionCommon
 
     //Variable used to see if the player can play a key
     private bool canPlay;
+    private Inventory inventory;
+    private ItemComparer itemComparer;
 
     /// <summary>
     /// Start method for InteractionPianoKey
     /// </summary>
     private void Start()
     {
+        inventory = FindObjectOfType<Inventory>();
+        itemComparer = FindObjectOfType<ItemComparer>();
         canPlay = true;
+        if (inventory.Bag.Contains(itemComparer.NotRewoundAudioTape))
+            gameObject.GetComponent<BoxCollider>().enabled = false;        
     }
 
     /// <summary>
@@ -37,6 +43,7 @@ public class InteractionPianoKey : InteractionCommon
                 canPlay = true;
             }
         }
+        
     }
 
     /// <summary>

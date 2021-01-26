@@ -37,7 +37,7 @@ public class InteractionMissingPianoKey : InteractionCommon, ICoroutineT<string>
         waitForSeconds = new WaitForSeconds(3);
         ThisCoroutine = null;
         roomPuzzle = FindObjectOfType<Room4>();
-
+        
 
         CanInteractWithPiano = inventory.Bag.Contains(pianoKeys[0]) &&
                 inventory.Bag.Contains(pianoKeys[1]) &&
