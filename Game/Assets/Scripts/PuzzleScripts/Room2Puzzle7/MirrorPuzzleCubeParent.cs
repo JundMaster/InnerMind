@@ -144,7 +144,7 @@ public class MirrorPuzzleCubeParent : MonoBehaviour, ICoroutineT<LeftMiddleRight
         while (elapsedTime < 0.5f)
         {
             transform.position = Vector3.MoveTowards(transform.position,
-                desiredPosition, elapsedTime);
+                desiredPosition, 10 * Time.deltaTime);
 
             elapsedTime += Time.deltaTime;
             yield return null;
