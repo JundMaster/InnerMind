@@ -69,7 +69,8 @@ public class InteractionMissingPianoKey : InteractionCommon, ICoroutineT<string>
                 }
             }
         }
-        else thought = "Hmm...Some keys are missing...";
+        else thought = "I should find the missing pieces," +
+                " before checking if its tuned...";
 
         if (ThisCoroutine == null && !thoughtCanvas.activeSelf)
         {
