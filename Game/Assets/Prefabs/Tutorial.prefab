@@ -537,7 +537,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 285212671
   m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -650,7 +650,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948826835840051720}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 5b12a5f35564ae54f930b084ed82e6e8, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 169a45f1d1e03db41b0693188d55d6a3, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -1297,7 +1297,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 04f80670351c3be488e2330d31203e08, type: 3}
+  m_Texture: {fileID: 2800000, guid: c40d0990b053ac842b699ccef7d1779d, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1736,7 +1736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1948826836431473270
 Transform:
   m_ObjectHideFlags: 0
@@ -3686,7 +3686,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948826837433907180}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 7181670a4b304b849ae21afc9ee2bcfc, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 44703ec627b504a45b879fcca7de1a75, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -3882,8 +3882,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -89.600006}
-  m_SizeDelta: {x: 653.9775, y: 40.8919}
+  m_AnchoredPosition: {x: 0.0000076293945, y: -89.600006}
+  m_SizeDelta: {x: 719.8211, y: 40.8919}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1948826837547424057
 CanvasRenderer:
@@ -3913,9 +3913,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press right mouse button to open and close the inventory. Press the item
-    with left mouse button, drag the item to the icon on the left of the screen and
-    press it.
+  m_text: Press i to open and close the inventory. There are some items that can
+    be used. Press the item with right mouse button, drag the item to the icon on
+    the left of the screen and press it.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3924,7 +3924,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4244635647
   m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
