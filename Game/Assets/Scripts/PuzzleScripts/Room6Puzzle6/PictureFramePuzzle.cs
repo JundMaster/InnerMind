@@ -99,7 +99,7 @@ public class PictureFramePuzzle : MonoBehaviour
     /// <summary>
     /// Fires the <see cref="FrameAligned"/> event
     /// </summary>
-    private void OnFrameAligned()
+    protected virtual void OnFrameAligned()
     {
         FrameAligned?.Invoke(this);
     }

@@ -37,15 +37,14 @@ public class PictureFramePuzzleParent : MonoBehaviour
         }
     }
 
-
     /// <summary>
     /// Start method for PictureFramePuzzleParent
     /// </summary>
     private void Start()
     {
         room6 = FindObjectOfType<Room6>();
-        //FramePictures = framePictures;
     }
+
     /// <summary>
     /// OnDisable method for PictureFramePuzzleParent
     /// </summary>
@@ -58,14 +57,7 @@ public class PictureFramePuzzleParent : MonoBehaviour
     }
     #endregion
 
-    /// <summary>
-    /// Invokes the <see cref="PuzzleSolved"/> event
-    /// </summary>
-    private void OnPuzzleSolved()
-    {
-        PuzzleSolved?.Invoke();
-        Debug.Log("OnPuzzleSolved");
-    }
+
     /// <summary>
     /// Executes the coroutine that moves the given frame in chain reaction
     /// </summary>
