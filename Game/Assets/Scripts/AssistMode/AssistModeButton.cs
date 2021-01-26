@@ -19,7 +19,7 @@ public class AssistModeButton : AssistMode
                 break;
             // Code on face
             case PuzzlesEnum.Puzzle4:
-                puzzleVariable = FindObjectOfType<Room3_1>();
+                puzzleVariable = FindObjectOfType<LockedDoorPuzzle>();
                 break;
             // Maze Puzzle
             case PuzzlesEnum.Puzzle5:
@@ -36,6 +36,10 @@ public class AssistModeButton : AssistMode
             // Lamps puzzle
             case PuzzlesEnum.Puzzle9:
                 puzzleVariable = FindObjectOfType<Room8>();
+                break;
+            // Final door puzzle
+            case PuzzlesEnum.Puzzle11:
+                puzzleVariable = FindObjectOfType<LockedDoorPuzzle>();
                 break;
         }
     }
@@ -63,9 +67,6 @@ public class AssistModeButton : AssistMode
                 break;
             case AssistModeType.AddPrizeToInventory:
                 base.AddPrizeToInventory();
-                break;
-            case AssistModeType.LastDoor:
-                base.LastDoor();
                 break;
         }
     }

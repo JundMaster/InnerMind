@@ -36567,6 +36567,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorWithCode
       objectReference: {fileID: 0}
+    - target: {fileID: 5206634065867098428, guid: a1fe6915a6356434590dacba04b56773, type: 3}
+      propertyPath: myPuzzle
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1fe6915a6356434590dacba04b56773, type: 3}
 --- !u!1001 &1729315196

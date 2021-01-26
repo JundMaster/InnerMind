@@ -3204,7 +3204,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-43736
+  m_Name: pb_Mesh-61532
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4245,7 +4245,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-40340
+  m_Name: pb_Mesh-58126
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13499,7 +13499,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh50974
+  m_Name: pb_Mesh131084
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15133,6 +15133,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 746232837}
     m_Modifications:
+    - target: {fileID: 174435762, guid: a1fe6915a6356434590dacba04b56773, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5206634064778609927, guid: a1fe6915a6356434590dacba04b56773, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -15184,6 +15188,10 @@ PrefabInstance:
     - target: {fileID: 5206634065586643787, guid: a1fe6915a6356434590dacba04b56773, type: 3}
       propertyPath: m_TagString
       value: LastDoorForAssistMode
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206634065867098428, guid: a1fe6915a6356434590dacba04b56773, type: 3}
+      propertyPath: myPuzzle
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 5206634065867098428, guid: a1fe6915a6356434590dacba04b56773, type: 3}
       propertyPath: doorCode.x
@@ -16006,6 +16014,7 @@ GameObject:
   - component: {fileID: 1026790711}
   - component: {fileID: 1026790710}
   - component: {fileID: 1026790712}
+  - component: {fileID: 1026790713}
   m_Layer: 0
   m_Name: Room7
   m_TagString: WallWalkRoom
@@ -16061,6 +16070,20 @@ MonoBehaviour:
   - {fileID: 497508843}
   - {fileID: 20112514}
   - {fileID: 1643685060}
+--- !u!114 &1026790713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026790709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40fd3eba233f09249b389da66dd20ac6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myPuzzle: 1024
+  doorWithCode: {fileID: 1547438103}
 --- !u!1001 &1034707366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19684,7 +19707,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh51190
+  m_Name: pb_Mesh131306
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20205,7 +20228,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-39680
+  m_Name: pb_Mesh-57466
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -25302,7 +25325,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh51274
+  m_Name: pb_Mesh131390
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -27318,6 +27341,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c66c8d6a2ab7984bbeb1dd6211eafd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1547438103 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5206634065586643787, guid: a1fe6915a6356434590dacba04b56773, type: 3}
+  m_PrefabInstance: {fileID: 998727309}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1549107186 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2615453208677245630, guid: bb4bfa7452a1d0040a4a0b8bd1c1021e, type: 3}
@@ -27607,7 +27635,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh50656
+  m_Name: pb_Mesh130760
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -33901,7 +33929,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh51208
+  m_Name: pb_Mesh131324
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -36021,6 +36049,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 538363455, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_Name
+      value: Final Door With Code Puzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 538363457, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_text
+      value: Final Door With Code Puzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267380508, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: m_Name
+      value: FinalDoor With Code Puzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355632022, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: puzzleName
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355632022, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
+      propertyPath: assistModeType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 120492917871373866, guid: a9225ac191aacb74aa009c6a48c5ba96, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

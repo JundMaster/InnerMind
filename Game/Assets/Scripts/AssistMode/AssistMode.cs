@@ -38,21 +38,4 @@ public abstract class AssistMode : MonoBehaviour
         Inventory inventory = FindObjectOfType<Inventory>();
         inventory.Bag.Add(puzzlePrize);
     }
-
-    /// <summary>
-    /// Opens last door in game
-    /// </summary>
-    protected void LastDoor()
-    {
-        GameObject door = GameObject.
-            FindGameObjectWithTag("LastDoorForAssistMode");
-
-        Animator anim = null;
-
-        if (door != null)
-            anim = door.GetComponent<Animator>();
-
-        if (door != null)
-            anim.SetTrigger("Open Door");
-    }
 }

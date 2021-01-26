@@ -9,6 +9,9 @@ public class InteractionDoorWithCode : InteractionCommon
 {
     // Code required to open padlock
     [SerializeField] private CustomVector3 doorCode;
+
+    [SerializeField] private PuzzlesEnum myPuzzle;
+
     public CustomVector3 DoorCode => doorCode;
 
     // The user code
@@ -24,14 +27,17 @@ public class InteractionDoorWithCode : InteractionCommon
 
     // Components
     private IPlayerInput input;
+    private PlayerGeneralInfo playerInfo;
+
+    /// <summary>
+    /// Awake method for InteractionDoorWithCode
+    /// </summary>
+    private void Awake() => playerInfo = FindObjectOfType<PlayerGeneralInfo>();
 
     /// <summary>
     /// Start method for InteractionDoorWithCode
     /// </summary>
-    private void Start()
-    {
-        input = FindObjectOfType<PlayerInput>();
-    }
+    private void Start() => input = FindObjectOfType<PlayerInput>();
 
     /// <summary>
     /// This method determines the action of the door when clicked
@@ -39,7 +45,8 @@ public class InteractionDoorWithCode : InteractionCommon
     public override void Execute()
     {
         // If the code hasn't been inserted yet
-        if (UserCode != doorCode)
+        if (UserCode != doorCode &&
+            playerInfo.PuzzlesDone.HasFlag(myPuzzle) == false)
         {
             //Instantiates a new padlock that the user can interact with////////
             input.ChangeTypeOfControl(TypeOfControl.InDoorWithCode);
@@ -71,7 +78,7 @@ public class InteractionDoorWithCode : InteractionCommon
     /// <summary>
     /// Method that invokes DoorOpened event
     /// </summary>
-    private void OnDoorOpened()
+    protected virtual void OnDoorOpened()
     {
         DoorOpened?.Invoke();
     }

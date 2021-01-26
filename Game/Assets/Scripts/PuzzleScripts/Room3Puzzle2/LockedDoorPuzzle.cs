@@ -3,7 +3,7 @@
 /// <summary>
 /// Class responsible for puzzle 2 in room 3.
 /// </summary>
-public class Room3_1 : PuzzleBase
+public class LockedDoorPuzzle : PuzzleBase
 {
     // Door with code in editor
     [SerializeField] private GameObject doorWithCode;
