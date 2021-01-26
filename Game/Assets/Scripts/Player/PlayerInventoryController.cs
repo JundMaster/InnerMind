@@ -12,7 +12,7 @@ public class PlayerInventoryController : MonoBehaviour
 
     // Components
     private Inventory inventory;
-    private IPlayerInput input;
+    private PlayerInput input;
     private Animator anim;
     private PauseMenu pauseMenu;
 
