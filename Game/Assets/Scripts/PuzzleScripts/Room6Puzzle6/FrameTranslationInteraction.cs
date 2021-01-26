@@ -117,7 +117,7 @@ public class FrameTranslationInteraction : InteractionCommon
         desiredPoint.z = frameToMove.transform.position.z;
         desiredPoint.y = frameToMove.transform.position.y;
         onInteraction = true;
-
+        SoundManager.PlaySound(SoundClip.WoodDragging);
         while (elapsedTime < timeLimit)
         {
             // Moves the frame
