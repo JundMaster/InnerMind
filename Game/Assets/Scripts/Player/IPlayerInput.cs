@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 /// <summary>
 /// Interface for player inputs.
@@ -70,4 +71,9 @@ public interface IPlayerInput
     /// </summary>
     /// <param name="control">TypeOfControl to change to</param>
     void ChangeTypeOfControl(TypeOfControl control);
+
+    /// <summary>
+    /// Event that happens when control is changed
+    /// </summary>
+    event Action ChangeControl;
 }

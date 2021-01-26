@@ -91,7 +91,9 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
         ChangeControl?.Invoke();
     }
 
-    // Event for ChangeControl
+    /// <summary>
+    /// Event that happens when control is changed.
+    /// </summary>
     public event Action ChangeControl;
 
     /// <summary>

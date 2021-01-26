@@ -41,7 +41,7 @@ public class ItemExaminer
     /// </summary>
     public void Examine()
     {
-        PlayerInput input = MonoBehaviour.FindObjectOfType<PlayerInput>();
+        IPlayerInput input = MonoBehaviour.FindObjectOfType<PlayerInput>();
         if (input.LeftClick)
         {
             verticalRotation = input.VerticalMouse * speed;

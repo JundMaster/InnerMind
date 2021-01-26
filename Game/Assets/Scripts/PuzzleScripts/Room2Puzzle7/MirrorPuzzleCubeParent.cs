@@ -87,7 +87,7 @@ public class MirrorPuzzleCubeParent : MonoBehaviour, ICoroutineT<LeftMiddleRight
                         // Plays sound and plays coroutine
                         if (ThisCoroutine == null)
                         {
-                            SoundManager.PlaySound(SoundClip.WallSlide);
+                            SoundManager.PlaySound(SoundClip.WoodDragging);
 
                             ThisCoroutine = StartCoroutine(
                                 CoroutineExecute(LeftMiddleRight.Left));
@@ -101,7 +101,7 @@ public class MirrorPuzzleCubeParent : MonoBehaviour, ICoroutineT<LeftMiddleRight
                         // Plays sound and plays coroutine
                         if (ThisCoroutine == null)
                         {
-                            SoundManager.PlaySound(SoundClip.WallSlide);
+                            SoundManager.PlaySound(SoundClip.WoodDragging);
 
                             ThisCoroutine = StartCoroutine(
                                 CoroutineExecute(LeftMiddleRight.Right));
