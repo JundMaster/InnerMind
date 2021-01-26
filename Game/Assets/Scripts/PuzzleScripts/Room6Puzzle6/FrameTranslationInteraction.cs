@@ -31,7 +31,7 @@ public class FrameTranslationInteraction : InteractionCommon
     /// This event is fired so the <see cref="Room6"/> makes the verification
     /// of the solution.
     /// </remarks>
-    public Action FramesChanged;
+    public event Action FramesChanged;
 
     /// <summary>
     /// Start method for FrameTranslationInteraction.
@@ -207,7 +207,7 @@ public class FrameTranslationInteraction : InteractionCommon
     /// <summary>
     /// Invokes the <see cref="FramesChanged"/> event.
     /// </summary>
-    private void OnFramesChanged()
+    protected virtual void OnFramesChanged()
     {
         FramesChanged?.Invoke();
     }
