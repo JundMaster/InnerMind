@@ -19,6 +19,7 @@ public class Room4 : PuzzleBase, ICoroutineT<string>
     [SerializeField] private string thought;
     [SerializeField] private GameObject thoughtCanvas;
     [SerializeField] private BoxCollider roomDoor;
+    [SerializeField] private Animator[] pianoAnim;
 
     /// <summary>
     /// Property used to see if the player has finished the puzzle
@@ -55,6 +56,13 @@ public class Room4 : PuzzleBase, ICoroutineT<string>
     /// </summary>
     public override void Victory()
     {
+        for(byte i = 0; i < pianoAnim.Length; i++)
+        {
+            
+            pianoAnim[i].gameObject.GetComponentInParent<BoxCollider>().enabled = false;
+            pianoAnim[i].SetTrigger("Victory");
+        }
+        
         roomDoor.enabled = false;
         base.Victory();
         StartCoroutine(VictoryCoroutine());
