@@ -11,7 +11,7 @@ public class UseAndExamineButton : MonoBehaviour
 
     // Components
     private PlayerInventoryController inventoryController;
-    private PlayerInput input;
+    private IPlayerInput input;
 
     /// <summary>
     /// Awake method for UseAndExamineButton.
