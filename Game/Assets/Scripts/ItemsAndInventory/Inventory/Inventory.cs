@@ -8,7 +8,19 @@ using System.IO;
 public class Inventory : MonoBehaviour
 {
     // List of items that the player has (what player actually has on inventory)
-    public ObservableList<ScriptableItem> Bag;
+    private ObservableList<ScriptableItem> bag;
+
+    public ObservableList<ScriptableItem> Bag
+    {
+        get
+        {
+            if (bag == null)
+            {
+                bag = new ObservableList<ScriptableItem>(new ScriptableItem[8]);
+            }
+            return bag;
+        }
+    }
 
     // List of slots that construct the inventory
     public ItemInventorySlot[] InventorySlot { get; private set; }
@@ -25,9 +37,6 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        // Creates a list with 8 slots
-        Bag = new ObservableList<ScriptableItem>(new ScriptableItem[8]);
-
         // Creates an array with 8 slots
         InventorySlot = new ItemInventorySlot[8];
 

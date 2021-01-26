@@ -3,7 +3,7 @@
 /// </summary>
 public enum FramePosition
 {
-	Left,
-	Mid,
-	Right
+	Right = 1,
+	Mid = 2,
+	Left = 3,
 }
