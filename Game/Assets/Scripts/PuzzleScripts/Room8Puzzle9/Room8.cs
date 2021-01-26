@@ -31,7 +31,7 @@ public class Room8 : PuzzleBase
     {
         foreach (WallLamp lamp in wallLampsParent.Lamps)
         {
-            Destroy(lamp.GetComponent<WallLampInteraction>());
+            lamp.GetComponent<WallLampInteraction>().CanInteract =  false;
         }
         prize.SetActive(true);
         doorAnimator.SetTrigger("Open Door");

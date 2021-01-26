@@ -32,7 +32,8 @@ public class WallLampInteraction : InteractionCR
     /// <returns>Returns null</returns>
     public override IEnumerator CoroutineExecute()
     {
-        StartCoroutine(RotationInteraction());
+        if (CanInteract)
+            StartCoroutine(RotationInteraction());
         yield break;
     }
 
