@@ -22,6 +22,7 @@ public class Room6 : PuzzleBase
         {
             frameTranslationInteractions[i].FramesChanged += SolutionCheck;
         }
+        inventory.Bag.CollectionChanged += PrizedPicked;
     }
 
     /// <summary>
@@ -30,7 +31,6 @@ public class Room6 : PuzzleBase
     private void Start()
     {
         itemComparer = FindObjectOfType<ItemComparer>();
-        inventory.Bag.CollectionChanged += PrizedPicked;
         if (player.PuzzlesDone.HasFlag(myPuzzle))
         {
             this.Victory();
