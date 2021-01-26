@@ -63,6 +63,7 @@ public class WallLampInteraction : InteractionCR
         if (elapsedTime < timeLimit && onInteraction || CanInteract == false)
             yield break;
 
+        SoundManager.PlaySound(SoundClip.WallLamp);
         onInteraction = true;
         while (elapsedTime < timeLimit)
         {

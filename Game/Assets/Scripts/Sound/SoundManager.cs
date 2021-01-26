@@ -29,7 +29,7 @@ sealed public class SoundManager : MonoBehaviour
     {
         AudioSource = GetComponent<AudioSource>();
 
-        sounds = new AudioClip[18];
+        sounds = new AudioClip[19];
 
         sounds[0] = Resources.Load<AudioClip>("Sounds/footstep");
         sounds[1] = Resources.Load<AudioClip>("Sounds/walkmanAudio");
@@ -49,6 +49,7 @@ sealed public class SoundManager : MonoBehaviour
         sounds[15] = Resources.Load<AudioClip>("Sounds/batteryInsert");
         sounds[16] = Resources.Load<AudioClip>("Sounds/doorClose");
         sounds[17] = Resources.Load<AudioClip>("Sounds/woodDragging");
+        sounds[18] = Resources.Load<AudioClip>("Sounds/lamp");
     }
 
     /// <summary>
@@ -124,6 +125,10 @@ sealed public class SoundManager : MonoBehaviour
             case SoundClip.WoodDragging:
                 audioSource.pitch = Random.Range(0.8f, 1.3f);
                 audioSource.PlayOneShot(sounds[17], 0.8f);
+                break;
+            case SoundClip.WallLamp:
+                audioSource.pitch = Random.Range(0.8f, 1);
+                audioSource.PlayOneShot(sounds[18], 0.5f);
                 break;
         }
     }

@@ -24,4 +24,5 @@ public enum SoundClip
     WallSlideLower,
     DoorClose,
     WoodDragging,
+    WallLamp,
 }
