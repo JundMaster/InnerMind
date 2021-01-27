@@ -341,7 +341,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-10690
+  m_Name: pb_Mesh-29800
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -817,7 +817,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26026
+  m_Name: pb_Mesh24324
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -981,7 +981,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25954
+  m_Name: pb_Mesh24252
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1391,6 +1391,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d4f07b811e1ba6f468121c803fdca5e5, type: 3}
   m_PrefabInstance: {fileID: 557546118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &612823408 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6983716511110148450, guid: 1f473102a018b9b459972ecd431caab5, type: 3}
+  m_PrefabInstance: {fileID: 6983716511406192537}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &709435889
 PrefabInstance:
@@ -1978,7 +1983,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1715224335}
+  m_Mesh: {fileID: 1693727390}
 --- !u!33 &1086618471
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -1986,7 +1991,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086618469}
-  m_Mesh: {fileID: 1715224335}
+  m_Mesh: {fileID: 1693727390}
 --- !u!23 &1086618472
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5225,7 +5230,7 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
-  m_Mesh: {fileID: 1715224335}
+  m_Mesh: {fileID: 1693727390}
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5368,7 +5373,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26030
+  m_Name: pb_Mesh24328
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6687,7 +6692,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26076
+  m_Name: pb_Mesh24370
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7083,7 +7088,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-10700
+  m_Name: pb_Mesh-29824
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20408,7 +20413,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26028
+  m_Name: pb_Mesh24326
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20566,13 +20571,13 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &1715224335
+--- !u!43 &1693727390
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25926
+  m_Name: pb_Mesh24224
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20832,7 +20837,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-10712
+  m_Name: pb_Mesh-29836
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21832,6 +21837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPuzzle: 1
+  doorAnimator: {fileID: 612823408}
 --- !u!4 &1972654305
 Transform:
   m_ObjectHideFlags: 0
