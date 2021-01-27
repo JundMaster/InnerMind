@@ -12,7 +12,6 @@ public class InteractionMissingPianoKey : InteractionCommon, ICoroutineT<string>
     private Inventory inventory;
     private Text displayText;
     private WaitForSeconds waitForSeconds;
-    private Room4 roomPuzzle;
     
 
     //Inspector Variables
@@ -20,9 +19,16 @@ public class InteractionMissingPianoKey : InteractionCommon, ICoroutineT<string>
     [SerializeField] private GameObject thoughtCanvas;
     [SerializeField] private GameObject keyPosition;
     [SerializeField] private ScriptableItem[] pianoKeys;
-    
 
+    ///<summary>
+    ///Thought coroutine variable to control the coroutine
+    /// </summary>
     public Coroutine ThisCoroutine { get; private set; }
+
+    /// <summary>
+    /// Property used to check if the player can interact with the piano,
+    /// when entering the room
+    /// </summary>
     public bool CanInteractWithPiano { get; private set; }
 
 
@@ -36,7 +42,7 @@ public class InteractionMissingPianoKey : InteractionCommon, ICoroutineT<string>
         displayText = thoughtCanvas.GetComponentInChildren<Text>();
         waitForSeconds = new WaitForSeconds(3);
         ThisCoroutine = null;
-        roomPuzzle = FindObjectOfType<Room4>();
+        
         
 
         CanInteractWithPiano = inventory.Bag.Contains(pianoKeys[0]) &&
