@@ -80,6 +80,7 @@ public class Room6 : PuzzleBase
         for (int i = 0; i < frameTranslationInteractions.Length; i++)
         {
             frameTranslationInteractions[i].CanInteract = false;
+            frameTranslationInteractions[i].gameObject.layer = 2;
             frameTranslationInteractions[i].
                  MoveToSolutionPoint(frameTranslationInteractions[i].Frame);
         }
