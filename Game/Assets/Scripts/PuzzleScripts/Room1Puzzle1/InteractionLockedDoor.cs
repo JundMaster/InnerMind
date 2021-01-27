@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class InteractionLockedDoor : InteractionCommon, ICoroutineT<string>
 {
     //Components
-    private Room1 room1;
     private Text displayText;
     private WaitForSeconds waitForSeconds;
 
@@ -26,7 +25,6 @@ public class InteractionLockedDoor : InteractionCommon, ICoroutineT<string>
     /// </summary>
     private void Awake()
     {
-        room1 = FindObjectOfType<Room1>();
         displayText = thoughtCanvas.GetComponentInChildren<Text>();
         waitForSeconds = new WaitForSeconds(2);
         ThisCoroutine = null;
@@ -37,19 +35,10 @@ public class InteractionLockedDoor : InteractionCommon, ICoroutineT<string>
     /// </summary>
     public override void Execute()
     {
-        //Opens the door if the player has finished the puzzle
-        if (room1.FinishedPuzzle)
-        {
-            Animator doorAnimation = GetComponent<Animator>(); ;
-            doorAnimation.SetTrigger("Open Door");
-            thought = null;
-        }
-
         //Else it displays a thought on the locked door
         if (ThisCoroutine == null)
             if (thoughtCanvas.enabled == false)
                 ThisCoroutine = StartCoroutine(CoroutineExecute(thought));
-
     }
 
     /// <summary>

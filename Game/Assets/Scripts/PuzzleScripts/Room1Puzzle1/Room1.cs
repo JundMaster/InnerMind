@@ -5,6 +5,8 @@ using System;
 /// </summary>
 public class Room1 : PuzzleBase
 {
+    [SerializeField]
+    private Animator doorAnimator;
 
     /// <summary>
     /// Property that checks if the puzzle was finished
@@ -41,6 +43,8 @@ public class Room1 : PuzzleBase
     public override void Victory()
     {
         base.Victory();
+        doorAnimator.SetTrigger("Open Door");
+        doorAnimator.gameObject.layer = 2;
         FinishedPuzzle = true;
     }
 
