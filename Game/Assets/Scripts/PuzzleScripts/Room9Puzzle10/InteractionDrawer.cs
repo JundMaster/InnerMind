@@ -7,16 +7,7 @@ public class InteractionDrawer : InteractionCommon
 {
     // Editor variables
     [SerializeField] private Animator drawerAnimator;
-
-    private bool isOpen;
-
-    /// <summary>
-    /// Start method for InteractionDrawer
-    /// </summary>
-    void Start()
-    {
-        isOpen = false;
-    }
+    [SerializeField] private bool isOpen;
 
     /// <summary>
     /// This method determines the action of the piano key when clicked
