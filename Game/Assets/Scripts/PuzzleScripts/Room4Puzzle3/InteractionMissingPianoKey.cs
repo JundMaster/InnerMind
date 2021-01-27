@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Text;
 
 /// <summary>
 /// Class used when interacting with the piano with missing keys
@@ -12,10 +13,11 @@ public class InteractionMissingPianoKey : InteractionCommon, ICoroutineT<string>
     private Inventory inventory;
     private Text displayText;
     private WaitForSeconds waitForSeconds;
-    
+    private StringBuilder thought;
+
 
     //Inspector Variables
-    [SerializeField] private string thought;
+
     [SerializeField] private GameObject thoughtCanvas;
     [SerializeField] private GameObject keyPosition;
     [SerializeField] private ScriptableItem[] pianoKeys;
@@ -42,7 +44,7 @@ public class InteractionMissingPianoKey : InteractionCommon, ICoroutineT<string>
         displayText = thoughtCanvas.GetComponentInChildren<Text>();
         waitForSeconds = new WaitForSeconds(3);
         ThisCoroutine = null;
-        
+        thought = new StringBuilder(" ");
         
 
         CanInteractWithPiano = inventory.Bag.Contains(pianoKeys[0]) &&
@@ -68,19 +70,22 @@ public class InteractionMissingPianoKey : InteractionCommon, ICoroutineT<string>
                     inventory.Bag.Remove(pianoKeys[i]);
                     keyPosition.SetActive(true);
                     boxCollider.enabled = false;
-                    thought = "Ah, there ya go.";
+                    thought.Replace(" ", "Ah, there ya go.");
                     break;
 
 
                 }
             }
         }
-        else thought = "I should find the missing pieces," +
-                " before checking if its tuned...";
+        else
+        {
+            thought.Replace(" ", "I should find the missing");
+            thought.Append(" pieces, before checking if its tuned...");
+        }
 
         if (ThisCoroutine == null && !thoughtCanvas.activeSelf)
         {
-            ThisCoroutine = StartCoroutine(CoroutineExecute(thought));
+            ThisCoroutine = StartCoroutine(CoroutineExecute(thought.ToString()));
         }
         
     }
