@@ -11,6 +11,7 @@ public class Room6 : PuzzleBase
     [SerializeField] 
     private FrameTranslationInteraction[] frameTranslationInteractions;
     private ItemComparer itemComparer;
+    private bool prizePicked;
 
     #region Unity Functions
     /// <summary>
@@ -30,6 +31,7 @@ public class Room6 : PuzzleBase
     /// </summary>
     private void Start()
     {
+        prizePicked = false;
         itemComparer = FindObjectOfType<ItemComparer>();
         if (player.PuzzlesDone.HasFlag(myPuzzle))
         {
@@ -60,8 +62,11 @@ public class Room6 : PuzzleBase
         object sender,
         System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
     {
-        drawerAnimator.SetTrigger("CloseDrawer");
-        SoundManager.PlaySound(SoundClip.DrawerClosing);
+        if (prizePicked)
+        {
+            drawerAnimator.SetTrigger("CloseDrawer");
+            SoundManager.PlaySound(SoundClip.DrawerClosing);
+        }
     }
 
     /// <summary>
@@ -74,6 +79,7 @@ public class Room6 : PuzzleBase
         {
             prize.SetActive(true);
             drawerAnimator.SetTrigger("OpenDrawer");
+            prizePicked = true;
             SoundManager.PlaySound(SoundClip.DrawerOpen);
         }
 
