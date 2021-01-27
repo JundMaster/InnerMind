@@ -693,7 +693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4851752128071463856, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
       propertyPath: linesOfText.Array.data[0]
-      value: Hey Josh. I found this old map. Looks like it leads to some kind of
+      value: Hey, Josh. I found this old map. Looks like it leads to some kind of
         treasure.
       objectReference: {fileID: 0}
     - target: {fileID: 4851752128071463856, guid: b0205f918a8db44408dd6be31138d0d2, type: 3}
