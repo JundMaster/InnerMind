@@ -51,6 +51,7 @@ public class LockedDoorPuzzle : PuzzleBase
     public override void Victory()
     {
         base.Victory();
+        doorScriptPuzzle.gameObject.layer = 2;
         doorWithCode.GetComponentInChildren<Animator>().SetTrigger("Open Door");
     }
 }

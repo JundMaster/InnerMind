@@ -17,17 +17,8 @@ public class InteractionDoor : InteractionCommon
     /// </summary>
     public override void Execute()
     {
-        if(!doorAnimation.GetBool("isOpen"))
-        {
-            doorAnimation.SetBool("isOpen", true);
-            doorAnimation.SetTrigger("Open Door");
-        }
-       else
-        {
-            doorAnimation.SetBool("isOpen", false);
-            doorAnimation.SetTrigger("Close Door");
-        }
-
+        doorAnimation?.SetTrigger("Open Door");
+        gameObject.layer = 2;
     }
 
     /// <summary>
@@ -35,6 +26,5 @@ public class InteractionDoor : InteractionCommon
     /// when the Crosshair is on top of this door
     /// </summary>
     /// <returns>Returns a string with an action</returns>
-    public override string ToString() => doorAnimation.GetBool("isOpen") ?
-        "Close Door" : "Open Door";
+    public override string ToString() => "Open Door";
 }

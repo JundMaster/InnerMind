@@ -5,20 +5,29 @@ using UnityEngine;
 /// Class responsible for each cube in MirrorPuzzleCube.
 /// Extends InteractionCommon
 /// </summary>
-sealed public class MirrorPuzzleCube : InteractionCommon
+public class MirrorPuzzleCube : InteractionCommon
 {
     // Current position of this cube
-    [SerializeField] private LeftMiddleRight cubePos;
+    [SerializeField] private LeftMiddleRight pushTo;
 
     /// <summary>
     /// This method determines the action of the object when clicked
     /// </summary>
     public override void Execute()
     {
-        CubePosition?.Invoke(cubePos);
+        OnCubePosition(pushTo);
     }
 
-    // CubePosition event with cube's current position information
+    /// <summary>
+    /// Method that invokes CubePosition event
+    /// </summary>
+    /// <param name="cubePos"></param>
+    protected virtual void OnCubePosition(LeftMiddleRight pushTo)
+        => CubePosition?.Invoke(pushTo);
+
+    /// <summary>
+    /// CubePosition event with cube's current position information
+    /// </summary>
     public event Action<LeftMiddleRight> CubePosition;
 
     /// <summary>
@@ -28,6 +37,6 @@ sealed public class MirrorPuzzleCube : InteractionCommon
     /// <returns>Returns a string with an action</returns>
     public override string ToString()
     {
-        return $"Move cube {cubePos}";
+        return $"Push {pushTo}";
     }
 }

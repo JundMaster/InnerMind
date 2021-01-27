@@ -68,6 +68,8 @@ public class InteractionDoorWithCode : InteractionCommon
         Animator doorAnimation = GetComponentInParent<Animator>();
         doorAnimation.SetTrigger("Open Door");
 
+        gameObject.layer = 2;
+
         // Calls the event DoorOpened
         OnDoorOpened();
 

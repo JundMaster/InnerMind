@@ -80,6 +80,12 @@ public class Room2 : PuzzleBase
     /// <returns>Returns null</returns>
     private IEnumerator VictoryCoroutine()
     {
+        foreach (MirrorPuzzleCubeParent cube in cubeParentsInRoom)
+        {
+            cube.transform.GetChild(0).gameObject.layer = 2;
+            cube.transform.GetChild(1).gameObject.layer = 2;
+        }
+
         FinishedPuzzle = true;
         GameObject spawn = null;
         roomCandle.SetActive(false);
