@@ -16,11 +16,13 @@ public class InteractionDrawer : InteractionCommon
     {
         if(!isOpen)
         {
+            drawerAnimator.ResetTrigger("closeDrawer");
             drawerAnimator.SetTrigger("openDrawer");
             isOpen = true;
         }
         else if (isOpen)
         {
+            drawerAnimator.ResetTrigger("openDrawer");
             drawerAnimator.SetTrigger("closeDrawer");
             isOpen = false;
         }  
