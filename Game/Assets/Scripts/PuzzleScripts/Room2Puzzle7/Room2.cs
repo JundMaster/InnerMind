@@ -2,7 +2,7 @@
 using System.Collections;
 
 /// <summary>
-/// Class responsible for controlling room2 puzzle. Extends PuzzleBase
+/// Class responsible for controlling room2 puzzle. Extends PuzzleBase.
 /// </summary>
 public class Room2 : PuzzleBase
 {
@@ -16,10 +16,11 @@ public class Room2 : PuzzleBase
     private MirrorPuzzleCubeParent[] cubeParentsInRoom;
 
     /// <summary>
-    /// Property that checks if the puzzle was finished
+    /// Property that checks if the puzzle was finished.
     /// </summary>
     public bool FinishedPuzzle { get; private set; }
 
+    // Components
     private ItemComparer itemComparer;
 
     /// <summary>
@@ -27,7 +28,6 @@ public class Room2 : PuzzleBase
     /// </summary>
     private void Start()
     {
-        cubeParentsInRoom = GetComponentsInChildren<MirrorPuzzleCubeParent>();
         FinishedPuzzle = false;
         itemComparer = FindObjectOfType<ItemComparer>();
 
@@ -42,9 +42,35 @@ public class Room2 : PuzzleBase
     }
 
     /// <summary>
+    /// OnEnable method for Room2. Gets cubes in room and registers to
+    /// VictoryCheck event.
+    /// </summary>
+    private void OnEnable()
+    {
+        // Must be onEnable so the script can register to its event.
+        cubeParentsInRoom = GetComponentsInChildren<MirrorPuzzleCubeParent>();
+
+        for (int i = 0; i < cubeParentsInRoom.Length; i++)
+        {
+            cubeParentsInRoom[i].VictoryCheck += VictoryCheck;
+        }
+    }
+
+    /// <summary>
+    /// OnDisable method for Room2. Unregisters from VictoryCheck event.
+    /// </summary>
+    private void OnDisable()
+    {
+        for (int i = 0; i < cubeParentsInRoom.Length; i++)
+        {
+            cubeParentsInRoom[i].VictoryCheck -= VictoryCheck;
+        }
+    }
+
+    /// <summary>
     /// Checks if the victory conditions are true
     /// </summary>
-    public void VictoryCheck()
+    private void VictoryCheck()
     {
         sbyte counter;
         counter = 0;
@@ -75,9 +101,9 @@ public class Room2 : PuzzleBase
     /// <summary>
     /// Does an action when the puzzle is solved.
     /// Sets finished puzzle to true and spawns a rotating prize until
-    /// the player picks it up
+    /// the player picks it up.
     /// </summary>
-    /// <returns>Returns null</returns>
+    /// <returns>Returns null.</returns>
     private IEnumerator VictoryCoroutine()
     {
         foreach (MirrorPuzzleCubeParent cube in cubeParentsInRoom)
@@ -91,6 +117,7 @@ public class Room2 : PuzzleBase
         roomCandle.SetActive(false);
         prizeLight.intensity = 1f;
 
+        // If the player doesn't have a piano key on inventory
         if (FindObjectOfType<Inventory>().Bag.Contains(
             itemComparer.PianoKey1) == false &&
             player.PuzzlesDone.HasFlag(PuzzlesEnum.Puzzle3) == false)

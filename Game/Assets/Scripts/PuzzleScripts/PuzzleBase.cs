@@ -21,7 +21,8 @@ public abstract class PuzzleBase : MonoBehaviour, IPuzzle
     protected Coroutine readPuzzlesDoneTxtCoroutine;
 
     /// <summary>
-    /// Awake method for PuzzleBase.
+    /// Awake method for PuzzleBase. Subclasses must not use Awake method
+    /// or it will cancel this awake method.
     /// </summary>
     private void Awake()
     {

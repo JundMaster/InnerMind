@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using System;
 
 /// <summary>
 /// Class responsible for controlling a cube's parent in MirrorPuzzle
@@ -157,9 +158,20 @@ public class MirrorPuzzleCubeParent : MonoBehaviour, ICoroutineT<LeftMiddleRight
             InCorrectPosition = false;
 
         // After every actions, checks the puzzle's victory conditions
-        room2.VictoryCheck();
+        //room2.VictoryCheck();
+        OnVictoryCheck();
 
         // Sets couroutine to null so it can be used again
         ThisCoroutine = null;
     }
+
+    /// <summary>
+    /// Method that invokes VictoryCheck event.
+    /// </summary>
+    protected virtual void OnVictoryCheck() => VictoryCheck?.Invoke();
+
+    /// <summary>
+    /// Event that happens when a cube moves.
+    /// </summary>
+    public event Action VictoryCheck; 
 }
