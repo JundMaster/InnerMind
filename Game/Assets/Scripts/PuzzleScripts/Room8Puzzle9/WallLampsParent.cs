@@ -112,7 +112,7 @@ public class WallLampsParent : MonoBehaviour
         {
             yield return waitForSecs;
             IEnumerator chainRotation = Lamps[i].
-                                        interactionController.
+                                        InteractionController.
                                         ChainRotationExecute();
             StartCoroutine(chainRotation);
         }

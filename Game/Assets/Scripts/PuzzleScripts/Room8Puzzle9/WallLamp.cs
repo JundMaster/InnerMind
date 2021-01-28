@@ -43,7 +43,7 @@ public class WallLamp : MonoBehaviour
     /// Instance of the class responsible for controlling the interaction
     /// of the WallLamp
     /// </summary>
-    public WallLampInteraction interactionController { get; private set; }
+    public WallLampInteraction InteractionController { get; private set; }
 
     /// <summary>
     /// Direction to which the wall lamp should be pointing in order to be
@@ -89,7 +89,7 @@ public class WallLamp : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        interactionController = GetComponent<WallLampInteraction>();
+        InteractionController = GetComponent<WallLampInteraction>();
         Lights = lights;
         LampIndex = lampIndex;
         CurrentDirection = WallLampDirection.Top;
@@ -99,7 +99,7 @@ public class WallLamp : MonoBehaviour
     /// Invokes the <see cref="LampRotated"/> event
     /// </summary>
     /// <param name="index">Index of the lamp that is firing the event</param>
-    private void OnLampRotated(int index)
+    protected virtual void OnLampRotated(int index)
     {
         LampRotated?.Invoke(index);
     }
@@ -107,7 +107,7 @@ public class WallLamp : MonoBehaviour
     /// <summary>
     /// Invokes the <see cref="LampAligned"/> event
     /// </summary>
-    private void OnLampAligned()
+    protected virtual void OnLampAligned()
     {
         LampAligned?.Invoke();
     }
@@ -118,7 +118,7 @@ public class WallLamp : MonoBehaviour
     /// </summary>
     /// <param name="checkAdjacentLights">Defines whether the adjacent lights
     /// should be checked</param>
-    public void CheckLights(bool checkAdjacentLights)
+    private void CheckLights(bool checkAdjacentLights)
     {
         // Checks if this lamp is aligned
         if (IsAligned())
