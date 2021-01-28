@@ -145,8 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a542409b63bb60d4d9d9ee3aed0fbfa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assistModeType: 2
-  puzzleName: 0
+  assistModeType: 0
+  puzzleName: 1024
   puzzlePrize: {fileID: 0}
 --- !u!1 &17633164
 GameObject:
@@ -3080,7 +3080,7 @@ GameObject:
   - component: {fileID: 538363458}
   - component: {fileID: 538363457}
   m_Layer: 5
-  m_Name: 2nd Door With Code Puzzle
+  m_Name: Final Door With Code Puzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3102,8 +3102,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -6.06, y: 0}
+  m_SizeDelta: {x: 12.118912, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &538363458
 CanvasRenderer:
@@ -3133,7 +3133,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2nd Door With Code Puzzle
+  m_text: Final Door With Code Puzzle
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -3196,7 +3196,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -1.5533535, y: 0, z: 0, w: 0}
+  m_margin: {x: -0.5966011, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8345,7 +8345,7 @@ GameObject:
   - component: {fileID: 1267380511}
   - component: {fileID: 1267380510}
   m_Layer: 5
-  m_Name: 2nd Door With Code Puzzle
+  m_Name: FinalDoor With Code Puzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

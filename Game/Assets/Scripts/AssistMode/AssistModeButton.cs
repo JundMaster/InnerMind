@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-/// <summary>
+﻿/// <summary>
 /// Class for each button from AssistMode menu.
 /// Plays victory condition for each puzzle ingame
 /// </summary>
@@ -19,7 +17,8 @@ public class AssistModeButton : AssistMode
                 break;
             // Code on face
             case PuzzlesEnum.Puzzle4:
-                puzzleVariable = FindObjectOfType<LockedDoorPuzzle>();
+                if (FindObjectOfType<Room3>() != null)
+                    puzzleVariable = FindObjectOfType<LockedDoorPuzzle>();
                 break;
             // Maze Puzzle
             case PuzzlesEnum.Puzzle5:
@@ -39,7 +38,8 @@ public class AssistModeButton : AssistMode
                 break;
             // Final door puzzle
             case PuzzlesEnum.Puzzle11:
-                puzzleVariable = FindObjectOfType<LockedDoorPuzzle>();
+                if (FindObjectOfType<Room7>() != null)
+                    puzzleVariable = FindObjectOfType<LockedDoorPuzzle>();
                 break;
         }
     }

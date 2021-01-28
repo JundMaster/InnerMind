@@ -407,7 +407,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 3
-  m_Range: 15
+  m_Range: 25
   m_SpotAngle: 20
   m_InnerSpotAngle: 2
   m_CookieSize: 10
@@ -1799,6 +1799,7 @@ MonoBehaviour:
     x: 3
     y: 9
     z: 1
+  myPuzzle: 0
   padlock: {fileID: 7483732473867158760, guid: 3b6bb48f94e43aa43987714a8c890603, type: 3}
   padlockCanvas: {fileID: 5206634066517329445}
   padlockPosition: {fileID: 5206634064716646238}
