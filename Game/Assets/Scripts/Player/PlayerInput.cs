@@ -77,6 +77,11 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
     public float MouseSpeed { get; set; }
 
     /// <summary>
+    /// Property for mouse position.
+    /// </summary>
+    public Vector3 MousePosition;
+
+    /// <summary>
     /// Method to change type of control.
     /// </summary>
     /// <param name="control">TypeOfControl to change to</param>
@@ -136,6 +141,9 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
 
                 // Gets Space key
                 Space = Input.GetKeyDown(KeyCode.Space);
+
+                // Gets mouse position
+                MousePosition = Input.mousePosition;
 
                 break;
 

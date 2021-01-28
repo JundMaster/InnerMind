@@ -2,7 +2,7 @@
 using System;
 
 /// <summary>
-/// Class used when interacting with piano keys
+/// Class used when interacting with piano keys.
 /// </summary>
 public class InteractionPianoKey : InteractionCommon
 {
@@ -11,49 +11,38 @@ public class InteractionPianoKey : InteractionCommon
     [SerializeField] private PianoKeyID keyID;
 
     //Variable used to see if the player can play a key
-    private bool canPlay;
+    public bool CanPlay { get; set; }
+    public Animator KeyAnimator => keyAnimator;
     private Inventory inventory;
     private ItemComparer itemComparer;
 
     /// <summary>
-    /// Start method for InteractionPianoKey
+    /// Awake method for InteractionPianoKey.
     /// </summary>
-    private void Start()
+    private void Awake()
     {
         inventory = FindObjectOfType<Inventory>();
         itemComparer = FindObjectOfType<ItemComparer>();
-        canPlay = true;
+        
         if (inventory.Bag.Contains(itemComparer.NotRewoundAudioTape))
             gameObject.GetComponent<BoxCollider>().enabled = false;        
     }
 
     /// <summary>
-    /// Update method for InteractionPianoKey
+    /// Start method for InteractionPianoKey.
     /// </summary>
-    private void Update()
+    private void Start()
     {
-        //Checks if the animator is still running
-        if (keyAnimator.GetCurrentAnimatorStateInfo(0).IsName("PianoKey"))
-        {
-            
-            // If the animation reached its end
-            if (keyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.85f)
-            {
-                
-                canPlay = true;
-            }
-        }
-        
+        CanPlay = true;
     }
 
     /// <summary>
-    /// This method determines the action of the piano key when clicked
+    /// This method determines the action of the piano key when clicked.
     /// </summary>
     public override void Execute()
     {
-        if (canPlay)
+        if (CanPlay)
         {
-
             keyAnimator.SetTrigger("playKey");
             OnKeyID(keyID);
 
@@ -70,7 +59,7 @@ public class InteractionPianoKey : InteractionCommon
                     break;
             }
 
-            canPlay = false;
+            CanPlay = false;
         }
     }
 

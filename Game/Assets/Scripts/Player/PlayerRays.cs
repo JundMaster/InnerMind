@@ -23,14 +23,16 @@ public class PlayerRays : MonoBehaviour
     // Components
     private Camera mainCamera;
     private PlayerMovement movement;
+    private PlayerInput input;
    
     /// <summary>
     /// Start method of PlayerRays
     /// </summary>
-    private void Start()
+    private void Awake()
     {
         mainCamera = Camera.main;
         movement = GetComponent<PlayerMovement>();
+        input = GetComponent<PlayerInput>();
     }
 
     /// <summary>
@@ -46,6 +48,6 @@ public class PlayerRays : MonoBehaviour
         Forward = new Ray(mainCamera.transform.position, transform.forward);
 
         // Creates a ray from playerCamera to the mouse position (crosshair)
-        RayToMouse = mainCamera.ScreenPointToRay(Input.mousePosition);
+        RayToMouse = mainCamera.ScreenPointToRay(input.MousePosition);
     }
 }
