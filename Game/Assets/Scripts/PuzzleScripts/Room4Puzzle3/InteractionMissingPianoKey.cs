@@ -103,7 +103,7 @@ public class InteractionMissingPianoKey : InteractionCommon, ICoroutineT<string>
         {
             //If the player has a key in its inventory changes the returned
             //string
-            if (inventory.Bag.Contains(pianoKeys[i]))
+            if (CanInteractWithPiano)
             {
                 str = "Place Missing Key";
             }
