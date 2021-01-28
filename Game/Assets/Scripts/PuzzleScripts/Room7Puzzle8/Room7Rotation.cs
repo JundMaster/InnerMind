@@ -21,7 +21,8 @@ public class Room7Rotation : MonoBehaviour
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
-        anim.SetTrigger("Stop Rotation");
+        if (other.gameObject.CompareTag("Player"))
+            anim.SetTrigger("Stop Rotation");
     }
 
     /// <summary>
@@ -30,7 +31,8 @@ public class Room7Rotation : MonoBehaviour
     /// <param name="other"></param>
     private void OnTriggerStay(Collider other)
     {
-        anim.SetTrigger("Stop Rotation");
+        if (other.gameObject.CompareTag("Player"))
+            anim.SetTrigger("Stop Rotation");
     }
 
     /// <summary>
@@ -39,6 +41,7 @@ public class Room7Rotation : MonoBehaviour
     /// <param name="other"></param>
     private void OnTriggerExit(Collider other)
     {
-        anim.SetTrigger("Stop Rotation");
+        if (other.gameObject.CompareTag("Player"))
+            anim.SetTrigger("Stop Rotation");
     }
 }

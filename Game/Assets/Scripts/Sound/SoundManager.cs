@@ -25,7 +25,7 @@ sealed public class SoundManager : MonoBehaviour
     /// <summary>
     /// Start method for sound manager
     /// </summary>
-    void Start()
+    private void Start()
     {
         AudioSource = GetComponent<AudioSource>();
 

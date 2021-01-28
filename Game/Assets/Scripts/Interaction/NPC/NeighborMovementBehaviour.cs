@@ -43,13 +43,14 @@ public class NeighborMovementBehaviour : NPCMovementBehaviour
 
         // Plays turn animation if the player is not on npc's front
         // else it plays idle animation
-        if (transform.eulerAngles.y - 20 <
+        if (transform.eulerAngles.y - 25 <
             Quaternion.LookRotation(player.transform.position -
                                    transform.position).eulerAngles.y &&
-            transform.eulerAngles.y + 20 >
+            transform.eulerAngles.y + 25 >
             Quaternion.LookRotation(player.transform.position -
                                    transform.position).eulerAngles.y)
         {
+            anim.ResetTrigger("turn");
             anim.SetTrigger("idle");
         }
         else

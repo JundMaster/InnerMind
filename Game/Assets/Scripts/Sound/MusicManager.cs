@@ -24,7 +24,7 @@ public class MusicManager : MonoBehaviour
     /// <summary>
     /// Update method for MusicManager
     /// </summary>
-    void Update()
+    private void Update()
     {
         // Sets volume = music volume
         audioSource.volume = MusicVolume;
