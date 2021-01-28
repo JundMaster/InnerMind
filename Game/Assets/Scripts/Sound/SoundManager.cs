@@ -69,6 +69,7 @@ sealed public class SoundManager : MonoBehaviour
         switch (clip)
         {
             case SoundClip.Footstep:
+                audioSource.pitch = Random.Range(0.7f, 1);
                 audioSource.PlayOneShot(sounds[0], 1f);
                 break;
             case SoundClip.WalkmanAudio:
