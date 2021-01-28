@@ -124,7 +124,7 @@ public class FrameTranslationInteraction : InteractionCommon
             frameToMove.transform.position = Vector3.MoveTowards(
                                             frameToMove.transform.position,
                                             desiredPoint,
-                                            Time.deltaTime);
+                                            10 * Time.deltaTime);
 
             elapsedTime += Time.deltaTime;
             yield return null;
