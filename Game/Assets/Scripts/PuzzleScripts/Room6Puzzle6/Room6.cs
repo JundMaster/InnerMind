@@ -75,7 +75,8 @@ public class Room6 : PuzzleBase
     public override void Victory()
     {
         base.Victory();
-        if (inventory.Bag.Contains(itemComparer.PianoKey3) == false)
+        if (inventory.Bag.Contains(itemComparer.PianoKey3) == false &&
+            player.PuzzlesDone.HasFlag(PuzzlesEnum.Puzzle4) == false)
         {
             prize.SetActive(true);
             drawerAnimator.SetTrigger("OpenDrawer");
