@@ -79,7 +79,7 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
     /// <summary>
     /// Property for mouse position.
     /// </summary>
-    public Vector3 MousePosition;
+    public Vector3 MousePosition { get; set; }
 
     /// <summary>
     /// Method to change type of control.
@@ -134,7 +134,7 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
                 LeftClick = Input.GetButtonDown("Fire1");
 
                 // Gets I key
-                Inventory = Input.GetKeyDown(KeyCode.I);
+                Inventory = Input.GetKeyDown(KeyCode.Tab);
 
                 // Gets ESC key
                 Pause = Input.GetKeyDown(KeyCode.Escape);
@@ -160,7 +160,7 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
                 Cursor.lockState = CursorLockMode.Confined;
 
                 // Gets I key
-                Inventory = Input.GetKeyDown(KeyCode.I);
+                Inventory = Input.GetKeyDown(KeyCode.Tab);
 
                 // Gets right click
                 RightClick = Input.GetButtonDown("Fire2");
