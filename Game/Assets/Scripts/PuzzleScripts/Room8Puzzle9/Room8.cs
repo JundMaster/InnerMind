@@ -53,8 +53,7 @@ public class Room8 : PuzzleBase
         if (player.PuzzlesDone.HasFlag(myPuzzle) && 
             (inventory.Bag.Contains(itemComparer.NoBatteryWalkman) ||
             inventory.Bag.Contains(itemComparer.Walkman) ||
-             inventory.Bag.Contains(itemComparer.WalkmanBatteries) ||
-              inventory.Bag.Contains(itemComparer.WalkmanWithoutTape)))
+            inventory.Bag.Contains(itemComparer.WalkmanWithoutTape)))
         {
             Destroy(prize);
         }
