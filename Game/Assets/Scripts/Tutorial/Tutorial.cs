@@ -28,14 +28,8 @@ public class Tutorial : MonoBehaviour
     {
         index = 0;
         lastTypeOfControl = input.CurrentControl;
-    }
+        tutorials?[0]?.SetActive(true);
 
-    /// <summary>
-    /// Start method for Tutorial
-    /// </summary>
-    private void Start()
-    {
-        tutorials?[0]?.SetActive(true);   
     }
 
     /// <summary>

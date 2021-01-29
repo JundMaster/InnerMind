@@ -537,7 +537,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 285212671
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1266,7 +1266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7, y: -165.9}
+  m_AnchoredPosition: {x: 7, y: -170}
   m_SizeDelta: {x: 237.61896, y: 153.76744}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1948826836073212039
@@ -1736,7 +1736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1948826836431473270
 Transform:
   m_ObjectHideFlags: 0
@@ -3778,7 +3778,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: There are items which can be combined. To combine an item, select the item
+  m_text: There are items that can be combined. To combine an item, select the item
     with left mouse button and click on the other item.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3882,8 +3882,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000076293945, y: -89.600006}
-  m_SizeDelta: {x: 719.8211, y: 40.8919}
+  m_AnchoredPosition: {x: 0, y: -83}
+  m_SizeDelta: {x: 676.8715, y: 40.8919}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1948826837547424057
 CanvasRenderer:
@@ -3913,9 +3913,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press i to open and close the inventory. There are some items that can
-    be used. Press the item with right mouse button, drag the item to the icon on
-    the left of the screen and press it.
+  m_text: Press tab to open and close the inventory. There are some items that can
+    be used or examined. Press the item with right mouse button, drag the item to
+    the icon on the left and click it to use it, or drag it to the icon on the right
+    and click it to examine it.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3924,7 +3925,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4244635647
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -3978,7 +3979,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -15.030745, w: -1.6786236}
+  m_margin: {x: 0, y: 0, z: 0.039701443, w: -1.6786236}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
