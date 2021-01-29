@@ -15,6 +15,7 @@ public class InteractionMedicineCabinet : InteractionCommon, ICoroutineT<string>
     private WaitForSeconds waitForSeconds;
 
     public Coroutine ThisCoroutine { get; private set; }
+    public bool isClickedWhenLocked { get; private set; }
 
     //Inspector Variables
     [SerializeField] private string[] thought;
@@ -31,6 +32,7 @@ public class InteractionMedicineCabinet : InteractionCommon, ICoroutineT<string>
         displayText = thoughtCanvas.GetComponentInChildren<Text>();
         waitForSeconds = new WaitForSeconds(3);
         ThisCoroutine = null;
+        isClickedWhenLocked = false;
     }
 
     /// <summary>
@@ -50,7 +52,11 @@ public class InteractionMedicineCabinet : InteractionCommon, ICoroutineT<string>
         //Else it displays a thought on the locked cabinet
         if (ThisCoroutine == null)
             if (thoughtCanvas.enabled == false)
+            {
                 ThisCoroutine = StartCoroutine(CoroutineExecute(thought[0]));
+                isClickedWhenLocked = true;
+            }
+                
     }
 
     /// <summary>

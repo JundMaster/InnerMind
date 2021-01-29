@@ -12,6 +12,7 @@ public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
     private WaitForSeconds waitForSeconds;
     private string thought;
     private Inventory inventory;
+    private InteractionMedicineCabinet cabinet;
 
     //Variables in Inspector
     [SerializeField] private string[] thoughts;
@@ -31,6 +32,7 @@ public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
     /// </summary>
     private void Awake()
     {
+        cabinet = FindObjectOfType<InteractionMedicineCabinet>();
         inventory = FindObjectOfType<Inventory>();
         closetDoorAnimation = GetComponentInChildren<Animator>();
         waitForSeconds = new WaitForSeconds(2);
@@ -62,9 +64,9 @@ public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
     /// <returns>Returns paused time in seconds</returns>
     public IEnumerator CoroutineExecute(string[] thoughts)
     {
-        for (int i = 0; i < thoughts.Length; i++)
+        if(!cabinet.isClickedWhenLocked && thoughts.Length > 1)
         {
-            thought = thoughts[i];
+            thought = thoughts[1];
             thoughtCanvas.enabled = true;
             displayText.enabled = true;
             displayText.text = thought;
@@ -73,6 +75,18 @@ public class InteractionCloset : InteractionCommon, ICoroutineT<string[]>
             displayText.enabled = false;
             ThisCoroutine = null;
         }
+        else 
+        {
+            thought = thoughts[0];
+            thoughtCanvas.enabled = true;
+            displayText.enabled = true;
+            displayText.text = thought;
+            yield return waitForSeconds;
+            thoughtCanvas.enabled = false;
+            displayText.enabled = false;
+            ThisCoroutine = null;
+        }
+        
     }
 
     /// <summary>

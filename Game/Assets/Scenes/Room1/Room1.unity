@@ -25334,6 +25334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thoughts:
   - Ah! There she is. Why did I put it here...?
+  - Thats weird...Why is the medicine  cabinet's key here?
   thoughtCanvas: {fileID: 341177102}
   animTrigger: OpenRightMiddleDoor
   closetDoorAnimation: {fileID: 3550592865946687237}
