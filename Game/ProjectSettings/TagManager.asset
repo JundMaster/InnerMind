@@ -15,6 +15,7 @@ TagManager:
   - Neighbor Text
   - MapCanvas
   - LastDoorForAssistMode
+  - DescriptionInExamine
   layers:
   - Default
   - TransparentFX

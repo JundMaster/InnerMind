@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using TMPro;
 
 /// <summary>
 /// Class to define user control inside inventory.
@@ -209,6 +210,11 @@ public class PlayerInventoryController : MonoBehaviour
             examiner.SetExaminer(new ItemExaminer(5, LastClickedActionsAvailable,
                                 examineCamera));
             examineMenu.DisplayExamineMenu();
+
+            // Sets text in examine = description of the item
+            GameObject.FindGameObjectWithTag("DescriptionInExamine").
+                GetComponent<TextMeshProUGUI>().text =
+                LastClickedActionsAvailable.Description;
         }
     }
 

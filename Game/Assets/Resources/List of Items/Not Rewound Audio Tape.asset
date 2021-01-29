@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38ea6aeb525e292469d59ce1a7fc540f, type: 3}
   m_Name: Not Rewound Audio Tape
   m_EditorClassIdentifier: 
-  name: Not Rewound Audio Tape
+  name: Audio Tape
   description: I should find something to play this audio tape. I should rewind it
     first
   id: 64
