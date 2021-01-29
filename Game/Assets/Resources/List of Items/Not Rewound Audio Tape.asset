@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Not Rewound Audio Tape
   m_EditorClassIdentifier: 
   name: Not Rewound Audio Tape
+  description: I should find something to play this audio tape. I should rewind it
+    first
   id: 64
   icon: {fileID: 21300000, guid: 52be1d06fc87b8a4f8fcc56e2d24e3b8, type: 3}
   cursorTexture: {fileID: 2800000, guid: 69760e06132ed5346b8f2cd9747fe7dd, type: 3}

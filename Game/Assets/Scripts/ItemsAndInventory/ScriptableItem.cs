@@ -11,6 +11,8 @@ public class ScriptableItem : ScriptableObject, IItem,
     IComparable<ScriptableItem>
 {
     [SerializeField] private new string name;
+    [TextArea(1, 2)]
+    [SerializeField] private string description;
     [SerializeField] private ListOfItems id;
     [SerializeField] private Sprite icon;
     [SerializeField] private Texture2D cursorTexture;
@@ -22,6 +24,11 @@ public class ScriptableItem : ScriptableObject, IItem,
     /// Name of the item
     /// </summary>
     public string Name          { get => name; }
+
+    /// <summary>
+    /// Description of the item
+    /// </summary>
+    public string Description { get => description; }
 
     /// <summary>
     /// Item ID from ListOfItems

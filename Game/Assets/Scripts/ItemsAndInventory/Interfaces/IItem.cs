@@ -11,6 +11,11 @@ public interface IItem
     string Name { get; }
 
     /// <summary>
+    /// Description of the item
+    /// </summary>
+    string Description { get; }
+
+    /// <summary>
     /// Item ID from ListOfItems
     /// </summary>
     ListOfItems ID { get; }
